@@ -3,6 +3,11 @@
 .\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
 .\main.o: lm4f120h5qr.h
+.\main.o: doublebuffer.h
+.\main.o: renderer.h
+.\main.o: screen.h
+.\main.o: pixel.h
+.\main.o: constants.h
 .\main.o: ../team.h
 .\main.o: initBoard.h
 .\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h

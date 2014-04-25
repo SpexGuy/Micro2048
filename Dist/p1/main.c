@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lm4f120h5qr.h"
+#include "doublebuffer.h"
 #include "../team.h"
 #include "initBoard.h"
 #include "board_config.h"
