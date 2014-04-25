@@ -1,0 +1,13 @@
+.\initboard.o: initBoard.c
+.\initboard.o: initBoard.h
+.\initboard.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\initboard.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\initboard.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\initboard.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+.\initboard.o: UART.h
+.\initboard.o: C:\Keil\ARM\ARMCC\bin\..\include\errno.h
+.\initboard.o: lm4f120h5qr.h
+.\initboard.o: gpio.h
+.\initboard.o: systick.h
+.\initboard.o: hw4_gpio.h
+.\initboard.o: hw4_adc.h

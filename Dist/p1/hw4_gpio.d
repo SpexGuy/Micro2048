@@ -1,0 +1,10 @@
+.\hw4_gpio.o: hw4_gpio.c
+.\hw4_gpio.o: hw4_gpio.h
+.\hw4_gpio.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\hw4_gpio.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+.\hw4_gpio.o: gpio.h
+.\hw4_gpio.o: lm4f120h5qr.h
+.\hw4_gpio.o: led_chars.h
+.\hw4_gpio.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\hw4_gpio.o: UART.h
+.\hw4_gpio.o: C:\Keil\ARM\ARMCC\bin\..\include\errno.h

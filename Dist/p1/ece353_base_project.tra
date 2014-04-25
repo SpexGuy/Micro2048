@@ -1,0 +1,29 @@
+*** Creating Trace Output File 'ece353_base_project.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"main.o"'
+### List of Objects: adding '"initboard.o"'
+### List of Objects: adding '"systick.o"'
+### List of Objects: adding '"hw4_adc.o"'
+### List of Objects: adding '"hw4_gpio.o"'
+### List of Objects: adding '"led_chars.o"'
+### List of Objects: adding '".\lib\pll.lib"'
+### List of Objects: adding '".\lib\uart.lib"'
+### List of Objects: adding '".\lib\gpio.lib"'
+### List of Objects: adding '".\lib\portC_init.lib"'
+### ADS-LD Command completed:
+--cpu Cortex-M4.fp "startup.o" "main.o" "initboard.o" "systick.o" "hw4_adc.o" "hw4_gpio.o" "led_chars.o" C:\Users\jkrachey\SkyDrive\ECE353\svn\trunk\hw\2014-Spring\HW4\Dist\p1\lib\pll.lib C:\Users\jkrachey\SkyDrive\ECE353\svn\trunk\hw\2014-Spring\HW4\Dist\p1\lib\uart.lib C:\Users\jkrachey\SkyDrive\ECE353\svn\trunk\hw\2014-Spring\HW4\Dist\p1\lib\gpio.lib C:\Users\jkrachey\SkyDrive\ECE353\svn\trunk\hw\2014-Spring\HW4\Dist\p1\lib\portC_init.lib --library_type=microlib --strict --scatter ".\ece353.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\ece353_base_project.map" -o "ece353_base_project.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'ece353_base_project.axf'
+### ADS-LD Command File: 'ece353_base_project.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'ece353_base_project.lnp', Handle=0x00000438
+### Writing '.lnp' file
+### ADS-LD Command file 'ece353_base_project.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
