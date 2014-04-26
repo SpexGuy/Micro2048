@@ -2,6 +2,7 @@
 .\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\main.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 .\main.o: lm4f120h5qr.h
 .\main.o: doublebuffer.h
 .\main.o: renderer.h
@@ -19,4 +20,5 @@
 .\main.o: hw4_adc.h
 .\main.o: board_config.h
 .\main.o: inc/hw_types.h
+.\main.o: board_ports.h
 .\main.o: led_chars.h

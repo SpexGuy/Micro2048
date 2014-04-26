@@ -1,5 +1,6 @@
 .\initboard.o: initBoard.c
 .\initboard.o: initBoard.h
+.\initboard.o: constants.h
 .\initboard.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\initboard.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\initboard.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h

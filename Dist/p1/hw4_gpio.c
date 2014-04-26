@@ -1,6 +1,8 @@
 #include "hw4_gpio.h"
 #include "led_chars.h"
 #include "UART.h"
+#include "board_ports.h"
+#include "renderer.h"
 
 //******************************************************
 // Global Variables provided by other files
@@ -23,6 +25,7 @@ extern void EndCritical(void);
 
 extern volatile uint16_t RefreshRate;
 
+volatile uint8_t DutyPos = 0;
 volatile bool AlertDebounce;
 volatile bool AlertRowUpdate;
 char Color = 'R';
@@ -92,38 +95,11 @@ void examineButtons(void)
 // If AlertRowUpdate is false, simply return
 //
 //*****************************************************************************
-void updateDisplay(void)
-{
-	uint8_t data;
+void updateDisplay(void) {
 	if (!AlertRowUpdate) return;
 	AlertRowUpdate = false;
-	//clear all colors
-	PortC->Unused0[PIN_4|PIN_5|PIN_6|PIN_7] = PIN_4 | PIN_5 | PIN_6;
-	PortB->Data = 0xFF;
-	//set row
-	PortC->Unused0[PIN_4|PIN_5|PIN_6|PIN_7] = PIN_7;
-	PortB->Data = ~(1<<Row);
-	//setup color enable
-	switch(Color) {
-	case 'R':
-		PortC->Unused0[PIN_4|PIN_5|PIN_6|PIN_7] = PIN_4;
-		break;
-	case 'G':
-		PortC->Unused0[PIN_4|PIN_5|PIN_6|PIN_7] = PIN_5;
-		break;
-	case 'B':
-		PortC->Unused0[PIN_4|PIN_5|PIN_6|PIN_7] = PIN_6;
-		break;
-	default:
-		PortC->Unused0[PIN_4|PIN_5|PIN_6|PIN_7] = 0;		
-	}
-	//get LCD bits for this row
-	if (!getLCDRow(RefreshRate, Row, &data))
-		return;
-	//set lcd bits
-	PortB->Data = data;
-	//set output enable
-	PortF->Unused0[PIN_4] = 0;
+	
+	updateRow(Row, DutyPos);
 	//increment row
 	Row = (Row+1) % 8;
 }
@@ -175,5 +151,7 @@ void initializeGpioPins(void)
 	PortE->AlternateFunctionSelect |= PIN_3;
 	PortE->DigitalEnable &= ~PIN_3;
 	PortE->AnalogSelectMode |= PIN_3;
+	
+	
 }
 

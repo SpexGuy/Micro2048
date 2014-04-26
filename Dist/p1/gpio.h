@@ -69,7 +69,7 @@
 
 
 typedef struct {
-  volatile uint32_t    Unused0[255];
+  volatile uint32_t    MaskedData[255];
   volatile uint32_t    Data;                    // + 0x3FC
   volatile uint32_t    Direction;               // + 0x400
   volatile uint32_t    InterruptSence;          // + 0x404

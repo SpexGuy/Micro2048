@@ -1,4 +1,5 @@
 #include "hw4_adc.h"
+#include "renderer.h"
 
 //******************************************************
 // Global Variables provided by other files
@@ -18,7 +19,6 @@ extern GPIO_PORT *PortF ;
 extern void StartCritical(void);
 extern void EndCritical(void);
 
-volatile uint16_t RefreshRate = 0;
 volatile bool AlertADC0 = false;
 
 /****************************************************************************
@@ -71,8 +71,6 @@ void updateRefreshRate(void)
 	uint32_t adc;
 	if (!AlertADC0) return;
 	AlertADC0 = false;
-	//get left adc
-	adc = GetADCval(1);
-	//set refresh rate between 0 and 99
-	RefreshRate = (adc * 100) / 4096;
+	adc = GetADCval(LEFT_POT);
+	setBrightness((adc * MAX_BRIGHTNESS) / 4096);
 }

@@ -1,0 +1,10 @@
+.\renderer.o: renderer.c
+.\renderer.o: renderer.h
+.\renderer.o: screen.h
+.\renderer.o: pixel.h
+.\renderer.o: constants.h
+.\renderer.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\renderer.o: board_ports.h
+.\renderer.o: gpio.h
+.\renderer.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+.\renderer.o: lm4f120h5qr.h

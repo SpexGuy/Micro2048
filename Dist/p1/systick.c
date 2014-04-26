@@ -7,6 +7,7 @@ extern volatile bool AlertRowUpdate;
 extern volatile bool AlertADC0;
 extern volatile uint16_t RefreshRate;
 extern volatile uint8_t Row;
+extern volatile uint8_t DutyPos;
 
  /****************************************************************************
  * The SysTick Handler 
@@ -23,14 +24,11 @@ void SYSTICKIntHandler(void)
 	//adc every tick
 	AlertADC0 = true;
 	
-	//refresh screen based on refresh rate
-	if (RefreshRate != 0) {
-		static int screenCount = 0;
-		if (screenCount++ >= 100/RefreshRate) {
-			screenCount = 0;
-			AlertRowUpdate = true;
-		}
+	if (++Row == 8) {
+		Row = 0;
+		DutyPos += 4;
 	}
+	AlertRowUpdate = true;
 	
 }
 

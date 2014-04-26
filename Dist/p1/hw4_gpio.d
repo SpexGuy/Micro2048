@@ -8,3 +8,8 @@
 .\hw4_gpio.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\hw4_gpio.o: UART.h
 .\hw4_gpio.o: C:\Keil\ARM\ARMCC\bin\..\include\errno.h
+.\hw4_gpio.o: board_ports.h
+.\hw4_gpio.o: renderer.h
+.\hw4_gpio.o: screen.h
+.\hw4_gpio.o: pixel.h
+.\hw4_gpio.o: constants.h
