@@ -12,17 +12,21 @@ extern GPIO_PORT *PortD;
 extern GPIO_PORT *PortE;
 extern GPIO_PORT *PortF;
 
+uint32_t gammaCorrect(uint32_t val) {
+	return (val*val)/255;
+}
+
 void updateRow(int row, int duty) {
 	uint32_t red = 0, green = 0, blue = 0;
 	int c;
 	for (c = 0; c < 8; c++) {
 		uint8_t mask = 1<<c;
 		Pixel current = currentBuffer->raster[row][c];
-		if ((current.color.b*brightness) / MAX_BRIGHTNESS > duty)
+		if ((gammaCorrect(current.color.b)*brightness) / MAX_BRIGHTNESS > duty)
 			blue |= mask;
-		if ((current.color.g*brightness) / MAX_BRIGHTNESS > duty)
+		if ((gammaCorrect(current.color.g)*brightness) / MAX_BRIGHTNESS > duty)
 			green |= mask;
-		if ((current.color.r*brightness) / MAX_BRIGHTNESS > duty)
+		if ((gammaCorrect(current.color.r)*brightness) / MAX_BRIGHTNESS > duty)
 			red |= mask;
 	}
 	
