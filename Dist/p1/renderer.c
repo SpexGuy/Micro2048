@@ -26,22 +26,29 @@ void updateRow(int row, int duty) {
 			red |= mask;
 	}
 	
-	//enable output
-	PortF->MaskedData[PF4_OUT_EN_B] = 0;
 	//clear all colors
 	PortC->MaskedData[DISPLAY_EN_MASK] = PC4_RED_EN|PC5_GRN_EN|PC6_BLU_EN;
 	PortB->Data = 0xFF;
+	//push value
+	PortF->MaskedData[PF4_OUT_EN_B] = 0;
+	PortF->MaskedData[PF4_OUT_EN_B] = 1;
 	//set row
 	PortC->MaskedData[DISPLAY_EN_MASK] = PC7_COL_EN;
 	PortB->Data = ~(1<<row);
+	PortF->MaskedData[PF4_OUT_EN_B] = 0;
+	PortF->MaskedData[PF4_OUT_EN_B] = 1;
 	//set colors
 	PortC->MaskedData[DISPLAY_EN_MASK] = PC4_RED_EN;
 	PortB->Data = ~red;
+	PortF->MaskedData[PF4_OUT_EN_B] = 0;
+	PortF->MaskedData[PF4_OUT_EN_B] = 1;
 	PortC->MaskedData[DISPLAY_EN_MASK] = PC5_GRN_EN;
 	PortB->Data = ~green;
+	PortF->MaskedData[PF4_OUT_EN_B] = 0;
+	PortF->MaskedData[PF4_OUT_EN_B] = 1;
 	PortC->MaskedData[DISPLAY_EN_MASK] = PC6_BLU_EN;
 	PortB->Data = ~blue;
-	//disable output
+	PortF->MaskedData[PF4_OUT_EN_B] = 0;
 	PortF->MaskedData[PF4_OUT_EN_B] = 1;
 }
 

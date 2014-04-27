@@ -1,13 +1,10 @@
 #include <stdbool.h>
 #include "lm4f120h5qr.h"
 #include "systick.h"
+#include "renderer.h"
 
-extern volatile bool AlertDebounce;  
-extern volatile bool AlertRowUpdate;
+extern volatile bool AlertDebounce;
 extern volatile bool AlertADC0;
-extern volatile uint16_t RefreshRate;
-extern volatile uint8_t Row;
-extern volatile uint8_t DutyPos;
 
  /****************************************************************************
  * The SysTick Handler 
@@ -16,6 +13,8 @@ void SYSTICKIntHandler(void)
 {
 	//debounce every 14 cycles
 	static int debounceCount = 0;
+	static int row = 0;
+	static uint8_t dutyPos = 0;
 	if (debounceCount++ > 14) {
 		AlertDebounce = true;
 		debounceCount = 0;
@@ -24,11 +23,11 @@ void SYSTICKIntHandler(void)
 	//adc every tick
 	AlertADC0 = true;
 	
-	if (++Row == 8) {
-		Row = 0;
-		DutyPos += 4;
+	if (++row == 8) {
+		row = 0;
+		dutyPos += 4;
 	}
-	AlertRowUpdate = true;
+	updateRow(row, dutyPos);
 	
 }
 

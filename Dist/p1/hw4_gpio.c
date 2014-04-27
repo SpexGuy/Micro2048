@@ -25,11 +25,7 @@ extern void EndCritical(void);
 
 extern volatile uint16_t RefreshRate;
 
-volatile uint8_t DutyPos = 0;
 volatile bool AlertDebounce;
-volatile bool AlertRowUpdate;
-char Color = 'R';
-volatile uint8_t Row = 0;
 
 
 //*****************************************************************************
@@ -75,9 +71,9 @@ void examineButtons(void)
 		//check for button press
 		if (last[c][0] && last[c][1] && !last[c][2]) {
 			//set color
-			Color = colors[c];
+			//Color = colors[c];
 			//print color
-			colorPrint[0] = Color;
+			//colorPrint[0] = Color;
 			colorPrint[1] = '\0';
 			uartTxPoll(UART0, "Button ");
 			uartTxPoll(UART0, colorPrint);
@@ -85,23 +81,6 @@ void examineButtons(void)
 			break;
 		}
 	}
-}
-
-//*****************************************************************************
-// The ISR sets AlertRowUpdate to true if the display should be updated.
-// The routine will call getLCDRow() (led_chars.c) to determine  the 8-bit 
-// data value that will be written out to PORTB.
-//
-// If AlertRowUpdate is false, simply return
-//
-//*****************************************************************************
-void updateDisplay(void) {
-	if (!AlertRowUpdate) return;
-	AlertRowUpdate = false;
-	
-	updateRow(Row, DutyPos);
-	//increment row
-	Row = (Row+1) % 8;
 }
 
 //*****************************************************************************

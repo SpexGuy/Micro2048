@@ -53,17 +53,31 @@ main(void)
   while(1) {
     //examineButtons();
 		drawBuffer = getDrawBuffer();
-		for (c = 0; c < 4; c++) {
-			for (d = 0; d < 4; d++) {
-				drawBuffer->raster[(c+offset/7000)%8][(d+offset/10000)%8].hex = 0xFF6600;
-				drawBuffer->raster[(c+4+offset/7000)%8][(d+offset/10000)%8].hex = 0xFFFF00;
-				drawBuffer->raster[(c+offset/7000)%8][(d+4+offset/10000)%8].hex = 0x11DDFF;
-				drawBuffer->raster[(c+4+offset/7000)%8][(d+4+offset/10000)%8].hex = 0x66ff00;
+		for (c = 0; c < 2; c++) {
+			for (d = 0; d < 2; d++) {
+				drawBuffer->raster[(c+offset/15000)%8][(d+offset/30000)%8].hex = 0xFF0000;
+				drawBuffer->raster[(c+2+offset/15000)%8][(d+offset/30000)%8].hex = 0x505000;
+				drawBuffer->raster[(c+4+offset/15000)%8][(d+offset/30000)%8].hex = 0x500050;
+				drawBuffer->raster[(c+6+offset/15000)%8][(d+offset/30000)%8].hex = 0x500000;
+				
+				drawBuffer->raster[(c+offset/15000)%8][(d+2+offset/30000)%8].hex = 0x505000;
+				drawBuffer->raster[(c+2+offset/15000)%8][(d+2+offset/30000)%8].hex = 0x00FF00;
+				drawBuffer->raster[(c+4+offset/15000)%8][(d+2+offset/30000)%8].hex = 0x005050;
+				drawBuffer->raster[(c+6+offset/15000)%8][(d+2+offset/30000)%8].hex = 0x005000;
+
+				drawBuffer->raster[(c+offset/15000)%8][(d+4+offset/30000)%8].hex = 0x500050;
+				drawBuffer->raster[(c+2+offset/15000)%8][(d+4+offset/30000)%8].hex = 0x005050;
+				drawBuffer->raster[(c+4+offset/15000)%8][(d+4+offset/30000)%8].hex = 0x0000FF;
+				drawBuffer->raster[(c+6+offset/15000)%8][(d+4+offset/30000)%8].hex = 0x000050;
+
+				drawBuffer->raster[(c+offset/15000)%8][(d+6+offset/30000)%8].hex = 0x500000;
+				drawBuffer->raster[(c+2+offset/15000)%8][(d+6+offset/30000)%8].hex = 0x005000;
+				drawBuffer->raster[(c+4+offset/15000)%8][(d+6+offset/30000)%8].hex = 0x000050;
+				drawBuffer->raster[(c+6+offset/15000)%8][(d+6+offset/30000)%8].hex = 0x000000;
 			}
 		}
 		//offset++;
 		swapBuffers();
-    updateDisplay();
     updateRefreshRate();
   }
 }
