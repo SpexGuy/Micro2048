@@ -21,5 +21,11 @@ typedef union {
 	} color;
 } Pixel;
 
+Pixel multiply(Pixel pix, uint8_t fraction);
+void nMultiply(Pixel *pix, uint8_t fraction);
+Pixel add(Pixel pix, Pixel addition);
+void nAdd(Pixel *pix, Pixel addition);
+
+uint8_t bmod(uint32_t a, uint32_t b);
 
 #endif

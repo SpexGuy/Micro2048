@@ -9,9 +9,9 @@
 .\main.o: screen.h
 .\main.o: pixel.h
 .\main.o: constants.h
+.\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
 .\main.o: ../team.h
 .\main.o: initBoard.h
-.\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
 .\main.o: UART.h
 .\main.o: C:\Keil\ARM\ARMCC\bin\..\include\errno.h
 .\main.o: gpio.h

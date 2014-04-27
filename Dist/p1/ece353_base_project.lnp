@@ -9,6 +9,7 @@
 ".\doublebuffer.o"
 ".\renderer.o"
 ".\screen.o"
+".\pixel.o"
 ".\lib\pll.lib"
 ".\lib\uart.lib"
 ".\lib\gpio.lib"
