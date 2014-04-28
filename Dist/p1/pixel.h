@@ -11,9 +11,9 @@ typedef union {
 			uint8_t b;
 			uint8_t g;
 			uint8_t r;
-			uint8_t _;
+			uint8_t p;
 #		else
-			uint8_t _;
+			uint8_t p;
 			uint8_t r;
 			uint8_t g;
 			uint8_t b;
@@ -21,12 +21,15 @@ typedef union {
 	} color;
 } Pixel;
 
-Pixel multiply(Pixel pix, uint8_t fraction);
-void nMultiply(Pixel *pix, uint8_t fraction);
+Pixel mix(Pixel a, Pixel b, byteFraction z);
+void nMix(Pixel *a, Pixel b, byteFraction z);
+Pixel complement(Pixel pix);
+void nComplement(Pixel *pix);
+Pixel multiply(Pixel pix, byteFraction fraction);
+void nMultiply(Pixel *pix, byteFraction fraction);
 Pixel add(Pixel pix, Pixel addition);
 void nAdd(Pixel *pix, Pixel addition);
+void percentAdd(Pixel *pix, Pixel addition, byteFraction percent);
 void setColor(Pixel *pix, Pixel value);
-
-uint8_t bmod(uint32_t a, uint32_t b);
 
 #endif

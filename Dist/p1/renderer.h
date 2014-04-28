@@ -3,12 +3,12 @@
 
 #include "screen.h"
 
-#define MAX_BRIGHTNESS 256
-
-void updateRow(int row, int duty);
+void updateRow(uint8_t row, byteFraction duty);
 void setCurrentBuffer(FrameBuffer *buffer);
 FrameBuffer *getCurrentBuffer(void);
 void setBrightness(uint32_t bright);
 uint32_t getBrightness(void);
+
+#define MAX_BRIGHTNESS 256
 
 #endif

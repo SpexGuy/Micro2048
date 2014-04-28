@@ -33,9 +33,9 @@ int
 main(void)
 {
 	FrameBuffer *drawBuffer;
-	Pixel px;
+	Pixel px, px2;
 	int c, d;
-	int offset = 0;
+	uint32_t offset = 0;
   initBoard();
 	initDoubleBuffers();
     
@@ -49,17 +49,25 @@ main(void)
   uartTxPoll(UART0,"********************\n\r");
   uartTxPoll(UART0,"\n\r");
 
-	px.hex = 0x00ffff;
+	px.hex = 0x0000ff;
+	px2.hex = 0x0000ff;
 
   while(1) {
     //examineButtons();
+		//px.color.r = fract(abs((offset%6400)-3200),3200);
+		//px.color.g = fract(abs((offset%9600)-4800),4800);
+		//px.color.b = fract(abs((offset%16000)-8000),8000);
 		clearDrawBuffer();
 		drawBuffer = getDrawBuffer();
 		drawAARect(	drawBuffer,
-								(offset/7000)%8, bmod(offset,7000), 3,
-								(offset/5000)%8, bmod(offset,5000), 3, px);
+								(offset>>2)/256, fract(offset>>2,256), 2,
+								3, 0, 2, px);
+		drawRect(	drawBuffer,
+								3, 2,
+								3, 2, px2);
 		swapBuffers();
 		offset++;
+		offset %= (512<<4);
     updateRefreshRate();
   }
 }

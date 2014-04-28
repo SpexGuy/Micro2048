@@ -26,29 +26,30 @@ void drawAACorners(	FrameBuffer *draw,
 	sep = multiply(color, se);
 	//add to pixels
 	if (validPixel(x, y))
-		nAdd(&draw->raster[ y ][ x ], nwp);
+		percentAdd(&draw->raster[ y ][ x ], nwp, nw);
 	if (validPixel(x+xSpan, y))
-		nAdd(&draw->raster[ y ][x+xSpan], nep);
+		percentAdd(&draw->raster[ y ][x+xSpan], nep, ne);
 	if (validPixel(x, y+ySpan))
-		nAdd(&draw->raster[y+ySpan][ x ], swp);
+		percentAdd(&draw->raster[y+ySpan][ x ], swp, sw);
 	if (validPixel(x+xSpan, y+ySpan))
-		nAdd(&draw->raster[y+ySpan][x+xSpan], sep);
+		percentAdd(&draw->raster[y+ySpan][x+xSpan], sep, se);
 }
 
 void drawAAPixel(	FrameBuffer *draw,
-									uint8_t x, uint8_t xOffset,
-									uint8_t y, uint8_t yOffset,
+									uint8_t x, byteFraction xOffset,
+									uint8_t y, byteFraction yOffset,
 									Pixel color)
 {
 	drawAACorners(draw, x, xOffset, 1, y, yOffset, 1, color);
 }
 
 void drawAAEdges(	FrameBuffer *draw,
-									uint8_t x, uint8_t e, uint8_t width,
-									uint8_t y, uint8_t s, uint8_t height,
+									uint8_t x, byteFraction e, uint8_t width,
+									uint8_t y, byteFraction s, uint8_t height,
 									Pixel color)
 {
-	uint8_t xo, yo, n, w;
+	uint8_t xo, yo;
+	byteFraction n, w;
 	Pixel np, ep, wp, sp;
 	//calculate coefficients
 	n = 255-s;
@@ -60,15 +61,15 @@ void drawAAEdges(	FrameBuffer *draw,
 	wp = multiply(color, w);
 	//draw y edges
 	for (xo = x+1; xo < x+width && xo < SCREEN_WIDTH; xo++) {
-		nAdd(&draw->raster[y][xo], np);
+		percentAdd(&draw->raster[y][xo], np, n);
 		if (y+height < SCREEN_HEIGHT)
-			nAdd(&draw->raster[y+height][xo], sp);
+			percentAdd(&draw->raster[y+height][xo], sp, s);
 	}
 	//draw x edges
 	for (yo = y+1; yo < y+height && yo < SCREEN_HEIGHT; yo++) {
-		nAdd(&draw->raster[yo][x], wp);
+		percentAdd(&draw->raster[yo][x], wp, w);
 		if (x+width < SCREEN_WIDTH)
-			nAdd(&draw->raster[yo][x+width], ep);
+			percentAdd(&draw->raster[yo][x+width], ep, e);
 	}
 }
 
@@ -81,14 +82,14 @@ void drawRect(FrameBuffer *draw,
 	if (!validPixel(x, y)) return;
 	for (xo = x; xo < x+width && xo < SCREEN_WIDTH; xo++) {
 		for (yo = y; yo < y+height && yo < SCREEN_HEIGHT; yo++) {
-			nAdd(&draw->raster[yo][xo], color);
+			percentAdd(&draw->raster[yo][xo], color, BF_1);
 		}
 	}
 }
 
 void drawAARect(FrameBuffer *draw,
-								uint8_t x, uint8_t e, uint8_t width,
-								uint8_t y, uint8_t s, uint8_t height,
+								uint8_t x, byteFraction e, uint8_t width,
+								uint8_t y, byteFraction s, uint8_t height,
 								Pixel color)
 {
 	//draw center

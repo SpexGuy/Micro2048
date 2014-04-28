@@ -1,14 +1,36 @@
 #include "pixel.h"
 
-Pixel multiply(Pixel pix, uint8_t fraction) {
+Pixel mix(Pixel a, Pixel b, byteFraction z) {
+	nMix(&a, b, z);
+	return a;
+}
+
+void nMix(Pixel *a, Pixel b, byteFraction z) {
+	a->color.r = blerp(a->color.r, b.color.r, z);
+	a->color.g = blerp(a->color.g, b.color.g, z);
+	a->color.b = blerp(a->color.b, b.color.b, z);
+}
+
+Pixel complement(Pixel a) {
+	nComplement(&a);
+	return a;
+}
+
+void nComplement(Pixel *a) {
+	a->color.r = bcomp(a->color.r);
+	a->color.g = bcomp(a->color.g);
+	a->color.b = bcomp(a->color.b);
+}
+
+Pixel multiply(Pixel pix, byteFraction fraction) {
 	nMultiply(&pix, fraction);
 	return pix;
 }
 
-void nMultiply(Pixel *pix, uint8_t fraction) {
-	pix->color.r = (pix->color.r * fraction)>>8;
-	pix->color.g = (pix->color.g * fraction)>>8;
-	pix->color.b = (pix->color.b * fraction)>>8;
+void nMultiply(Pixel *pix, byteFraction fraction) {
+	pix->color.r = bmult(pix->color.r, fraction);
+	pix->color.g = bmult(pix->color.g, fraction);
+	pix->color.b = bmult(pix->color.b, fraction);
 }
 
 Pixel add(Pixel pix, Pixel addition) {
@@ -22,12 +44,32 @@ void nAdd(Pixel *pix, Pixel addition) {
 	pix->color.b += addition.color.b;
 }
 
+void percentAdd(Pixel *pix, Pixel addition, byteFraction percent) {
+//	nMultiply(&addition, percent);
+//	nAdd(pix, addition);
+	static Pixel white = {0xFFFFFF};
+	//calculate the total percentage
+	uint16_t totalPercent = pix->color.p + percent;
+	//get the overflow (signed arithmetic)
+	byteFraction overflow = max(0, (int)totalPercent-255);
+	//calculate fractions for the old and new parts
+	byteFraction oldFract = fract1(pix->color.p, totalPercent);
+	byteFraction newFract = fract1(percent, totalPercent);
+	//calculate the percentaged pixels and add
+	nMultiply(pix, oldFract);
+	nMultiply(&addition, newFract);
+	nAdd(pix, addition);
+	//check for overflow and lerp to white
+	if (overflow > 0) {
+		nMix(pix, white, overflow);
+		pix->color.p = 255;
+	} else {
+		pix->color.p = totalPercent;
+	}
+}
+
 void setColor(Pixel *pix, Pixel value) {
 	pix->color.r = value.color.r;
 	pix->color.g = value.color.g;
 	pix->color.b = value.color.b;
-}
-
-uint8_t bmod(uint32_t a, uint32_t b) {
-	return (256*a)/b;
 }

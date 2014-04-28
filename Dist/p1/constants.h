@@ -3,6 +3,7 @@
 
 #define _LITTLE_ENDIAN 1
 
+#include <stdint.h>
 
 #define DUTY_CYCLE_DELTA 					(4)
 #define DUTY_CYCLE_MAX 						(256)
@@ -15,5 +16,20 @@
 // Load Register.
 #define SYSTICK_COUNT   					(CLOCK_FREQUENCY/(DUTY_CYCLE_GRADIATIONS*SCREEN_HEIGHT*SCREEN_REFRESH_RATE))
 
+typedef uint8_t byteFraction;
+#define BF_1 255
+#define BF_0 0
+
+//get the fractional part of a/b
+#define fract(a, b) ((byteFraction)((256*((uint32_t)(a)))/((uint32_t)(b))))
+#define fract1(a, b) ((byteFraction)((255*((uint32_t)(a)))/((uint32_t)(b))))
+//multiply by a byteFraction
+#define bmult(a, b) (((a)*(b))>>8)
+//equivalent of 1.0f-b for a byteFraction
+#define bcomp(b) (255-(b))
+//lerp with a byteFraction
+#define blerp(a, b, z) (bmult(a, bcomp(z))+bmult(b, z))
+#define max(a, b) (((a)>(b))?(a):(b))
+#define min(a, b) (((a)<(b))?(a):(b))
 
 #endif
