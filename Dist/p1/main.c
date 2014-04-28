@@ -49,19 +49,17 @@ main(void)
   uartTxPoll(UART0,"********************\n\r");
   uartTxPoll(UART0,"\n\r");
 
-	px.hex = 0x0000FF;
+	px.hex = 0x00ffff;
 
   while(1) {
     //examineButtons();
 		clearDrawBuffer();
 		drawBuffer = getDrawBuffer();
-		for (c = 0; c < 2; c++) {
-			for (d = 0; d < 2; d++) {
-				drawAAPixel(drawBuffer, (c+offset/7000)%8, bmod(offset,7000), (d+offset/5000)%8, bmod(offset,5000), px);
-			}
-		}
-		offset++;
+		drawAARect(	drawBuffer,
+								(offset/7000)%8, bmod(offset,7000), 3,
+								(offset/5000)%8, bmod(offset,5000), 3, px);
 		swapBuffers();
+		offset++;
     updateRefreshRate();
   }
 }
