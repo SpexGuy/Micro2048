@@ -38,27 +38,31 @@ void updateRow(uint8_t row, byteFraction duty) {
 	PortB->Data = 0xFF;
 	PortF->MaskedData[PF4_OUT_EN_B] = 1;
 	//set row
-	PortC->MaskedData[DISPLAY_EN_MASK] = PC7_COL_EN;
+	PortC->MaskedData[DISPLAY_EN_MASK] = 0;
 	PortB->Data = 0xFF;
+	PortC->MaskedData[DISPLAY_EN_MASK] = PC7_COL_EN;
 	PortF->MaskedData[PF4_OUT_EN_B] = 0;
 	PortB->Data = ~(1<<row);
 	PortF->MaskedData[PF4_OUT_EN_B] = 1;
 	//set colors
 	//green
-	PortC->MaskedData[DISPLAY_EN_MASK] = PC5_GRN_EN;
+	PortC->MaskedData[DISPLAY_EN_MASK] = 0;
 	PortB->Data = 0xFF;
+	PortC->MaskedData[DISPLAY_EN_MASK] = PC5_GRN_EN;
 	PortF->MaskedData[PF4_OUT_EN_B] = 0;
 	PortB->Data = ~green;
 	PortF->MaskedData[PF4_OUT_EN_B] = 1;
 	//red
-	PortC->MaskedData[DISPLAY_EN_MASK] = PC4_RED_EN;
+	PortC->MaskedData[DISPLAY_EN_MASK] = 0;
 	PortB->Data = 0xFF;
+	PortC->MaskedData[DISPLAY_EN_MASK] = PC4_RED_EN;
 	PortF->MaskedData[PF4_OUT_EN_B] = 0;
 	PortB->Data = ~red;
 	PortF->MaskedData[PF4_OUT_EN_B] = 1;
 	//blue
-	PortC->MaskedData[DISPLAY_EN_MASK] = PC6_BLU_EN;
+	PortC->MaskedData[DISPLAY_EN_MASK] = 0;
 	PortB->Data = 0xFF;
+	PortC->MaskedData[DISPLAY_EN_MASK] = PC6_BLU_EN;
 	PortF->MaskedData[PF4_OUT_EN_B] = 0;
 	PortB->Data = ~blue;
 	PortF->MaskedData[PF4_OUT_EN_B] = 1;

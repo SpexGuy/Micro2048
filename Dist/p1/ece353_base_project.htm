@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\ece353_base_project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\ece353_base_project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Mon Apr 28 18:23:51 2014
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Wed Apr 30 10:12:27 2014
 <BR><P>
 <H3>Maximum Stack Usage =        200 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -167,26 +167,6 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[35]"></a>gammaCorrect</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, renderer.o(.text), UNUSED)
-
-<P><STRONG><a name="[18]"></a>updateRow</STRONG> (Thumb, 360 bytes, Stack size 24 bytes, renderer.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = updateRow
-</UL>
-<BR>[Called By]<UL><LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SYSTICKIntHandler
-</UL>
-
-<P><STRONG><a name="[1c]"></a>setCurrentBuffer</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, renderer.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;swapBuffers
-</UL>
-
-<P><STRONG><a name="[36]"></a>getCurrentBuffer</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, renderer.o(.text), UNUSED)
-
-<P><STRONG><a name="[1a]"></a>setBrightness</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, renderer.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateRefreshRate
-</UL>
-
-<P><STRONG><a name="[37]"></a>getBrightness</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, renderer.o(.text), UNUSED)
-
 <P><STRONG><a name="[1e]"></a>clearFrame</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, screen.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = clearFrame
 </UL>
@@ -293,7 +273,27 @@ Global Symbols
 <LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawRect
 </UL>
 
-<P><STRONG><a name="[38]"></a>setColor</STRONG> (Thumb, 22 bytes, Stack size 12 bytes, pixel.o(.text), UNUSED)
+<P><STRONG><a name="[35]"></a>setColor</STRONG> (Thumb, 22 bytes, Stack size 12 bytes, pixel.o(.text), UNUSED)
+
+<P><STRONG><a name="[36]"></a>gammaCorrect</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, renderer.o(.text), UNUSED)
+
+<P><STRONG><a name="[18]"></a>updateRow</STRONG> (Thumb, 400 bytes, Stack size 24 bytes, renderer.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = updateRow
+</UL>
+<BR>[Called By]<UL><LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SYSTICKIntHandler
+</UL>
+
+<P><STRONG><a name="[1c]"></a>setCurrentBuffer</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, renderer.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;swapBuffers
+</UL>
+
+<P><STRONG><a name="[37]"></a>getCurrentBuffer</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, renderer.o(.text), UNUSED)
+
+<P><STRONG><a name="[1a]"></a>setBrightness</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, renderer.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateRefreshRate
+</UL>
+
+<P><STRONG><a name="[38]"></a>getBrightness</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, renderer.o(.text), UNUSED)
 
 <P><STRONG><a name="[12]"></a>PLL_Init</STRONG> (Thumb, 134 bytes, Stack size 0 bytes, pll.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initBoard

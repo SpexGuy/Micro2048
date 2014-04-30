@@ -6,15 +6,15 @@ void clearFrame(FrameBuffer *buffer) {
 }
 
 void drawAACorners(	FrameBuffer *draw,
-										uint8_t x, uint8_t xOffset, uint8_t xSpan,
-										uint8_t y, uint8_t yOffset, uint8_t ySpan,
+										uint8_t x, byteFraction xOffset, uint8_t xSpan,
+										uint8_t y, byteFraction yOffset, uint8_t ySpan,
 										Pixel color)
 {
 	Pixel nwp, nep, swp, sep;
-	uint8_t nxOffset, nyOffset, nw, ne, sw, se;
+	byteFraction nxOffset, nyOffset, nw, ne, sw, se;
 	//calculate AA coefficients
-	nxOffset = 255-xOffset;
-	nyOffset = 255-yOffset;
+	nxOffset = bcomp(xOffset);
+	nyOffset = bcomp(yOffset);
 	nw = (nxOffset*nyOffset)/255;
 	ne = (xOffset*nyOffset)/255;
 	sw = (nxOffset*yOffset)/255;
@@ -52,8 +52,8 @@ void drawAAEdges(	FrameBuffer *draw,
 	byteFraction n, w;
 	Pixel np, ep, wp, sp;
 	//calculate coefficients
-	n = 255-s;
-	w = 255-e;
+	n = bcomp(s);
+	w = bcomp(e);
 	//calculate pixels
 	np = multiply(color, n);
 	ep = multiply(color, e);
