@@ -10,6 +10,7 @@
 ".\screen.o"
 ".\pixel.o"
 ".\renderer.o"
+".\animation.o"
 ".\lib\pll.lib"
 ".\lib\uart.lib"
 ".\lib\gpio.lib"

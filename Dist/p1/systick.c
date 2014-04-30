@@ -6,6 +6,8 @@
 extern volatile bool AlertDebounce;
 extern volatile bool AlertADC0;
 
+volatile uint64_t Time = 0;
+
  /****************************************************************************
  * The SysTick Handler 
  ****************************************************************************/
@@ -15,6 +17,8 @@ void SYSTICKIntHandler(void)
 	static int debounceCount = 0;
 	static int row = 0;
 	static uint8_t dutyPos = 0;
+	
+	Time++;
 	if (debounceCount++ > 14) {
 		AlertDebounce = true;
 		debounceCount = 0;
@@ -28,7 +32,6 @@ void SYSTICKIntHandler(void)
 		dutyPos += 4;
 	}
 	updateRow(row, dutyPos);
-	
 }
 
 

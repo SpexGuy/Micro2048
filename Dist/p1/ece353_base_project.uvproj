@@ -453,6 +453,11 @@
               <FileType>1</FileType>
               <FilePath>.\renderer.c</FilePath>
             </File>
+            <File>
+              <FileName>animation.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\animation.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

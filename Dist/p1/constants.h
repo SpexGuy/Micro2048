@@ -5,6 +5,9 @@
 
 #include <stdint.h>
 
+extern void StartCritical(void);
+extern void EndCritical(void);
+
 #define DUTY_CYCLE_DELTA 					(4)
 #define DUTY_CYCLE_MAX 						(256)
 #define DUTY_CYCLE_GRADIATIONS 		(DUTY_CYCLE_MAX/DUTY_CYCLE_DELTA)
@@ -29,6 +32,8 @@ typedef uint8_t byteFraction;
 #define bcomp(b) (255-(b))
 //lerp with a byteFraction
 #define blerp(a, b, z) (bmult(a, bcomp(z))+bmult(b, z))
+//get the fractional part of a lerp with a byteFraction
+#define blerpfrac(a, b, n, d) (fract((d)*(a)-(a)*(n)+(b)*(n), d))
 #define max(a, b) (((a)>(b))?(a):(b))
 #define min(a, b) (((a)<(b))?(a):(b))
 
