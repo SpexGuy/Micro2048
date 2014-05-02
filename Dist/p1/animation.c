@@ -1,5 +1,8 @@
 #include "animation.h"
 #include "stdlib.h"
+#include "UART.h"
+
+extern void uartTxPoll(uint32_t base, char *data);
 
 Animation* head = NULL;
 
@@ -15,8 +18,10 @@ void schedule(uint64_t startTime, uint64_t runTime,
 	newAnimation->runTime = runTime;
 	newAnimation->startX = startX;
 	newAnimation->finalX = finalX;
+	newAnimation->currentOffsetX = 0;
 	newAnimation->startY = startY;
 	newAnimation->finalY = finalY;
+	newAnimation->currentOffsetY = 0;
 	newAnimation->startColor = startColor;
 	newAnimation->finalColor = finalColor;
 	newAnimation->onFinish = onFinish;
@@ -30,14 +35,15 @@ void schedule(uint64_t startTime, uint64_t runTime,
 
 void updateAnimation(Animation* animation, uint64_t localTime) {
 	byteFraction dt = fract(localTime - animation->startTime, animation->runTime);
-	
 	animation->posX = blerp(animation->startX, animation->finalX, dt);
 	animation->posY = blerp(animation->startY, animation->finalY, dt);
+	
 	animation->currentOffsetX = blerpfrac(animation->startX, animation->finalX, 
 																				localTime - animation->startTime, animation->runTime); 
 	animation->currentOffsetY = blerpfrac(animation->startY, animation->finalY, 
 																				localTime - animation->startTime, animation->runTime); 
 	animation->currentColor = mix(animation->startColor, animation->finalColor, dt);
+
 }
 
 void update() {

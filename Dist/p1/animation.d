@@ -7,3 +7,7 @@
 .\animation.o: screen.h
 .\animation.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
 .\animation.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\animation.o: UART.h
+.\animation.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\animation.o: C:\Keil\ARM\ARMCC\bin\..\include\errno.h
+.\animation.o: lm4f120h5qr.h

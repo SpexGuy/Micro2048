@@ -25,13 +25,13 @@ typedef uint8_t byteFraction;
 
 //get the fractional part of a/b
 #define fract(a, b) ((byteFraction)((256*((uint32_t)(a)))/((uint32_t)(b))))
-#define fract1(a, b) ((byteFraction)((255*((uint32_t)(a)))/((uint32_t)(b))))
+#define fract1(a, b) ((byteFraction)((BF_1*((uint32_t)(a)))/((uint32_t)(b))))
 //multiply by a byteFraction
 #define bmult(a, b) (((a)*(b))>>8)
 //equivalent of 1.0f-b for a byteFraction
-#define bcomp(b) (255-(b))
+#define bcomp(b) (BF_1-(b))
 //lerp with a byteFraction
-#define blerp(a, b, z) (bmult(a, bcomp(z))+bmult(b, z))
+#define blerp(a, b, z) (bmult(a, (256 - z))+bmult(b, z))
 //get the fractional part of a lerp with a byteFraction
 #define blerpfrac(a, b, n, d) (fract((d)*(a)-(a)*(n)+(b)*(n), d))
 #define max(a, b) (((a)>(b))?(a):(b))
