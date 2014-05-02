@@ -9,11 +9,14 @@
 #define FADE_RUN_TIME (SYSTICKS_PER_SECOND/2)
 
 Pixel colors[] = {
-	{0xFF0000},
+	{0x888888},
 	{0xFFFF00},
-	{0x00FF00},
+	{0xFF9900},
+	{0xFF0000},
+	{0xFF00FF},
+	{0x0000FF},
 	{0x00FFFF},
-	{0x0000FF}
+	{0x00FF00}
 };
 
 //--------------- Board Operations ----------------
@@ -99,6 +102,75 @@ void shiftUp(Board *b) {
 					last = NULL;
 				} else { //no match
 					spawnTranslateAnim(b, current, localTime, x, backY++);
+					last = current;
+				}
+			}
+		}
+	}
+}
+
+void shiftDown(Board *b) {
+	uint64_t localTime = Time;
+	Block *current;
+	Block *last;
+	int8_t x, y, backY;
+	for (x = 0; x < BOARD_WIDTH; x++) {
+		backY = BOARD_HEIGHT-1;
+		last = NULL;
+		for (y = BOARD_HEIGHT-1; y >= 0; y--) {
+			current = b->blocks[y][x];
+			if (current) { //space is occupied
+				if (last != NULL && current->value == last->value) { //matched
+					spawnMergeAnim(b, last, current, localTime);
+					last = NULL;
+				} else { //no match
+					spawnTranslateAnim(b, current, localTime, x, backY--);
+					last = current;
+				}
+			}
+		}
+	}
+}
+
+void shiftLeft(Board *b) {
+	uint64_t localTime = Time;
+	Block *current;
+	Block *last;
+	uint8_t x, y, backX;
+	for (y = 0; y < BOARD_HEIGHT; y++) {
+		backX = 0;
+		last = NULL;
+		for (x = 0; x  < BOARD_WIDTH; x++) {
+			current = b->blocks[y][x];
+			if (current) { //space is occupied
+				if (last != NULL && current->value == last->value) { //matched
+					spawnMergeAnim(b, last, current, localTime);
+					last = NULL;
+				} else { //no match
+					spawnTranslateAnim(b, current, localTime, backX++, y);
+					last = current;
+				}
+			}
+		}
+	}
+}
+
+void shiftRight(Board *b) {
+	uint64_t localTime = Time;
+	Block *current;
+	Block *last;
+	int8_t x, y, backX;
+	for (y = 0; y < BOARD_HEIGHT; y++) {
+		backX = BOARD_WIDTH-1;
+		last = NULL;
+		for (x = BOARD_WIDTH-1; x >= 0; x--) {
+			current = b->blocks[y][x];
+			if (current) { //space is occupied
+				if (last != NULL && current->value == last->value) { //matched
+					spawnMergeAnim(b, last, current, localTime);
+					last = NULL;
+				} else { //no match
+					spawnTranslateAnim(b, current, localTime, backX--, y);
 					last = current;
 				}
 			}

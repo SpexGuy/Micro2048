@@ -27,6 +27,15 @@ extern volatile uint16_t RefreshRate;
 
 volatile bool AlertDebounce;
 
+bool buttonMask[4] = {false, false, false, false};
+
+uint8_t getButton(uint8_t index) {
+	if (buttonMask[index]) {
+		buttonMask[index] = false;
+		return true;
+	}
+	return false;
+}
 
 //*****************************************************************************
 // The ISR sets AlertDebounce to true if the buttons should be examined.  
@@ -41,16 +50,11 @@ volatile bool AlertDebounce;
 //      SW301 – Refresh rate displayed in RED
 //      SW302 – Refresh rate displayed in BLUE
 //      SW303 – Refresh rate displayed in GREEN
-
 //*****************************************************************************
-void examineButtons(void)
+void updateButtons(void)
 {
 	//loop iterators
 	int c, d;
-	//map from button to color
-	static char *colors = " RBG";
-	//string for printing color
-	static char colorPrint[2];
 	//histeresis values
 	static bool last[4][3];
 	if (!AlertDebounce) return;
@@ -70,15 +74,7 @@ void examineButtons(void)
 	for (c = 0; c < 4; c++) {
 		//check for button press
 		if (last[c][0] && last[c][1] && !last[c][2]) {
-			//set color
-			//Color = colors[c];
-			//print color
-			//colorPrint[0] = Color;
-			colorPrint[1] = '\0';
-			uartTxPoll(UART0, "Button ");
-			uartTxPoll(UART0, colorPrint);
-			uartTxPoll(UART0, " was pressed.\r\n");
-			break;
+			buttonMask[c] = true;
 		}
 	}
 }

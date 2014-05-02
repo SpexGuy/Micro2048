@@ -16,7 +16,7 @@ void SYSTICKIntHandler(void)
 	//debounce every 14 cycles
 	static int debounceCount = 0;
 	static int row = 0;
-	static uint8_t dutyPos = 0;
+	static byteFraction dutyPos = 0;
 	
 	Time++;
 	if (debounceCount++ > 14) {

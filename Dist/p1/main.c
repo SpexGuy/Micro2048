@@ -28,6 +28,8 @@ extern void uartTxPoll(uint32_t base, char *data);
  * Global Variables
  *****************************************************************************/
 
+Board board;
+
 //*****************************************************************************
 //*****************************************************************************
 
@@ -80,10 +82,20 @@ void printBLerpFracs() {
 	} while(b != BF_0);
 }
 
+void checkInput(void) {
+	if (getButton(BUTTON_NORTH))
+		shiftUp(&board);
+	else if (getButton(BUTTON_SOUTH))
+		shiftDown(&board);
+	else if (getButton(BUTTON_EAST))
+		shiftRight(&board);
+	else if (getButton(BUTTON_WEST))
+		shiftLeft(&board);
+}
+
 int
 main(void)
 {
-	Board board;
 	FrameBuffer *drawBuffer;
 	Pixel px, px2;
 	uint32_t offset = 0;
@@ -124,18 +136,14 @@ main(void)
 //	printBLerpFracs();
 
   while(1) {
-    //examineButtons();
-		offset = Time + 3*SYSTICKS_PER_SECOND;
-		while(Time < offset) {
-			update();
-			clearDrawBuffer();
-			drawBuffer = getDrawBuffer();
-			drawBoard(drawBuffer, &board);
-			drawAnimations(drawBuffer);
-			swapBuffers();
-			updateRefreshRate();
-		}
-
-		shiftUp(&board);
+		update();
+		clearDrawBuffer();
+		drawBuffer = getDrawBuffer();
+		drawBoard(drawBuffer, &board);
+		drawAnimations(drawBuffer);
+		swapBuffers();
+		updateRefreshRate();
+		updateButtons();
+		checkInput();
   }
 }
