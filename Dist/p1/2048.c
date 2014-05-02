@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include "UART.h"
 
-#define TRANSLATE_RUN_TIME (SYSTICKS_PER_SECOND)
-#define FADE_RUN_TIME (SYSTICKS_PER_SECOND)
+#define TRANSLATE_RUN_TIME (SYSTICKS_PER_SECOND/4)
+#define FADE_RUN_TIME (SYSTICKS_PER_SECOND/2)
 
 Pixel colors[] = {
 	{0xFF0000},
@@ -41,14 +41,14 @@ void removeBlock(Board *b, Block *block) {
 //-------------------- Animation and Callbacks ---------------
 void showBlock(void *param) {
 //	uartTxPoll(UART0, "Show Block\n\r");
-	((Block *)param)->hidden = false;
+	((Block *)param)->hidden--;
 }
 
 void endMergeTranslate(void *param) {
 	static Pixel white = {0xFFFFFF};
 	Block *block = param;
 //	uartTxPoll(UART0, "Start fade anim\n\r");
-	block->hidden = true;
+	block->hidden++;
 	block->value++;
 	schedule(Time, FADE_RUN_TIME,
 					 2*block->x, 2*block->x,
@@ -69,7 +69,7 @@ void spawnMergeAnim(Board *b, Block *last, Block *block, uint64_t time) {
 
 void spawnTranslateAnim(Board *b, Block *block, uint64_t time, uint8_t x, uint8_t y) {
 //	uartTxPoll(UART0, "Start trans anim\n\r");
-	block->hidden = true;
+	block->hidden++;
 	schedule(time, TRANSLATE_RUN_TIME,
 					 2*block->x, 2*x,
 					 2*block->y, 2*y,

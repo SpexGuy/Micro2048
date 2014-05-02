@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\ece353_base_project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\ece353_base_project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri May 02 14:56:07 2014
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri May 02 15:29:34 2014
 <BR><P>
 <H3>Maximum Stack Usage =        312 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -106,8 +106,6 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;schedule
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
 <P><STRONG><a name="[b]"></a>startTranslateAnim</STRONG> (Thumb, 64 bytes, Stack size 48 bytes, main.o(.text), UNUSED)
@@ -123,7 +121,7 @@ Global Symbols
 <LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stringify
 </UL>
 
-<P><STRONG><a name="[5]"></a>main</STRONG> (Thumb, 368 bytes, Stack size 80 bytes, main.o(.text))
+<P><STRONG><a name="[5]"></a>main</STRONG> (Thumb, 362 bytes, Stack size 80 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 312 + Unknown Stack Size
 <LI>Call Chain = main &rArr; drawAnimations &rArr; drawAnimation &rArr; drawAARect &rArr; drawAACorners &rArr; percentAdd &rArr; nMix
 </UL>
@@ -140,7 +138,6 @@ Global Symbols
 <LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawAnimations
 <LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clearDrawBuffer
 <LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addBlock
-<LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startFadeAnim
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
@@ -437,10 +434,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
 </UL>
 
-<P><STRONG><a name="[3f]"></a>showBlock</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, 2048.o(.text))
+<P><STRONG><a name="[3f]"></a>showBlock</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, 2048.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> 2048.o(.text)
 </UL>
-<P><STRONG><a name="[40]"></a>endMergeTranslate</STRONG> (Thumb, 94 bytes, Stack size 48 bytes, 2048.o(.text))
+<P><STRONG><a name="[40]"></a>endMergeTranslate</STRONG> (Thumb, 96 bytes, Stack size 48 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108 + Unknown Stack Size
 <LI>Call Chain = endMergeTranslate &rArr; schedule &rArr; malloc
 </UL>
@@ -458,7 +455,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shiftUp
 </UL>
 
-<P><STRONG><a name="[42]"></a>spawnTranslateAnim</STRONG> (Thumb, 128 bytes, Stack size 64 bytes, 2048.o(.text))
+<P><STRONG><a name="[42]"></a>spawnTranslateAnim</STRONG> (Thumb, 130 bytes, Stack size 64 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124 + Unknown Stack Size
 <LI>Call Chain = spawnTranslateAnim &rArr; schedule &rArr; malloc
 </UL>

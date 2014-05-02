@@ -11,7 +11,7 @@ typedef struct {
 	uint8_t value;
 	uint8_t x;
 	uint8_t y;
-	bool hidden;
+	uint8_t hidden;
 } Block;
 
 typedef struct {

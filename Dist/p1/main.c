@@ -102,7 +102,7 @@ main(void)
 
 	px.hex = 0x0000ff;
 	px2.hex = 0x0000ff;
-	startFadeAnim(NULL);
+//	startFadeAnim(NULL);
 	
 	init2048(&board);
 	addBlock(&board, 0, 0, 0, false);
@@ -125,7 +125,7 @@ main(void)
 
   while(1) {
     //examineButtons();
-		offset = Time + 5*SYSTICKS_PER_SECOND;
+		offset = Time + 3*SYSTICKS_PER_SECOND;
 		while(Time < offset) {
 			update();
 			clearDrawBuffer();
