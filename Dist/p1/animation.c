@@ -1,11 +1,13 @@
 #include "animation.h"
-#include "stdlib.h"
+#include <stdlib.h>
 #include "UART.h"
 
 extern void uartTxPoll(uint32_t base, char *data);
 
 Animation *additions = NULL;
 Animation *head = NULL;
+
+void noFunc(void *param) {}
 
 void schedule(uint64_t startTime, uint64_t runTime, 
 							uint8_t startX, uint8_t finalX, 

@@ -16,6 +16,7 @@
 #include "hw4_gpio.h"
 #include "hw4_adc.h"
 #include "animation.h"
+#include "2048.h"
 
 extern void uartTxPoll(uint32_t base, char *data);
 
@@ -49,10 +50,10 @@ void startFadeAnim(void *param) {
 	const Pixel endColor = {0x0000FF};
 	drawSquare = false;
 	schedule(Time, SYSTICKS_PER_SECOND/2,
-					 3, 3,				//don't move
-					 3, 3,				//stay at 3 in y
+					 7, 7,				//don't move
+					 7, 7,				//stay at 7 in x and y
 					 startColor, endColor,			//fade to blue
-					 startTranslateAnim, param);
+					 startFadeAnim, param);
 }
 
 void stringify(char *buffer, uint8_t num) {
@@ -69,10 +70,10 @@ void printBLerpFracs() {
 		stringify(buffer, b);
 		uartTxPoll(UART0, buffer);
 		uartTxPoll(UART0, " -> ");
-		stringify(buffer, blerp(2, 3, b, 256));
+		stringify(buffer, blerp(2, 0, b, 256));
 		uartTxPoll(UART0, buffer);
 		uartTxPoll(UART0, ":");
-		stringify(buffer, blerpfrac(2, 3, b, 256));
+		stringify(buffer, blerpfrac(2, 0, b, 256));
 		uartTxPoll(UART0, buffer);
 		uartTxPoll(UART0, "\n\r");
 		b++;
@@ -82,6 +83,7 @@ void printBLerpFracs() {
 int
 main(void)
 {
+	Board board;
 	FrameBuffer *drawBuffer;
 	Pixel px, px2;
 	uint32_t offset = 0;
@@ -100,27 +102,40 @@ main(void)
 
 	px.hex = 0x0000ff;
 	px2.hex = 0x0000ff;
-	startTranslateAnim(NULL);
+	startFadeAnim(NULL);
+	
+	init2048(&board);
+	addBlock(&board, 0, 0, 0, false);
+	addBlock(&board, 0, 1, 0, false);
+	addBlock(&board, 0, 2, 0, false);
+	addBlock(&board, 0, 3, 0, false);
+
+	addBlock(&board, 1, 1, 1, false);
+	addBlock(&board, 1, 2, 0, false);
+	addBlock(&board, 1, 3, 1, false);
+
+	addBlock(&board, 2, 1, 1, false);
+	addBlock(&board, 2, 2, 1, false);
+	addBlock(&board, 2, 3, 0, false);
+
+	addBlock(&board, 3, 2, 1, false);
+	addBlock(&board, 3, 3, 1, false);
 
 //	printBLerpFracs();
 
   while(1) {
     //examineButtons();
-		//px.color.r = fract(abs((offset%6400)-3200),3200);
-		//px.color.g = fract(abs((offset%9600)-4800),4800);
-		//px.color.b = fract(abs((offset%16000)-8000),8000);
-		update();
-		clearDrawBuffer();
-		drawBuffer = getDrawBuffer();
-		if (drawSquare) {
-			drawRect(	drawBuffer,
-									3, 2,
-									3, 2, px2);
+		offset = Time + 5*SYSTICKS_PER_SECOND;
+		while(Time < offset) {
+			update();
+			clearDrawBuffer();
+			drawBuffer = getDrawBuffer();
+			drawBoard(drawBuffer, &board);
+			drawAnimations(drawBuffer);
+			swapBuffers();
+			updateRefreshRate();
 		}
-		drawAnimations(drawBuffer);
-		swapBuffers();
-		offset++;
-		offset %= (512<<4);
-    updateRefreshRate();
+
+		shiftUp(&board);
   }
 }

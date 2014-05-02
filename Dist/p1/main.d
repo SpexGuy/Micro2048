@@ -23,3 +23,4 @@
 .\main.o: board_ports.h
 .\main.o: led_chars.h
 .\main.o: animation.h
+.\main.o: 2048.h

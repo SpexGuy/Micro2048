@@ -26,6 +26,8 @@ typedef struct animation {
 	void* param;
 } Animation;
 
+void noFunc(void *param);
+
 void schedule(uint64_t startTime, uint64_t runTime, 
 							uint8_t startX, uint8_t finalX, 
 							uint8_t startY, uint8_t finalY, 

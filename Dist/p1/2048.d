@@ -1,0 +1,15 @@
+.\2048.o: 2048.c
+.\2048.o: 2048.h
+.\2048.o: constants.h
+.\2048.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\2048.o: screen.h
+.\2048.o: pixel.h
+.\2048.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+.\2048.o: renderer.h
+.\2048.o: animation.h
+.\2048.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\2048.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\2048.o: UART.h
+.\2048.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\2048.o: C:\Keil\ARM\ARMCC\bin\..\include\errno.h
+.\2048.o: lm4f120h5qr.h
