@@ -15,17 +15,20 @@ void SYSTICKIntHandler(void)
 {
 	//debounce every 14 cycles
 	static int debounceCount = 0;
+	static int adcCount = 0;
 	static int row = 0;
 	static byteFraction dutyPos = 0;
 	
 	Time++;
-	if (debounceCount++ > 14) {
+	if (debounceCount++ > SYSTICKS_PER_BUTTON) {
 		AlertDebounce = true;
 		debounceCount = 0;
 	}
 
-	//adc every tick
-	AlertADC0 = true;
+	if (adcCount++ > SYSTICKS_PER_ADC) {
+		AlertADC0 = true;
+		adcCount = 0;
+	}
 	
 	if (++row == 8) {
 		row = 0;

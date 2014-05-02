@@ -7,16 +7,23 @@
 
 #define TRANSLATE_RUN_TIME (SYSTICKS_PER_SECOND/4)
 #define FADE_RUN_TIME (SYSTICKS_PER_SECOND/2)
+#define MAX_ANIM_TIME (TRANSLATE_RUN_TIME + FADE_RUN_TIME)
 
 Pixel colors[] = {
-	{0x888888},
+	{0x777777},
 	{0xFFFF00},
 	{0xFF9900},
 	{0xFF0000},
 	{0xFF00FF},
 	{0x0000FF},
 	{0x00FFFF},
-	{0x00FF00}
+	{0x00FF00},
+//padding, just in case
+	{0xFFFFFF},
+	{0xFFFFFF},
+	{0xFFFFFF},
+	{0xFFFFFF},
+	{0xFFFFFF}
 };
 
 //--------------- Board Operations ----------------
@@ -39,6 +46,10 @@ void setPos(Board *b, Block *block, uint8_t x, uint8_t y) {
 void removeBlock(Board *b, Block *block) {
 	b->blocks[block->y][block->x] = NULL;
 	free(block);
+}
+
+bool canTakeInput(Board *b) {
+	return ((int64_t)Time - (int64_t)b->inputTime) > 0;
 }
 
 //-------------------- Animation and Callbacks ---------------
@@ -83,6 +94,7 @@ void spawnTranslateAnim(Board *b, Block *block, uint64_t time, uint8_t x, uint8_
 
 //------------------- Header Functions -----------------------
 void init2048(Board *b) {
+	//fill board with null
 	memset(b, 0, sizeof(*b));
 }
 
@@ -91,6 +103,8 @@ void shiftUp(Board *b) {
 	Block *current;
 	Block *last;
 	uint8_t x, y, backY;
+	if (!canTakeInput(b)) return;
+	b->inputTime = localTime+TRANSLATE_RUN_TIME;
 	for (x = 0; x < BOARD_WIDTH; x++) {
 		backY = 0;
 		last = NULL;
@@ -98,6 +112,7 @@ void shiftUp(Board *b) {
 			current = b->blocks[y][x];
 			if (current) { //space is occupied
 				if (last != NULL && current->value == last->value) { //matched
+					b->inputTime = localTime+TRANSLATE_RUN_TIME+FADE_RUN_TIME;
 					spawnMergeAnim(b, last, current, localTime);
 					last = NULL;
 				} else { //no match
@@ -114,6 +129,8 @@ void shiftDown(Board *b) {
 	Block *current;
 	Block *last;
 	int8_t x, y, backY;
+	if (!canTakeInput(b)) return;
+	b->inputTime = localTime+TRANSLATE_RUN_TIME;
 	for (x = 0; x < BOARD_WIDTH; x++) {
 		backY = BOARD_HEIGHT-1;
 		last = NULL;
@@ -121,6 +138,7 @@ void shiftDown(Board *b) {
 			current = b->blocks[y][x];
 			if (current) { //space is occupied
 				if (last != NULL && current->value == last->value) { //matched
+					b->inputTime = localTime+TRANSLATE_RUN_TIME+FADE_RUN_TIME;
 					spawnMergeAnim(b, last, current, localTime);
 					last = NULL;
 				} else { //no match
@@ -137,6 +155,8 @@ void shiftLeft(Board *b) {
 	Block *current;
 	Block *last;
 	uint8_t x, y, backX;
+	if (!canTakeInput(b)) return;
+	b->inputTime = localTime+TRANSLATE_RUN_TIME;
 	for (y = 0; y < BOARD_HEIGHT; y++) {
 		backX = 0;
 		last = NULL;
@@ -144,6 +164,7 @@ void shiftLeft(Board *b) {
 			current = b->blocks[y][x];
 			if (current) { //space is occupied
 				if (last != NULL && current->value == last->value) { //matched
+					b->inputTime = localTime+TRANSLATE_RUN_TIME+FADE_RUN_TIME;
 					spawnMergeAnim(b, last, current, localTime);
 					last = NULL;
 				} else { //no match
@@ -160,6 +181,8 @@ void shiftRight(Board *b) {
 	Block *current;
 	Block *last;
 	int8_t x, y, backX;
+	if (!canTakeInput(b)) return;
+	b->inputTime = localTime+TRANSLATE_RUN_TIME;
 	for (y = 0; y < BOARD_HEIGHT; y++) {
 		backX = BOARD_WIDTH-1;
 		last = NULL;
@@ -167,6 +190,7 @@ void shiftRight(Board *b) {
 			current = b->blocks[y][x];
 			if (current) { //space is occupied
 				if (last != NULL && current->value == last->value) { //matched
+					b->inputTime = localTime+TRANSLATE_RUN_TIME+FADE_RUN_TIME;
 					spawnMergeAnim(b, last, current, localTime);
 					last = NULL;
 				} else { //no match

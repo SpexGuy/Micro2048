@@ -17,6 +17,7 @@ typedef struct {
 typedef struct {
 	Block *blocks[BOARD_HEIGHT][BOARD_WIDTH];
 	uint32_t score;
+	uint64_t inputTime
 } Board;
 
 void init2048(Board *b);

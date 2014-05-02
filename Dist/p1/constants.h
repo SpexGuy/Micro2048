@@ -19,6 +19,10 @@ extern void EndCritical(void);
 // Load Register.
 #define SYSTICKS_PER_SECOND				(DUTY_CYCLE_GRADIATIONS * SCREEN_HEIGHT * SCREEN_REFRESH_RATE)
 #define SYSTICK_COUNT   					(CLOCK_FREQUENCY / SYSTICKS_PER_SECOND)
+//button check every 18 mS
+#define SYSTICKS_PER_BUTTON				((SYSTICKS_PER_SECOND * 18)/1000)
+//adc check every 1 mS
+#define SYSTICKS_PER_ADC					((SYSTICKS_PER_SECOND * 1)/1000)
 
 typedef uint8_t byteFraction;
 #define BF_1 255
