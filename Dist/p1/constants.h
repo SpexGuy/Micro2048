@@ -30,7 +30,7 @@ typedef uint8_t byteFraction;
 //multiply by a byteFraction
 #define bmult(a, b) (((a)*(b))>>8)
 //equivalent of 1.0f-b for a byteFraction
-#define bcomp(b) (255-(b))
+#define bcomp(b) (BF_1-(b))
 //lerp with a byteFraction
 #define blerp(a, b, n, d) (((d)*(a)-(a)*(n)+(b)*(n))/(d))
 //get the fractional part of a lerp with a byteFraction

@@ -1,5 +1,8 @@
 #include "animation.h"
 #include "stdlib.h"
+#include "UART.h"
+
+extern void uartTxPoll(uint32_t base, char *data);
 
 Animation *additions = NULL;
 Animation *head = NULL;
@@ -16,8 +19,10 @@ void schedule(uint64_t startTime, uint64_t runTime,
 	newAnimation->runTime = runTime;
 	newAnimation->startX = startX;
 	newAnimation->finalX = finalX;
+	newAnimation->currentOffsetX = 0;
 	newAnimation->startY = startY;
 	newAnimation->finalY = finalY;
+	newAnimation->currentOffsetY = 0;
 	newAnimation->startColor = startColor;
 	newAnimation->finalColor = finalColor;
 	newAnimation->onFinish = onFinish;

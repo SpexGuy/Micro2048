@@ -84,7 +84,6 @@ main(void)
 {
 	FrameBuffer *drawBuffer;
 	Pixel px, px2;
-	int c, d;
 	uint32_t offset = 0;
   initBoard();
 	initDoubleBuffers();
@@ -125,7 +124,3 @@ main(void)
     updateRefreshRate();
   }
 }
-
-
-
-
