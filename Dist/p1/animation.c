@@ -1,7 +1,8 @@
 #include "animation.h"
 #include "stdlib.h"
 
-Animation* head = NULL;
+Animation *additions = NULL;
+Animation *head = NULL;
 
 void schedule(uint64_t startTime, uint64_t runTime, 
 							uint8_t startX, uint8_t finalX, 
@@ -23,36 +24,49 @@ void schedule(uint64_t startTime, uint64_t runTime,
 	newAnimation->param = param;
 	
 	StartCritical();
-		newAnimation->next = head;
-		head = newAnimation;
+		newAnimation->next = additions;
+		additions = newAnimation;
 	EndCritical();
 }
 
 void updateAnimation(Animation* animation, uint64_t localTime) {
-	byteFraction dt = fract(localTime - animation->startTime, animation->runTime);
-	
-	animation->posX = blerp(animation->startX, animation->finalX, dt);
-	animation->posY = blerp(animation->startY, animation->finalY, dt);
+	animation->posX = blerp(animation->startX, animation->finalX,
+													localTime - animation->startTime, animation->runTime); 
+	animation->posY = blerp(animation->startY, animation->finalY,
+													localTime - animation->startTime, animation->runTime); 
 	animation->currentOffsetX = blerpfrac(animation->startX, animation->finalX, 
 																				localTime - animation->startTime, animation->runTime); 
 	animation->currentOffsetY = blerpfrac(animation->startY, animation->finalY, 
 																				localTime - animation->startTime, animation->runTime); 
-	animation->currentColor = mix(animation->startColor, animation->finalColor, dt);
+	animation->currentColor = mix(animation->startColor, animation->finalColor,
+																localTime - animation->startTime, animation->runTime); 
+}
+
+void addNewAnimations() {
+	if (additions) {
+		Animation *curr = additions;
+		while(curr->next) curr = curr->next;
+		curr->next = head;
+		head = additions;
+		additions = NULL;
+	}
 }
 
 void update() {
-	uint64_t localTime = Time;
+	uint64_t localTime;
+	Animation *current, *previous, *next;
+	addNewAnimations();
+	localTime = Time;
 
-	Animation* current = head;
-	Animation*  previous = NULL;
-	Animation* next;
+	current = head;
+	previous = NULL;
 	while(current != NULL) {
 		updateAnimation(current, localTime);
 		next = current->next;
 		
 		if(localTime - current->startTime > current->runTime) {
 			current->onFinish(current->param);
-			if(previous == NULL) {
+			if(current == head) {
 				head = next;
 			} else {
 				previous->next = next;

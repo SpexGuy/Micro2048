@@ -1,14 +1,14 @@
 #include "pixel.h"
 
-Pixel mix(Pixel a, Pixel b, byteFraction z) {
-	nMix(&a, b, z);
+Pixel mix(Pixel a, Pixel b, uint32_t n, uint32_t d) {
+	nMix(&a, b, n, d);
 	return a;
 }
 
-void nMix(Pixel *a, Pixel b, byteFraction z) {
-	a->color.r = blerp(a->color.r, b.color.r, z);
-	a->color.g = blerp(a->color.g, b.color.g, z);
-	a->color.b = blerp(a->color.b, b.color.b, z);
+void nMix(Pixel *a, Pixel b, uint32_t n, uint32_t d) {
+	a->color.r = blerp(a->color.r, b.color.r, n, d);
+	a->color.g = blerp(a->color.g, b.color.g, n, d);
+	a->color.b = blerp(a->color.b, b.color.b, n, d);
 }
 
 Pixel complement(Pixel a) {
@@ -61,7 +61,7 @@ void percentAdd(Pixel *pix, Pixel addition, byteFraction percent) {
 	nAdd(pix, addition);
 	//check for overflow and lerp to white
 	if (overflow > 0) {
-		nMix(pix, white, overflow);
+		nMix(pix, white, overflow, 255);
 		pix->color.p = 255;
 	} else {
 		pix->color.p = totalPercent;

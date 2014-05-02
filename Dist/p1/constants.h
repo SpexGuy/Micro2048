@@ -17,7 +17,8 @@ extern void EndCritical(void);
 #define CLOCK_FREQUENCY						(80000000)
 // Sets the value that will be loaded into the SysTick Timers
 // Load Register.
-#define SYSTICK_COUNT   					(CLOCK_FREQUENCY/(DUTY_CYCLE_GRADIATIONS*SCREEN_HEIGHT*SCREEN_REFRESH_RATE))
+#define SYSTICKS_PER_SECOND				(DUTY_CYCLE_GRADIATIONS * SCREEN_HEIGHT * SCREEN_REFRESH_RATE)
+#define SYSTICK_COUNT   					(CLOCK_FREQUENCY / SYSTICKS_PER_SECOND)
 
 typedef uint8_t byteFraction;
 #define BF_1 255
@@ -31,9 +32,10 @@ typedef uint8_t byteFraction;
 //equivalent of 1.0f-b for a byteFraction
 #define bcomp(b) (255-(b))
 //lerp with a byteFraction
-#define blerp(a, b, z) (bmult(a, bcomp(z))+bmult(b, z))
+#define blerp(a, b, n, d) (((d)*(a)-(a)*(n)+(b)*(n))/(d))
 //get the fractional part of a lerp with a byteFraction
 #define blerpfrac(a, b, n, d) (fract((d)*(a)-(a)*(n)+(b)*(n), d))
+
 #define max(a, b) (((a)>(b))?(a):(b))
 #define min(a, b) (((a)<(b))?(a):(b))
 

@@ -22,3 +22,4 @@
 .\main.o: inc/hw_types.h
 .\main.o: board_ports.h
 .\main.o: led_chars.h
+.\main.o: animation.h

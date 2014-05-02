@@ -21,8 +21,8 @@ typedef union {
 	} color;
 } Pixel;
 
-Pixel mix(Pixel a, Pixel b, byteFraction z);
-void nMix(Pixel *a, Pixel b, byteFraction z);
+Pixel mix(Pixel a, Pixel b, uint32_t n, uint32_t d);
+void nMix(Pixel *a, Pixel b, uint32_t n, uint32_t d);
 Pixel complement(Pixel pix);
 void nComplement(Pixel *pix);
 Pixel multiply(Pixel pix, byteFraction fraction);
