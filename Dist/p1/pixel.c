@@ -45,25 +45,24 @@ void nAdd(Pixel *pix, Pixel addition) {
 }
 
 void percentAdd(Pixel *pix, Pixel addition, byteFraction percent) {
-//	nMultiply(&addition, percent);
-//	nAdd(pix, addition);
 	static Pixel white = {0xFFFFFF};
 	//calculate the total percentage
 	uint16_t totalPercent = pix->color.p + percent;
 	//get the overflow (signed arithmetic)
 	byteFraction overflow = max(0, (int)totalPercent-255);
-	//calculate fractions for the old and new parts
-	byteFraction oldFract = fract1(pix->color.p, totalPercent);
-	byteFraction newFract = fract1(percent, totalPercent);
-	//calculate the percentaged pixels and add
-	nMultiply(pix, oldFract);
-	nMultiply(&addition, newFract);
-	nAdd(pix, addition);
-	//check for overflow and lerp to white
 	if (overflow > 0) {
+		//calculate fractions for the old and new parts
+		byteFraction oldFract = fract1(pix->color.p, totalPercent);
+		byteFraction newFract = fract1(percent, totalPercent);
+		//calculate the percentaged pixels and add
+		nMultiply(pix, oldFract);
+		nMultiply(&addition, newFract);
+		nAdd(pix, addition);
+		//lerp to white
 		nMix(pix, white, overflow, 255);
 		pix->color.p = 255;
 	} else {
+		nAdd(pix, addition);
 		pix->color.p = totalPercent;
 	}
 }

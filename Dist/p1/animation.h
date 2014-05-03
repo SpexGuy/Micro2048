@@ -28,13 +28,13 @@ typedef struct animation {
 
 void noFunc(void *param);
 
-void schedule(uint64_t startTime, uint64_t runTime, 
+void scheduleAnimation(uint64_t startTime, uint64_t runTime, 
 							uint8_t startX, uint8_t finalX, 
 							uint8_t startY, uint8_t finalY, 
 							Pixel startColor, Pixel finalColor, 
 							void (*onFinish)(void* param), void* param);
 							
-void update(void);
+void updateAnimations(void);
 
 void drawAnimations(FrameBuffer* frameBuffer);
 

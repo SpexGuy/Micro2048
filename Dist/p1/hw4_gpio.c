@@ -87,6 +87,7 @@ void initializeGpioPins(void)
 {
 	int delay;
 	bool locked;
+	UNUSED(delay); //delay is for delaying a clock cycle
 	//configure data registers
   SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R1;
 	delay = SYSCTL_RCGCGPIO_R;

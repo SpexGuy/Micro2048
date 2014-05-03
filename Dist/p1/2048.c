@@ -5,19 +5,23 @@
 #include <stdlib.h>
 #include "UART.h"
 
-#define TRANSLATE_RUN_TIME (SYSTICKS_PER_SECOND/4)
-#define FADE_RUN_TIME (SYSTICKS_PER_SECOND/2)
+#define TRANSLATE_RUN_TIME (SYSTICKS_PER_SECOND/8)
+#define FADE_RUN_TIME (SYSTICKS_PER_SECOND/4)
 #define MAX_ANIM_TIME (TRANSLATE_RUN_TIME + FADE_RUN_TIME)
 
 Pixel colors[] = {
 	{0x777777},
+	{0xFFFF77},
 	{0xFFFF00},
 	{0xFF9900},
+	{0xFF4A00},
 	{0xFF0000},
-	{0xFF00FF},
+	{0xFF0066},
+	{0xFF00CC},
+	{0xAA00FF},
 	{0x0000FF},
 	{0x00FFFF},
-	{0x00FF00},
+	{0x33FF99},
 //padding, just in case
 	{0xFFFFFF},
 	{0xFFFFFF},
@@ -64,31 +68,31 @@ void endMergeTranslate(void *param) {
 //	uartTxPoll(UART0, "Start fade anim\n\r");
 	block->hidden++;
 	block->value++;
-	schedule(Time, FADE_RUN_TIME,
-					 2*block->x, 2*block->x,
-					 2*block->y, 2*block->y,
-					 white, colors[block->value],
-					 showBlock, block);
+	scheduleAnimation(Time, FADE_RUN_TIME,
+									  2*block->x, 2*block->x,
+									  2*block->y, 2*block->y,
+									  white, colors[block->value],
+									  showBlock, block);
 }
 
 void spawnMergeAnim(Board *b, Block *last, Block *block, uint64_t time) {
 //	uartTxPoll(UART0, "Start merge anim\n\r");
-	schedule(time, TRANSLATE_RUN_TIME,
-					 2*block->x, 2*last->x,
-					 2*block->y, 2*last->y,
-					 colors[block->value], colors[block->value],
-					 endMergeTranslate, last);
+	scheduleAnimation(time, TRANSLATE_RUN_TIME,
+									  2*block->x, 2*last->x,
+									  2*block->y, 2*last->y,
+									  colors[block->value], colors[block->value],
+									  endMergeTranslate, last);
 	removeBlock(b, block);
 }
 
 void spawnTranslateAnim(Board *b, Block *block, uint64_t time, uint8_t x, uint8_t y) {
 //	uartTxPoll(UART0, "Start trans anim\n\r");
 	block->hidden++;
-	schedule(time, TRANSLATE_RUN_TIME,
-					 2*block->x, 2*x,
-					 2*block->y, 2*y,
-					 colors[block->value], colors[block->value],
-					 showBlock, block);
+	scheduleAnimation(time, TRANSLATE_RUN_TIME,
+									  2*block->x, 2*x,
+									  2*block->y, 2*y,
+									  colors[block->value], colors[block->value],
+									  showBlock, block);
 	setPos(b, block, x, y);
 }
 

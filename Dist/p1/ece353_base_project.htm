@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\ece353_base_project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\ece353_base_project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri May 02 17:31:20 2014
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Sat May 03 16:17:44 2014
 <BR><P>
-<H3>Maximum Stack Usage =        248 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        240 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; drawAnimations &rArr; drawAnimation &rArr; drawAARect &rArr; drawAACorners &rArr; percentAdd &rArr; nMix
 <P>
@@ -85,11 +85,11 @@ Global Symbols
 <P><STRONG><a name="[57]"></a>EnableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
 
 <P><STRONG><a name="[3c]"></a>StartCritical</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;schedule
+<BR><BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduleAnimation
 </UL>
 
 <P><STRONG><a name="[3d]"></a>EndCritical</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;schedule
+<BR><BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduleAnimation
 </UL>
 
 <P><STRONG><a name="[58]"></a>WaitForInterrupt</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
@@ -102,14 +102,14 @@ Global Symbols
 
 <P><STRONG><a name="[9]"></a>startFadeAnim</STRONG> (Thumb, 72 bytes, Stack size 48 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108 + Unknown Stack Size
-<LI>Call Chain = startFadeAnim &rArr; schedule &rArr; malloc
+<LI>Call Chain = startFadeAnim &rArr; scheduleAnimation &rArr; malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;schedule
+<BR>[Calls]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduleAnimation
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
 <P><STRONG><a name="[b]"></a>startTranslateAnim</STRONG> (Thumb, 64 bytes, Stack size 48 bytes, main.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;schedule
+<BR><BR>[Calls]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduleAnimation
 </UL>
 
 <P><STRONG><a name="[d]"></a>stringify</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, main.o(.text), UNUSED)
@@ -123,7 +123,7 @@ Global Symbols
 
 <P><STRONG><a name="[f]"></a>checkInput</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 180 + Unknown Stack Size
-<LI>Call Chain = checkInput &rArr; shiftUp &rArr; spawnTranslateAnim &rArr; schedule &rArr; malloc
+<LI>Call Chain = checkInput &rArr; shiftUp &rArr; spawnTranslateAnim &rArr; scheduleAnimation &rArr; malloc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shiftUp
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shiftRight
@@ -134,13 +134,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5]"></a>main</STRONG> (Thumb, 336 bytes, Stack size 16 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248 + Unknown Stack Size
+<P><STRONG><a name="[5]"></a>main</STRONG> (Thumb, 328 bytes, Stack size 8 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = main &rArr; drawAnimations &rArr; drawAnimation &rArr; drawAARect &rArr; drawAACorners &rArr; percentAdd &rArr; nMix
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateRefreshRate
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateButtons
-<LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update
+<LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAnimations
 <LI><a href="#[e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uartTxPoll
 <LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;swapBuffers
 <LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initDoubleBuffers
@@ -206,7 +206,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[24]"></a>initializeGpioPins</STRONG> (Thumb, 382 bytes, Stack size 0 bytes, hw4_gpio.o(.text))
+<P><STRONG><a name="[24]"></a>initializeGpioPins</STRONG> (Thumb, 386 bytes, Stack size 0 bytes, hw4_gpio.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initBoard
 </UL>
 
@@ -342,7 +342,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nAdd
 </UL>
 
-<P><STRONG><a name="[2f]"></a>percentAdd</STRONG> (Thumb, 108 bytes, Stack size 40 bytes, pixel.o(.text))
+<P><STRONG><a name="[2f]"></a>percentAdd</STRONG> (Thumb, 116 bytes, Stack size 40 bytes, pixel.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = percentAdd &rArr; nMix
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nAdd
@@ -378,9 +378,9 @@ Global Symbols
 
 <P><STRONG><a name="[60]"></a>noFunc</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, animation.o(.text), UNUSED)
 
-<P><STRONG><a name="[a]"></a>schedule</STRONG> (Thumb, 100 bytes, Stack size 40 bytes, animation.o(.text))
+<P><STRONG><a name="[a]"></a>scheduleAnimation</STRONG> (Thumb, 100 bytes, Stack size 40 bytes, animation.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60 + Unknown Stack Size
-<LI>Call Chain = schedule &rArr; malloc
+<LI>Call Chain = scheduleAnimation &rArr; malloc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EndCritical
 <LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartCritical
@@ -399,15 +399,15 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 <LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mix
 </UL>
-<BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update
+<BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAnimations
 </UL>
 
 <P><STRONG><a name="[40]"></a>addNewAnimations</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, animation.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update
+<BR><BR>[Called By]<UL><LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAnimations
 </UL>
 
-<P><STRONG><a name="[19]"></a>update</STRONG> (Thumb, 106 bytes, Stack size 24 bytes, animation.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = update &rArr; updateAnimation &rArr; mix &rArr; nMix
+<P><STRONG><a name="[19]"></a>updateAnimations</STRONG> (Thumb, 106 bytes, Stack size 24 bytes, animation.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = updateAnimations &rArr; updateAnimation &rArr; mix &rArr; nMix
 </UL>
 <BR>[Calls]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addNewAnimations
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAnimation
@@ -468,18 +468,18 @@ Global Symbols
 </UL>
 <P><STRONG><a name="[45]"></a>endMergeTranslate</STRONG> (Thumb, 96 bytes, Stack size 48 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108 + Unknown Stack Size
-<LI>Call Chain = endMergeTranslate &rArr; schedule &rArr; malloc
+<LI>Call Chain = endMergeTranslate &rArr; scheduleAnimation &rArr; malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;schedule
+<BR>[Calls]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduleAnimation
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> 2048.o(.text)
 </UL>
 <P><STRONG><a name="[46]"></a>spawnMergeAnim</STRONG> (Thumb, 102 bytes, Stack size 56 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116 + Unknown Stack Size
-<LI>Call Chain = spawnMergeAnim &rArr; schedule &rArr; malloc
+<LI>Call Chain = spawnMergeAnim &rArr; scheduleAnimation &rArr; malloc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeBlock
-<LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;schedule
+<LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduleAnimation
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shiftUp
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shiftRight
@@ -489,10 +489,10 @@ Global Symbols
 
 <P><STRONG><a name="[47]"></a>spawnTranslateAnim</STRONG> (Thumb, 130 bytes, Stack size 64 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124 + Unknown Stack Size
-<LI>Call Chain = spawnTranslateAnim &rArr; schedule &rArr; malloc
+<LI>Call Chain = spawnTranslateAnim &rArr; scheduleAnimation &rArr; malloc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setPos
-<LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;schedule
+<LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduleAnimation
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shiftUp
 <LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shiftRight
@@ -510,7 +510,7 @@ Global Symbols
 
 <P><STRONG><a name="[11]"></a>shiftUp</STRONG> (Thumb, 172 bytes, Stack size 48 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 172 + Unknown Stack Size
-<LI>Call Chain = shiftUp &rArr; spawnTranslateAnim &rArr; schedule &rArr; malloc
+<LI>Call Chain = shiftUp &rArr; spawnTranslateAnim &rArr; scheduleAnimation &rArr; malloc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
@@ -521,7 +521,7 @@ Global Symbols
 
 <P><STRONG><a name="[12]"></a>shiftDown</STRONG> (Thumb, 182 bytes, Stack size 48 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 172 + Unknown Stack Size
-<LI>Call Chain = shiftDown &rArr; spawnTranslateAnim &rArr; schedule &rArr; malloc
+<LI>Call Chain = shiftDown &rArr; spawnTranslateAnim &rArr; scheduleAnimation &rArr; malloc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
@@ -532,7 +532,7 @@ Global Symbols
 
 <P><STRONG><a name="[14]"></a>shiftLeft</STRONG> (Thumb, 174 bytes, Stack size 48 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 172 + Unknown Stack Size
-<LI>Call Chain = shiftLeft &rArr; spawnTranslateAnim &rArr; schedule &rArr; malloc
+<LI>Call Chain = shiftLeft &rArr; spawnTranslateAnim &rArr; scheduleAnimation &rArr; malloc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
@@ -543,7 +543,7 @@ Global Symbols
 
 <P><STRONG><a name="[13]"></a>shiftRight</STRONG> (Thumb, 194 bytes, Stack size 48 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 172 + Unknown Stack Size
-<LI>Call Chain = shiftRight &rArr; spawnTranslateAnim &rArr; schedule &rArr; malloc
+<LI>Call Chain = shiftRight &rArr; spawnTranslateAnim &rArr; scheduleAnimation &rArr; malloc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
@@ -649,13 +649,13 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = free
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeBlock
-<LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update
+<LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAnimations
 </UL>
 
 <P><STRONG><a name="[3b]"></a>malloc</STRONG> (Thumb, 92 bytes, Stack size 20 bytes, malloc.o(i.malloc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = malloc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;schedule
+<BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduleAnimation
 <LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addBlock
 </UL>
 <P>

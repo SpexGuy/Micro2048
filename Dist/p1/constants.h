@@ -43,4 +43,6 @@ typedef uint8_t byteFraction;
 #define max(a, b) (((a)>(b))?(a):(b))
 #define min(a, b) (((a)<(b))?(a):(b))
 
+#define UNUSED(expr) do{(void)(expr);}while(0)
+
 #endif

@@ -40,22 +40,22 @@ void startFadeAnim(void *param);
 void startTranslateAnim(void *param) {
 	const Pixel px = {0x0000ff};
 	drawSquare = true;
-	schedule(Time, SYSTICKS_PER_SECOND/4,
-					 0, 3,				//move from 0 to 3 in x
-					 3, 3,				//stay at 3 in y
-					 px, px,			//stay at blue
-					 startFadeAnim, param);
+	scheduleAnimation(Time, SYSTICKS_PER_SECOND/4,
+									  0, 3,				//move from 0 to 3 in x
+									  3, 3,				//stay at 3 in y
+									  px, px,			//stay at blue
+									  startFadeAnim, param);
 }
 
 void startFadeAnim(void *param) {
 	const Pixel startColor = {0xFFFFFF};
 	const Pixel endColor = {0x0000FF};
 	drawSquare = false;
-	schedule(Time, SYSTICKS_PER_SECOND/2,
-					 7, 7,				//don't move
-					 7, 7,				//stay at 7 in x and y
-					 startColor, endColor,			//fade to blue
-					 startFadeAnim, param);
+	scheduleAnimation(Time, SYSTICKS_PER_SECOND/2,
+									  7, 7,				//don't move
+									  7, 7,				//stay at 7 in x and y
+									  startColor, endColor,			//fade to blue
+									  startFadeAnim, param);
 }
 
 void stringify(char *buffer, uint8_t num) {
@@ -97,11 +97,9 @@ int
 main(void)
 {
 	FrameBuffer *drawBuffer;
-	Pixel px, px2;
-	uint32_t offset = 0;
   initBoard();
 	initDoubleBuffers();
-    
+	
   uartTxPoll(UART0,"\n\r");
   uartTxPoll(UART0,"****** ECE353 ******\n\r");
   uartTxPoll(UART0,"HW4 Demo\n\r");
@@ -111,32 +109,34 @@ main(void)
   uartTxPoll(UART0,"\n\r");
   uartTxPoll(UART0,"********************\n\r");
   uartTxPoll(UART0,"\n\r");
-
-	px.hex = 0x0000ff;
-	px2.hex = 0x0000ff;
+	
 //	startFadeAnim(NULL);
 	
 	init2048(&board);
 	addBlock(&board, 0, 0, 0, false);
-	addBlock(&board, 0, 1, 0, false);
-	addBlock(&board, 0, 2, 0, false);
-	addBlock(&board, 0, 3, 0, false);
+	addBlock(&board, 0, 1, 1, false);
+	addBlock(&board, 0, 2, 2, false);
+	addBlock(&board, 0, 3, 3, false);
 
-	addBlock(&board, 1, 1, 1, false);
-	addBlock(&board, 1, 2, 0, false);
-	addBlock(&board, 1, 3, 1, false);
+	addBlock(&board, 1, 0, 7, false);
+	addBlock(&board, 1, 1, 6, false);
+	addBlock(&board, 1, 2, 5, false);
+	addBlock(&board, 1, 3, 4, false);
 
-	addBlock(&board, 2, 1, 1, false);
-	addBlock(&board, 2, 2, 1, false);
-	addBlock(&board, 2, 3, 0, false);
+	addBlock(&board, 2, 0, 8, false);
+	addBlock(&board, 2, 1, 9, false);
+	addBlock(&board, 2, 2, 10, false);
+	addBlock(&board, 2, 3, 11, false);
 
-	addBlock(&board, 3, 2, 1, false);
-	addBlock(&board, 3, 3, 1, false);
+//	addBlock(&board, 2, 0, 0, false);
+//	addBlock(&board, 2, 1, 1, false);
+//	addBlock(&board, 3, 2, 1, false);
+//	addBlock(&board, 3, 3, 1, false);
 
 //	printBLerpFracs();
 
   while(1) {
-		update();
+		updateAnimations();
 		clearDrawBuffer();
 		drawBuffer = getDrawBuffer();
 		drawBoard(drawBuffer, &board);

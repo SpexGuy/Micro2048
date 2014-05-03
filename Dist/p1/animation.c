@@ -9,11 +9,11 @@ Animation *head = NULL;
 
 void noFunc(void *param) {}
 
-void schedule(uint64_t startTime, uint64_t runTime, 
-							uint8_t startX, uint8_t finalX, 
-							uint8_t startY, uint8_t finalY, 
-							Pixel startColor, Pixel finalColor, 
-							void (*onFinish)(void* param), void* param)
+void scheduleAnimation(uint64_t startTime, uint64_t runTime, 
+											 uint8_t startX, uint8_t finalX, 
+											 uint8_t startY, uint8_t finalY, 
+											 Pixel startColor, Pixel finalColor, 
+											 void (*onFinish)(void* param), void* param)
 {
 	Animation* newAnimation = (Animation*) malloc(sizeof(Animation));
 	
@@ -59,7 +59,7 @@ void addNewAnimations() {
 	}
 }
 
-void update() {
+void updateAnimations() {
 	uint64_t localTime;
 	Animation *current, *previous, *next;
 	addNewAnimations();
