@@ -82,15 +82,16 @@ void printBLerpFracs() {
 	} while(b != BF_0);
 }
 
-void checkInput(void) {
+bool checkInput(void) {
 	if (getButton(BUTTON_NORTH))
-		shiftUp(&board);
+		return shiftUp(&board);
 	else if (getButton(BUTTON_SOUTH))
-		shiftDown(&board);
+		return shiftDown(&board);
 	else if (getButton(BUTTON_EAST))
-		shiftRight(&board);
+		return shiftRight(&board);
 	else if (getButton(BUTTON_WEST))
-		shiftLeft(&board);
+		return shiftLeft(&board);
+	return false;
 }
 
 int
@@ -113,20 +114,22 @@ main(void)
 //	startFadeAnim(NULL);
 	
 	init2048(&board);
-	addTile(&board, 0, 0, 0, false);
-	addTile(&board, 0, 1, 1, false);
-	addTile(&board, 0, 2, 2, false);
-	addTile(&board, 0, 3, 3, false);
+	addRandomTile(&board);
+	addRandomTile(&board);
+//	addTile(&board, 0, 0, 0, false);
+//	addTile(&board, 0, 1, 1, false);
+//	addTile(&board, 0, 2, 2, false);
+//	addTile(&board, 0, 3, 3, false);
 
-	addTile(&board, 1, 0, 7, false);
-	addTile(&board, 1, 1, 6, false);
-	addTile(&board, 1, 2, 5, false);
-	addTile(&board, 1, 3, 4, false);
+//	addTile(&board, 1, 0, 7, false);
+//	addTile(&board, 1, 1, 6, false);
+//	addTile(&board, 1, 2, 5, false);
+//	addTile(&board, 1, 3, 4, false);
 
-	addTile(&board, 2, 0, 8, false);
-	addTile(&board, 2, 1, 9, false);
-	addTile(&board, 2, 2, 10, false);
-	addTile(&board, 2, 3, 11, false);
+//	addTile(&board, 2, 0, 8, false);
+//	addTile(&board, 2, 1, 9, false);
+//	addTile(&board, 2, 2, 10, false);
+//	addTile(&board, 2, 3, 11, false);
 
 //	addTile(&board, 2, 0, 0, false);
 //	addTile(&board, 2, 1, 1, false);
@@ -144,6 +147,8 @@ main(void)
 		swapBuffers();
 		updateRefreshRate();
 		updateButtons();
-		checkInput();
+		if (checkInput()) {
+			addRandomTile(&board);
+		}
   }
 }

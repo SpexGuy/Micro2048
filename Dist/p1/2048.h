@@ -22,10 +22,10 @@ typedef struct {
 
 void init2048(Board *b);
 void addTile(Board *b, uint8_t x, uint8_t y, uint8_t value, bool animated);
-void shiftUp(Board *b);
-void shiftDown(Board *b);
-void shiftLeft(Board *b);
-void shiftRight(Board *b);
+bool shiftUp(Board *b);
+bool shiftDown(Board *b);
+bool shiftLeft(Board *b);
+bool shiftRight(Board *b);
 void addRandomTile(Board *b);
 void drawBoard(FrameBuffer *draw, Board *board);
 
