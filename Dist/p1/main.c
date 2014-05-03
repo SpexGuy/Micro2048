@@ -113,25 +113,25 @@ main(void)
 //	startFadeAnim(NULL);
 	
 	init2048(&board);
-	addBlock(&board, 0, 0, 0, false);
-	addBlock(&board, 0, 1, 1, false);
-	addBlock(&board, 0, 2, 2, false);
-	addBlock(&board, 0, 3, 3, false);
+	addTile(&board, 0, 0, 0, false);
+	addTile(&board, 0, 1, 1, false);
+	addTile(&board, 0, 2, 2, false);
+	addTile(&board, 0, 3, 3, false);
 
-	addBlock(&board, 1, 0, 7, false);
-	addBlock(&board, 1, 1, 6, false);
-	addBlock(&board, 1, 2, 5, false);
-	addBlock(&board, 1, 3, 4, false);
+	addTile(&board, 1, 0, 7, false);
+	addTile(&board, 1, 1, 6, false);
+	addTile(&board, 1, 2, 5, false);
+	addTile(&board, 1, 3, 4, false);
 
-	addBlock(&board, 2, 0, 8, false);
-	addBlock(&board, 2, 1, 9, false);
-	addBlock(&board, 2, 2, 10, false);
-	addBlock(&board, 2, 3, 11, false);
+	addTile(&board, 2, 0, 8, false);
+	addTile(&board, 2, 1, 9, false);
+	addTile(&board, 2, 2, 10, false);
+	addTile(&board, 2, 3, 11, false);
 
-//	addBlock(&board, 2, 0, 0, false);
-//	addBlock(&board, 2, 1, 1, false);
-//	addBlock(&board, 3, 2, 1, false);
-//	addBlock(&board, 3, 3, 1, false);
+//	addTile(&board, 2, 0, 0, false);
+//	addTile(&board, 2, 1, 1, false);
+//	addTile(&board, 3, 2, 1, false);
+//	addTile(&board, 3, 3, 1, false);
 
 //	printBLerpFracs();
 

@@ -12,21 +12,21 @@ typedef struct {
 	uint8_t x;
 	uint8_t y;
 	uint8_t hidden;
-} Block;
+} Tile;
 
 typedef struct {
-	Block *blocks[BOARD_HEIGHT][BOARD_WIDTH];
+	Tile *tiles[BOARD_HEIGHT][BOARD_WIDTH];
 	uint32_t score;
 	uint64_t inputTime;
 } Board;
 
 void init2048(Board *b);
-void addBlock(Board *b, uint8_t x, uint8_t y, uint8_t value, bool animated);
+void addTile(Board *b, uint8_t x, uint8_t y, uint8_t value, bool animated);
 void shiftUp(Board *b);
 void shiftDown(Board *b);
 void shiftLeft(Board *b);
 void shiftRight(Board *b);
-void addRandomPos(Board *b);
+void addRandomTile(Board *b);
 void drawBoard(FrameBuffer *draw, Board *board);
 
 #endif
