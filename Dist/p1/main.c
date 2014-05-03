@@ -111,32 +111,11 @@ main(void)
   uartTxPoll(UART0,"********************\n\r");
   uartTxPoll(UART0,"\n\r");
 	
-//	startFadeAnim(NULL);
-	
+
+
 	init2048(&board);
 	addRandomTile(&board);
 	addRandomTile(&board);
-//	addTile(&board, 0, 0, 0, false);
-//	addTile(&board, 0, 1, 1, false);
-//	addTile(&board, 0, 2, 2, false);
-//	addTile(&board, 0, 3, 3, false);
-
-//	addTile(&board, 1, 0, 7, false);
-//	addTile(&board, 1, 1, 6, false);
-//	addTile(&board, 1, 2, 5, false);
-//	addTile(&board, 1, 3, 4, false);
-
-//	addTile(&board, 2, 0, 8, false);
-//	addTile(&board, 2, 1, 9, false);
-//	addTile(&board, 2, 2, 10, false);
-//	addTile(&board, 2, 3, 11, false);
-
-//	addTile(&board, 2, 0, 0, false);
-//	addTile(&board, 2, 1, 1, false);
-//	addTile(&board, 3, 2, 1, false);
-//	addTile(&board, 3, 3, 1, false);
-
-//	printBLerpFracs();
 
   while(1) {
 		updateAnimations();

@@ -10,18 +10,18 @@
 #define MAX_ANIM_TIME (TRANSLATE_RUN_TIME + FADE_RUN_TIME)
 
 Pixel colors[] = {
-	{0x777777},
-	{0xFFFF77},
-	{0xFFFF00},
-	{0xFF9900},
-	{0xFF4A00},
-	{0xFF0000},
-	{0xFF0066},
-	{0xFF00CC},
-	{0xAA00FF},
-	{0x0000FF},
-	{0x00FFFF},
-	{0x33FF99},
+	{0x777777}, //2
+	{0xFFFF77}, //4
+	{0xFFFF00}, //8
+	{0xFF9900}, //16
+	{0xFF4A00}, //32
+	{0xFF0000}, //64
+	{0xFF0066}, //128
+	{0xFF00CC}, //256
+	{0xAA00FF}, //512
+	{0x0000FF}, //1024
+	{0x00FFFF}, //2048
+	{0x33FF99}, //4096
 //padding, just in case
 	{0xFFFFFF},
 	{0xFFFFFF},
