@@ -106,7 +106,7 @@ void removeTile(Board *b, Tile *tile) {
 }
 
 bool canTakeInput(Board *b) {
-	return ((int64_t)Time - (int64_t)b->inputTime) > 0;
+	return ((int64_t)Time - MAX_ANIM_TIME - (int64_t)b->inputTime) > 0;
 }
 
 //-------------------- Animation and Callbacks ---------------

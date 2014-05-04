@@ -4,50 +4,45 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\ece353_base_project.uvproj
-Project File Date:  05/02/2014
+Project File Date:  05/04/2014
 
 <h2>Output:</h2>
 Rebuild target 'base_project'
 assembling Startup.s...
 compiling main.c...
-main.c(39): warning:  #177-D: variable "drawBuffer" was declared but never referenced
-        FrameBuffer *drawBuffer;
-main.c(40): warning:  #550-D: variable "px" was set but never used
-        Pixel px, px2;
-main.c(40): warning:  #550-D: variable "px2" was set but never used
-        Pixel px, px2;
-main.c(41): warning:  #177-D: variable "offset" was declared but never referenced
-        uint32_t offset = 0;
+main.c(95): warning:  #111-D: statement is unreachable
+                                        break;
+main.c(99): warning:  #111-D: statement is unreachable
+                                        break;
+main.c(103): warning:  #111-D: statement is unreachable
+                                        break;
+main.c(107): warning:  #111-D: statement is unreachable
+                                        break;
 main.c: 4 warnings, 0 errors
 compiling initBoard.c...
 compiling systick.c...
 compiling hw4_adc.c...
 compiling hw4_gpio.c...
-hw4_gpio.c(51): warning:  #177-D: variable "colors" was declared but never referenced
-        static char *colors = " RBG";
-hw4_gpio.c(92): warning:  #550-D: variable "delay" was set but never used
-        int delay;
-hw4_gpio.c: 2 warnings, 0 errors
 compiling led_chars.c...
 compiling doublebuffer.c...
 compiling screen.c...
 compiling pixel.c...
 compiling renderer.c...
 compiling animation.c...
+compiling 2048.c...
+compiling AI2048.c...
 linking...
-Program Size: Code=4516 RO-data=40 RW-data=244 ZI-data=8716  
-".\ece353_base_project.axf" - 0 Error(s), 6 Warning(s).
+Program Size: Code=7204 RO-data=44 RW-data=344 ZI-data=8824  
+".\ece353_base_project.axf" - 0 Error(s), 4 Warning(s).
 Load "C:\\Users\\Scott\\Documents\\GitHub\\Micro2048\\Dist\\p1\\ece353_base_project.axf" 
 Connecting: Mode=JTAG, Speed=1000000Hz
 Erase Done.
 Programming Done.
 Verify OK.
 
-Load "C:\\Users\\Scott\\Documents\\GitHub\\Micro2048\\Dist\\p1\\ece353_base_project.axf" 
-Connecting: Mode=JTAG, Speed=1000000Hz
-Connection failed!, error code=&d
-Error: Flash Download failed  -  Target DLL has been cancelled
-Load "C:\\Users\\Scott\\Documents\\GitHub\\Micro2048\\Dist\\p1\\ece353_base_project.axf" 
+353_base_project.axf" - 1 Error(s), 6 Warning(s).
+Target not created
+xf" 
 Connecting: Mode=JTAG, Speed=1000000Hz
 Erase Done.
 Programming Done.

@@ -17,6 +17,9 @@
 #include "hw4_adc.h"
 #include "animation.h"
 #include "2048.h"
+#include "AI2048.h"
+
+#define isAI true
 
 extern void uartTxPoll(uint32_t base, char *data);
 
@@ -83,15 +86,43 @@ void printBLerpFracs() {
 }
 
 bool checkInput(void) {
-	if (getButton(BUTTON_NORTH))
-		return shiftUp(&board);
-	else if (getButton(BUTTON_SOUTH))
-		return shiftDown(&board);
-	else if (getButton(BUTTON_EAST))
-		return shiftRight(&board);
-	else if (getButton(BUTTON_WEST))
-		return shiftLeft(&board);
-	return false;
+	if (isAI) {
+		if(canTakeInput(&board)) {	
+			switch(getNextMove(&board)) {
+				case 0:
+					uartTxPoll(UART0, "Up\n\r");
+					return shiftUp(&board);
+					break;
+				case 1:
+					uartTxPoll(UART0, "Right\n\r");
+					return shiftRight(&board);
+					break;
+				case 2:
+					uartTxPoll(UART0, "Down\n\r");
+					return shiftDown(&board);
+					break;
+				case 3:
+					uartTxPoll(UART0, "Left\n\r");
+					return shiftLeft(&board);
+					break;
+				default:
+					uartTxPoll(UART0, "AI Move Select Error");
+					return false;
+				}
+		} else {
+			return false;
+		}
+	} else {
+		if (getButton(BUTTON_NORTH))
+			return shiftUp(&board);
+		else if (getButton(BUTTON_SOUTH))
+			return shiftDown(&board);
+		else if (getButton(BUTTON_EAST))
+			return shiftRight(&board);
+		else if (getButton(BUTTON_WEST))
+			return shiftLeft(&board);
+		return false;
+	}
 }
 
 int
@@ -111,8 +142,6 @@ main(void)
   uartTxPoll(UART0,"********************\n\r");
   uartTxPoll(UART0,"\n\r");
 	
-
-
 	init2048(&board);
 	addRandomTile(&board);
 	addRandomTile(&board);

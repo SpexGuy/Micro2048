@@ -26,6 +26,7 @@ bool shiftUp(Board *b);
 bool shiftDown(Board *b);
 bool shiftLeft(Board *b);
 bool shiftRight(Board *b);
+bool canTakeInput(Board *b);
 void addRandomTile(Board *b);
 void drawBoard(FrameBuffer *draw, Board *board);
 

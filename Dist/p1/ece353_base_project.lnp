@@ -12,6 +12,7 @@
 ".\renderer.o"
 ".\animation.o"
 ".\2048.o"
+".\ai2048.o"
 ".\lib\pll.lib"
 ".\lib\uart.lib"
 ".\lib\gpio.lib"
