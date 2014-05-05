@@ -106,7 +106,7 @@ void removeTile(Board *b, Tile *tile) {
 }
 
 bool canTakeInput(Board *b) {
-	return ((int64_t)Time - MAX_ANIM_TIME - (int64_t)b->inputTime) > 0;
+	return ((int64_t)Time - (int64_t)b->inputTime) > 0;
 }
 
 //-------------------- Animation and Callbacks ---------------
@@ -264,7 +264,7 @@ bool shiftRight(Board *b) {
 			current = b->tiles[y][x];
 			if (current) { //space is occupied
 				if (last != NULL && current->value == last->value) { //matched
-					b->inputTime = localTime+TRANSLATE_RUN_TIME+FADE_RUN_TIME;
+					b->inputTime = localTime+TRANSLATE_RUN_TIME+FADE_RUN_TIME;	
 					spawnMergeAnim(b, last, current, localTime);
 					last = NULL;
 					ret = true;

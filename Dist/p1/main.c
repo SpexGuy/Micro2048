@@ -19,7 +19,7 @@
 #include "2048.h"
 #include "AI2048.h"
 
-#define isAI true
+#define isAI false
 
 extern void uartTxPoll(uint32_t base, char *data);
 
@@ -92,19 +92,15 @@ bool checkInput(void) {
 				case 0:
 					uartTxPoll(UART0, "Up\n\r");
 					return shiftUp(&board);
-					break;
 				case 1:
-					uartTxPoll(UART0, "Right\n\r");
-					return shiftRight(&board);
-					break;
-				case 2:
 					uartTxPoll(UART0, "Down\n\r");
 					return shiftDown(&board);
-					break;
+				case 2:
+					uartTxPoll(UART0, "Right\n\r");
+					return shiftRight(&board);
 				case 3:
 					uartTxPoll(UART0, "Left\n\r");
 					return shiftLeft(&board);
-					break;
 				default:
 					uartTxPoll(UART0, "AI Move Select Error");
 					return false;
