@@ -16,9 +16,9 @@ void scheduleAnimation(uint64_t startTime, uint64_t runTime,
 											 void (*onFinish)(void* param), void* param)
 {
 	Animation* newAnimation;
-	StartCritical();
+	//StartCritical();
 		newAnimation = (Animation*) malloc(sizeof(Animation));
-	EndCritical();
+	//EndCritical();
 	
 	newAnimation->startTime = startTime;
 	newAnimation->runTime = runTime;
@@ -33,10 +33,10 @@ void scheduleAnimation(uint64_t startTime, uint64_t runTime,
 	newAnimation->onFinish = onFinish;
 	newAnimation->param = param;
 	
-	StartCritical();
+	//StartCritical();
 		newAnimation->next = additions;
 		additions = newAnimation;
-	EndCritical();
+	//EndCritical();
 }
 
 void updateAnimation(Animation* animation, uint64_t localTime) {

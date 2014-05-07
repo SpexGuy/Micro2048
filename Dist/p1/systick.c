@@ -22,7 +22,7 @@ void SYSTICKIntHandler(void)
 	
 	Time++;
 	
-	if(Time % 1024 == 0)
+	if(Time % SYSTICKS_PER_SECOND == 0)
 		uartTxPoll(UART0,"C");
 //	if (debounceCount++ > SYSTICKS_PER_BUTTON) {
 		AlertDebounce = true;

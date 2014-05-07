@@ -44,7 +44,9 @@ void initBoard(void)
 	//uart 2 and 5
   initializeADC();
 	initializeSPI(SSI0, 1, 1);
+	uartTxPoll(UART0, "ending critical\r\n");
 	EndCritical();
+	uartTxPoll(UART0, "ended critical\r\n");
   
   // Need to wait a while before the UART is functional
   while(i < 10000)

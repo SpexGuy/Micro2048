@@ -8,10 +8,10 @@
 extern void StartCritical(void);
 extern void EndCritical(void);
 
-#define DUTY_CYCLE_DELTA 					(4)
+#define DUTY_CYCLE_DELTA 					(8)
 #define DUTY_CYCLE_MAX 						(256)
 #define DUTY_CYCLE_GRADIATIONS 		(DUTY_CYCLE_MAX/DUTY_CYCLE_DELTA)
-#define SCREEN_REFRESH_RATE				(120)//Hz
+#define SCREEN_REFRESH_RATE				(80)//Hz
 #define SCREEN_WIDTH							(8)
 #define SCREEN_HEIGHT							(8)
 #define CLOCK_FREQUENCY						(80000000)

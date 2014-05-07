@@ -217,8 +217,8 @@ IntDefaultHandler
 ;******************************************************************************
         EXPORT  DisableInterrupts
         EXPORT  EnableInterrupts
-        EXPORT  StartCritical
-        EXPORT  EndCritical
+;       EXPORT  StartCritical
+;       EXPORT  EndCritical
         EXPORT  WaitForInterrupt
 
 ;*********** DisableInterrupts ***************
@@ -241,18 +241,18 @@ EnableInterrupts
 ; make a copy of previous I bit, disable interrupts
 ; inputs:  none
 ; outputs: previous I bit
-StartCritical
-        MRS    R0, PRIMASK  ; save old status
-        CPSID  I            ; mask all (except faults)
-        BX     LR
+;StartCritical
+;        MRS    R0, PRIMASK  ; save old status
+;        CPSID  I            ; mask all (except faults)
+;        BX     LR
 
 ;*********** EndCritical ************************
 ; using the copy of previous I bit, restore I bit to previous value
 ; inputs:  previous I bit
 ; outputs: none
-EndCritical
-        MSR    PRIMASK, R0
-        BX     LR
+;EndCritical
+;        MSR    PRIMASK, R0
+;        BX     LR
 
 ;*********** WaitForInterrupt ************************
 ; go to low power mode while waiting for the next interrupt

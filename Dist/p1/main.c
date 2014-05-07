@@ -148,8 +148,11 @@ int main(void)
   uartTxPoll(UART0,"\n\r");
 	
 	init2048(&board);
+  uartTxPoll(UART0,"init\n\r");
 	addRandomTile(&board);
+  uartTxPoll(UART0,"tile1\n\r");
 	addRandomTile(&board);
+  uartTxPoll(UART0,"tile2\n\r");
 	
 #	ifdef IS_EEPROM_TEST
 	{
@@ -167,6 +170,7 @@ int main(void)
 #	endif
 
 	while(1) {
+		uartTxPoll(UART0,"M");
 		updateAnimations();
 		clearDrawBuffer();
 		drawBuffer = getDrawBuffer();

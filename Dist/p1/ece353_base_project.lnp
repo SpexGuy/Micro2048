@@ -16,6 +16,7 @@
 ".\spi.o"
 ".\eeprom.o"
 ".\timer.o"
+".\lock.o"
 ".\lib\pll.lib"
 ".\lib\uart.lib"
 ".\lib\gpio.lib"
