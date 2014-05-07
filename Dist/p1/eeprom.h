@@ -9,6 +9,11 @@
 #define EEPROM_WRITE_SR 0x01
 #define EEPROM_WRITE_EN 0x06
 #define EEPROM_WRITE_DISABLE 0x04
+#define EEPROM_SR_WIP 0x01
+#define EEPROM_SR_WEL 0x02
+#define EEPROM_SR_BP0 0x04
+#define EEPROM_SR_BP1 0x08
+#define EEPROM_SR_WPEN 0x80
 
 //*********Functions***********//
 
@@ -17,7 +22,7 @@ void spi_eeprom_write_byte(uint16_t address, uint8_t data);
 uint8_t spi_eeprom_read_status(void);
 void spi_eeprom_write_enable(void);
 void spi_eeprom_write_disable(void);
-uint8_t spi_eeprom_wait_write_in_progress(void);
+void spi_eeprom_wait_write_in_progress(void);
 
 //********* Structs ***********//
 

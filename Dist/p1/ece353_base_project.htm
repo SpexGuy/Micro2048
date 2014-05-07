@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\ece353_base_project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\ece353_base_project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Tue May 06 22:50:37 2014
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Tue May 06 23:04:28 2014
 <BR><P>
 <H3>Maximum Stack Usage =        256 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -138,7 +138,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5]"></a>main</STRONG> (Thumb, 240 bytes, Stack size 24 bytes, main.o(.text))
+<P><STRONG><a name="[5]"></a>main</STRONG> (Thumb, 212 bytes, Stack size 24 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 256 + Unknown Stack Size
 <LI>Call Chain = main &rArr; drawAnimations &rArr; drawAnimation &rArr; drawAARect &rArr; drawAACorners &rArr; percentAdd &rArr; nMix
 </UL>
@@ -608,13 +608,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[55]"></a>spiTx</STRONG> (Thumb, 120 bytes, Stack size 12 bytes, spi.o(.text))
+<P><STRONG><a name="[56]"></a>spiTx</STRONG> (Thumb, 120 bytes, Stack size 12 bytes, spi.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = spiTx
 </UL>
-<BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_wait_write_in_progress
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_status
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_enable
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_disable
+<BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_enable
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_disable
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_status
 <LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
 <LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_byte
 </UL>
@@ -631,26 +630,43 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initBoard
 </UL>
 
-<P><STRONG><a name="[1c]"></a>spi_eeprom_read_byte</STRONG> (Thumb, 46 bytes, Stack size 24 bytes, eeprom.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = spi_eeprom_read_byte &rArr; spiTx
+<P><STRONG><a name="[55]"></a>spi_eeprom_read_status</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, eeprom.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = spi_eeprom_read_status &rArr; spiTx
 </UL>
-<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
+<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
+</UL>
+<BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_wait_write_in_progress
+</UL>
+
+<P><STRONG><a name="[57]"></a>spi_eeprom_wait_write_in_progress</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, eeprom.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = spi_eeprom_wait_write_in_progress &rArr; spi_eeprom_read_status &rArr; spiTx
+</UL>
+<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_status
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_byte
+</UL>
+
+<P><STRONG><a name="[1c]"></a>spi_eeprom_read_byte</STRONG> (Thumb, 50 bytes, Stack size 24 bytes, eeprom.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = spi_eeprom_read_byte &rArr; spi_eeprom_wait_write_in_progress &rArr; spi_eeprom_read_status &rArr; spiTx
+</UL>
+<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_wait_write_in_progress
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[56]"></a>spi_eeprom_write_disable</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, eeprom.o(.text))
+<P><STRONG><a name="[58]"></a>spi_eeprom_write_disable</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, eeprom.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = spi_eeprom_write_disable &rArr; spiTx
 </UL>
-<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
+<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
 </UL>
 
-<P><STRONG><a name="[57]"></a>spi_eeprom_write_enable</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, eeprom.o(.text))
+<P><STRONG><a name="[59]"></a>spi_eeprom_write_enable</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, eeprom.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = spi_eeprom_write_enable &rArr; spiTx
 </UL>
-<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
+<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
 </UL>
@@ -658,19 +674,11 @@ Global Symbols
 <P><STRONG><a name="[1b]"></a>spi_eeprom_write_byte</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, eeprom.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = spi_eeprom_write_byte &rArr; spi_eeprom_write_enable &rArr; spiTx
 </UL>
-<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_enable
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_disable
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
+<BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_enable
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_disable
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[58]"></a>spi_eeprom_read_status</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, eeprom.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
-</UL>
-
-<P><STRONG><a name="[59]"></a>spi_eeprom_wait_write_in_progress</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, eeprom.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
 </UL>
 
 <P><STRONG><a name="[25]"></a>PLL_Init</STRONG> (Thumb, 134 bytes, Stack size 0 bytes, pll.o(.text))

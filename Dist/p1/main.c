@@ -148,18 +148,11 @@ int main(void)
 	{
 		char out;
 		char printbuf[20];
-		uint32_t count, dummy;
 		uint16_t address = 0x2;
-		uint8_t writeData = 0xB;
-		UNUSED(dummy);
+		uint8_t writeData = 0xC;
 		sprintf(printbuf, "write: %X\n\r", writeData);
 		uartTxPoll(UART0, printbuf);
 		spi_eeprom_write_byte(address, writeData);
-		uartTxPoll(UART0, "finished writing\n\r");
-		for(count = 0; count < 10000; count++) {
-			dummy = 0;
-		}
-
 		out = spi_eeprom_read_byte(address);
 		
 		sprintf(printbuf, "read: %X\n\r", out);
