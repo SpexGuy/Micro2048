@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\ece353_base_project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\ece353_base_project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Tue May 06 22:44:55 2014
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Tue May 06 22:50:37 2014
 <BR><P>
-<H3>Maximum Stack Usage =        248 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        256 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; drawAnimations &rArr; drawAnimation &rArr; drawAARect &rArr; drawAACorners &rArr; percentAdd &rArr; nMix
 <P>
@@ -138,8 +138,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5]"></a>main</STRONG> (Thumb, 214 bytes, Stack size 16 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248 + Unknown Stack Size
+<P><STRONG><a name="[5]"></a>main</STRONG> (Thumb, 240 bytes, Stack size 24 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 256 + Unknown Stack Size
 <LI>Call Chain = main &rArr; drawAnimations &rArr; drawAnimation &rArr; drawAARect &rArr; drawAACorners &rArr; percentAdd &rArr; nMix
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateRefreshRate
@@ -147,8 +147,8 @@ Global Symbols
 <LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAnimations
 <LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uartTxPoll
 <LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;swapBuffers
-<LI><a href="#[1a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
-<LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_byte
+<LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
+<LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_byte
 <LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initDoubleBuffers
 <LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initBoard
 <LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init2048
@@ -158,7 +158,7 @@ Global Symbols
 <LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clearDrawBuffer
 <LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addRandomTile
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkInput
-<LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+<LI><a href="#[1a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
@@ -615,8 +615,8 @@ Global Symbols
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_status
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_enable
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_disable
-<LI><a href="#[1a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
-<LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_byte
+<LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
+<LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_byte
 </UL>
 
 <P><STRONG><a name="[54]"></a>initializePortASpi0</STRONG> (Thumb, 82 bytes, Stack size 0 bytes, spi.o(.text))
@@ -631,7 +631,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initBoard
 </UL>
 
-<P><STRONG><a name="[1b]"></a>spi_eeprom_read_byte</STRONG> (Thumb, 46 bytes, Stack size 24 bytes, eeprom.o(.text))
+<P><STRONG><a name="[1c]"></a>spi_eeprom_read_byte</STRONG> (Thumb, 46 bytes, Stack size 24 bytes, eeprom.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = spi_eeprom_read_byte &rArr; spiTx
 </UL>
 <BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
@@ -644,7 +644,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
+<BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
 </UL>
 
 <P><STRONG><a name="[57]"></a>spi_eeprom_write_enable</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, eeprom.o(.text))
@@ -652,10 +652,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
+<BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
 </UL>
 
-<P><STRONG><a name="[1a]"></a>spi_eeprom_write_byte</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, eeprom.o(.text))
+<P><STRONG><a name="[1b]"></a>spi_eeprom_write_byte</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, eeprom.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = spi_eeprom_write_byte &rArr; spi_eeprom_write_enable &rArr; spiTx
 </UL>
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_enable
@@ -766,7 +766,7 @@ Global Symbols
 
 <P><STRONG><a name="[7f]"></a>__1sprintf$8</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf8.o(i.__0sprintf$8), UNUSED)
 
-<P><STRONG><a name="[1c]"></a>__2sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf8.o(i.__0sprintf$8))
+<P><STRONG><a name="[1a]"></a>__2sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf8.o(i.__0sprintf$8))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2sprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main

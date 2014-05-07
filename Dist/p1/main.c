@@ -147,20 +147,22 @@ int main(void)
 #	ifdef IS_EEPROM_TEST
 	{
 		char out;
-		char printbuf[10];
+		char printbuf[20];
 		uint32_t count, dummy;
 		uint16_t address = 0x2;
-		uint8_t writeData = 0xA;
+		uint8_t writeData = 0xB;
 		UNUSED(dummy);
+		sprintf(printbuf, "write: %X\n\r", writeData);
+		uartTxPoll(UART0, printbuf);
 		spi_eeprom_write_byte(address, writeData);
-		
+		uartTxPoll(UART0, "finished writing\n\r");
 		for(count = 0; count < 10000; count++) {
 			dummy = 0;
 		}
 
 		out = spi_eeprom_read_byte(address);
 		
-		sprintf(printbuf, "%X\n\r", out);
+		sprintf(printbuf, "read: %X\n\r", out);
 		uartTxPoll(UART0, printbuf);
 	}
 #	endif
