@@ -82,25 +82,19 @@ void addTile(Board *b, uint8_t x, uint8_t y, uint8_t value, bool animated) {
 	static Pixel white = {0xFFFFFF};
 	uint64_t localTime = Time;
 	Tile *tile;
-  uartTxPoll(UART0,"allocating tile... ");
-	//StartCritical();
-  uartTxPoll(UART0,"entered critical\n\r");
+	StartCritical();
 		tile = malloc(sizeof(Tile));
-  uartTxPoll(UART0,"mallocated\n\r");
-	//EndCritical();
-  uartTxPoll(UART0,"done\n\r");
+	EndCritical();
 	tile->x = x;
 	tile->y = y;
 	tile->value = value;
 	tile->hidden = 0;
 	if (animated) {
 		tile->hidden++;
-		uartTxPoll(UART0,"scheduling animation...\n\r");
 		scheduleAnimation(localTime, FADE_RUN_TIME/2,
 											2*x, 2*x, 2*y, 2*y,
 											black, white,
 											fadeToColor, tile);
-		uartTxPoll(UART0,"scheduled\n\r");
 		b->inputTime = localTime + FADE_RUN_TIME + FADE_RUN_TIME/2;
 	}
 	b->tiles[y][x] = tile;
@@ -302,9 +296,7 @@ void addRandomTile(Board *b) {
 	uint8_t selection = rand()%emptyCount;
 	getNthEmptyTile(b, selection, &x, &y);
 	if (x == (uint8_t)(-1)) return;
-  uartTxPoll(UART0,"calling addTile...\n\r");
 	addTile(b, x, y, value, true);
-  uartTxPoll(UART0,"called\n\r");
 }
 
 void drawBoard(FrameBuffer *draw, Board *board) {

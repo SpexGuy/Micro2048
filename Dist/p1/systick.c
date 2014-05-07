@@ -4,7 +4,6 @@
 #include "renderer.h"
 #include "UART.h"
 
-extern volatile bool AlertDebounce;
 extern volatile bool AlertADC0;
 
 volatile uint64_t Time = 0;
@@ -14,20 +13,11 @@ volatile uint64_t Time = 0;
  ****************************************************************************/
 void SYSTICKIntHandler(void)
 {
-	//debounce every 14 cycles
-	static int debounceCount = 0;
 	static int adcCount = 0;
 	static int row = 0;
 	static byteFraction dutyPos = 0;
 	
 	Time++;
-	
-	if(Time % SYSTICKS_PER_SECOND == 0)
-		uartTxPoll(UART0,"C");
-//	if (debounceCount++ > SYSTICKS_PER_BUTTON) {
-		AlertDebounce = true;
-//		debounceCount = 0;
-//	}
 
 	if (adcCount++ > SYSTICKS_PER_ADC) {
 		AlertADC0 = true;
@@ -36,7 +26,7 @@ void SYSTICKIntHandler(void)
 	
 	if (++row == 8) {
 		row = 0;
-		dutyPos += 4;
+		dutyPos += DUTY_CYCLE_DELTA;
 	}
 	updateRow(row, dutyPos);
 }

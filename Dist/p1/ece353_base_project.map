@@ -30,11 +30,8 @@ Section Cross References
     initboard.o(.text) refers to uart.o(.text) for uartInitPolling
     initboard.o(.text) refers to hw4_adc.o(.text) for initializeADC
     initboard.o(.text) refers to spi.o(.text) for initializeSPI
-    systick.o(.text) refers to uldiv.o(.text) for __aeabi_uldivmod
-    systick.o(.text) refers to uart.o(.text) for uartTxPoll
     systick.o(.text) refers to renderer.o(.text) for updateRow
     systick.o(.text) refers to systick.o(.data) for Time
-    systick.o(.text) refers to hw4_gpio.o(.data) for AlertDebounce
     systick.o(.text) refers to hw4_adc.o(.data) for AlertADC0
     hw4_adc.o(.text) refers to renderer.o(.text) for setBrightness
     hw4_adc.o(.text) refers to hw4_adc.o(.data) for c
@@ -53,6 +50,7 @@ Section Cross References
     pixel.o(.text) refers to pixel.o(.data) for white
     renderer.o(.text) refers to renderer.o(.data) for currentBuffer
     renderer.o(.text) refers to initboard.o(.data) for PortC
+    animation.o(.text) refers to lock.o(.text) for StartCritical
     animation.o(.text) refers to malloc.o(i.malloc) for malloc
     animation.o(.text) refers to uldiv.o(.text) for __aeabi_uldivmod
     animation.o(.text) refers to pixel.o(.text) for mix
@@ -61,7 +59,7 @@ Section Cross References
     animation.o(.text) refers to animation.o(.data) for additions
     animation.o(.text) refers to systick.o(.data) for Time
     2048.o(.text) refers to animation.o(.text) for scheduleAnimation
-    2048.o(.text) refers to uart.o(.text) for uartTxPoll
+    2048.o(.text) refers to lock.o(.text) for StartCritical
     2048.o(.text) refers to malloc.o(i.malloc) for malloc
     2048.o(.text) refers to malloc.o(i.free) for free
     2048.o(.text) refers to memseta.o(.text) for __aeabi_memclr4
@@ -70,6 +68,7 @@ Section Cross References
     2048.o(.text) refers to rand.o(.text) for rand
     2048.o(.text) refers to screen.o(.text) for drawRect
     2048.o(.text) refers to printf8.o(i.__0sprintf$8) for __2sprintf
+    2048.o(.text) refers to uart.o(.text) for uartTxPoll
     2048.o(.text) refers to eeprom.o(.text) for spi_eeprom_write_array
     ai2048.o(.text) refers to malloc.o(i.free) for free
     ai2048.o(.text) refers to 2048.o(.text) for addTile
@@ -81,8 +80,7 @@ Section Cross References
     spi.o(.text) refers to initboard.o(.data) for PortA
     eeprom.o(.text) refers to spi.o(.text) for spiTx
     eeprom.o(.text) refers to memcpya.o(.text) for __aeabi_memcpy
-    timer.o(.text) refers to uart.o(.text) for uartTxPoll
-    timer.o(.text) refers to hw4_gpio.o(.text) for updateButtons
+    timer.o(.text) refers to hw4_gpio.o(.data) for AlertDebounce
     lock.o(.text) refers to startup.o(.text) for DisableInterrupts
     lock.o(.text) refers to uart.o(.text) for uartTxPoll
     lock.o(.text) refers to lock.o(.data) for depth
@@ -412,50 +410,50 @@ Image Symbol Table
 
     RESET                                    0x00000000   Section      252  startup.o(RESET)
     ../clib/../cmprslib/zerorunl2.c          0x00000000   Number         0  __dczerorl2.o ABSOLUTE
-    ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
+    ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
     ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  malloc.o ABSOLUTE
     ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  mallocr.o ABSOLUTE
     ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  malloca.o ABSOLUTE
     ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  mallocra.o ABSOLUTE
     ../clib/microlib/malloc/mvars.c          0x00000000   Number         0  mvars.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
     ../clib/microlib/printf/stubs.s          0x00000000   Number         0  stubs.o ABSOLUTE
     ../clib/microlib/stdio/fputc.c           0x00000000   Number         0  fputc.o ABSOLUTE
     ../clib/microlib/stdio/semi.s            0x00000000   Number         0  semi.o ABSOLUTE
     ../clib/microlib/stdio/streams.c         0x00000000   Number         0  stdout.o ABSOLUTE
     ../clib/microlib/stdlib/rand.c           0x00000000   Number         0  rand.o ABSOLUTE
-    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
     ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
     ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
-    ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusesemip.o ABSOLUTE
+    ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
     ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
@@ -503,70 +501,69 @@ Image Symbol Table
     .text                                    0x00000110   Section       56  startup.o(.text)
     $v0                                      0x00000110   Number         0  startup.o(.text)
     .text                                    0x00000148   Section        0  main.o(.text)
-    .text                                    0x00000430   Section        0  initboard.o(.text)
-    .text                                    0x000004c8   Section        0  systick.o(.text)
-    .text                                    0x00000598   Section        0  hw4_adc.o(.text)
-    .text                                    0x00000670   Section        0  hw4_gpio.o(.text)
-    .text                                    0x000008e4   Section        0  doublebuffer.o(.text)
-    .text                                    0x00000934   Section        0  screen.o(.text)
-    .text                                    0x00000bf8   Section        0  pixel.o(.text)
-    .text                                    0x00000d6c   Section        0  renderer.o(.text)
-    .text                                    0x00000f38   Section        0  animation.o(.text)
-    .text                                    0x000011c8   Section        0  2048.o(.text)
-    .text                                    0x00001aac   Section        0  spi.o(.text)
-    .text                                    0x00001c18   Section        0  eeprom.o(.text)
-    .text                                    0x00001d68   Section        0  timer.o(.text)
-    .text                                    0x00001e08   Section        0  lock.o(.text)
-    .text                                    0x00001e6c   Section        0  pll.o(.text)
-    .text                                    0x00001ef8   Section        0  uart.o(.text)
-    .text                                    0x00001fc0   Section        0  portc_init.o(.text)
-    .text                                    0x00002004   Section        0  uldiv.o(.text)
-    .text                                    0x00002068   Section        0  rand.o(.text)
-    .text                                    0x0000208c   Section        0  memcpya.o(.text)
-    .text                                    0x000020b0   Section        0  memseta.o(.text)
-    .text                                    0x000020d4   Section        0  llshl.o(.text)
-    .text                                    0x000020f2   Section        0  llushr.o(.text)
-    .text                                    0x00002114   Section       36  init.o(.text)
-    .text                                    0x00002138   Section        0  __dczerorl2.o(.text)
-    i.__0sprintf$8                           0x00002194   Section        0  printf8.o(i.__0sprintf$8)
-    i.__scatterload_copy                     0x000021bc   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x000021ca   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x000021cc   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i._printf_core                           0x000021dc   Section        0  printf8.o(i._printf_core)
-    _printf_core                             0x000021dd   Thumb Code   988  printf8.o(i._printf_core)
-    i._printf_post_padding                   0x000025e4   Section        0  printf8.o(i._printf_post_padding)
-    _printf_post_padding                     0x000025e5   Thumb Code    38  printf8.o(i._printf_post_padding)
-    i._printf_pre_padding                    0x0000260a   Section        0  printf8.o(i._printf_pre_padding)
-    _printf_pre_padding                      0x0000260b   Thumb Code    48  printf8.o(i._printf_pre_padding)
-    i._sputc                                 0x0000263a   Section        0  printf8.o(i._sputc)
-    _sputc                                   0x0000263b   Thumb Code    10  printf8.o(i._sputc)
-    i.free                                   0x00002644   Section        0  malloc.o(i.free)
-    i.malloc                                 0x00002694   Section        0  malloc.o(i.malloc)
-    .constdata                               0x00002700   Section       12  main.o(.constdata)
+    .text                                    0x000003f8   Section        0  initboard.o(.text)
+    .text                                    0x00000490   Section        0  systick.o(.text)
+    .text                                    0x0000052c   Section        0  hw4_adc.o(.text)
+    .text                                    0x00000604   Section        0  hw4_gpio.o(.text)
+    .text                                    0x00000878   Section        0  doublebuffer.o(.text)
+    .text                                    0x000008c8   Section        0  screen.o(.text)
+    .text                                    0x00000b8c   Section        0  pixel.o(.text)
+    .text                                    0x00000d00   Section        0  renderer.o(.text)
+    .text                                    0x00000ecc   Section        0  animation.o(.text)
+    .text                                    0x0000116c   Section        0  2048.o(.text)
+    .text                                    0x00001988   Section        0  spi.o(.text)
+    .text                                    0x00001af4   Section        0  eeprom.o(.text)
+    .text                                    0x00001c44   Section        0  timer.o(.text)
+    .text                                    0x00001cdc   Section        0  lock.o(.text)
+    .text                                    0x00001d40   Section        0  pll.o(.text)
+    .text                                    0x00001dcc   Section        0  uart.o(.text)
+    .text                                    0x00001e94   Section        0  portc_init.o(.text)
+    .text                                    0x00001ed8   Section        0  uldiv.o(.text)
+    .text                                    0x00001f3c   Section        0  rand.o(.text)
+    .text                                    0x00001f60   Section        0  memcpya.o(.text)
+    .text                                    0x00001f84   Section        0  memseta.o(.text)
+    .text                                    0x00001fa8   Section        0  llshl.o(.text)
+    .text                                    0x00001fc6   Section        0  llushr.o(.text)
+    .text                                    0x00001fe8   Section       36  init.o(.text)
+    .text                                    0x0000200c   Section        0  __dczerorl2.o(.text)
+    i.__0sprintf$8                           0x00002068   Section        0  printf8.o(i.__0sprintf$8)
+    i.__scatterload_copy                     0x00002090   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x0000209e   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x000020a0   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._printf_core                           0x000020b0   Section        0  printf8.o(i._printf_core)
+    _printf_core                             0x000020b1   Thumb Code   988  printf8.o(i._printf_core)
+    i._printf_post_padding                   0x000024b8   Section        0  printf8.o(i._printf_post_padding)
+    _printf_post_padding                     0x000024b9   Thumb Code    38  printf8.o(i._printf_post_padding)
+    i._printf_pre_padding                    0x000024de   Section        0  printf8.o(i._printf_pre_padding)
+    _printf_pre_padding                      0x000024df   Thumb Code    48  printf8.o(i._printf_pre_padding)
+    i._sputc                                 0x0000250e   Section        0  printf8.o(i._sputc)
+    _sputc                                   0x0000250f   Thumb Code    10  printf8.o(i._sputc)
+    i.free                                   0x00002518   Section        0  malloc.o(i.free)
+    i.malloc                                 0x00002568   Section        0  malloc.o(i.malloc)
+    .constdata                               0x000025d4   Section       12  main.o(.constdata)
     .data                                    0x20000000   Section      161  main.o(.data)
     .data                                    0x200000a4   Section       24  initboard.o(.data)
-    .data                                    0x200000c0   Section       21  systick.o(.data)
-    debounceCount                            0x200000c8   Data           4  systick.o(.data)
-    adcCount                                 0x200000cc   Data           4  systick.o(.data)
-    row                                      0x200000d0   Data           4  systick.o(.data)
-    dutyPos                                  0x200000d4   Data           1  systick.o(.data)
-    .data                                    0x200000d8   Section        8  hw4_adc.o(.data)
-    .data                                    0x200000e0   Section        5  hw4_gpio.o(.data)
-    .data                                    0x200000e5   Section        1  doublebuffer.o(.data)
-    .data                                    0x200000e8   Section        4  pixel.o(.data)
-    white                                    0x200000e8   Data           4  pixel.o(.data)
-    .data                                    0x200000ec   Section        8  renderer.o(.data)
-    .data                                    0x200000f4   Section        8  animation.o(.data)
-    .data                                    0x200000fc   Section       80  2048.o(.data)
-    white                                    0x20000140   Data           4  2048.o(.data)
-    black                                    0x20000144   Data           4  2048.o(.data)
-    white                                    0x20000148   Data           4  2048.o(.data)
-    .data                                    0x2000014c   Section        4  spi.o(.data)
-    .data                                    0x20000150   Section        1  lock.o(.data)
-    .data                                    0x20000154   Section        4  rand.o(.data)
-    _rand_state                              0x20000154   Data           4  rand.o(.data)
+    .data                                    0x200000c0   Section       17  systick.o(.data)
+    adcCount                                 0x200000c8   Data           4  systick.o(.data)
+    row                                      0x200000cc   Data           4  systick.o(.data)
+    dutyPos                                  0x200000d0   Data           1  systick.o(.data)
+    .data                                    0x200000d4   Section        8  hw4_adc.o(.data)
+    .data                                    0x200000dc   Section        5  hw4_gpio.o(.data)
+    .data                                    0x200000e1   Section        1  doublebuffer.o(.data)
+    .data                                    0x200000e4   Section        4  pixel.o(.data)
+    white                                    0x200000e4   Data           4  pixel.o(.data)
+    .data                                    0x200000e8   Section        8  renderer.o(.data)
+    .data                                    0x200000f0   Section        8  animation.o(.data)
+    .data                                    0x200000f8   Section       80  2048.o(.data)
+    white                                    0x2000013c   Data           4  2048.o(.data)
+    black                                    0x20000140   Data           4  2048.o(.data)
+    white                                    0x20000144   Data           4  2048.o(.data)
+    .data                                    0x20000148   Section        4  spi.o(.data)
+    .data                                    0x2000014c   Section        1  lock.o(.data)
+    .data                                    0x20000150   Section        4  rand.o(.data)
+    _rand_state                              0x20000150   Data           4  rand.o(.data)
+    .data                                    0x20000154   Section        4  mvars.o(.data)
     .data                                    0x20000158   Section        4  mvars.o(.data)
-    .data                                    0x2000015c   Section        4  mvars.o(.data)
     .bss                                     0x20000160   Section      104  main.o(.bss)
     .bss                                     0x200001c8   Section       12  hw4_gpio.o(.bss)
     last                                     0x200001c8   Data          12  hw4_gpio.o(.bss)
@@ -648,120 +645,120 @@ Image Symbol Table
     stringify                                0x000001d1   Thumb Code    52  main.o(.text)
     printBLerpFracs                          0x00000205   Thumb Code   124  main.o(.text)
     checkInput                               0x00000281   Thumb Code    86  main.o(.text)
-    main                                     0x000002d7   Thumb Code   182  main.o(.text)
-    initBoard                                0x00000431   Thumb Code   102  initboard.o(.text)
-    SYSTICKIntHandler                        0x000004c9   Thumb Code   130  systick.o(.text)
-    initializeSysTick                        0x0000054b   Thumb Code    46  systick.o(.text)
-    initializeADC                            0x00000599   Thumb Code   100  hw4_adc.o(.text)
-    GetADCval                                0x000005fd   Thumb Code    54  hw4_adc.o(.text)
-    updateRefreshRate                        0x00000633   Thumb Code    36  hw4_adc.o(.text)
-    getButton                                0x00000671   Thumb Code    22  hw4_gpio.o(.text)
-    updateButtons                            0x00000687   Thumb Code   180  hw4_gpio.o(.text)
-    initializeGpioPins                       0x0000073b   Thumb Code   386  hw4_gpio.o(.text)
-    getDrawBuffer                            0x000008e5   Thumb Code    12  doublebuffer.o(.text)
-    swapBuffers                              0x000008f1   Thumb Code    26  doublebuffer.o(.text)
-    initDoubleBuffers                        0x0000090b   Thumb Code    20  doublebuffer.o(.text)
-    clearDrawBuffer                          0x0000091f   Thumb Code    14  doublebuffer.o(.text)
-    clearFrame                               0x00000935   Thumb Code    16  screen.o(.text)
-    drawAACorners                            0x00000945   Thumb Code   250  screen.o(.text)
-    drawAAPixel                              0x00000a3f   Thumb Code    44  screen.o(.text)
-    drawAAEdges                              0x00000a6b   Thumb Code   216  screen.o(.text)
-    drawRect                                 0x00000b43   Thumb Code    88  screen.o(.text)
-    drawAARect                               0x00000b9b   Thumb Code    94  screen.o(.text)
-    nMix                                     0x00000bf9   Thumb Code    76  pixel.o(.text)
-    mix                                      0x00000c45   Thumb Code    24  pixel.o(.text)
-    nComplement                              0x00000c5d   Thumb Code    26  pixel.o(.text)
-    complement                               0x00000c77   Thumb Code    12  pixel.o(.text)
-    nMultiply                                0x00000c83   Thumb Code    26  pixel.o(.text)
-    multiply                                 0x00000c9d   Thumb Code    16  pixel.o(.text)
-    nAdd                                     0x00000cad   Thumb Code    34  pixel.o(.text)
-    add                                      0x00000ccf   Thumb Code    14  pixel.o(.text)
-    percentAdd                               0x00000cdd   Thumb Code   116  pixel.o(.text)
-    setColor                                 0x00000d51   Thumb Code    22  pixel.o(.text)
-    gammaCorrect                             0x00000d6d   Thumb Code    14  renderer.o(.text)
-    updateRow                                0x00000d7b   Thumb Code   400  renderer.o(.text)
-    setCurrentBuffer                         0x00000f0b   Thumb Code     6  renderer.o(.text)
-    getCurrentBuffer                         0x00000f11   Thumb Code     6  renderer.o(.text)
-    setBrightness                            0x00000f17   Thumb Code     6  renderer.o(.text)
-    getBrightness                            0x00000f1d   Thumb Code     6  renderer.o(.text)
-    noFunc                                   0x00000f39   Thumb Code     2  animation.o(.text)
-    scheduleAnimation                        0x00000f3b   Thumb Code    92  animation.o(.text)
-    updateAnimation                          0x00000f97   Thumb Code   338  animation.o(.text)
-    addNewAnimations                         0x000010e9   Thumb Code    44  animation.o(.text)
-    updateAnimations                         0x00001115   Thumb Code   106  animation.o(.text)
-    drawAnimation                            0x0000117f   Thumb Code    36  animation.o(.text)
-    drawAnimations                           0x000011a3   Thumb Code    26  animation.o(.text)
-    countEmpty                               0x000011c9   Thumb Code    46  2048.o(.text)
-    getNthEmptyTile                          0x000011f7   Thumb Code    66  2048.o(.text)
-    showTile                                 0x00001239   Thumb Code     8  2048.o(.text)
-    fadeToColor                              0x00001241   Thumb Code    84  2048.o(.text)
-    addTile                                  0x00001295   Thumb Code   200  2048.o(.text)
-    setPos                                   0x0000135d   Thumb Code    30  2048.o(.text)
-    removeTile                               0x0000137b   Thumb Code    28  2048.o(.text)
-    canTakeInput                             0x00001397   Thumb Code    38  2048.o(.text)
-    endMergeTranslate                        0x000013bd   Thumb Code    26  2048.o(.text)
-    spawnMergeAnim                           0x000013d7   Thumb Code   102  2048.o(.text)
-    spawnTranslateAnim                       0x0000143d   Thumb Code   130  2048.o(.text)
-    init2048                                 0x000014bf   Thumb Code    14  2048.o(.text)
-    shiftUp                                  0x000014cd   Thumb Code   192  2048.o(.text)
-    shiftDown                                0x0000158d   Thumb Code   334  2048.o(.text)
-    shiftLeft                                0x000016db   Thumb Code   192  2048.o(.text)
-    shiftRight                               0x0000179b   Thumb Code   202  2048.o(.text)
-    addRandomTile                            0x00001865   Thumb Code   112  2048.o(.text)
-    drawBoard                                0x000018d5   Thumb Code    76  2048.o(.text)
-    saveGame                                 0x00001921   Thumb Code   170  2048.o(.text)
-    restoreGame                              0x000019cb   Thumb Code   154  2048.o(.text)
-    spiTx                                    0x00001aad   Thumb Code   132  spi.o(.text)
-    initializePortASpi0                      0x00001b31   Thumb Code    82  spi.o(.text)
-    initializeSPI                            0x00001b83   Thumb Code   130  spi.o(.text)
-    spi_eeprom_read_status                   0x00001c19   Thumb Code    24  eeprom.o(.text)
-    spi_eeprom_wait_write_in_progress        0x00001c31   Thumb Code    16  eeprom.o(.text)
-    spi_eeprom_read_byte                     0x00001c41   Thumb Code    42  eeprom.o(.text)
-    spi_eeprom_read_array                    0x00001c6b   Thumb Code    84  eeprom.o(.text)
-    spi_eeprom_write_disable                 0x00001cbf   Thumb Code    18  eeprom.o(.text)
-    spi_eeprom_write_enable                  0x00001cd1   Thumb Code    18  eeprom.o(.text)
-    spi_eeprom_write_byte                    0x00001ce3   Thumb Code    48  eeprom.o(.text)
-    spi_eeprom_write_array                   0x00001d13   Thumb Code    84  eeprom.o(.text)
-    initTimer0                               0x00001d69   Thumb Code   118  timer.o(.text)
-    TIMER0IntHandler                         0x00001ddf   Thumb Code    16  timer.o(.text)
-    StartCritical                            0x00001e09   Thumb Code    18  lock.o(.text)
-    EndCritical                              0x00001e1b   Thumb Code    42  lock.o(.text)
-    PLL_Init                                 0x00001e6d   Thumb Code   134  pll.o(.text)
-    uartInitPolling                          0x00001ef9   Thumb Code   134  uart.o(.text)
-    uartRxPoll                               0x00001f7f   Thumb Code    20  uart.o(.text)
-    uartTxPoll                               0x00001f93   Thumb Code    30  uart.o(.text)
-    initPortC                                0x00001fc1   Thumb Code    54  portc_init.o(.text)
-    __aeabi_uldivmod                         0x00002005   Thumb Code    98  uldiv.o(.text)
-    rand                                     0x00002069   Thumb Code    20  rand.o(.text)
-    srand                                    0x0000207d   Thumb Code     6  rand.o(.text)
-    __aeabi_memcpy                           0x0000208d   Thumb Code    36  memcpya.o(.text)
-    __aeabi_memcpy4                          0x0000208d   Thumb Code     0  memcpya.o(.text)
-    __aeabi_memcpy8                          0x0000208d   Thumb Code     0  memcpya.o(.text)
-    __aeabi_memset                           0x000020b1   Thumb Code    14  memseta.o(.text)
-    __aeabi_memset4                          0x000020b1   Thumb Code     0  memseta.o(.text)
-    __aeabi_memset8                          0x000020b1   Thumb Code     0  memseta.o(.text)
-    __aeabi_memclr                           0x000020bf   Thumb Code     4  memseta.o(.text)
-    __aeabi_memclr4                          0x000020bf   Thumb Code     0  memseta.o(.text)
-    __aeabi_memclr8                          0x000020bf   Thumb Code     0  memseta.o(.text)
-    _memset$wrapper                          0x000020c3   Thumb Code    18  memseta.o(.text)
-    __aeabi_llsl                             0x000020d5   Thumb Code    30  llshl.o(.text)
-    _ll_shift_l                              0x000020d5   Thumb Code     0  llshl.o(.text)
-    __aeabi_llsr                             0x000020f3   Thumb Code    32  llushr.o(.text)
-    _ll_ushift_r                             0x000020f3   Thumb Code     0  llushr.o(.text)
-    __scatterload                            0x00002115   Thumb Code    28  init.o(.text)
-    __scatterload_rt2                        0x00002115   Thumb Code     0  init.o(.text)
-    __decompress                             0x00002139   Thumb Code     0  __dczerorl2.o(.text)
-    __decompress1                            0x00002139   Thumb Code    92  __dczerorl2.o(.text)
-    __0sprintf$8                             0x00002195   Thumb Code    34  printf8.o(i.__0sprintf$8)
-    __1sprintf$8                             0x00002195   Thumb Code     0  printf8.o(i.__0sprintf$8)
-    __2sprintf                               0x00002195   Thumb Code     0  printf8.o(i.__0sprintf$8)
-    __scatterload_copy                       0x000021bd   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x000021cb   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x000021cd   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    free                                     0x00002645   Thumb Code    76  malloc.o(i.free)
-    malloc                                   0x00002695   Thumb Code    92  malloc.o(i.malloc)
-    Region$$Table$$Base                      0x0000270c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0000272c   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x000002d7   Thumb Code   154  main.o(.text)
+    initBoard                                0x000003f9   Thumb Code   102  initboard.o(.text)
+    SYSTICKIntHandler                        0x00000491   Thumb Code    90  systick.o(.text)
+    initializeSysTick                        0x000004eb   Thumb Code    46  systick.o(.text)
+    initializeADC                            0x0000052d   Thumb Code   100  hw4_adc.o(.text)
+    GetADCval                                0x00000591   Thumb Code    54  hw4_adc.o(.text)
+    updateRefreshRate                        0x000005c7   Thumb Code    36  hw4_adc.o(.text)
+    getButton                                0x00000605   Thumb Code    22  hw4_gpio.o(.text)
+    updateButtons                            0x0000061b   Thumb Code   180  hw4_gpio.o(.text)
+    initializeGpioPins                       0x000006cf   Thumb Code   386  hw4_gpio.o(.text)
+    getDrawBuffer                            0x00000879   Thumb Code    12  doublebuffer.o(.text)
+    swapBuffers                              0x00000885   Thumb Code    26  doublebuffer.o(.text)
+    initDoubleBuffers                        0x0000089f   Thumb Code    20  doublebuffer.o(.text)
+    clearDrawBuffer                          0x000008b3   Thumb Code    14  doublebuffer.o(.text)
+    clearFrame                               0x000008c9   Thumb Code    16  screen.o(.text)
+    drawAACorners                            0x000008d9   Thumb Code   250  screen.o(.text)
+    drawAAPixel                              0x000009d3   Thumb Code    44  screen.o(.text)
+    drawAAEdges                              0x000009ff   Thumb Code   216  screen.o(.text)
+    drawRect                                 0x00000ad7   Thumb Code    88  screen.o(.text)
+    drawAARect                               0x00000b2f   Thumb Code    94  screen.o(.text)
+    nMix                                     0x00000b8d   Thumb Code    76  pixel.o(.text)
+    mix                                      0x00000bd9   Thumb Code    24  pixel.o(.text)
+    nComplement                              0x00000bf1   Thumb Code    26  pixel.o(.text)
+    complement                               0x00000c0b   Thumb Code    12  pixel.o(.text)
+    nMultiply                                0x00000c17   Thumb Code    26  pixel.o(.text)
+    multiply                                 0x00000c31   Thumb Code    16  pixel.o(.text)
+    nAdd                                     0x00000c41   Thumb Code    34  pixel.o(.text)
+    add                                      0x00000c63   Thumb Code    14  pixel.o(.text)
+    percentAdd                               0x00000c71   Thumb Code   116  pixel.o(.text)
+    setColor                                 0x00000ce5   Thumb Code    22  pixel.o(.text)
+    gammaCorrect                             0x00000d01   Thumb Code    14  renderer.o(.text)
+    updateRow                                0x00000d0f   Thumb Code   400  renderer.o(.text)
+    setCurrentBuffer                         0x00000e9f   Thumb Code     6  renderer.o(.text)
+    getCurrentBuffer                         0x00000ea5   Thumb Code     6  renderer.o(.text)
+    setBrightness                            0x00000eab   Thumb Code     6  renderer.o(.text)
+    getBrightness                            0x00000eb1   Thumb Code     6  renderer.o(.text)
+    noFunc                                   0x00000ecd   Thumb Code     2  animation.o(.text)
+    scheduleAnimation                        0x00000ecf   Thumb Code   106  animation.o(.text)
+    updateAnimation                          0x00000f39   Thumb Code   338  animation.o(.text)
+    addNewAnimations                         0x0000108b   Thumb Code    44  animation.o(.text)
+    updateAnimations                         0x000010b7   Thumb Code   106  animation.o(.text)
+    drawAnimation                            0x00001121   Thumb Code    36  animation.o(.text)
+    drawAnimations                           0x00001145   Thumb Code    26  animation.o(.text)
+    countEmpty                               0x0000116d   Thumb Code    46  2048.o(.text)
+    getNthEmptyTile                          0x0000119b   Thumb Code    66  2048.o(.text)
+    showTile                                 0x000011dd   Thumb Code     8  2048.o(.text)
+    fadeToColor                              0x000011e5   Thumb Code    84  2048.o(.text)
+    addTile                                  0x00001239   Thumb Code   160  2048.o(.text)
+    setPos                                   0x000012d9   Thumb Code    30  2048.o(.text)
+    removeTile                               0x000012f7   Thumb Code    28  2048.o(.text)
+    canTakeInput                             0x00001313   Thumb Code    38  2048.o(.text)
+    endMergeTranslate                        0x00001339   Thumb Code    26  2048.o(.text)
+    spawnMergeAnim                           0x00001353   Thumb Code   102  2048.o(.text)
+    spawnTranslateAnim                       0x000013b9   Thumb Code   130  2048.o(.text)
+    init2048                                 0x0000143b   Thumb Code    14  2048.o(.text)
+    shiftUp                                  0x00001449   Thumb Code   192  2048.o(.text)
+    shiftDown                                0x00001509   Thumb Code   224  2048.o(.text)
+    shiftLeft                                0x000015e9   Thumb Code   192  2048.o(.text)
+    shiftRight                               0x000016a9   Thumb Code   202  2048.o(.text)
+    addRandomTile                            0x00001773   Thumb Code    96  2048.o(.text)
+    drawBoard                                0x000017d3   Thumb Code    76  2048.o(.text)
+    saveGame                                 0x0000181f   Thumb Code   170  2048.o(.text)
+    restoreGame                              0x000018c9   Thumb Code   154  2048.o(.text)
+    spiTx                                    0x00001989   Thumb Code   132  spi.o(.text)
+    initializePortASpi0                      0x00001a0d   Thumb Code    82  spi.o(.text)
+    initializeSPI                            0x00001a5f   Thumb Code   130  spi.o(.text)
+    spi_eeprom_read_status                   0x00001af5   Thumb Code    24  eeprom.o(.text)
+    spi_eeprom_wait_write_in_progress        0x00001b0d   Thumb Code    16  eeprom.o(.text)
+    spi_eeprom_read_byte                     0x00001b1d   Thumb Code    42  eeprom.o(.text)
+    spi_eeprom_read_array                    0x00001b47   Thumb Code    84  eeprom.o(.text)
+    spi_eeprom_write_disable                 0x00001b9b   Thumb Code    18  eeprom.o(.text)
+    spi_eeprom_write_enable                  0x00001bad   Thumb Code    18  eeprom.o(.text)
+    spi_eeprom_write_byte                    0x00001bbf   Thumb Code    48  eeprom.o(.text)
+    spi_eeprom_write_array                   0x00001bef   Thumb Code    84  eeprom.o(.text)
+    initTimer0                               0x00001c45   Thumb Code   118  timer.o(.text)
+    TIMER0IntHandler                         0x00001cbb   Thumb Code    12  timer.o(.text)
+    StartCritical                            0x00001cdd   Thumb Code    18  lock.o(.text)
+    EndCritical                              0x00001cef   Thumb Code    42  lock.o(.text)
+    PLL_Init                                 0x00001d41   Thumb Code   134  pll.o(.text)
+    uartInitPolling                          0x00001dcd   Thumb Code   134  uart.o(.text)
+    uartRxPoll                               0x00001e53   Thumb Code    20  uart.o(.text)
+    uartTxPoll                               0x00001e67   Thumb Code    30  uart.o(.text)
+    initPortC                                0x00001e95   Thumb Code    54  portc_init.o(.text)
+    __aeabi_uldivmod                         0x00001ed9   Thumb Code    98  uldiv.o(.text)
+    rand                                     0x00001f3d   Thumb Code    20  rand.o(.text)
+    srand                                    0x00001f51   Thumb Code     6  rand.o(.text)
+    __aeabi_memcpy                           0x00001f61   Thumb Code    36  memcpya.o(.text)
+    __aeabi_memcpy4                          0x00001f61   Thumb Code     0  memcpya.o(.text)
+    __aeabi_memcpy8                          0x00001f61   Thumb Code     0  memcpya.o(.text)
+    __aeabi_memset                           0x00001f85   Thumb Code    14  memseta.o(.text)
+    __aeabi_memset4                          0x00001f85   Thumb Code     0  memseta.o(.text)
+    __aeabi_memset8                          0x00001f85   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr                           0x00001f93   Thumb Code     4  memseta.o(.text)
+    __aeabi_memclr4                          0x00001f93   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr8                          0x00001f93   Thumb Code     0  memseta.o(.text)
+    _memset$wrapper                          0x00001f97   Thumb Code    18  memseta.o(.text)
+    __aeabi_llsl                             0x00001fa9   Thumb Code    30  llshl.o(.text)
+    _ll_shift_l                              0x00001fa9   Thumb Code     0  llshl.o(.text)
+    __aeabi_llsr                             0x00001fc7   Thumb Code    32  llushr.o(.text)
+    _ll_ushift_r                             0x00001fc7   Thumb Code     0  llushr.o(.text)
+    __scatterload                            0x00001fe9   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x00001fe9   Thumb Code     0  init.o(.text)
+    __decompress                             0x0000200d   Thumb Code     0  __dczerorl2.o(.text)
+    __decompress1                            0x0000200d   Thumb Code    92  __dczerorl2.o(.text)
+    __0sprintf$8                             0x00002069   Thumb Code    34  printf8.o(i.__0sprintf$8)
+    __1sprintf$8                             0x00002069   Thumb Code     0  printf8.o(i.__0sprintf$8)
+    __2sprintf                               0x00002069   Thumb Code     0  printf8.o(i.__0sprintf$8)
+    __scatterload_copy                       0x00002091   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x0000209f   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x000020a1   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    free                                     0x00002519   Thumb Code    76  malloc.o(i.free)
+    malloc                                   0x00002569   Thumb Code    92  malloc.o(i.malloc)
+    Region$$Table$$Base                      0x000025e0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00002600   Number         0  anon$$obj.o(Region$$Table)
     teamNumber                               0x20000000   Data           3  main.o(.data)
     teamMembers                              0x20000003   Data          33  main.o(.data)
     portA_config                             0x20000024   Data          20  main.o(.data)
@@ -778,20 +775,20 @@ Image Symbol Table
     PortE                                    0x200000b4   Data           4  initboard.o(.data)
     PortF                                    0x200000b8   Data           4  initboard.o(.data)
     Time                                     0x200000c0   Data           8  systick.o(.data)
-    AlertADC0                                0x200000d8   Data           1  hw4_adc.o(.data)
-    c                                        0x200000dc   Data           4  hw4_adc.o(.data)
-    buttonMask                               0x200000e0   Data           4  hw4_gpio.o(.data)
-    AlertDebounce                            0x200000e4   Data           1  hw4_gpio.o(.data)
-    draw                                     0x200000e5   Data           1  doublebuffer.o(.data)
-    brightness                               0x200000ec   Data           4  renderer.o(.data)
-    currentBuffer                            0x200000f0   Data           4  renderer.o(.data)
-    additions                                0x200000f4   Data           4  animation.o(.data)
-    head                                     0x200000f8   Data           4  animation.o(.data)
-    colors                                   0x200000fc   Data          68  2048.o(.data)
-    spi                                      0x2000014c   Data           4  spi.o(.data)
-    depth                                    0x20000150   Data           1  lock.o(.data)
-    __microlib_freelist                      0x20000158   Data           4  mvars.o(.data)
-    __microlib_freelist_initialised          0x2000015c   Data           4  mvars.o(.data)
+    AlertADC0                                0x200000d4   Data           1  hw4_adc.o(.data)
+    c                                        0x200000d8   Data           4  hw4_adc.o(.data)
+    buttonMask                               0x200000dc   Data           4  hw4_gpio.o(.data)
+    AlertDebounce                            0x200000e0   Data           1  hw4_gpio.o(.data)
+    draw                                     0x200000e1   Data           1  doublebuffer.o(.data)
+    brightness                               0x200000e8   Data           4  renderer.o(.data)
+    currentBuffer                            0x200000ec   Data           4  renderer.o(.data)
+    additions                                0x200000f0   Data           4  animation.o(.data)
+    head                                     0x200000f4   Data           4  animation.o(.data)
+    colors                                   0x200000f8   Data          68  2048.o(.data)
+    spi                                      0x20000148   Data           4  spi.o(.data)
+    depth                                    0x2000014c   Data           1  lock.o(.data)
+    __microlib_freelist                      0x20000154   Data           4  mvars.o(.data)
+    __microlib_freelist_initialised          0x20000158   Data           4  mvars.o(.data)
     portE_config                             0x20000160   Data          20  main.o(.bss)
     board                                    0x20000178   Data          80  main.o(.bss)
     buffers                                  0x200001d4   Data         512  doublebuffer.o(.bss)
@@ -807,65 +804,65 @@ Memory Map of the image
 
   Image Entry point : 0x000000fd
 
-  Load Region LR_IROM (Base: 0x00000000, Size: 0x0000288c, Max: 0x00040000, ABSOLUTE, COMPRESSED[0x000027c4])
+  Load Region LR_IROM (Base: 0x00000000, Size: 0x0000275c, Max: 0x00040000, ABSOLUTE, COMPRESSED[0x00002698])
 
-    Execution Region ER_IROM (Base: 0x00000000, Size: 0x0000272c, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM (Base: 0x00000000, Size: 0x00002600, Max: 0x00040000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x000000fc   Code   RO            3    RESET               startup.o
-    0x000000fc   0x00000000   Code   RO          437  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x000000fc   0x00000004   Code   RO          740    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x00000100   0x00000004   Code   RO          743    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x00000104   0x00000000   Code   RO          745    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x00000104   0x00000000   Code   RO          747    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x00000104   0x00000008   Code   RO          748    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x0000010c   0x00000000   Code   RO          750    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x0000010c   0x00000000   Code   RO          752    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x0000010c   0x00000004   Code   RO          741    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x000000fc   0x00000000   Code   RO          438  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x000000fc   0x00000004   Code   RO          741    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x00000100   0x00000004   Code   RO          744    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x00000104   0x00000000   Code   RO          746    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x00000104   0x00000000   Code   RO          748    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x00000104   0x00000008   Code   RO          749    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x0000010c   0x00000000   Code   RO          751    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x0000010c   0x00000000   Code   RO          753    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x0000010c   0x00000004   Code   RO          742    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
     0x00000110   0x00000038   Code   RO            4    .text               startup.o
-    0x00000148   0x000002e8   Code   RO           11    .text               main.o
-    0x00000430   0x00000098   Code   RO          115    .text               initboard.o
-    0x000004c8   0x000000d0   Code   RO          134    .text               systick.o
-    0x00000598   0x000000d8   Code   RO          150    .text               hw4_adc.o
-    0x00000670   0x00000274   Code   RO          166    .text               hw4_gpio.o
-    0x000008e4   0x00000050   Code   RO          197    .text               doublebuffer.o
-    0x00000934   0x000002c4   Code   RO          216    .text               screen.o
-    0x00000bf8   0x00000174   Code   RO          228    .text               pixel.o
-    0x00000d6c   0x000001cc   Code   RO          241    .text               renderer.o
-    0x00000f38   0x00000290   Code   RO          257    .text               animation.o
-    0x000011c8   0x000008e4   Code   RO          279    .text               2048.o
-    0x00001aac   0x0000016c   Code   RO          315    .text               spi.o
-    0x00001c18   0x0000014e   Code   RO          331    .text               eeprom.o
-    0x00001d66   0x00000002   PAD
-    0x00001d68   0x000000a0   Code   RO          349    .text               timer.o
-    0x00001e08   0x00000064   Code   RO          361    .text               lock.o
-    0x00001e6c   0x0000008c   Code   RO          379    .text               pll.lib(pll.o)
-    0x00001ef8   0x000000c8   Code   RO          394    .text               uart.lib(uart.o)
-    0x00001fc0   0x00000044   Code   RO          425    .text               portC_init.lib(portc_init.o)
-    0x00002004   0x00000062   Code   RO          440    .text               mc_w.l(uldiv.o)
-    0x00002066   0x00000002   PAD
-    0x00002068   0x00000024   Code   RO          442    .text               mc_w.l(rand.o)
-    0x0000208c   0x00000024   Code   RO          445    .text               mc_w.l(memcpya.o)
-    0x000020b0   0x00000024   Code   RO          447    .text               mc_w.l(memseta.o)
-    0x000020d4   0x0000001e   Code   RO          759    .text               mc_w.l(llshl.o)
-    0x000020f2   0x00000020   Code   RO          761    .text               mc_w.l(llushr.o)
-    0x00002112   0x00000002   PAD
-    0x00002114   0x00000024   Code   RO          776    .text               mc_w.l(init.o)
-    0x00002138   0x0000005c   Code   RO          792    .text               mc_w.l(__dczerorl2.o)
-    0x00002194   0x00000028   Code   RO          660    i.__0sprintf$8      mc_w.l(printf8.o)
-    0x000021bc   0x0000000e   Code   RO          786    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x000021ca   0x00000002   Code   RO          787    i.__scatterload_null  mc_w.l(handlers.o)
-    0x000021cc   0x0000000e   Code   RO          788    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x000021da   0x00000002   PAD
-    0x000021dc   0x00000408   Code   RO          665    i._printf_core      mc_w.l(printf8.o)
-    0x000025e4   0x00000026   Code   RO          666    i._printf_post_padding  mc_w.l(printf8.o)
-    0x0000260a   0x00000030   Code   RO          667    i._printf_pre_padding  mc_w.l(printf8.o)
-    0x0000263a   0x0000000a   Code   RO          669    i._sputc            mc_w.l(printf8.o)
-    0x00002644   0x00000050   Code   RO          712    i.free              mc_w.l(malloc.o)
-    0x00002694   0x0000006c   Code   RO          713    i.malloc            mc_w.l(malloc.o)
-    0x00002700   0x0000000c   Data   RO           13    .constdata          main.o
-    0x0000270c   0x00000020   Data   RO          784    Region$$Table       anon$$obj.o
+    0x00000148   0x000002b0   Code   RO           11    .text               main.o
+    0x000003f8   0x00000098   Code   RO          115    .text               initboard.o
+    0x00000490   0x0000009c   Code   RO          134    .text               systick.o
+    0x0000052c   0x000000d8   Code   RO          150    .text               hw4_adc.o
+    0x00000604   0x00000274   Code   RO          166    .text               hw4_gpio.o
+    0x00000878   0x00000050   Code   RO          197    .text               doublebuffer.o
+    0x000008c8   0x000002c4   Code   RO          216    .text               screen.o
+    0x00000b8c   0x00000174   Code   RO          228    .text               pixel.o
+    0x00000d00   0x000001cc   Code   RO          241    .text               renderer.o
+    0x00000ecc   0x000002a0   Code   RO          257    .text               animation.o
+    0x0000116c   0x0000081c   Code   RO          279    .text               2048.o
+    0x00001988   0x0000016c   Code   RO          315    .text               spi.o
+    0x00001af4   0x0000014e   Code   RO          331    .text               eeprom.o
+    0x00001c42   0x00000002   PAD
+    0x00001c44   0x00000098   Code   RO          349    .text               timer.o
+    0x00001cdc   0x00000064   Code   RO          362    .text               lock.o
+    0x00001d40   0x0000008c   Code   RO          380    .text               pll.lib(pll.o)
+    0x00001dcc   0x000000c8   Code   RO          395    .text               uart.lib(uart.o)
+    0x00001e94   0x00000044   Code   RO          426    .text               portC_init.lib(portc_init.o)
+    0x00001ed8   0x00000062   Code   RO          441    .text               mc_w.l(uldiv.o)
+    0x00001f3a   0x00000002   PAD
+    0x00001f3c   0x00000024   Code   RO          443    .text               mc_w.l(rand.o)
+    0x00001f60   0x00000024   Code   RO          446    .text               mc_w.l(memcpya.o)
+    0x00001f84   0x00000024   Code   RO          448    .text               mc_w.l(memseta.o)
+    0x00001fa8   0x0000001e   Code   RO          760    .text               mc_w.l(llshl.o)
+    0x00001fc6   0x00000020   Code   RO          762    .text               mc_w.l(llushr.o)
+    0x00001fe6   0x00000002   PAD
+    0x00001fe8   0x00000024   Code   RO          777    .text               mc_w.l(init.o)
+    0x0000200c   0x0000005c   Code   RO          793    .text               mc_w.l(__dczerorl2.o)
+    0x00002068   0x00000028   Code   RO          661    i.__0sprintf$8      mc_w.l(printf8.o)
+    0x00002090   0x0000000e   Code   RO          787    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0000209e   0x00000002   Code   RO          788    i.__scatterload_null  mc_w.l(handlers.o)
+    0x000020a0   0x0000000e   Code   RO          789    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x000020ae   0x00000002   PAD
+    0x000020b0   0x00000408   Code   RO          666    i._printf_core      mc_w.l(printf8.o)
+    0x000024b8   0x00000026   Code   RO          667    i._printf_post_padding  mc_w.l(printf8.o)
+    0x000024de   0x00000030   Code   RO          668    i._printf_pre_padding  mc_w.l(printf8.o)
+    0x0000250e   0x0000000a   Code   RO          670    i._sputc            mc_w.l(printf8.o)
+    0x00002518   0x00000050   Code   RO          713    i.free              mc_w.l(malloc.o)
+    0x00002568   0x0000006c   Code   RO          714    i.malloc            mc_w.l(malloc.o)
+    0x000025d4   0x0000000c   Data   RO           13    .constdata          main.o
+    0x000025e0   0x00000020   Data   RO          785    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM (Base: 0x20000000, Size: 0x000023d8, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x00000098])
@@ -876,22 +873,23 @@ Memory Map of the image
     0x200000a1   0x00000003   PAD
     0x200000a4   0x00000018   Data   RW          116    .data               initboard.o
     0x200000bc   0x00000004   PAD
-    0x200000c0   0x00000015   Data   RW          135    .data               systick.o
-    0x200000d5   0x00000003   PAD
-    0x200000d8   0x00000008   Data   RW          151    .data               hw4_adc.o
-    0x200000e0   0x00000005   Data   RW          168    .data               hw4_gpio.o
-    0x200000e5   0x00000001   Data   RW          199    .data               doublebuffer.o
-    0x200000e6   0x00000002   PAD
-    0x200000e8   0x00000004   Data   RW          229    .data               pixel.o
-    0x200000ec   0x00000008   Data   RW          242    .data               renderer.o
-    0x200000f4   0x00000008   Data   RW          258    .data               animation.o
-    0x200000fc   0x00000050   Data   RW          280    .data               2048.o
-    0x2000014c   0x00000004   Data   RW          316    .data               spi.o
-    0x20000150   0x00000001   Data   RW          362    .data               lock.o
-    0x20000151   0x00000003   PAD
-    0x20000154   0x00000004   Data   RW          443    .data               mc_w.l(rand.o)
-    0x20000158   0x00000004   Data   RW          763    .data               mc_w.l(mvars.o)
-    0x2000015c   0x00000004   Data   RW          764    .data               mc_w.l(mvars.o)
+    0x200000c0   0x00000011   Data   RW          135    .data               systick.o
+    0x200000d1   0x00000003   PAD
+    0x200000d4   0x00000008   Data   RW          151    .data               hw4_adc.o
+    0x200000dc   0x00000005   Data   RW          168    .data               hw4_gpio.o
+    0x200000e1   0x00000001   Data   RW          199    .data               doublebuffer.o
+    0x200000e2   0x00000002   PAD
+    0x200000e4   0x00000004   Data   RW          229    .data               pixel.o
+    0x200000e8   0x00000008   Data   RW          242    .data               renderer.o
+    0x200000f0   0x00000008   Data   RW          258    .data               animation.o
+    0x200000f8   0x00000050   Data   RW          280    .data               2048.o
+    0x20000148   0x00000004   Data   RW          316    .data               spi.o
+    0x2000014c   0x00000001   Data   RW          363    .data               lock.o
+    0x2000014d   0x00000003   PAD
+    0x20000150   0x00000004   Data   RW          444    .data               mc_w.l(rand.o)
+    0x20000154   0x00000004   Data   RW          764    .data               mc_w.l(mvars.o)
+    0x20000158   0x00000004   Data   RW          765    .data               mc_w.l(mvars.o)
+    0x2000015c   0x00000004   PAD
     0x20000160   0x00000068   Zero   RW           12    .bss                main.o
     0x200001c8   0x0000000c   Zero   RW          167    .bss                hw4_gpio.o
     0x200001d4   0x00000200   Zero   RW          198    .bss                doublebuffer.o
@@ -907,25 +905,25 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      2276        200          0         80          0       8107   2048.o
-       656         12          0          8          0       2827   animation.o
+      2076         60          0         80          0       8083   2048.o
+       672         14          0          8          0       2847   animation.o
         80          8          0          1        512       1429   doublebuffer.o
        334          0          0          0          0       2640   eeprom.o
        216         26          0          8          0       1254   hw4_adc.o
        628         40          0          5         12       1954   hw4_gpio.o
        152         50          0         24          0       1435   initboard.o
        100         40          0          1          0        748   lock.o
-       744        164         12        161        104      16025   main.o
+       688        136         12        161        104      16001   main.o
        372          6          0          4          0       2862   pixel.o
        460         22          0          8          0       2428   renderer.o
        708          0          0          0          0       3347   screen.o
        364         20          0          4          0       1940   spi.o
        308        244          0          0       8192        448   startup.o
-       208         32          0         21          0       1491   systick.o
-       160         26          0          0          0        694   timer.o
+       156         20          0         17          0       1413   systick.o
+       152         22          0          0          0        670   timer.o
 
     ----------------------------------------------------------------------
-      7768        890         44        340       8824      49629   Object Totals
+      7468        708         44        336       8824      49499   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          2          0          0         15          4          0   (incl. Padding)
 
@@ -958,8 +956,8 @@ Image component sizes
        200         16          0          0          0       5812   uart.o
 
     ----------------------------------------------------------------------
-      2216        132          0         12          0       7919   Library Totals
-         6          0          0          0          0          0   (incl. Padding)
+      2216        132          0         12          4       7919   Library Totals
+         6          0          0          0          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -971,7 +969,7 @@ Image component sizes
        200         16          0          0          0       5812   uart.lib
 
     ----------------------------------------------------------------------
-      2216        132          0         12          0       7919   Library Totals
+      2216        132          0         12          4       7919   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -980,15 +978,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      9984       1022         44        352       8824      53928   Grand Totals
-      9984       1022         44        152       8824      53928   ELF Image Totals (compressed)
-      9984       1022         44        152          0          0   ROM Totals
+      9684        840         44        348       8828      53798   Grand Totals
+      9684        840         44        152       8828      53798   ELF Image Totals (compressed)
+      9684        840         44        152          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                10028 (   9.79kB)
+    Total RO  Size (Code + RO Data)                 9728 (   9.50kB)
     Total RW  Size (RW Data + ZI Data)              9176 (   8.96kB)
-    Total ROM Size (Code + RO Data + RW Data)      10180 (   9.94kB)
+    Total ROM Size (Code + RO Data + RW Data)       9880 (   9.65kB)
 
 ==============================================================================
 

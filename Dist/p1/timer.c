@@ -4,6 +4,7 @@
 #include "animation.h"
 #include "UART.h"
 
+extern volatile bool AlertDebounce;
 
 void initTimer0(void) {
 	uint8_t delay;
@@ -27,7 +28,7 @@ void initTimer0(void) {
 
 
 void TIMER0IntHandler(void) {
-		uartTxPoll(UART0,"H");
-		updateButtons();
+	TIMER0_ICR_R = TIMER_ICR_TATOCINT;
+	AlertDebounce = true;
 }
 
