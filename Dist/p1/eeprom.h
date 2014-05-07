@@ -15,10 +15,14 @@
 #define EEPROM_SR_BP1 0x08
 #define EEPROM_SR_WPEN 0x80
 
+typedef uint16_t EEPROM_ADDR;
+
 //*********Functions***********//
 
-uint8_t spi_eeprom_read_byte(uint16_t address);
-void spi_eeprom_write_byte(uint16_t address, uint8_t data);
+uint8_t spi_eeprom_read_byte(EEPROM_ADDR address);
+void spi_eeprom_read_array(EEPROM_ADDR address, uint8_t *data, uint8_t len);
+void spi_eeprom_write_byte(EEPROM_ADDR address, uint8_t data);
+void spi_eeprom_write_array(EEPROM_ADDR address, uint8_t *data, uint8_t len);
 uint8_t spi_eeprom_read_status(void);
 void spi_eeprom_write_enable(void);
 void spi_eeprom_write_disable(void);
@@ -41,5 +45,12 @@ typedef struct {
 typedef struct {
 	uint8_t inst;
 } SPI_EEPROM_EN_CMD;
+
+typedef struct {
+	uint8_t inst;
+	uint8_t addr_hi;
+	uint8_t addr_low;
+	uint8_t data[1];
+} SPI_EEPROM_EXT_CMD;
 
 #endif

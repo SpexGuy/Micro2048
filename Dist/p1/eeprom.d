@@ -6,3 +6,5 @@
 .\eeprom.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
 .\eeprom.o: constants.h
 .\eeprom.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\eeprom.o: C:\Keil\ARM\ARMCC\bin\..\include\alloca.h
+.\eeprom.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h

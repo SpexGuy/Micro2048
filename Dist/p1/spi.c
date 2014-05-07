@@ -20,16 +20,12 @@ void spiTx(uint8_t *dataIn, int32_t size, uint8_t *dataOut) {
 	//Wait for not busy
 	while(spi->SSISR & SSI_SR_BSY);
 	
-	spi->SSICR1 &= ~SSI_CR1_SSE;
-	
 	for(c = 0; c < size; c++) {
 		//wait for transmit not full
 		while(!(spi->SSISR & SSI_SR_TNF));
 		//send data
 		spi->SSIDR = dataIn[c];
 	}
-	
-	spi->SSICR1 |= SSI_CR1_SSE;
 
 	for(c = 0; c < size; c++) {
 		//wait for data in receive fifo

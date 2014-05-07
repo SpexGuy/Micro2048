@@ -146,15 +146,14 @@ int main(void)
 	
 #	ifdef IS_EEPROM_TEST
 	{
-		char out;
+		uint32_t out;
 		char printbuf[20];
+		uint32_t data = 0xDEADCAFE;
 		uint16_t address = 0x2;
-		uint8_t writeData = 0xC;
-		sprintf(printbuf, "write: %X\n\r", writeData);
+		sprintf(printbuf, "write: %X\n\r", data);
 		uartTxPoll(UART0, printbuf);
-		spi_eeprom_write_byte(address, writeData);
-		out = spi_eeprom_read_byte(address);
-		
+		spi_eeprom_write_array(address, (uint8_t *)&data, sizeof(data));
+		spi_eeprom_read_array(address, (uint8_t *)&out, sizeof(out));
 		sprintf(printbuf, "read: %X\n\r", out);
 		uartTxPoll(UART0, printbuf);
 	}
