@@ -5,7 +5,7 @@ FrameBuffer buffers[2];
 uint8_t draw = 0;
 
 void initDoubleBuffers() {
-	memset(buffers, 0, sizeof(buffers));
+	memset(buffers, 0xFF, sizeof(buffers));
 	swapBuffers();
 }
 

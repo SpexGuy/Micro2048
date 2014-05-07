@@ -13,3 +13,4 @@
 .\initboard.o: hw4_gpio.h
 .\initboard.o: hw4_adc.h
 .\initboard.o: spi.h
+.\initboard.o: timer.h

@@ -81,7 +81,10 @@ void addTile(Board *b, uint8_t x, uint8_t y, uint8_t value, bool animated) {
 	static Pixel black = {0x000000};
 	static Pixel white = {0xFFFFFF};
 	uint64_t localTime = Time;
-	Tile *tile = malloc(sizeof(Tile));
+	Tile *tile;
+	StartCritical();
+		tile = malloc(sizeof(Tile));
+	EndCritical();
 	tile->x = x;
 	tile->y = y;
 	tile->value = value;

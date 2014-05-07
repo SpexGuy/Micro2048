@@ -4,7 +4,7 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\ece353_base_project.uvproj
-Project File Date:  05/06/2014
+Project File Date:  05/07/2014
 
 <h2>Output:</h2>
 Rebuild target 'base_project'
@@ -12,6 +12,11 @@ assembling Startup.s...
 compiling main.c...
 compiling initBoard.c...
 compiling systick.c...
+systick.c(26): warning:  #223-D: function "uartTxPoll" declared implicitly
+                uartTxPoll(UART0,"C");
+systick.c(18): warning:  #177-D: variable "debounceCount" was declared but never referenced
+        static int debounceCount = 0;
+systick.c: 2 warnings, 0 errors
 compiling hw4_adc.c...
 compiling hw4_gpio.c...
 compiling led_chars.c...
@@ -24,17 +29,22 @@ compiling 2048.c...
 compiling AI2048.c...
 compiling spi.c...
 compiling eeprom.c...
+compiling timer.c...
+timer.c(30): warning:  #223-D: function "uartTxPoll" declared implicitly
+                uartTxPoll(UART0,"H");
+timer.c(31): warning:  #223-D: function "updateButtons" declared implicitly
+                updateButtons();
+timer.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=9404 RO-data=44 RW-data=348 ZI-data=8828  
-".\ece353_base_project.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=9596 RO-data=44 RW-data=348 ZI-data=8828  
+".\ece353_base_project.axf" - 0 Error(s), 4 Warning(s).
 Load "C:\\Users\\Scott\\Documents\\GitHub\\Micro2048\\Dist\\p1\\ece353_base_project.axf" 
 Connecting: Mode=JTAG, Speed=1000000Hz
 Erase Done.
 Programming Done.
 Verify OK.
-se_project.axf" - 0 Error(s), 2 Warning(s).
-Load "C:\\Users\\Scott\\Documents\\GitHub\\Micro2048\\Dist\\p1\\ece353_base_project.axf" 
-Connecting: Mode=JTAG, Speed=1000000Hz
-Erase Done.
-Programming Done.
-Verify OK.
+dateButtons();
+timer.c: 2 warnings, 0 errors
+".\ece353_base_project.axf" - 2 Error(s), 4 Warning(s).
+Target not created
+et not created

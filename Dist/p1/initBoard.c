@@ -2,6 +2,7 @@
 #include "systick.h"
 #include "hw4_gpio.h"
 #include "spi.h"
+#include "timer.h"
 
 extern GPIO_CONFIG portA_config;
 extern GPIO_CONFIG portB_config;
@@ -36,7 +37,7 @@ void initBoard(void)
   PLL_Init();
 	StartCritical();
   initializeSysTick(SYSTICK_COUNT, true);
-	//timer0
+	initTimer0();
 	initPortC();
 	initializeGpioPins();
 	uartInitPolling(UART0);

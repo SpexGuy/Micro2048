@@ -15,6 +15,7 @@
 ".\ai2048.o"
 ".\spi.o"
 ".\eeprom.o"
+".\timer.o"
 ".\lib\pll.lib"
 ".\lib\uart.lib"
 ".\lib\gpio.lib"

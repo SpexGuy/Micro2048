@@ -1,0 +1,13 @@
+.\timer.o: timer.c
+.\timer.o: timer.h
+.\timer.o: constants.h
+.\timer.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\timer.o: lm4f120h5qr.h
+.\timer.o: animation.h
+.\timer.o: pixel.h
+.\timer.o: renderer.h
+.\timer.o: screen.h
+.\timer.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+.\timer.o: UART.h
+.\timer.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\timer.o: C:\Keil\ARM\ARMCC\bin\..\include\errno.h

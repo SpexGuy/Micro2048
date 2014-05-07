@@ -2,6 +2,7 @@
 #include "lm4f120h5qr.h"
 #include "systick.h"
 #include "renderer.h"
+#include "UART.h"
 
 extern volatile bool AlertDebounce;
 extern volatile bool AlertADC0;
@@ -20,10 +21,13 @@ void SYSTICKIntHandler(void)
 	static byteFraction dutyPos = 0;
 	
 	Time++;
-	if (debounceCount++ > SYSTICKS_PER_BUTTON) {
+	
+	if(Time % 1024 == 0)
+		uartTxPoll(UART0,"C");
+//	if (debounceCount++ > SYSTICKS_PER_BUTTON) {
 		AlertDebounce = true;
-		debounceCount = 0;
-	}
+//		debounceCount = 0;
+//	}
 
 	if (adcCount++ > SYSTICKS_PER_ADC) {
 		AlertADC0 = true;

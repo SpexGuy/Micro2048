@@ -18,7 +18,11 @@ extern void EndCritical(void);
 // Sets the value that will be loaded into the SysTick Timers
 // Load Register.
 #define SYSTICKS_PER_SECOND				(DUTY_CYCLE_GRADIATIONS * SCREEN_HEIGHT * SCREEN_REFRESH_RATE)
+#define TIMER0_TICKS_PER_SECOND		(56)
+#define TIMER0_PRESCALE						(49)
 #define SYSTICK_COUNT   					(CLOCK_FREQUENCY / SYSTICKS_PER_SECOND)
+#define TIMER0_COUNT							(CLOCK_FREQUENCY / (TIMER0_TICKS_PER_SECOND * TIMER0_PRESCALE))
+
 //button check every 18 mS
 #define SYSTICKS_PER_BUTTON				((SYSTICKS_PER_SECOND * 18)/1000)
 //adc check every 1 mS

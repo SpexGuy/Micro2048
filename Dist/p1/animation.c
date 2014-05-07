@@ -15,7 +15,10 @@ void scheduleAnimation(uint64_t startTime, uint64_t runTime,
 											 Pixel startColor, Pixel finalColor, 
 											 void (*onFinish)(void* param), void* param)
 {
-	Animation* newAnimation = (Animation*) malloc(sizeof(Animation));
+	Animation* newAnimation;
+	StartCritical();
+		newAnimation = (Animation*) malloc(sizeof(Animation));
+	EndCritical();
 	
 	newAnimation->startTime = startTime;
 	newAnimation->runTime = runTime;

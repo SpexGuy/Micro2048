@@ -134,7 +134,7 @@ bool checkInput(void) {
 int main(void)
 {
 	FrameBuffer *drawBuffer;
-  initBoard();
+	initBoard();
 	initDoubleBuffers();
 	
   uartTxPoll(UART0,"\n\r");
@@ -174,7 +174,6 @@ int main(void)
 		drawAnimations(drawBuffer);
 		swapBuffers();
 		updateRefreshRate();
-		updateButtons();
 		if (checkInput()) {
 			addRandomTile(&board);
 		}
