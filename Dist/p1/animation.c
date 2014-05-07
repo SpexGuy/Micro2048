@@ -64,6 +64,7 @@ void addNewAnimations() {
 
 void updateAnimations() {
 	uint64_t localTime;
+	uint32_t dTime;
 	Animation *current, *previous, *next;
 	addNewAnimations();
 	localTime = Time;
@@ -86,6 +87,12 @@ void updateAnimations() {
 			previous = current;
 		}
 		current = next;
+	}
+	dTime = Time - localTime;
+	if (dTime > SYSTICKS_PER_SECOND/60) {
+		char buffer[40];
+		sprintf(buffer, "It took %3d ticks to update anims!", dTime);
+		uartTxPoll(UART0, buffer);
 	}
 }
 

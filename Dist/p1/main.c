@@ -133,6 +133,8 @@ bool checkInput(void) {
 
 int main(void)
 {
+	uint64_t lastSecond;
+	uint32_t frameCount;
 	FrameBuffer *drawBuffer;
 	initBoard();
 	initDoubleBuffers();
@@ -166,14 +168,24 @@ int main(void)
 	}
 #	endif
 
+	uartTxPoll(UART0, "\n");
+	lastSecond = Time;
 	while(1) {
 //		uartTxPoll(UART0,"M");
+		if (Time - lastSecond > SYSTICKS_PER_SECOND) {
+			char buffer[40];
+			sprintf(buffer, "\033[A%6d frames per second\n\r", frameCount);
+			uartTxPoll(UART0, buffer);
+			frameCount = 0;
+			lastSecond = Time;
+		}
 		updateAnimations();
 		clearDrawBuffer();
 		drawBuffer = getDrawBuffer();
 		drawBoard(drawBuffer, &board);
 		drawAnimations(drawBuffer);
 		swapBuffers();
+		frameCount++;
 		updateRefreshRate();
 		updateButtons();
 		if (checkInput()) {
