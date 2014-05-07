@@ -18,8 +18,11 @@
 #include "animation.h"
 #include "2048.h"
 #include "AI2048.h"
+#include "spi.h"
+#include "eeprom.h"
 
 #define isAI false
+#define IS_EEPROM_TEST true
 
 extern void uartTxPoll(uint32_t base, char *data);
 
@@ -121,8 +124,7 @@ bool checkInput(void) {
 	}
 }
 
-int
-main(void)
+int main(void)
 {
 	FrameBuffer *drawBuffer;
   initBoard();
@@ -141,18 +143,45 @@ main(void)
 	init2048(&board);
 	addRandomTile(&board);
 	addRandomTile(&board);
-
-  while(1) {
-		updateAnimations();
-		clearDrawBuffer();
-		drawBuffer = getDrawBuffer();
-		drawBoard(drawBuffer, &board);
-		drawAnimations(drawBuffer);
-		swapBuffers();
-		updateRefreshRate();
-		updateButtons();
-		if (checkInput()) {
-			addRandomTile(&board);
+	
+	if(IS_EEPROM_TEST) {
+		char out;
+		uint32_t count, dummy;
+		uint16_t address = 0xDEAD;
+		uint8_t writeData = 0xB;
+		spi_eeprom_write_byte(address, writeData);
+		
+		for(count = 0; count < 10000; count++) {
+			dummy = 0;
 		}
-  }
+	
+		out = spi_eeprom_read_byte(address);
+		while(1) {	
+			updateAnimations();
+			clearDrawBuffer();
+			drawBuffer = getDrawBuffer();
+			drawBoard(drawBuffer, &board);
+			drawAnimations(drawBuffer);
+			swapBuffers();
+			updateRefreshRate();
+			updateButtons();
+			if (checkInput()) {
+				addRandomTile(&board);
+			}
+		}
+	} else {
+		while(1) {
+			updateAnimations();
+			clearDrawBuffer();
+			drawBuffer = getDrawBuffer();
+			drawBoard(drawBuffer, &board);
+			drawAnimations(drawBuffer);
+			swapBuffers();
+			updateRefreshRate();
+			updateButtons();
+			if (checkInput()) {
+				addRandomTile(&board);
+			}
+		}
+	}
 }

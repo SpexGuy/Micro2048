@@ -1,6 +1,7 @@
 #include "initBoard.h"
 #include "systick.h"
 #include "hw4_gpio.h"
+#include "spi.h"
 
 extern GPIO_CONFIG portA_config;
 extern GPIO_CONFIG portB_config;
@@ -12,6 +13,7 @@ extern UART_CONFIG UART0_config;
 
 extern void PLL_Init(void);
 extern bool uartInitPolling(uint32_t base);
+extern void uartTxPoll(uint32_t base, char *data);
 extern void initPortC(void);
 
 /******************************************************************************
@@ -30,18 +32,12 @@ extern void initPortC(void);
 void initBoard(void)
 {
    int i = 0;
-    
   // Initialize the PLLs so the the main CPU frequency is 80MHz
   PLL_Init();
-  
   initPortC();
-  
+	initializeGpioPins();
   uartInitPolling(UART0);
-  
-  // Initialize GPIO Pins
-  initializeGpioPins();
-  
-  // Initialize ADC0
+
   initializeADC();
   
   // Need to wait a while before the UART is functional
@@ -50,6 +46,17 @@ void initBoard(void)
     i++;
   }
 
-  // Initialize the SysTick Timer
+//	if(!initializeSPI(SSI0, 0, 0)) {
+//		uartTxPoll(UART0,"Failed to init SPI");
+//	}
+	i = 0;
+	// Need to wait a while before the UART is functional
+  while(i < 10000)
+  {
+    i++;
+  }
+
   initializeSysTick(SYSTICK_COUNT, true);
 }
+
+

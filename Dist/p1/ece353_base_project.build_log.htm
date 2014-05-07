@@ -4,12 +4,17 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\ece353_base_project.uvproj
-Project File Date:  05/04/2014
+Project File Date:  05/05/2014
 
 <h2>Output:</h2>
 Rebuild target 'base_project'
 assembling Startup.s...
 compiling main.c...
+main.c(148): warning:  #550-D: variable "out" was set but never used
+                char out;
+main.c(149): warning:  #550-D: variable "dummy" was set but never used
+                uint32_t count, dummy;
+main.c: 2 warnings, 0 errors
 compiling initBoard.c...
 compiling systick.c...
 compiling hw4_adc.c...
@@ -22,16 +27,22 @@ compiling renderer.c...
 compiling animation.c...
 compiling 2048.c...
 compiling AI2048.c...
+compiling spi.c...
+spi.c(29): warning:  #550-D: variable "delay" was set but never used
+    uint32_t delay;
+spi.c(83): warning:  #550-D: variable "delay" was set but never used
+    uint32_t delay;
+spi.c: 2 warnings, 0 errors
+compiling eeprom.c...
 linking...
-Program Size: Code=7064 RO-data=44 RW-data=344 ZI-data=8824  
-".\ece353_base_project.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=7708 RO-data=44 RW-data=348 ZI-data=8828  
+".\ece353_base_project.axf" - 0 Error(s), 4 Warning(s).
 Load "C:\\Users\\Scott\\Documents\\GitHub\\Micro2048\\Dist\\p1\\ece353_base_project.axf" 
 Connecting: Mode=JTAG, Speed=1000000Hz
 Erase Done.
 Programming Done.
 Verify OK.
-
-0 Error(s), 2 Warning(s).
-ror
-".\ece353_base_project.axf" - 1 Error(s), 2 Warning(s).
-Target not created
+ing: Mode=JTAG, Speed=1000000Hz
+Erase Done.
+Programming Done.
+Verify OK.

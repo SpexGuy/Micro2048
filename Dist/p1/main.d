@@ -25,3 +25,5 @@
 .\main.o: animation.h
 .\main.o: 2048.h
 .\main.o: AI2048.h
+.\main.o: spi.h
+.\main.o: eeprom.h

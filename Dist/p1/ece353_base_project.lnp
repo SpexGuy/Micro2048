@@ -13,6 +13,8 @@
 ".\animation.o"
 ".\2048.o"
 ".\ai2048.o"
+".\spi.o"
+".\eeprom.o"
 ".\lib\pll.lib"
 ".\lib\uart.lib"
 ".\lib\gpio.lib"

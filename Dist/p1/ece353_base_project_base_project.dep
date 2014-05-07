@@ -1,6 +1,6 @@
 Dependencies for Project 'ece353_base_project', Target 'base_project': (DO NOT MODIFY !)
 F (.\Startup.s)(0x536335F5)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
-F (.\main.c)(0x53670217)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+F (.\main.c)(0x5368354D)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\main.o --omf_browse .\main.crf --depend .\main.d)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
 I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C86E14)
 I (C:\Keil\ARM\ARMCC\include\stdlib.h)(0x51C86E14)
@@ -10,7 +10,7 @@ I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\doublebuffer.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\renderer.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\screen.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\pixel.h)(0x5363DC0E)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x5365724F)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x53681A6F)
 I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C86E14)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\team.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\initBoard.h)(0x536110DD)
@@ -25,11 +25,12 @@ I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\inc\hw_types.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\board_ports.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\led_chars.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\animation.h)(0x5365724F)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\2048.h)(0x5366F0DD)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\2048.h)(0x5367BF02)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\AI2048.h)(0x53669A99)
-F (.\initBoard.c)(0x5366C82C)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\initboard.o --omf_browse .\initboard.crf --depend .\initboard.d)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\spi.h)(0x536824D8)
+F (.\initBoard.c)(0x53682425)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\initboard.o --omf_browse .\initboard.crf --depend .\initboard.d)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\initBoard.h)(0x536110DD)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x5365724F)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x53681A6F)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
 I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C86E14)
 I (C:\Keil\ARM\ARMCC\include\stdlib.h)(0x51C86E14)
@@ -41,6 +42,7 @@ I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\gpio.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\systick.h)(0x536335F5)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\hw4_gpio.h)(0x5365553C)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\hw4_adc.h)(0x536110DD)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\spi.h)(0x536824D8)
 F (.\systick.c)(0x5365553C)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\systick.o --omf_browse .\systick.crf --depend .\systick.d)
 I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C86E14)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\lm4f120h5qr.h)(0x536110DD)
@@ -49,7 +51,7 @@ I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\renderer.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\screen.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\pixel.h)(0x5363DC0E)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x5365724F)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x53681A6F)
 F (.\hw4_adc.c)(0x536110DD)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\hw4_adc.o --omf_browse .\hw4_adc.crf --depend .\hw4_adc.d)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\hw4_adc.h)(0x536110DD)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
@@ -59,8 +61,8 @@ I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\lm4f120h5qr.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\renderer.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\screen.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\pixel.h)(0x5363DC0E)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x5365724F)
-F (.\hw4_gpio.c)(0x5365724F)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\hw4_gpio.o --omf_browse .\hw4_gpio.crf --depend .\hw4_gpio.d)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x53681A6F)
+F (.\hw4_gpio.c)(0x536833ED)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\hw4_gpio.o --omf_browse .\hw4_gpio.crf --depend .\hw4_gpio.d)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\hw4_gpio.h)(0x5365553C)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
 I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C86E14)
@@ -74,7 +76,7 @@ I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\board_ports.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\renderer.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\screen.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\pixel.h)(0x5363DC0E)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x5365724F)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x53681A6F)
 F (.\led_chars.c)(0x536110DD)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\led_chars.o --omf_browse .\led_chars.crf --depend .\led_chars.d)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\led_chars.h)(0x536110DD)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
@@ -85,26 +87,26 @@ I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\doublebuffer.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\renderer.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\screen.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\pixel.h)(0x5363DC0E)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x5365724F)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x53681A6F)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
 I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C86E14)
 I (C:\Keil\ARM\ARMCC\include\string.h)(0x51C86E14)
 F (.\screen.c)(0x5363543C)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\screen.o --omf_browse .\screen.crf --depend .\screen.d)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\screen.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\pixel.h)(0x5363DC0E)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x5365724F)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x53681A6F)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
 I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C86E14)
 I (C:\Keil\ARM\ARMCC\include\string.h)(0x51C86E14)
 F (.\pixel.c)(0x5365724F)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\pixel.o --omf_browse .\pixel.crf --depend .\pixel.d)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\pixel.h)(0x5363DC0E)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x5365724F)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x53681A6F)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
 F (.\renderer.c)(0x53611225)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\renderer.o --omf_browse .\renderer.crf --depend .\renderer.d)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\renderer.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\screen.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\pixel.h)(0x5363DC0E)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x5365724F)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x53681A6F)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
 I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C86E14)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\board_ports.h)(0x536110DD)
@@ -112,7 +114,7 @@ I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\gpio.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\lm4f120h5qr.h)(0x536110DD)
 F (.\animation.c)(0x5365724F)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\animation.o --omf_browse .\animation.crf --depend .\animation.d)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\animation.h)(0x5365724F)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x5365724F)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x53681A6F)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\pixel.h)(0x5363DC0E)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\renderer.h)(0x536110DD)
@@ -123,9 +125,9 @@ I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\UART.h)(0x536110DD)
 I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C86E14)
 I (C:\Keil\ARM\ARMCC\include\errno.h)(0x51C86E14)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\lm4f120h5qr.h)(0x536110DD)
-F (.\2048.c)(0x5366F0CB)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\2048.o --omf_browse .\2048.crf --depend .\2048.d)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\2048.h)(0x5366F0DD)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x5365724F)
+F (.\2048.c)(0x53683588)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\2048.o --omf_browse .\2048.crf --depend .\2048.d)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\2048.h)(0x5367BF02)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x53681A6F)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\screen.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\pixel.h)(0x5363DC0E)
@@ -138,10 +140,10 @@ I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\UART.h)(0x536110DD)
 I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C86E14)
 I (C:\Keil\ARM\ARMCC\include\errno.h)(0x51C86E14)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\lm4f120h5qr.h)(0x536110DD)
-F (.\AI2048.c)(0x53670400)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\ai2048.o --omf_browse .\ai2048.crf --depend .\ai2048.d)
+F (.\AI2048.c)(0x5367C047)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\ai2048.o --omf_browse .\ai2048.crf --depend .\ai2048.d)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\AI2048.h)(0x53669A99)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\2048.h)(0x5366F0DD)
-I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x5365724F)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\2048.h)(0x5367BF02)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\constants.h)(0x53681A6F)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\screen.h)(0x536110DD)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\pixel.h)(0x5363DC0E)
@@ -152,6 +154,13 @@ I (C:\Keil\ARM\ARMCC\include\errno.h)(0x51C86E14)
 I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\lm4f120h5qr.h)(0x536110DD)
 I (C:\Keil\ARM\ARMCC\include\stdlib.h)(0x51C86E14)
 F (.\AI2048.h)(0x53669A99)()
+F (.\spi.c)(0x536848E4)()
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\spi.h)(0x536824D8)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
+I (C:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C86E14)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\lm4f120h5qr.h)(0x536110DD)
+I (C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\gpio.h)(0x536110DD)
+F (.\eeprom.c)(0x53684923)()
 F (.\lib\pll.lib)(0x536110DD)()
 F (.\lib\uart.lib)(0x536110DD)()
 F (.\lib\gpio.lib)(0x536110DD)()

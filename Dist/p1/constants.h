@@ -1,5 +1,5 @@
 #ifndef _CONSTANTS_H
-#define _CONSTANTS_H
+#define _CONSTANTS_H 1
 
 #define _LITTLE_ENDIAN 1
 

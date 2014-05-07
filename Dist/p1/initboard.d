@@ -12,3 +12,4 @@
 .\initboard.o: systick.h
 .\initboard.o: hw4_gpio.h
 .\initboard.o: hw4_adc.h
+.\initboard.o: spi.h

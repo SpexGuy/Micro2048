@@ -127,7 +127,5 @@ void initializeGpioPins(void)
 	PortE->AlternateFunctionSelect |= PIN_3;
 	PortE->DigitalEnable &= ~PIN_3;
 	PortE->AnalogSelectMode |= PIN_3;
-	
-	
 }
 
