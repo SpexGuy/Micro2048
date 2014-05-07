@@ -88,12 +88,41 @@ void initializeGpioPins(void)
 	int delay;
 	bool locked;
 	UNUSED(delay); //delay is for delaying a clock cycle
+
+	//Port A
+	SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R0;
+	delay = SYSCTL_RCGCGPIO_R;
+	//switches 2 and 3, UART0
+	PortA->DigitalEnable |= PA6_SW2   | PA7_SW3 |
+													PA0_U0_RX | PA1_U0_TX;
+	PortA->Direction &= ~(PA6_SW2 | PA7_SW3);
+	PortA->PullUpSelect |= PA6_SW2 | PA7_SW3;
+  PortA->AlternateFunctionSelect |= PA0_U0_RX | PA1_U0_TX;
+  PortA->PortControl |= GPIO_PCTL_PA0_U0RX | GPIO_PCTL_PA1_U0TX;
+
 	//configure data registers
   SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R1;
 	delay = SYSCTL_RCGCGPIO_R;
 	PortB->DigitalEnable = 0xFF;
 	PortB->Direction = 0xFF;
 	
+	//configure switches
+	//Port D
+  SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R3;
+	delay = SYSCTL_RCGCGPIO_R;
+	PortD->DigitalEnable |= PIN_2 | PIN_3;
+	PortD->Direction &= ~(PIN_2 | PIN_3);
+	PortD->PullUpSelect |= PIN_2 | PIN_3;
+	
+	//configure ADC0 input
+	//Port E
+	SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
+	delay = SYSCTL_RCGCGPIO_R;
+	PortE->Direction &= ~PIN_3;
+	PortE->AlternateFunctionSelect |= PIN_3;
+	PortE->DigitalEnable &= ~PIN_3;
+	PortE->AnalogSelectMode |= PIN_3;
+
 	//configure /OE
 	SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R5;
 	delay = SYSCTL_RCGCGPIO_R;
@@ -107,25 +136,31 @@ void initializeGpioPins(void)
 	if (locked)
 		PortF->Lock = 0x4C4F434B;
 	
-	//configure switches
-  SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R0;
-	delay = SYSCTL_RCGCGPIO_R;
-	PortA->DigitalEnable |= PIN_6 | PIN_7;
-	PortA->Direction &= ~(PIN_6 | PIN_7);
-	PortA->PullUpSelect |= PIN_6 | PIN_7;
+//	{
+//		// *******************************
+//		// Set up the UART registers
+//		// *******************************
+//		UART_PERIPH *myUart = (UART_PERIPH *)UART0;
+//		
+//		// Eanble the clock gating register
+//		// ( Not found in the UART_PERIPH struct)
+//		SYSCTL_RCGCUART_R |= SYSCTL_RCGCUART_R0;  // 5
+//		delay = SYSCTL_RCGCUART_R;
+//		
+//		// Set the baud rate
+//		myUart->IntegerBaudRateDiv = 520;        // 6
+//		myUart->FracBaudRateDiv = 520;              // 
+//		// Configure the Line Control for 8-n-1
+//		myUart->LineControl |= UART_LCRH_WLEN_8 | UART_LCRH_FEN;                  // 8
+//		// Enable the UART - Need to enable both TX and RX
+//		myUart->UARTControl = UART_CTL_RXE | UART_CTL_TXE | UART_CTL_UARTEN;                 // 9
+//		// Wait until the UART is avaiable
+//		while( !(SYSCTL_PRUART_R & SYSCTL_PRUART_R0 ))
+//		{}
+//		
+//		delay = 500;
+//		while(delay --> 0);
+//	}
 	
-  SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R3;
-	delay = SYSCTL_RCGCGPIO_R;
-	PortD->DigitalEnable |= PIN_2 | PIN_3;
-	PortD->Direction &= ~(PIN_2 | PIN_3);
-	PortD->PullUpSelect |= PIN_2 | PIN_3;
-	
-	//configure ADC0 input
-	SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
-	delay = SYSCTL_RCGCGPIO_R;
-	PortE->Direction &= ~PIN_3;
-	PortE->AlternateFunctionSelect |= PIN_3;
-	PortE->DigitalEnable &= ~PIN_3;
-	PortE->AnalogSelectMode |= PIN_3;
 }
 

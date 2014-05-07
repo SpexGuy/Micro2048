@@ -505,41 +505,41 @@ Image Symbol Table
     .text                                    0x00000460   Section        0  systick.o(.text)
     .text                                    0x00000530   Section        0  hw4_adc.o(.text)
     .text                                    0x00000608   Section        0  hw4_gpio.o(.text)
-    .text                                    0x0000087c   Section        0  doublebuffer.o(.text)
-    .text                                    0x000008cc   Section        0  screen.o(.text)
-    .text                                    0x00000b90   Section        0  pixel.o(.text)
-    .text                                    0x00000d04   Section        0  renderer.o(.text)
-    .text                                    0x00000ed0   Section        0  animation.o(.text)
-    .text                                    0x00001170   Section        0  2048.o(.text)
-    .text                                    0x0000198c   Section        0  spi.o(.text)
-    .text                                    0x00001af8   Section        0  eeprom.o(.text)
-    .text                                    0x00001c48   Section        0  timer.o(.text)
-    .text                                    0x00001ce8   Section        0  pll.o(.text)
-    .text                                    0x00001d74   Section        0  uart.o(.text)
-    .text                                    0x00001e3c   Section        0  portc_init.o(.text)
-    .text                                    0x00001e80   Section        0  uldiv.o(.text)
-    .text                                    0x00001ee4   Section        0  rand.o(.text)
-    .text                                    0x00001f08   Section        0  memcpya.o(.text)
-    .text                                    0x00001f2c   Section        0  memseta.o(.text)
-    .text                                    0x00001f50   Section        0  llshl.o(.text)
-    .text                                    0x00001f6e   Section        0  llushr.o(.text)
-    .text                                    0x00001f90   Section       36  init.o(.text)
-    .text                                    0x00001fb4   Section        0  __dczerorl2.o(.text)
-    i.__0sprintf$8                           0x00002010   Section        0  printf8.o(i.__0sprintf$8)
-    i.__scatterload_copy                     0x00002038   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x00002046   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x00002048   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i._printf_core                           0x00002058   Section        0  printf8.o(i._printf_core)
-    _printf_core                             0x00002059   Thumb Code   988  printf8.o(i._printf_core)
-    i._printf_post_padding                   0x00002460   Section        0  printf8.o(i._printf_post_padding)
-    _printf_post_padding                     0x00002461   Thumb Code    38  printf8.o(i._printf_post_padding)
-    i._printf_pre_padding                    0x00002486   Section        0  printf8.o(i._printf_pre_padding)
-    _printf_pre_padding                      0x00002487   Thumb Code    48  printf8.o(i._printf_pre_padding)
-    i._sputc                                 0x000024b6   Section        0  printf8.o(i._sputc)
-    _sputc                                   0x000024b7   Thumb Code    10  printf8.o(i._sputc)
-    i.free                                   0x000024c0   Section        0  malloc.o(i.free)
-    i.malloc                                 0x00002510   Section        0  malloc.o(i.malloc)
-    .constdata                               0x0000257c   Section       12  main.o(.constdata)
+    .text                                    0x000008a4   Section        0  doublebuffer.o(.text)
+    .text                                    0x000008f4   Section        0  screen.o(.text)
+    .text                                    0x00000bb8   Section        0  pixel.o(.text)
+    .text                                    0x00000d2c   Section        0  renderer.o(.text)
+    .text                                    0x00000ef8   Section        0  animation.o(.text)
+    .text                                    0x00001198   Section        0  2048.o(.text)
+    .text                                    0x000019b4   Section        0  spi.o(.text)
+    .text                                    0x00001b20   Section        0  eeprom.o(.text)
+    .text                                    0x00001c70   Section        0  timer.o(.text)
+    .text                                    0x00001d10   Section        0  pll.o(.text)
+    .text                                    0x00001d9c   Section        0  uart.o(.text)
+    .text                                    0x00001e64   Section        0  portc_init.o(.text)
+    .text                                    0x00001ea8   Section        0  uldiv.o(.text)
+    .text                                    0x00001f0c   Section        0  rand.o(.text)
+    .text                                    0x00001f30   Section        0  memcpya.o(.text)
+    .text                                    0x00001f54   Section        0  memseta.o(.text)
+    .text                                    0x00001f78   Section        0  llshl.o(.text)
+    .text                                    0x00001f96   Section        0  llushr.o(.text)
+    .text                                    0x00001fb8   Section       36  init.o(.text)
+    .text                                    0x00001fdc   Section        0  __dczerorl2.o(.text)
+    i.__0sprintf$8                           0x00002038   Section        0  printf8.o(i.__0sprintf$8)
+    i.__scatterload_copy                     0x00002060   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x0000206e   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x00002070   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._printf_core                           0x00002080   Section        0  printf8.o(i._printf_core)
+    _printf_core                             0x00002081   Thumb Code   988  printf8.o(i._printf_core)
+    i._printf_post_padding                   0x00002488   Section        0  printf8.o(i._printf_post_padding)
+    _printf_post_padding                     0x00002489   Thumb Code    38  printf8.o(i._printf_post_padding)
+    i._printf_pre_padding                    0x000024ae   Section        0  printf8.o(i._printf_pre_padding)
+    _printf_pre_padding                      0x000024af   Thumb Code    48  printf8.o(i._printf_pre_padding)
+    i._sputc                                 0x000024de   Section        0  printf8.o(i._sputc)
+    _sputc                                   0x000024df   Thumb Code    10  printf8.o(i._sputc)
+    i.free                                   0x000024e8   Section        0  malloc.o(i.free)
+    i.malloc                                 0x00002538   Section        0  malloc.o(i.malloc)
+    .constdata                               0x000025a4   Section       12  main.o(.constdata)
     .data                                    0x20000000   Section      161  main.o(.data)
     .data                                    0x200000a4   Section       24  initboard.o(.data)
     .data                                    0x200000c0   Section       21  systick.o(.data)
@@ -655,109 +655,109 @@ Image Symbol Table
     updateRefreshRate                        0x000005cb   Thumb Code    36  hw4_adc.o(.text)
     getButton                                0x00000609   Thumb Code    22  hw4_gpio.o(.text)
     updateButtons                            0x0000061f   Thumb Code   180  hw4_gpio.o(.text)
-    initializeGpioPins                       0x000006d3   Thumb Code   386  hw4_gpio.o(.text)
-    getDrawBuffer                            0x0000087d   Thumb Code    12  doublebuffer.o(.text)
-    swapBuffers                              0x00000889   Thumb Code    26  doublebuffer.o(.text)
-    initDoubleBuffers                        0x000008a3   Thumb Code    20  doublebuffer.o(.text)
-    clearDrawBuffer                          0x000008b7   Thumb Code    14  doublebuffer.o(.text)
-    clearFrame                               0x000008cd   Thumb Code    16  screen.o(.text)
-    drawAACorners                            0x000008dd   Thumb Code   250  screen.o(.text)
-    drawAAPixel                              0x000009d7   Thumb Code    44  screen.o(.text)
-    drawAAEdges                              0x00000a03   Thumb Code   216  screen.o(.text)
-    drawRect                                 0x00000adb   Thumb Code    88  screen.o(.text)
-    drawAARect                               0x00000b33   Thumb Code    94  screen.o(.text)
-    nMix                                     0x00000b91   Thumb Code    76  pixel.o(.text)
-    mix                                      0x00000bdd   Thumb Code    24  pixel.o(.text)
-    nComplement                              0x00000bf5   Thumb Code    26  pixel.o(.text)
-    complement                               0x00000c0f   Thumb Code    12  pixel.o(.text)
-    nMultiply                                0x00000c1b   Thumb Code    26  pixel.o(.text)
-    multiply                                 0x00000c35   Thumb Code    16  pixel.o(.text)
-    nAdd                                     0x00000c45   Thumb Code    34  pixel.o(.text)
-    add                                      0x00000c67   Thumb Code    14  pixel.o(.text)
-    percentAdd                               0x00000c75   Thumb Code   116  pixel.o(.text)
-    setColor                                 0x00000ce9   Thumb Code    22  pixel.o(.text)
-    gammaCorrect                             0x00000d05   Thumb Code    14  renderer.o(.text)
-    updateRow                                0x00000d13   Thumb Code   400  renderer.o(.text)
-    setCurrentBuffer                         0x00000ea3   Thumb Code     6  renderer.o(.text)
-    getCurrentBuffer                         0x00000ea9   Thumb Code     6  renderer.o(.text)
-    setBrightness                            0x00000eaf   Thumb Code     6  renderer.o(.text)
-    getBrightness                            0x00000eb5   Thumb Code     6  renderer.o(.text)
-    noFunc                                   0x00000ed1   Thumb Code     2  animation.o(.text)
-    scheduleAnimation                        0x00000ed3   Thumb Code   106  animation.o(.text)
-    updateAnimation                          0x00000f3d   Thumb Code   338  animation.o(.text)
-    addNewAnimations                         0x0000108f   Thumb Code    44  animation.o(.text)
-    updateAnimations                         0x000010bb   Thumb Code   106  animation.o(.text)
-    drawAnimation                            0x00001125   Thumb Code    36  animation.o(.text)
-    drawAnimations                           0x00001149   Thumb Code    26  animation.o(.text)
-    countEmpty                               0x00001171   Thumb Code    46  2048.o(.text)
-    getNthEmptyTile                          0x0000119f   Thumb Code    66  2048.o(.text)
-    showTile                                 0x000011e1   Thumb Code     8  2048.o(.text)
-    fadeToColor                              0x000011e9   Thumb Code    84  2048.o(.text)
-    addTile                                  0x0000123d   Thumb Code   160  2048.o(.text)
-    setPos                                   0x000012dd   Thumb Code    30  2048.o(.text)
-    removeTile                               0x000012fb   Thumb Code    28  2048.o(.text)
-    canTakeInput                             0x00001317   Thumb Code    38  2048.o(.text)
-    endMergeTranslate                        0x0000133d   Thumb Code    26  2048.o(.text)
-    spawnMergeAnim                           0x00001357   Thumb Code   102  2048.o(.text)
-    spawnTranslateAnim                       0x000013bd   Thumb Code   130  2048.o(.text)
-    init2048                                 0x0000143f   Thumb Code    14  2048.o(.text)
-    shiftUp                                  0x0000144d   Thumb Code   192  2048.o(.text)
-    shiftDown                                0x0000150d   Thumb Code   224  2048.o(.text)
-    shiftLeft                                0x000015ed   Thumb Code   192  2048.o(.text)
-    shiftRight                               0x000016ad   Thumb Code   202  2048.o(.text)
-    addRandomTile                            0x00001777   Thumb Code    96  2048.o(.text)
-    drawBoard                                0x000017d7   Thumb Code    76  2048.o(.text)
-    saveGame                                 0x00001823   Thumb Code   170  2048.o(.text)
-    restoreGame                              0x000018cd   Thumb Code   154  2048.o(.text)
-    spiTx                                    0x0000198d   Thumb Code   132  spi.o(.text)
-    initializePortASpi0                      0x00001a11   Thumb Code    82  spi.o(.text)
-    initializeSPI                            0x00001a63   Thumb Code   130  spi.o(.text)
-    spi_eeprom_read_status                   0x00001af9   Thumb Code    24  eeprom.o(.text)
-    spi_eeprom_wait_write_in_progress        0x00001b11   Thumb Code    16  eeprom.o(.text)
-    spi_eeprom_read_byte                     0x00001b21   Thumb Code    42  eeprom.o(.text)
-    spi_eeprom_read_array                    0x00001b4b   Thumb Code    84  eeprom.o(.text)
-    spi_eeprom_write_disable                 0x00001b9f   Thumb Code    18  eeprom.o(.text)
-    spi_eeprom_write_enable                  0x00001bb1   Thumb Code    18  eeprom.o(.text)
-    spi_eeprom_write_byte                    0x00001bc3   Thumb Code    48  eeprom.o(.text)
-    spi_eeprom_write_array                   0x00001bf3   Thumb Code    84  eeprom.o(.text)
-    initTimer0                               0x00001c49   Thumb Code   118  timer.o(.text)
-    TIMER0IntHandler                         0x00001cbf   Thumb Code    16  timer.o(.text)
-    PLL_Init                                 0x00001ce9   Thumb Code   134  pll.o(.text)
-    uartInitPolling                          0x00001d75   Thumb Code   134  uart.o(.text)
-    uartRxPoll                               0x00001dfb   Thumb Code    20  uart.o(.text)
-    uartTxPoll                               0x00001e0f   Thumb Code    30  uart.o(.text)
-    initPortC                                0x00001e3d   Thumb Code    54  portc_init.o(.text)
-    __aeabi_uldivmod                         0x00001e81   Thumb Code    98  uldiv.o(.text)
-    rand                                     0x00001ee5   Thumb Code    20  rand.o(.text)
-    srand                                    0x00001ef9   Thumb Code     6  rand.o(.text)
-    __aeabi_memcpy                           0x00001f09   Thumb Code    36  memcpya.o(.text)
-    __aeabi_memcpy4                          0x00001f09   Thumb Code     0  memcpya.o(.text)
-    __aeabi_memcpy8                          0x00001f09   Thumb Code     0  memcpya.o(.text)
-    __aeabi_memset                           0x00001f2d   Thumb Code    14  memseta.o(.text)
-    __aeabi_memset4                          0x00001f2d   Thumb Code     0  memseta.o(.text)
-    __aeabi_memset8                          0x00001f2d   Thumb Code     0  memseta.o(.text)
-    __aeabi_memclr                           0x00001f3b   Thumb Code     4  memseta.o(.text)
-    __aeabi_memclr4                          0x00001f3b   Thumb Code     0  memseta.o(.text)
-    __aeabi_memclr8                          0x00001f3b   Thumb Code     0  memseta.o(.text)
-    _memset$wrapper                          0x00001f3f   Thumb Code    18  memseta.o(.text)
-    __aeabi_llsl                             0x00001f51   Thumb Code    30  llshl.o(.text)
-    _ll_shift_l                              0x00001f51   Thumb Code     0  llshl.o(.text)
-    __aeabi_llsr                             0x00001f6f   Thumb Code    32  llushr.o(.text)
-    _ll_ushift_r                             0x00001f6f   Thumb Code     0  llushr.o(.text)
-    __scatterload                            0x00001f91   Thumb Code    28  init.o(.text)
-    __scatterload_rt2                        0x00001f91   Thumb Code     0  init.o(.text)
-    __decompress                             0x00001fb5   Thumb Code     0  __dczerorl2.o(.text)
-    __decompress1                            0x00001fb5   Thumb Code    92  __dczerorl2.o(.text)
-    __0sprintf$8                             0x00002011   Thumb Code    34  printf8.o(i.__0sprintf$8)
-    __1sprintf$8                             0x00002011   Thumb Code     0  printf8.o(i.__0sprintf$8)
-    __2sprintf                               0x00002011   Thumb Code     0  printf8.o(i.__0sprintf$8)
-    __scatterload_copy                       0x00002039   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x00002047   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x00002049   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    free                                     0x000024c1   Thumb Code    76  malloc.o(i.free)
-    malloc                                   0x00002511   Thumb Code    92  malloc.o(i.malloc)
-    Region$$Table$$Base                      0x00002588   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000025a8   Number         0  anon$$obj.o(Region$$Table)
+    initializeGpioPins                       0x000006d3   Thumb Code   426  hw4_gpio.o(.text)
+    getDrawBuffer                            0x000008a5   Thumb Code    12  doublebuffer.o(.text)
+    swapBuffers                              0x000008b1   Thumb Code    26  doublebuffer.o(.text)
+    initDoubleBuffers                        0x000008cb   Thumb Code    20  doublebuffer.o(.text)
+    clearDrawBuffer                          0x000008df   Thumb Code    14  doublebuffer.o(.text)
+    clearFrame                               0x000008f5   Thumb Code    16  screen.o(.text)
+    drawAACorners                            0x00000905   Thumb Code   250  screen.o(.text)
+    drawAAPixel                              0x000009ff   Thumb Code    44  screen.o(.text)
+    drawAAEdges                              0x00000a2b   Thumb Code   216  screen.o(.text)
+    drawRect                                 0x00000b03   Thumb Code    88  screen.o(.text)
+    drawAARect                               0x00000b5b   Thumb Code    94  screen.o(.text)
+    nMix                                     0x00000bb9   Thumb Code    76  pixel.o(.text)
+    mix                                      0x00000c05   Thumb Code    24  pixel.o(.text)
+    nComplement                              0x00000c1d   Thumb Code    26  pixel.o(.text)
+    complement                               0x00000c37   Thumb Code    12  pixel.o(.text)
+    nMultiply                                0x00000c43   Thumb Code    26  pixel.o(.text)
+    multiply                                 0x00000c5d   Thumb Code    16  pixel.o(.text)
+    nAdd                                     0x00000c6d   Thumb Code    34  pixel.o(.text)
+    add                                      0x00000c8f   Thumb Code    14  pixel.o(.text)
+    percentAdd                               0x00000c9d   Thumb Code   116  pixel.o(.text)
+    setColor                                 0x00000d11   Thumb Code    22  pixel.o(.text)
+    gammaCorrect                             0x00000d2d   Thumb Code    14  renderer.o(.text)
+    updateRow                                0x00000d3b   Thumb Code   400  renderer.o(.text)
+    setCurrentBuffer                         0x00000ecb   Thumb Code     6  renderer.o(.text)
+    getCurrentBuffer                         0x00000ed1   Thumb Code     6  renderer.o(.text)
+    setBrightness                            0x00000ed7   Thumb Code     6  renderer.o(.text)
+    getBrightness                            0x00000edd   Thumb Code     6  renderer.o(.text)
+    noFunc                                   0x00000ef9   Thumb Code     2  animation.o(.text)
+    scheduleAnimation                        0x00000efb   Thumb Code   106  animation.o(.text)
+    updateAnimation                          0x00000f65   Thumb Code   338  animation.o(.text)
+    addNewAnimations                         0x000010b7   Thumb Code    44  animation.o(.text)
+    updateAnimations                         0x000010e3   Thumb Code   106  animation.o(.text)
+    drawAnimation                            0x0000114d   Thumb Code    36  animation.o(.text)
+    drawAnimations                           0x00001171   Thumb Code    26  animation.o(.text)
+    countEmpty                               0x00001199   Thumb Code    46  2048.o(.text)
+    getNthEmptyTile                          0x000011c7   Thumb Code    66  2048.o(.text)
+    showTile                                 0x00001209   Thumb Code     8  2048.o(.text)
+    fadeToColor                              0x00001211   Thumb Code    84  2048.o(.text)
+    addTile                                  0x00001265   Thumb Code   160  2048.o(.text)
+    setPos                                   0x00001305   Thumb Code    30  2048.o(.text)
+    removeTile                               0x00001323   Thumb Code    28  2048.o(.text)
+    canTakeInput                             0x0000133f   Thumb Code    38  2048.o(.text)
+    endMergeTranslate                        0x00001365   Thumb Code    26  2048.o(.text)
+    spawnMergeAnim                           0x0000137f   Thumb Code   102  2048.o(.text)
+    spawnTranslateAnim                       0x000013e5   Thumb Code   130  2048.o(.text)
+    init2048                                 0x00001467   Thumb Code    14  2048.o(.text)
+    shiftUp                                  0x00001475   Thumb Code   192  2048.o(.text)
+    shiftDown                                0x00001535   Thumb Code   224  2048.o(.text)
+    shiftLeft                                0x00001615   Thumb Code   192  2048.o(.text)
+    shiftRight                               0x000016d5   Thumb Code   202  2048.o(.text)
+    addRandomTile                            0x0000179f   Thumb Code    96  2048.o(.text)
+    drawBoard                                0x000017ff   Thumb Code    76  2048.o(.text)
+    saveGame                                 0x0000184b   Thumb Code   170  2048.o(.text)
+    restoreGame                              0x000018f5   Thumb Code   154  2048.o(.text)
+    spiTx                                    0x000019b5   Thumb Code   132  spi.o(.text)
+    initializePortASpi0                      0x00001a39   Thumb Code    82  spi.o(.text)
+    initializeSPI                            0x00001a8b   Thumb Code   130  spi.o(.text)
+    spi_eeprom_read_status                   0x00001b21   Thumb Code    24  eeprom.o(.text)
+    spi_eeprom_wait_write_in_progress        0x00001b39   Thumb Code    16  eeprom.o(.text)
+    spi_eeprom_read_byte                     0x00001b49   Thumb Code    42  eeprom.o(.text)
+    spi_eeprom_read_array                    0x00001b73   Thumb Code    84  eeprom.o(.text)
+    spi_eeprom_write_disable                 0x00001bc7   Thumb Code    18  eeprom.o(.text)
+    spi_eeprom_write_enable                  0x00001bd9   Thumb Code    18  eeprom.o(.text)
+    spi_eeprom_write_byte                    0x00001beb   Thumb Code    48  eeprom.o(.text)
+    spi_eeprom_write_array                   0x00001c1b   Thumb Code    84  eeprom.o(.text)
+    initTimer0                               0x00001c71   Thumb Code   118  timer.o(.text)
+    TIMER0IntHandler                         0x00001ce7   Thumb Code    16  timer.o(.text)
+    PLL_Init                                 0x00001d11   Thumb Code   134  pll.o(.text)
+    uartInitPolling                          0x00001d9d   Thumb Code   134  uart.o(.text)
+    uartRxPoll                               0x00001e23   Thumb Code    20  uart.o(.text)
+    uartTxPoll                               0x00001e37   Thumb Code    30  uart.o(.text)
+    initPortC                                0x00001e65   Thumb Code    54  portc_init.o(.text)
+    __aeabi_uldivmod                         0x00001ea9   Thumb Code    98  uldiv.o(.text)
+    rand                                     0x00001f0d   Thumb Code    20  rand.o(.text)
+    srand                                    0x00001f21   Thumb Code     6  rand.o(.text)
+    __aeabi_memcpy                           0x00001f31   Thumb Code    36  memcpya.o(.text)
+    __aeabi_memcpy4                          0x00001f31   Thumb Code     0  memcpya.o(.text)
+    __aeabi_memcpy8                          0x00001f31   Thumb Code     0  memcpya.o(.text)
+    __aeabi_memset                           0x00001f55   Thumb Code    14  memseta.o(.text)
+    __aeabi_memset4                          0x00001f55   Thumb Code     0  memseta.o(.text)
+    __aeabi_memset8                          0x00001f55   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr                           0x00001f63   Thumb Code     4  memseta.o(.text)
+    __aeabi_memclr4                          0x00001f63   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr8                          0x00001f63   Thumb Code     0  memseta.o(.text)
+    _memset$wrapper                          0x00001f67   Thumb Code    18  memseta.o(.text)
+    __aeabi_llsl                             0x00001f79   Thumb Code    30  llshl.o(.text)
+    _ll_shift_l                              0x00001f79   Thumb Code     0  llshl.o(.text)
+    __aeabi_llsr                             0x00001f97   Thumb Code    32  llushr.o(.text)
+    _ll_ushift_r                             0x00001f97   Thumb Code     0  llushr.o(.text)
+    __scatterload                            0x00001fb9   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x00001fb9   Thumb Code     0  init.o(.text)
+    __decompress                             0x00001fdd   Thumb Code     0  __dczerorl2.o(.text)
+    __decompress1                            0x00001fdd   Thumb Code    92  __dczerorl2.o(.text)
+    __0sprintf$8                             0x00002039   Thumb Code    34  printf8.o(i.__0sprintf$8)
+    __1sprintf$8                             0x00002039   Thumb Code     0  printf8.o(i.__0sprintf$8)
+    __2sprintf                               0x00002039   Thumb Code     0  printf8.o(i.__0sprintf$8)
+    __scatterload_copy                       0x00002061   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x0000206f   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x00002071   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    free                                     0x000024e9   Thumb Code    76  malloc.o(i.free)
+    malloc                                   0x00002539   Thumb Code    92  malloc.o(i.malloc)
+    Region$$Table$$Base                      0x000025b0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000025d0   Number         0  anon$$obj.o(Region$$Table)
     teamNumber                               0x20000000   Data           3  main.o(.data)
     teamMembers                              0x20000003   Data          33  main.o(.data)
     portA_config                             0x20000024   Data          20  main.o(.data)
@@ -802,9 +802,9 @@ Memory Map of the image
 
   Image Entry point : 0x000000fd
 
-  Load Region LR_IROM (Base: 0x00000000, Size: 0x00002704, Max: 0x00040000, ABSOLUTE, COMPRESSED[0x00002640])
+  Load Region LR_IROM (Base: 0x00000000, Size: 0x0000272c, Max: 0x00040000, ABSOLUTE, COMPRESSED[0x00002668])
 
-    Execution Region ER_IROM (Base: 0x00000000, Size: 0x000025a8, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM (Base: 0x00000000, Size: 0x000025d0, Max: 0x00040000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -823,43 +823,43 @@ Memory Map of the image
     0x00000400   0x00000060   Code   RO          115    .text               initboard.o
     0x00000460   0x000000d0   Code   RO          134    .text               systick.o
     0x00000530   0x000000d8   Code   RO          150    .text               hw4_adc.o
-    0x00000608   0x00000274   Code   RO          166    .text               hw4_gpio.o
-    0x0000087c   0x00000050   Code   RO          197    .text               doublebuffer.o
-    0x000008cc   0x000002c4   Code   RO          216    .text               screen.o
-    0x00000b90   0x00000174   Code   RO          228    .text               pixel.o
-    0x00000d04   0x000001cc   Code   RO          241    .text               renderer.o
-    0x00000ed0   0x000002a0   Code   RO          257    .text               animation.o
-    0x00001170   0x0000081c   Code   RO          279    .text               2048.o
-    0x0000198c   0x0000016c   Code   RO          315    .text               spi.o
-    0x00001af8   0x0000014e   Code   RO          331    .text               eeprom.o
-    0x00001c46   0x00000002   PAD
-    0x00001c48   0x000000a0   Code   RO          349    .text               timer.o
-    0x00001ce8   0x0000008c   Code   RO          361    .text               pll.lib(pll.o)
-    0x00001d74   0x000000c8   Code   RO          376    .text               uart.lib(uart.o)
-    0x00001e3c   0x00000044   Code   RO          407    .text               portC_init.lib(portc_init.o)
-    0x00001e80   0x00000062   Code   RO          422    .text               mc_w.l(uldiv.o)
-    0x00001ee2   0x00000002   PAD
-    0x00001ee4   0x00000024   Code   RO          424    .text               mc_w.l(rand.o)
-    0x00001f08   0x00000024   Code   RO          427    .text               mc_w.l(memcpya.o)
-    0x00001f2c   0x00000024   Code   RO          429    .text               mc_w.l(memseta.o)
-    0x00001f50   0x0000001e   Code   RO          741    .text               mc_w.l(llshl.o)
-    0x00001f6e   0x00000020   Code   RO          743    .text               mc_w.l(llushr.o)
-    0x00001f8e   0x00000002   PAD
-    0x00001f90   0x00000024   Code   RO          758    .text               mc_w.l(init.o)
-    0x00001fb4   0x0000005c   Code   RO          774    .text               mc_w.l(__dczerorl2.o)
-    0x00002010   0x00000028   Code   RO          642    i.__0sprintf$8      mc_w.l(printf8.o)
-    0x00002038   0x0000000e   Code   RO          768    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x00002046   0x00000002   Code   RO          769    i.__scatterload_null  mc_w.l(handlers.o)
-    0x00002048   0x0000000e   Code   RO          770    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x00002056   0x00000002   PAD
-    0x00002058   0x00000408   Code   RO          647    i._printf_core      mc_w.l(printf8.o)
-    0x00002460   0x00000026   Code   RO          648    i._printf_post_padding  mc_w.l(printf8.o)
-    0x00002486   0x00000030   Code   RO          649    i._printf_pre_padding  mc_w.l(printf8.o)
-    0x000024b6   0x0000000a   Code   RO          651    i._sputc            mc_w.l(printf8.o)
-    0x000024c0   0x00000050   Code   RO          694    i.free              mc_w.l(malloc.o)
-    0x00002510   0x0000006c   Code   RO          695    i.malloc            mc_w.l(malloc.o)
-    0x0000257c   0x0000000c   Data   RO           13    .constdata          main.o
-    0x00002588   0x00000020   Data   RO          766    Region$$Table       anon$$obj.o
+    0x00000608   0x0000029c   Code   RO          166    .text               hw4_gpio.o
+    0x000008a4   0x00000050   Code   RO          197    .text               doublebuffer.o
+    0x000008f4   0x000002c4   Code   RO          216    .text               screen.o
+    0x00000bb8   0x00000174   Code   RO          228    .text               pixel.o
+    0x00000d2c   0x000001cc   Code   RO          241    .text               renderer.o
+    0x00000ef8   0x000002a0   Code   RO          257    .text               animation.o
+    0x00001198   0x0000081c   Code   RO          279    .text               2048.o
+    0x000019b4   0x0000016c   Code   RO          315    .text               spi.o
+    0x00001b20   0x0000014e   Code   RO          331    .text               eeprom.o
+    0x00001c6e   0x00000002   PAD
+    0x00001c70   0x000000a0   Code   RO          349    .text               timer.o
+    0x00001d10   0x0000008c   Code   RO          361    .text               pll.lib(pll.o)
+    0x00001d9c   0x000000c8   Code   RO          376    .text               uart.lib(uart.o)
+    0x00001e64   0x00000044   Code   RO          407    .text               portC_init.lib(portc_init.o)
+    0x00001ea8   0x00000062   Code   RO          422    .text               mc_w.l(uldiv.o)
+    0x00001f0a   0x00000002   PAD
+    0x00001f0c   0x00000024   Code   RO          424    .text               mc_w.l(rand.o)
+    0x00001f30   0x00000024   Code   RO          427    .text               mc_w.l(memcpya.o)
+    0x00001f54   0x00000024   Code   RO          429    .text               mc_w.l(memseta.o)
+    0x00001f78   0x0000001e   Code   RO          741    .text               mc_w.l(llshl.o)
+    0x00001f96   0x00000020   Code   RO          743    .text               mc_w.l(llushr.o)
+    0x00001fb6   0x00000002   PAD
+    0x00001fb8   0x00000024   Code   RO          758    .text               mc_w.l(init.o)
+    0x00001fdc   0x0000005c   Code   RO          774    .text               mc_w.l(__dczerorl2.o)
+    0x00002038   0x00000028   Code   RO          642    i.__0sprintf$8      mc_w.l(printf8.o)
+    0x00002060   0x0000000e   Code   RO          768    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0000206e   0x00000002   Code   RO          769    i.__scatterload_null  mc_w.l(handlers.o)
+    0x00002070   0x0000000e   Code   RO          770    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x0000207e   0x00000002   PAD
+    0x00002080   0x00000408   Code   RO          647    i._printf_core      mc_w.l(printf8.o)
+    0x00002488   0x00000026   Code   RO          648    i._printf_post_padding  mc_w.l(printf8.o)
+    0x000024ae   0x00000030   Code   RO          649    i._printf_pre_padding  mc_w.l(printf8.o)
+    0x000024de   0x0000000a   Code   RO          651    i._sputc            mc_w.l(printf8.o)
+    0x000024e8   0x00000050   Code   RO          694    i.free              mc_w.l(malloc.o)
+    0x00002538   0x0000006c   Code   RO          695    i.malloc            mc_w.l(malloc.o)
+    0x000025a4   0x0000000c   Data   RO           13    .constdata          main.o
+    0x000025b0   0x00000020   Data   RO          766    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM (Base: 0x20000000, Size: 0x000023d8, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x00000098])
@@ -900,24 +900,24 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      2076         60          0         80          0       8027   2048.o
-       672         14          0          8          0       2803   animation.o
-        80          8          0          1        512       1389   doublebuffer.o
-       334          0          0          0          0       2612   eeprom.o
-       216         26          0          8          0       1226   hw4_adc.o
-       628         40          0          5         12       1910   hw4_gpio.o
-        96         10          0         24          0       1383   initboard.o
-       684        136         12        161        104      15809   main.o
-       372          6          0          4          0       2834   pixel.o
-       460         22          0          8          0       2380   renderer.o
-       708          0          0          0          0       3319   screen.o
-       364         20          0          4          0       1900   spi.o
-       320        242          0          0       8192        432   startup.o
-       208         32          0         21          0       1451   systick.o
-       160         26          0          0          0        682   timer.o
+      2076         60          0         80          0       8083   2048.o
+       672         14          0          8          0       2847   animation.o
+        80          8          0          1        512       1429   doublebuffer.o
+       334          0          0          0          0       2640   eeprom.o
+       216         26          0          8          0       1254   hw4_adc.o
+       668         40          0          5         12       2002   hw4_gpio.o
+        96         10          0         24          0       1427   initboard.o
+       684        136         12        161        104      15997   main.o
+       372          6          0          4          0       2862   pixel.o
+       460         22          0          8          0       2428   renderer.o
+       708          0          0          0          0       3347   screen.o
+       364         20          0          4          0       1940   spi.o
+       320        242          0          0       8192        456   startup.o
+       208         32          0         21          0       1491   systick.o
+       160         26          0          0          0        694   timer.o
 
     ----------------------------------------------------------------------
-      7380        642         44        336       8824      48157   Object Totals
+      7420        642         44        336       8824      48897   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          2          0          0         12          4          0   (incl. Padding)
 
@@ -972,15 +972,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      9596        774         44        348       8828      52556   Grand Totals
-      9596        774         44        152       8828      52556   ELF Image Totals (compressed)
-      9596        774         44        152          0          0   ROM Totals
+      9636        774         44        348       8828      53296   Grand Totals
+      9636        774         44        152       8828      53296   ELF Image Totals (compressed)
+      9636        774         44        152          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 9640 (   9.41kB)
+    Total RO  Size (Code + RO Data)                 9680 (   9.45kB)
     Total RW  Size (RW Data + ZI Data)              9176 (   8.96kB)
-    Total ROM Size (Code + RO Data + RW Data)       9792 (   9.56kB)
+    Total ROM Size (Code + RO Data + RW Data)       9832 (   9.60kB)
 
 ==============================================================================
 
