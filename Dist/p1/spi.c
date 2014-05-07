@@ -27,6 +27,7 @@ void spiTx(uint8_t *dataIn, int32_t size, uint8_t *dataOut) {
 
 bool initializeSPI( uint32_t base, uint8_t phase, uint8_t polarity) {
   uint32_t delay;
+	UNUSED(delay);
   // Turn on the Clock Gating Register
   switch (base) 
   {
@@ -80,8 +81,9 @@ bool initializeSPI( uint32_t base, uint8_t phase, uint8_t polarity) {
 // *******************************************
 void initializePortASpi0(void)
 {
-  uint32_t delay;
   GPIO_PORT *GpioPortA = (GPIO_PORT*)PORTA;
+  uint32_t delay;
+	UNUSED(delay);
 	
   // Turn on the clock gating register for GPIO port A
   // Make sure not to turn of any of the other ports

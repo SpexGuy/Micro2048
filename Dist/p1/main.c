@@ -21,8 +21,8 @@
 #include "spi.h"
 #include "eeprom.h"
 
-#define isAI false
-#define IS_EEPROM_TEST true
+//#define isAI 1
+#define IS_EEPROM_TEST 1
 
 extern void uartTxPoll(uint32_t base, char *data);
 
@@ -89,7 +89,7 @@ void printBLerpFracs() {
 }
 
 bool checkInput(void) {
-	if (isAI) {
+#	ifdef isAI
 		if(canTakeInput(&board)) {	
 			switch(getNextMove(&board)) {
 				case 0:
@@ -111,7 +111,7 @@ bool checkInput(void) {
 		} else {
 			return false;
 		}
-	} else {
+#	else
 		if (getButton(BUTTON_NORTH))
 			return shiftUp(&board);
 		else if (getButton(BUTTON_SOUTH))
@@ -121,7 +121,7 @@ bool checkInput(void) {
 		else if (getButton(BUTTON_WEST))
 			return shiftLeft(&board);
 		return false;
-	}
+#	endif
 }
 
 int main(void)
@@ -144,44 +144,38 @@ int main(void)
 	addRandomTile(&board);
 	addRandomTile(&board);
 	
-	if(IS_EEPROM_TEST) {
+#	ifdef IS_EEPROM_TEST
+	{
 		char out;
+		char printbuf[10];
 		uint32_t count, dummy;
-		uint16_t address = 0xDEAD;
-		uint8_t writeData = 0xB;
+		uint16_t address = 0x2;
+		uint8_t writeData = 0xA;
+		UNUSED(dummy);
 		spi_eeprom_write_byte(address, writeData);
 		
 		for(count = 0; count < 10000; count++) {
 			dummy = 0;
 		}
-	
+
 		out = spi_eeprom_read_byte(address);
-		while(1) {	
-			updateAnimations();
-			clearDrawBuffer();
-			drawBuffer = getDrawBuffer();
-			drawBoard(drawBuffer, &board);
-			drawAnimations(drawBuffer);
-			swapBuffers();
-			updateRefreshRate();
-			updateButtons();
-			if (checkInput()) {
-				addRandomTile(&board);
-			}
-		}
-	} else {
-		while(1) {
-			updateAnimations();
-			clearDrawBuffer();
-			drawBuffer = getDrawBuffer();
-			drawBoard(drawBuffer, &board);
-			drawAnimations(drawBuffer);
-			swapBuffers();
-			updateRefreshRate();
-			updateButtons();
-			if (checkInput()) {
-				addRandomTile(&board);
-			}
+		
+		sprintf(printbuf, "%X\n\r", out);
+		uartTxPoll(UART0, printbuf);
+	}
+#	endif
+
+	while(1) {
+		updateAnimations();
+		clearDrawBuffer();
+		drawBuffer = getDrawBuffer();
+		drawBoard(drawBuffer, &board);
+		drawAnimations(drawBuffer);
+		swapBuffers();
+		updateRefreshRate();
+		updateButtons();
+		if (checkInput()) {
+			addRandomTile(&board);
 		}
 	}
 }
