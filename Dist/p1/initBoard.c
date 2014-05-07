@@ -34,11 +34,16 @@ void initBoard(void)
    int i = 0;
   // Initialize the PLLs so the the main CPU frequency is 80MHz
   PLL_Init();
-  initPortC();
+	StartCritical();
+  initializeSysTick(SYSTICK_COUNT, true);
+	//timer0
+	initPortC();
 	initializeGpioPins();
-  uartInitPolling(UART0);
-
+	uartInitPolling(UART0);
+	//uart 2 and 5
   initializeADC();
+	initializeSPI(SSI0, 1, 1);
+	EndCritical();
   
   // Need to wait a while before the UART is functional
   while(i < 10000)
@@ -56,7 +61,6 @@ void initBoard(void)
     i++;
   }
 
-  initializeSysTick(SYSTICK_COUNT, true);
 }
 
 

@@ -17,7 +17,7 @@ void spi_eeprom_write_byte(uint16_t address, uint8_t data);
 uint8_t spi_eeprom_read_status(void);
 void spi_eeprom_write_enable(void);
 void spi_eeprom_write_disable(void);
-void spi_eeprom_wait_write_in_progress(void);
+uint8_t spi_eeprom_wait_write_in_progress(void);
 
 //********* Structs ***********//
 
@@ -26,15 +26,15 @@ typedef struct {
 	uint8_t addr_hi;
 	uint8_t addr_low;
 	uint8_t data;
-} *SPI_EEPROM_BYTE_CMD;
+} SPI_EEPROM_BYTE_CMD;
 
 typedef struct {
 	uint8_t inst;
 	uint8_t data;
-} *SPI_EEPROM_CFG_CMD;
+} SPI_EEPROM_CFG_CMD;
 
 typedef struct {
 	uint8_t inst;
-} *SPI_EEPROM_EN_CMD;
+} SPI_EEPROM_EN_CMD;
 
 #endif

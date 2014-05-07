@@ -6,3 +6,4 @@
 .\spi.o: lm4f120h5qr.h
 .\spi.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
 .\spi.o: gpio.h
+.\spi.o: board_ports.h
