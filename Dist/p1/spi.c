@@ -15,23 +15,27 @@ SPI_PERIPH *spi;
 void initializePortASpi0(void);
 
 void spiTx(uint8_t *dataIn, int32_t size, uint8_t *dataOut) {
-	uint16_t c;
+	uint16_t c, d;
 
 	//Wait for not busy
 	while(spi->SSISR & SSI_SR_BSY);
 	
 	for(c = 0; c < size; c++) {
-		//wait for transmit not full
-		while(!(spi->SSISR & SSI_SR_TNF));
-		//send data
-		spi->SSIDR = dataIn[c];
-	}
+		d = c;
+		spi->SSICR1 &= ~SSI_CR1_SSE;
+		//send until tx full
+		while((spi->SSISR & SSI_SR_TNF) && d < size) {
+			//send data
+			spi->SSIDR = dataIn[d++];
+		}
+		spi->SSICR1 |= SSI_CR1_SSE;
 
-	for(c = 0; c < size; c++) {
-		//wait for data in receive fifo
-		while(!(spi->SSISR & SSI_SR_RNE));
-		//read data
-		dataOut[c] = spi->SSIDR;
+		for (; c < d; c++) {
+			//wait for data in receive fifo
+			while(!(spi->SSISR & SSI_SR_RNE));
+			//read data
+			dataOut[c] = spi->SSIDR;
+		}
 	}
 }
 

@@ -22,7 +22,7 @@
 #include "eeprom.h"
 
 //#define isAI 1
-#define IS_EEPROM_TEST 1
+//#define IS_EEPROM_TEST 1
 
 extern void uartTxPoll(uint32_t base, char *data);
 
@@ -114,12 +114,19 @@ bool checkInput(void) {
 #	else
 		if (getButton(BUTTON_NORTH))
 			return shiftUp(&board);
-		else if (getButton(BUTTON_SOUTH))
-			return shiftDown(&board);
+		else if (getButton(BUTTON_SOUTH)) {
+			restoreGame(&board);
+			//return shiftDown(&board);
+			return false;
+		}
 		else if (getButton(BUTTON_EAST))
 			return shiftRight(&board);
-		else if (getButton(BUTTON_WEST))
-			return shiftLeft(&board);
+		else if (getButton(BUTTON_WEST)) {
+			uartTxPoll(UART0, "Before Save\n\r");
+			saveGame(&board);
+			uartTxPoll(UART0, "After Save\n\r");
+			
+		}//return shiftLeft(&board);
 		return false;
 #	endif
 }

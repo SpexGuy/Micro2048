@@ -30,5 +30,7 @@ bool shiftRight(Board *b);
 bool canTakeInput(Board *b);
 void addRandomTile(Board *b);
 void drawBoard(FrameBuffer *draw, Board *board);
+void saveGame(Board *b);
+void restoreGame(Board *b);
 
 #endif

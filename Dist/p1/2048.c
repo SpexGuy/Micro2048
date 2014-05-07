@@ -4,10 +4,14 @@
 #include <string.h>
 #include <stdlib.h>
 #include "UART.h"
+#include "eeprom.h"
 
 #define TRANSLATE_RUN_TIME (SYSTICKS_PER_SECOND/8)
 #define FADE_RUN_TIME (SYSTICKS_PER_SECOND/4)
 #define MAX_ANIM_TIME (TRANSLATE_RUN_TIME + FADE_RUN_TIME)
+#define EEPROM_GAME_ADDR 0x04
+
+extern void uartTxPoll(uint32_t base, char *data);
 
 Pixel colors[] = {
 	{0x777777}, //2
@@ -300,6 +304,56 @@ void drawBoard(FrameBuffer *draw, Board *board) {
 			current = board->tiles[y][x];
 			if (current && !current->hidden) {
 				drawRect(draw, x*2, 2, y*2, 2, colors[current->value]);
+			}
+		}
+	}
+}
+
+void saveGame(Board *b) {
+	char buffer[100];
+	uint8_t x, y;
+	uint8_t boardSave[BOARD_HEIGHT][BOARD_WIDTH];
+	while(!canTakeInput(b));
+	
+	for( x = 0; x < BOARD_WIDTH; x++) {
+		for (y = 0; y < BOARD_HEIGHT; y++) {
+			if (b->tiles[y][x])
+				boardSave[y][x] = b->tiles[y][x]->value;
+			else
+				boardSave[y][x] = 0xFF;
+		}
+	}
+	sprintf(buffer, "%8X\r\n%8X\r\n%8X\r\n%8X\r\n\r\n", *((uint32_t *)&boardSave[0][0]), *((uint32_t *)&boardSave[1][0]), *((uint32_t *)&boardSave[2][0]), *((uint32_t *)&boardSave[3][0]));
+	uartTxPoll(UART0, buffer);
+	spi_eeprom_write_array(EEPROM_GAME_ADDR, &boardSave[0][0], 4);
+	spi_eeprom_wait_write_in_progress();
+	spi_eeprom_write_array(EEPROM_GAME_ADDR+4, &boardSave[1][0], 4);
+	spi_eeprom_wait_write_in_progress();
+	spi_eeprom_write_array(EEPROM_GAME_ADDR+8, &boardSave[2][0], 4);
+	spi_eeprom_wait_write_in_progress();
+	spi_eeprom_write_array(EEPROM_GAME_ADDR+12, &boardSave[3][0], 4);
+	spi_eeprom_wait_write_in_progress();
+}
+
+void restoreGame(Board *b) {
+	uint8_t x, y;
+	uint8_t boardRestore[BOARD_HEIGHT][BOARD_WIDTH];
+	char buffer[100];
+	
+	init2048(b);
+	spi_eeprom_read_array(EEPROM_GAME_ADDR, &boardRestore[0][0], 4);
+	spi_eeprom_read_array(EEPROM_GAME_ADDR+4, &boardRestore[1][0], 4);
+	spi_eeprom_read_array(EEPROM_GAME_ADDR+8, &boardRestore[2][0], 4);
+	spi_eeprom_read_array(EEPROM_GAME_ADDR+12, &boardRestore[3][0], 4);
+	sprintf(buffer, "%8X\r\n%8X\r\n%8X\r\n%8X\r\n\r\n", *((uint32_t *)&boardRestore[0][0]), *((uint32_t *)&boardRestore[1][0]), *((uint32_t *)&boardRestore[2][0]), *((uint32_t *)&boardRestore[3][0]));
+	uartTxPoll(UART0, buffer);
+	
+	for( x = 0; x < BOARD_WIDTH; x++) {
+		for (y = 0; y < BOARD_HEIGHT; y++) {
+			if (boardRestore[y][x] != 0xFF) {
+				addTile(b, x, y, boardRestore[y][x], true);
+			} else {
+				b->tiles[y][x] = NULL;
 			}
 		}
 	}
