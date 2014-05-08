@@ -36,6 +36,8 @@ void SYSTICKIntHandler(void)
 		uartTxPoll(UART0, "C");
 		debugCount = 0;
 	}
+	
+	WATCHDOG0_LOAD_R = WDT_LOAD_M;
 }
 
 

@@ -109,7 +109,7 @@ __Vectors
         DCD     IntDefaultHandler           ; GPIO Port C				18
         DCD     IntDefaultHandler           ; GPIO Port D				19
         DCD     IntDefaultHandler           ; GPIO Port E				20
-        DCD     IntDefaultHandler              ; UART0 Rx and Tx			21
+        DCD     IntDefaultHandler           ; UART0 Rx and Tx			21
         DCD     IntDefaultHandler           ; UART1 Rx and Tx			22	
         DCD     IntDefaultHandler           ; SSI0 Rx and Tx			23		
         DCD     IntDefaultHandler           ; I2C0 Master and Slave		24

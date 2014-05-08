@@ -25,8 +25,8 @@ void initTimer0(void) {
 	NVIC_PRI4_R = ((NVIC_PRI4_R & 0x00FFFFFF) | 0x40000000);
 	NVIC_EN0_R = 0x00080000;
 	TIMER0_CTL_R |= TIMER_CTL_TAEN;
-	
 }
+
 
 
 void TIMER0IntHandler(void) {

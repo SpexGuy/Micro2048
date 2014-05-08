@@ -21,8 +21,8 @@
 #include "spi.h"
 #include "eeprom.h"
 
-#define IS_AI 1
-//#define IS_EEPROM_TEST 1
+// #define IS_AI 1
+// #define IS_EEPROM_TEST 1
 
 extern void uartTxPoll(uint32_t base, char *data);
 
