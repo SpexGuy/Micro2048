@@ -1,23 +1,12 @@
 #include "hw4_adc.h"
 #include "renderer.h"
 
-//******************************************************
-// Global Variables provided by other files
-// Do not modify
-//******************************************************
 extern GPIO_PORT *PortA ;
 extern GPIO_PORT *PortB ;
 extern GPIO_PORT *PortC ;
 extern GPIO_PORT *PortD ;
 extern GPIO_PORT *PortE ;
 extern GPIO_PORT *PortF ;
-
-//******************************************************
-// Functions provided by ECE staff
-// Do not modify
-//******************************************************
-extern void StartCritical(void);
-extern void EndCritical(void);
 
 volatile bool AlertADC0 = false;
 

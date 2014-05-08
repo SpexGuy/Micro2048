@@ -6,24 +6,12 @@
 
 #define NUM_BUTTONS 5
 
-//******************************************************
-// Global Variables provided by other files
-// Do not modify
-//******************************************************
 extern GPIO_PORT *PortA ;
 extern GPIO_PORT *PortB ;
 extern GPIO_PORT *PortC ;
 extern GPIO_PORT *PortD ;
 extern GPIO_PORT *PortE ;
 extern GPIO_PORT *PortF ;
-
-//******************************************************
-// Functions provided by ECE staff
-// Do not modify
-//******************************************************
-extern void uartTxPoll(uint32_t base, char *data);
-extern void StartCritical(void);
-extern void EndCritical(void);
 
 extern volatile uint16_t RefreshRate;
 
@@ -100,57 +88,69 @@ void updateButtons(void)
 //*****************************************************************************
 void initializeGpioPins(void)
 {
-	int delay;
 	bool locked;
-	UNUSED(delay); //delay is for delaying a clock cycle
-	//configure data registers
+	int delay;
+	UNUSED(delay);
+	
+	//Port A - SW2 and SW3
+  SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R0;
+	delay = SYSCTL_RCGCGPIO_R;
+	PortA->DigitalEnable |= PA6_SW2 | PA7_SW3;
+	PortA->Direction &= ~(PA6_SW2 | PA7_SW3);
+	PortA->PullUpSelect |= PA6_SW2 | PA7_SW3;
+	
+	//Port B - Data out
   SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R1;
 	delay = SYSCTL_RCGCGPIO_R;
 	PortB->DigitalEnable = 0xFF;
 	PortB->Direction = 0xFF;
 	
-	//configure /OE
+  //Port C - Output Select and JTAG interface
+  SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R2;
+  delay = SYSCTL_RCGCGPIO_R;
+  GPIO_PORTC_DEN_R   = 0xFF;
+  GPIO_PORTC_DIR_R   = 0xF0;
+  GPIO_PORTC_PUR_R   = 0x0F;
+  GPIO_PORTC_AFSEL_R = 0x0F;
+  GPIO_PORTC_PCTL_R  = (GPIO_PCTL_PC0_TCK | GPIO_PCTL_PC1_TMS | GPIO_PCTL_PC2_TDI |GPIO_PCTL_PC3_TDO);
+	
+	//Port D - UART2, SW4, and SW5
+  SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R3;
+	delay = SYSCTL_RCGCGPIO_R;
+	PortD->DigitalEnable |= PD2_SW4 | PD3_SW5 | PD6_U2_RX | PD7_U2_TX;
+	PortD->Direction &= ~(PD2_SW4 | PD3_SW5);
+	//PortD->Direction &= ~(PD6_U2_RX);
+	//PortD->Direction |= PD7_U2_TX;
+	PortD->PullUpSelect |= PD2_SW4 | PD3_SW5;
+	PortD->AlternateFunctionSelect |= PD6_U2_RX | PD7_U2_TX;
+	PortD->PortControl |= GPIO_PCTL_PD6_U2RX | GPIO_PCTL_PD7_U2TX;
+	
+	//Port E - ADC0 and UART5
+	SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
+	delay = SYSCTL_RCGCGPIO_R;
+	PortE->Direction &= ~PE3_ADC_0;
+	//PortE->Direction &= ~(PE4_U5_RX);
+	//PortE->Direction |= (PE5_U5_TX);
+	PortE->DigitalEnable &= ~PE3_ADC_0;
+	PortE->DigitalEnable |= PE4_U5_RX | PE5_U5_TX;
+	PortE->AlternateFunctionSelect |= PE3_ADC_0 | PE4_U5_RX | PE5_U5_TX;
+	PortE->AnalogSelectMode |= PE3_ADC_0;
+	PortE->PortControl |= GPIO_PCTL_PE4_U5RX | GPIO_PCTL_PE5_U5TX;
+
+
+	//Port F - /OE and SW6
 	SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R5;
 	delay = SYSCTL_RCGCGPIO_R;
 	//port F may be locked
 	locked = PortF->Lock;
 	if (locked)
 		PortF->Lock = 0x4C4F434B;
-	PortF->DigitalEnable |= PIN_4 | PIN_1;
-	PortF->Direction |= PIN_4;
-	PortF->Direction &= ~PIN_1;
-	PortF->PullUpSelect |= PIN_1;
+	PortF->DigitalEnable |= PF4_OUT_EN_B | PF1_SW6;
+	PortF->Direction |= PF4_OUT_EN_B;
+	PortF->Direction &= ~PF1_SW6;
+	PortF->PullUpSelect |= PF1_SW6;
 	//restore lock to original status
 	if (locked)
 		PortF->Lock = 0x4C4F434B;
-	
-	//configure switches
-  SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R0;
-	delay = SYSCTL_RCGCGPIO_R;
-	PortA->DigitalEnable |= PIN_6 | PIN_7;
-	PortA->Direction &= ~(PIN_6 | PIN_7);
-	PortA->PullUpSelect |= PIN_6 | PIN_7;
-	
-  SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R3;
-	delay = SYSCTL_RCGCGPIO_R;
-	PortD->DigitalEnable |= PIN_2 | PIN_3 | PD6_U2_RX | PD7_U2_TX;
-	PortD->Direction &= ~(PIN_2 | PIN_3);
-	//PortD->Direction &= ~(PD6_U2_RX);
-	PortD->Direction |= PD7_U2_TX;
-	PortD->PullUpSelect |= PIN_2 | PIN_3;
-	PortD->AlternateFunctionSelect |= PD6_U2_RX | PD7_U2_TX;
-	PortD->PortControl |= GPIO_PCTL_PD6_U2RX | GPIO_PCTL_PD7_U2TX;
-	
-	//configure ADC0 input
-	SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
-	delay = SYSCTL_RCGCGPIO_R;
-	PortE->Direction &= ~PIN_3;
-	//PortE->Direction &= ~(PE4_U5_RX);
-	//PortE->Direction |= (PE5_U5_TX);
-	PortE->DigitalEnable &= ~PIN_3;
-	PortE->DigitalEnable |= PE4_U5_RX | PE5_U5_TX;
-	PortE->AlternateFunctionSelect |= PIN_3 | PE4_U5_RX | PE5_U5_TX;
-	PortE->AnalogSelectMode |= PIN_3;
-	PortE->PortControl |= GPIO_PCTL_PE4_U5RX | GPIO_PCTL_PE5_U5TX;
 }
 

@@ -11,3 +11,4 @@
 .\animation.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\animation.o: C:\Keil\ARM\ARMCC\bin\..\include\errno.h
 .\animation.o: lm4f120h5qr.h
+.\animation.o: lock.h

@@ -5,9 +5,6 @@
 
 #include <stdint.h>
 
-extern void StartCritical(void);
-extern void EndCritical(void);
-
 #define DUTY_CYCLE_DELTA 					(8)
 #define DUTY_CYCLE_MAX 						(256)
 #define DUTY_CYCLE_GRADIATIONS 		(DUTY_CYCLE_MAX/DUTY_CYCLE_DELTA)
@@ -48,7 +45,10 @@ typedef uint8_t byteFraction;
 #define max(a, b) (((a)>(b))?(a):(b))
 #define min(a, b) (((a)<(b))?(a):(b))
 #define absVal(a) (((a)<0)?(-(a)):(a))
-
+//remove unused variable errors for expr
 #define UNUSED(expr) do{(void)(expr);}while(0)
+//make this feel more like C++
+#define new(x) ((x*)malloc(sizeof(x)))
+#define delete(x) (free(x))
 
 #endif

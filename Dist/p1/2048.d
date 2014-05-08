@@ -14,3 +14,4 @@
 .\2048.o: C:\Keil\ARM\ARMCC\bin\..\include\errno.h
 .\2048.o: lm4f120h5qr.h
 .\2048.o: eeprom.h
+.\2048.o: lock.h

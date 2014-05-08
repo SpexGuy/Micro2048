@@ -1,8 +1,7 @@
 #include "animation.h"
 #include <stdlib.h>
 #include "UART.h"
-
-extern void uartTxPoll(uint32_t base, char *data);
+#include "lock.h"
 
 Animation *additions = NULL;
 Animation *head = NULL;
@@ -17,7 +16,7 @@ void scheduleAnimation(uint64_t startTime, uint64_t runTime,
 {
 	Animation* newAnimation;
 	StartCritical();
-		newAnimation = (Animation*) malloc(sizeof(Animation));
+		newAnimation = new(Animation);
 	EndCritical();
 	
 	newAnimation->startTime = startTime;
@@ -82,7 +81,9 @@ void updateAnimations() {
 			} else {
 				previous->next = next;
 			}
-			free(current);
+			StartCritical();
+				delete(current);
+			EndCritical();
 		} else {
 			previous = current;
 		}

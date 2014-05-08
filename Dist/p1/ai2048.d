@@ -11,3 +11,4 @@
 .\ai2048.o: C:\Keil\ARM\ARMCC\bin\..\include\errno.h
 .\ai2048.o: lm4f120h5qr.h
 .\ai2048.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\ai2048.o: lock.h

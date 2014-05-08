@@ -3,6 +3,7 @@
 #include "hw4_gpio.h"
 #include "spi.h"
 #include "timer.h"
+#include "lock.h"
 
 extern GPIO_CONFIG portA_config;
 extern GPIO_CONFIG portB_config;
@@ -14,8 +15,6 @@ extern UART_CONFIG UART0_config;
 
 extern void PLL_Init(void);
 extern bool uartInitPolling(uint32_t base);
-extern void uartTxPoll(uint32_t base, char *data);
-extern void initPortC(void);
 
 void initializeWatchdog(void);
 
@@ -41,12 +40,10 @@ void initBoard(void)
 	initializeWatchdog();
   initializeSysTick(SYSTICK_COUNT, true);
 	initTimer0();
-	initPortC();
 	initializeGpioPins();
 	uartInitPolling(UART0);
 	initUART(UART_ID_5, 115200);
 	initUART(UART_ID_2, 115200);
-	//uart 2 and 5
   initializeADC();
 	initializeSPI(SSI0, 1, 1);
 	EndCritical();

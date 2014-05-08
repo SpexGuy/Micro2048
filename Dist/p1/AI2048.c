@@ -1,6 +1,7 @@
 #include "AI2048.h"
 #include "UART.h"
 #include <stdlib.h>
+#include "lock.h"
 
 #define IS_RANDOM 0
 
@@ -9,8 +10,6 @@ static const int MultiplyDeBruijnBitPosition[32] =
   0, 9, 1, 10, 13, 21, 2, 29, 11, 14, 16, 18, 22, 25, 3, 30,
   8, 12, 20, 28, 15, 17, 24, 7, 19, 27, 23, 6, 26, 5, 4, 31
 };
-
-extern void uartTxPoll(uint32_t base, char *data);
 
 // forwards
 bool internalShiftUp(Board *b);
@@ -298,7 +297,7 @@ bool internalShiftRight(Board *b) {
 
 Board* copyBoard(Board *b) {
 	uint8_t x, y;
-	Board* copy = malloc(sizeof(Board));
+	Board* copy = new(Board);
 
 	for (y = 0; y < BOARD_HEIGHT; y++) {
 		for (x = 0; x < BOARD_WIDTH; x++) {
@@ -306,7 +305,7 @@ Board* copyBoard(Board *b) {
 			currentTile = b->tiles[y][x];
 			newTile = NULL;
 			if(currentTile != NULL) {
-					newTile = malloc(sizeof(Tile));
+					newTile = new(Tile);
 					newTile->x = currentTile->x;
 					newTile->y = currentTile->y;
 					newTile->value = currentTile->value;
@@ -322,12 +321,14 @@ Board* copyBoard(Board *b) {
 
 void freeBoard(Board *b) {
 	uint8_t x, y;
+	StartCritical();
 	for (y = 0; y < BOARD_HEIGHT; y++) {
 		for (x = 0; x < BOARD_WIDTH; x++) {
-			free(b->tiles[y][x]);
+			delete(b->tiles[y][x]);
 		}
 	}
-	free(b);
+	delete(b);
+	EndCritical();
 }
 
 //Thanks to http://graphics.stanford.edu/~seander/bithacks.html for the log2

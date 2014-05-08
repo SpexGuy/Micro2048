@@ -14,3 +14,4 @@
 .\initboard.o: hw4_adc.h
 .\initboard.o: spi.h
 .\initboard.o: timer.h
+.\initboard.o: lock.h

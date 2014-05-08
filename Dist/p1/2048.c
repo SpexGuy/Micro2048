@@ -5,13 +5,12 @@
 #include <stdlib.h>
 #include "UART.h"
 #include "eeprom.h"
+#include "lock.h"
 
 #define TRANSLATE_RUN_TIME (SYSTICKS_PER_SECOND/8)
 #define FADE_RUN_TIME (SYSTICKS_PER_SECOND/4)
 #define MAX_ANIM_TIME (TRANSLATE_RUN_TIME + FADE_RUN_TIME)
-#define EEPROM_GAME_ADDR 0x04
-
-extern void uartTxPoll(uint32_t base, char *data);
+#define EEPROM_GAME_ADDR 0x00
 
 Pixel colors[] = {
 	{0x777777}, //2
@@ -83,7 +82,7 @@ void addTile(Board *b, uint8_t x, uint8_t y, uint8_t value, bool animated) {
 	uint64_t localTime = Time;
 	Tile *tile;
 	StartCritical();
-		tile = malloc(sizeof(Tile));
+		tile = new(Tile);
 	EndCritical();
 	tile->x = x;
 	tile->y = y;
@@ -109,19 +108,23 @@ void setPos(Board *b, Tile *tile, uint8_t x, uint8_t y) {
 
 void removeTile(Board *b, Tile *tile) {
 	b->tiles[tile->y][tile->x] = NULL;
-	free(tile);
+	StartCritical();
+		delete(tile);
+	EndCritical();
 }
 
 void clearBoard(Board *b) {
 	uint8_t x, y;
+	StartCritical();
 	for (y = 0; y < BOARD_HEIGHT; y++) {
 		for (x = 0; x < BOARD_WIDTH; x++) {
 			if (b->tiles[y][x] != NULL) {
-				free(b->tiles[y][x]);
+				delete(b->tiles[y][x]);
 				b->tiles[y][x] = NULL;
 			}
 		}
 	}
+	EndCritical();
 }
 
 bool canTakeInput(Board *b) {
