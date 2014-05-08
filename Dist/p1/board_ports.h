@@ -41,11 +41,15 @@
 #define PC6_BLU_EN    PIN_6
 #define PC7_COL_EN    PIN_7
 #define PF4_OUT_EN_B  PIN_4
-
 #define DISPLAY_EN_MASK PC4_RED_EN|PC5_GRN_EN|PC6_BLU_EN|PC7_COL_EN
 
-#define PE3_ADC_0     PIN_3
+#define PD6_U2_RX			PIN_6
+#define PD7_U2_TX			PIN_7
+
 #define PE2_ADC_1     PIN_2
+#define PE3_ADC_0     PIN_3
+#define PE4_U5_RX			PIN_4
+#define PE5_U5_TX			PIN_5
 
 #define PC0_TCK       PIN_0
 #define PC1_TMS       PIN_1

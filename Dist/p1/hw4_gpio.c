@@ -133,16 +133,20 @@ void initializeGpioPins(void)
 	
   SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R3;
 	delay = SYSCTL_RCGCGPIO_R;
-	PortD->DigitalEnable |= PIN_2 | PIN_3;
+	PortD->DigitalEnable |= PIN_2 | PIN_3 | PD6_U2_RX | PD7_U2_TX;
 	PortD->Direction &= ~(PIN_2 | PIN_3);
 	PortD->PullUpSelect |= PIN_2 | PIN_3;
+	PortD->AlternateFunctionSelect |= PD6_U2_RX | PD7_U2_TX;
+	PortD->PortControl |= GPIO_PCTL_PD6_U2RX | GPIO_PCTL_PD7_U2TX;
 	
 	//configure ADC0 input
 	SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
 	delay = SYSCTL_RCGCGPIO_R;
 	PortE->Direction &= ~PIN_3;
-	PortE->AlternateFunctionSelect |= PIN_3;
 	PortE->DigitalEnable &= ~PIN_3;
+	PortE->DigitalEnable |= PE4_U5_RX | PE5_U5_TX;
+	PortE->AlternateFunctionSelect |= PIN_3 | PE4_U5_RX | PE5_U5_TX;
 	PortE->AnalogSelectMode |= PIN_3;
+	PortE->PortControl |= GPIO_PCTL_PE4_U5RX | GPIO_PCTL_PE5_U5TX;
 }
 

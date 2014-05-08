@@ -40,6 +40,8 @@ void initBoard(void)
 	initPortC();
 	initializeGpioPins();
 	uartInitPolling(UART0);
+	initUART(UART_ID_2, 115200);
+	initUART(UART_ID_5, 115200);
 	//uart 2 and 5
   initializeADC();
 	initializeSPI(SSI0, 1, 1);

@@ -24,6 +24,12 @@
 #define UART6 0x40012000
 #define UART7 0x40013000
 
+#define UART_ID_2 0
+#define UART_ID_5 1
+bool initUART(uint8_t uartIndex, uint32_t baud);
+void uartTx(uint8_t uartId, uint8_t data);
+uint8_t uartRx(uint8_t uartId, bool block);
+
 #define	_8BITS		0x3	
 #define	ENABLED		1
 #define	DISABLED	0

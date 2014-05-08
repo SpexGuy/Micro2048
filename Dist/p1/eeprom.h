@@ -50,7 +50,7 @@ typedef struct {
 	uint8_t inst;
 	uint8_t addr_hi;
 	uint8_t addr_low;
-	uint8_t data[1];
+	uint8_t data[1]; //allocate as much memory as you need here
 } SPI_EEPROM_EXT_CMD;
 
 #endif

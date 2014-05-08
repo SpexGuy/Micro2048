@@ -176,6 +176,16 @@ int main(void)
 	lastSecond = Time;
 	while(1) {
 //		uartTxPoll(UART0,"M");
+		uint8_t rx;
+		uartTx(UART_ID_2, 0xA);
+		uartTx(UART_ID_5, 0xB);
+		rx = uartRx(UART_ID_2, false);
+		if (rx != 0xFF)
+			uartTxPoll(UART0, "Got data on UART2\r\n\n");
+		rx = uartRx(UART_ID_5, false);
+		if (rx != 0xFF)
+			uartTxPoll(UART0, "Got data on UART5\r\n\n");
+		
 		if (Time - lastSecond > SYSTICKS_PER_SECOND) {
 			char buffer[40];
 			sprintf(buffer, "\033[A%6d frames per second\n\r", frameCount);

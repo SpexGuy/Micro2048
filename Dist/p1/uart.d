@@ -1,0 +1,11 @@
+.\uart.o: uart.c
+.\uart.o: constants.h
+.\uart.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\uart.o: circular_buffer.h
+.\uart.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+.\uart.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\uart.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\uart.o: C:\Keil\ARM\ARMCC\bin\..\include\errno.h
+.\uart.o: lm4f120h5qr.h
+.\uart.o: lock.h
+.\uart.o: uart.h

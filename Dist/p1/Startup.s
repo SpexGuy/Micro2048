@@ -75,11 +75,13 @@ __heap_limit
 
 ;******************************************************************************
 ;
-; External declaration for the interrupt handler used by the application.
+; External declaration for the interrupt handlers used by the application.
 ;
 ;******************************************************************************
 		EXTERN	SYSTICKIntHandler
-		EXTERN  TIMER0IntHandler
+		EXTERN	TIMER0IntHandler
+		EXTERN	UART2IntHandler
+		EXTERN	UART5IntHandler
 
 ;******************************************************************************
 ;
@@ -109,8 +111,8 @@ __Vectors
         DCD     IntDefaultHandler           ; GPIO Port C				18
         DCD     IntDefaultHandler           ; GPIO Port D				19
         DCD     IntDefaultHandler           ; GPIO Port E				20
-        DCD     IntDefaultHandler              ; UART0 Rx and Tx			21
-        DCD     IntDefaultHandler           ; UART1 Rx and Tx			22	
+        DCD     IntDefaultHandler           ; UART0 Rx and Tx			21
+        DCD     UART5IntHandler             ; UART1 Rx and Tx			22	
         DCD     IntDefaultHandler           ; SSI0 Rx and Tx			23		
         DCD     IntDefaultHandler           ; I2C0 Master and Slave		24
         DCD     IntDefaultHandler           ; PWM Fault					25
@@ -137,7 +139,7 @@ __Vectors
         DCD     IntDefaultHandler           ; GPIO Port F				46
         DCD     IntDefaultHandler           ; GPIO Port G				47
         DCD     IntDefaultHandler           ; GPIO Port H				48
-        DCD     IntDefaultHandler           ; UART2 Rx and Tx			49
+        DCD     UART2IntHandler             ; UART2 Rx and Tx			49
         DCD     IntDefaultHandler           ; SSI1 Rx and Tx			50
         DCD     IntDefaultHandler           ; Timer 3 subtimer A		51
         DCD     IntDefaultHandler           ; Timer 3 subtimer B		52
