@@ -124,10 +124,12 @@ bool checkInput(void) {
 		else if (getButtonPress(BUTTON_AUX))
 			save_press_time = Time;
 		else if (getButtonRelease(BUTTON_AUX)) {
-			if (Time - save_press_time > SAVE_HOLD_THRESH)
+			if (Time - save_press_time > SAVE_HOLD_THRESH) {
+				clearBoard(&board);
 				restoreGame(&board);
-			else
+			} else {
 				saveGame(&board);
+			}
 		}
 		return false;
 #	endif

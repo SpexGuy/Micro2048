@@ -23,6 +23,7 @@ typedef struct {
 void init2048(Board *b);
 void addTile(Board *b, uint8_t x, uint8_t y, uint8_t value, bool animated);
 void removeTile(Board *b, Tile *tile);
+void clearBoard(Board *b);
 bool shiftUp(Board *b);
 bool shiftDown(Board *b);
 bool shiftLeft(Board *b);

@@ -112,6 +112,18 @@ void removeTile(Board *b, Tile *tile) {
 	free(tile);
 }
 
+void clearBoard(Board *b) {
+	uint8_t x, y;
+	for (y = 0; y < BOARD_HEIGHT; y++) {
+		for (x = 0; x < BOARD_WIDTH; x++) {
+			if (b->tiles[y][x] != NULL) {
+				free(b->tiles[y][x]);
+				b->tiles[y][x] = NULL;
+			}
+		}
+	}
+}
+
 bool canTakeInput(Board *b) {
 	return ((int64_t)Time - (int64_t)b->inputTime) > 0;
 }
