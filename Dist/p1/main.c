@@ -179,6 +179,7 @@ int main(void)
 	
 			uartTx(UART_ID_2, 0xA);
 			uartTx(UART_ID_5, 0xB);
+			uartTx(UART_ID_5, 0xC);
 			rx = uartRx(UART_ID_2, false);
 			if (rx != 0xFF) {
 				sprintf(buff, "U2 Data: %X\r\n\n", rx);
