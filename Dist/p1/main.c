@@ -175,19 +175,27 @@ int main(void)
 	uartTxPoll(UART0, "\n");
 	lastSecond = Time;
 	while(1) {
+		char buff[25];
 //		uartTxPoll(UART0,"M");
-		uint8_t rx;
-		uartTx(UART_ID_2, 0xA);
-		uartTx(UART_ID_5, 0xB);
-		rx = uartRx(UART_ID_2, false);
-		if (rx != 0xFF)
-			uartTxPoll(UART0, "Got data on UART2\r\n\n");
-		rx = uartRx(UART_ID_5, false);
-		if (rx != 0xFF)
-			uartTxPoll(UART0, "Got data on UART5\r\n\n");
-		
+		static uint8_t rx = 0xFF;
+	
+			uartTx(UART_ID_2, 0xA);
+			uartTx(UART_ID_5, 0xB);
+			rx = uartRx(UART_ID_2, false);
+			if (rx != 0xFF) {
+				sprintf(buff, "U2 Data: %X\r\n\n", rx);
+				//uartTxPoll(UART0, "Got data on UART2\r\n");
+				uartTxPoll(UART0, buff);
+			}
+			rx = uartRx(UART_ID_5, false);
+			if (rx != 0xFF) {
+				sprintf(buff, "U5 Data: %X\r\n\n", rx);
+				//uartTxPoll(UART0, "Got data on UART5\r\n");
+				uartTxPoll(UART0, buff);
+			}
 		if (Time - lastSecond > SYSTICKS_PER_SECOND) {
 			char buffer[40];
+			
 			//sprintf(buffer, "\033[A%6d frames per second\n\r", frameCount);
 			uartTxPoll(UART0, buffer);
 			frameCount = 0;

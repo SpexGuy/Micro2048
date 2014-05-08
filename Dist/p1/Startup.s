@@ -112,7 +112,7 @@ __Vectors
         DCD     IntDefaultHandler           ; GPIO Port D				19
         DCD     IntDefaultHandler           ; GPIO Port E				20
         DCD     IntDefaultHandler           ; UART0 Rx and Tx			21
-        DCD     UART5IntHandler             ; UART1 Rx and Tx			22	
+        DCD     IntDefaultHandler           ; UART1 Rx and Tx			22	
         DCD     IntDefaultHandler           ; SSI0 Rx and Tx			23		
         DCD     IntDefaultHandler           ; I2C0 Master and Slave		24
         DCD     IntDefaultHandler           ; PWM Fault					25
@@ -150,6 +150,25 @@ __Vectors
         DCD     IntDefaultHandler           ; CAN2						57
         DCD     IntDefaultHandler           ; Ethernet					58
         DCD     IntDefaultHandler           ; Hibernate					59
+		DCD		IntDefaultHandler			; PLACEHOLDER				60
+		DCD		IntDefaultHandler			; PLACEHOLDER				61
+		DCD		IntDefaultHandler			; PLACEHOLDER				62
+		DCD		IntDefaultHandler			; PLACEHOLDER				63
+		DCD		IntDefaultHandler			; PLACEHOLDER				64
+		DCD		IntDefaultHandler			; PLACEHOLDER				65
+		DCD		IntDefaultHandler			; PLACEHOLDER				66
+		DCD		IntDefaultHandler			; PLACEHOLDER				67
+		DCD		IntDefaultHandler			; PLACEHOLDER				68
+		DCD		IntDefaultHandler			; PLACEHOLDER				69
+		DCD		IntDefaultHandler			; PLACEHOLDER				70
+		DCD		IntDefaultHandler			; PLACEHOLDER				71
+		DCD		IntDefaultHandler			; PLACEHOLDER				72
+		DCD		IntDefaultHandler			; PLACEHOLDER				73
+		DCD		IntDefaultHandler			; PLACEHOLDER				74
+		DCD		IntDefaultHandler			; PLACEHOLDER				75
+		DCD		IntDefaultHandler			; PLACEHOLDER				76
+		DCD		UART5IntHandler				; UART0 Rx and Tx			77
+
 
 ;******************************************************************************
 ;

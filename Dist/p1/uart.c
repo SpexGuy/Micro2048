@@ -3,6 +3,9 @@
 #include "lock.h"
 #include "uart.h"
 
+#define NVIC_EN1_INT33 (0x00000002)
+#define NVIC_EN1_INT61 (0x20000000)
+
 CircularBuffer rxBuffer[2];
 CircularBuffer txBuffer[2];
 UART_PERIPH *uarts[2] = {(UART_PERIPH *)UART2, (UART_PERIPH *)UART5};
@@ -31,7 +34,7 @@ bool initUART(uint8_t uartIndex, uint32_t baud) {
   SYSCTL_RCGCUART_R |= rcgcuart[uartIndex];  // 5
   delay = SYSCTL_RCGCUART_R;
 	UNUSED(delay);
-  delay = 500;
+  delay = 1000;
   while(delay --> 0);
 	//disable uart
 	uart->UARTControl &= ~UART_CTL_UARTEN;
@@ -60,7 +63,16 @@ bool initUART(uint8_t uartIndex, uint32_t baud) {
 	uart->UARTControl |= UART_CTL_UARTEN;
   
 	// Enable the uart interrupt
-	NVIC_EN0_R |= NVIC_EN0_INT5;
+	switch(uartIndex) {
+		case UART_ID_2 :
+			NVIC_EN1_R |= NVIC_EN1_INT33;
+			break;
+		case UART_ID_5 :
+			NVIC_EN1_R |= NVIC_EN1_INT61;
+			break;
+		default:
+			return false;
+	}
 	
 	// Wait until the UART is avaiable
   while(!(SYSCTL_PRUART_R & SYSCTL_PRUART_R0));
@@ -110,7 +122,44 @@ void uartTx(uint8_t uartId, uint8_t data) {
 void UART2IntHandler() {
 	char toSend = 0;
 	StartCritical();
-	uartTxPoll(UART0, "U2");
+	uartTxPoll(UART0, "U2:");
+	if(uarts[0]->MaskedIntStatus & UART_MIS_CTSMIS)
+		uartTxPoll(UART0, "Clear to Send Modem:");
+	if(uarts[0]->MaskedIntStatus & UART_MIS_RXMIS)
+		uartTxPoll(UART0, "Receive:");
+	if(uarts[0]->MaskedIntStatus & UART_MIS_TXMIS)
+		uartTxPoll(UART0, "Transmit:");
+	if(uarts[0]->MaskedIntStatus & UART_MIS_RTMIS) {
+		uartTxPoll(UART0, "Receive Time-Out:");
+	}
+	if(uarts[0]->MaskedIntStatus & UART_MIS_FEMIS)
+		uartTxPoll(UART0, "Framing Error:");
+	if(uarts[0]->MaskedIntStatus & UART_MIS_PEMIS)
+		uartTxPoll(UART0, "Parity Error:");
+	if(uarts[0]->MaskedIntStatus & UART_MIS_BEMIS)
+		uartTxPoll(UART0, "Break Error:");
+	if(uarts[0]->MaskedIntStatus & UART_MIS_OEMIS)
+		uartTxPoll(UART0, "Overrun Error:");
+	if(uarts[0]->MaskedIntStatus & UART_MIS_9BITMIS)
+		uartTxPoll(UART0, "9-Bit Mode:");
+	if(uarts[0]->MaskedIntStatus & UART_MIS_LMSBMIS)
+		uartTxPoll(UART0, "LIN Mode Sync Break:");
+	if(uarts[0]->MaskedIntStatus & UART_MIS_LMSBMIS)
+		uartTxPoll(UART0, "LIN Mode Edge 1:");
+	if(uarts[0]->MaskedIntStatus & UART_MIS_LME5MIS)
+		uartTxPoll(UART0, "LIN Mode Edge 5:");
+	if(uarts[0]->RxStatus & UART_RSR_FE) {
+		uartTxPoll(UART0, "Framing Error:");
+		//uarts[0]->RxStatus = 0x1;
+	}
+	if(uarts[0]->RxStatus & UART_RSR_PE)
+		uartTxPoll(UART0, "Parity Error:");
+	if(uarts[0]->RxStatus & UART_RSR_BE)
+		uartTxPoll(UART0, "Break Error:");
+	if(uarts[0]->RxStatus & UART_RSR_OE)
+		uartTxPoll(UART0, "Overrun Error:");					
+	uartTxPoll(UART0, "\n\r");
+	
 	//add characters until receive queue is empty
   while(!(uarts[0]->Flag & UART_FR_RXFE)) {
 		cBufAddChar(&rxBuffer[0], uarts[0]->Data);
@@ -135,7 +184,46 @@ void UART2IntHandler() {
 void UART5IntHandler() {
 	char toSend = 0;
 	StartCritical();
-	uartTxPoll(UART0, "U5");
+	uartTxPoll(UART0, "U5: ");
+	if(uarts[1]->MaskedIntStatus & UART_MIS_CTSMIS)
+		uartTxPoll(UART0, "Clear to Send Modem:");
+	if(uarts[1]->MaskedIntStatus & UART_MIS_RXMIS)
+		uartTxPoll(UART0, "Receive:");
+	if(uarts[1]->MaskedIntStatus & UART_MIS_TXMIS)
+		uartTxPoll(UART0, "Transmit:");
+	if(uarts[1]->MaskedIntStatus & UART_MIS_RTMIS) {
+		uartTxPoll(UART0, "Receive Time-Out:");
+		uarts[1]->IntClear |= UART_ICR_RTIC;
+	}
+	if(uarts[1]->MaskedIntStatus & UART_MIS_FEMIS)
+		uartTxPoll(UART0, "Framing Error:");
+	if(uarts[1]->MaskedIntStatus & UART_MIS_PEMIS)
+		uartTxPoll(UART0, "Parity Error:");
+	if(uarts[1]->MaskedIntStatus & UART_MIS_BEMIS)
+		uartTxPoll(UART0, "Break Error:");
+	if(uarts[1]->MaskedIntStatus & UART_MIS_OEMIS)
+		uartTxPoll(UART0, "Overrun Error:");
+	if(uarts[1]->MaskedIntStatus & UART_MIS_9BITMIS)
+		uartTxPoll(UART0, "9-Bit Mode:");
+	if(uarts[1]->MaskedIntStatus & UART_MIS_LMSBMIS)
+		uartTxPoll(UART0, "LIN Mode Sync Break:");
+	if(uarts[1]->MaskedIntStatus & UART_MIS_LMSBMIS)
+		uartTxPoll(UART0, "LIN Mode Edge 1:");
+	if(uarts[1]->MaskedIntStatus & UART_MIS_LME5MIS)
+		uartTxPoll(UART0, "LIN Mode Edge 5:");
+	if(uarts[1]->RxStatus & UART_RSR_FE) {
+		uartTxPoll(UART0, "Framing Error:");
+		//uarts[1]->RxStatus = 0x1;
+	}
+	if(uarts[1]->RxStatus & UART_RSR_PE)
+		uartTxPoll(UART0, "Parity Error:");
+	if(uarts[1]->RxStatus & UART_RSR_BE)
+		uartTxPoll(UART0, "Break Error:");
+	if(uarts[1]->RxStatus & UART_RSR_OE)
+		uartTxPoll(UART0, "Overrun Error:");					
+	uartTxPoll(UART0, "\n\r");
+	
+			
 	//add characters until receive queue is empty
   while(!(uarts[1]->Flag & UART_FR_RXFE)) {
 		cBufAddChar(&rxBuffer[1], uarts[1]->Data);

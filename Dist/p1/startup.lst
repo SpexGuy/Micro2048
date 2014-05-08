@@ -188,8 +188,8 @@ ARM Macro Assembler    Page 3
                                                             
   114 00000054 00000000        DCD              IntDefaultHandler ; UART0 Rx an
                                                             d Tx   21
-  115 00000058 00000000        DCD              UART5IntHandler ; UART1 Rx and 
-                                                            Tx   22 
+  115 00000058 00000000        DCD              IntDefaultHandler ; UART1 Rx an
+                                                            d Tx   22 
   116 0000005C 00000000        DCD              IntDefaultHandler ; SSI0 Rx and
                                                              Tx   23  
   117 00000060 00000000        DCD              IntDefaultHandler ; I2C0 Master
@@ -280,242 +280,302 @@ ARM Macro Assembler    Page 5
                                                             ; Ethernet     58
   152 000000EC 00000000        DCD              IntDefaultHandler 
                                                             ; Hibernate     59
-  153 000000F0         
-  154 000000F0         ;*******************************************************
-                       ***********************
-  155 000000F0         ;
-  156 000000F0         ; This is the code that gets called when the processor f
-                       irst starts execution
-  157 000000F0         ; following a reset event.
-  158 000000F0         ;
-  159 000000F0         ;*******************************************************
-                       ***********************
-  160 000000F0                 EXPORT           Reset_Handler
-  161 000000F0         Reset_Handler
-  162 000000F0         ;
-  163 000000F0         ; Call the C library enty point that handles startup.  T
-                       his will copy
-  164 000000F0         ; the .data section initializers from flash to SRAM and 
-                       zero fill the
-  165 000000F0         ; .bss section.
-  166 000000F0         ;
-  167 000000F0                 IMPORT           __main
-  168 000000F0 F7FF BFFE       B                __main
-  169 000000F4         
-  170 000000F4         ;*******************************************************
-                       ***********************
-  171 000000F4         ;
-  172 000000F4         ; This is the code that gets called when the processor r
-                       eceives a NMI.  This
-  173 000000F4         ; simply enters an infinite loop, preserving the system 
-                       state for examination
-  174 000000F4         ; by a debugger.
-  175 000000F4         ;
-  176 000000F4         ;*******************************************************
-                       ***********************
-  177 000000F4         NmiSR
-  178 000000F4 E7FE            B                NmiSR
-  179 000000F6         
-  180 000000F6         ;*******************************************************
-                       ***********************
-  181 000000F6         ;
-  182 000000F6         ; This is the code that gets called when the processor r
-                       eceives a fault
-  183 000000F6         ; interrupt.  This simply enters an infinite loop, prese
-                       rving the system state
+  153 000000F0 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    60
+                                                            
+  154 000000F4 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    61
+                                                            
+  155 000000F8 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    62
+                                                            
+  156 000000FC 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    63
+                                                            
+  157 00000100 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    64
+                                                            
+  158 00000104 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    65
+                                                            
+  159 00000108 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    66
+                                                            
+  160 0000010C 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    67
+                                                            
+  161 00000110 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    68
+                                                            
+  162 00000114 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    69
+                                                            
+  163 00000118 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    70
+                                                            
+  164 0000011C 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    71
+                                                            
+  165 00000120 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    72
+                                                            
+  166 00000124 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    73
+                                                            
+  167 00000128 00000000        DCD              IntDefaultHandler 
 
 
 
 ARM Macro Assembler    Page 6 
 
 
-  184 000000F6         ; for examination by a debugger.
-  185 000000F6         ;
-  186 000000F6         ;*******************************************************
+                                                            ; PLACEHOLDER    74
+                                                            
+  168 0000012C 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    75
+                                                            
+  169 00000130 00000000        DCD              IntDefaultHandler 
+                                                            ; PLACEHOLDER    76
+                                                            
+  170 00000134 00000000        DCD              UART5IntHandler ; UART0 Rx and 
+                                                            Tx   77
+  171 00000138         
+  172 00000138         
+  173 00000138         ;*******************************************************
                        ***********************
-  187 000000F6         FaultISR
-  188 000000F6 E7FE            B                FaultISR
-  189 000000F8         
-  190 000000F8         ;*******************************************************
+  174 00000138         ;
+  175 00000138         ; This is the code that gets called when the processor f
+                       irst starts execution
+  176 00000138         ; following a reset event.
+  177 00000138         ;
+  178 00000138         ;*******************************************************
                        ***********************
-  191 000000F8         ;
-  192 000000F8         ; This is the code that gets called when the processor r
-                       eceives an unexpected
-  193 000000F8         ; interrupt.  This simply enters an infinite loop, prese
+  179 00000138                 EXPORT           Reset_Handler
+  180 00000138         Reset_Handler
+  181 00000138         ;
+  182 00000138         ; Call the C library enty point that handles startup.  T
+                       his will copy
+  183 00000138         ; the .data section initializers from flash to SRAM and 
+                       zero fill the
+  184 00000138         ; .bss section.
+  185 00000138         ;
+  186 00000138                 IMPORT           __main
+  187 00000138 F7FF BFFE       B                __main
+  188 0000013C         
+  189 0000013C         ;*******************************************************
+                       ***********************
+  190 0000013C         ;
+  191 0000013C         ; This is the code that gets called when the processor r
+                       eceives a NMI.  This
+  192 0000013C         ; simply enters an infinite loop, preserving the system 
+                       state for examination
+  193 0000013C         ; by a debugger.
+  194 0000013C         ;
+  195 0000013C         ;*******************************************************
+                       ***********************
+  196 0000013C         NmiSR
+  197 0000013C E7FE            B                NmiSR
+  198 0000013E         
+  199 0000013E         ;*******************************************************
+                       ***********************
+  200 0000013E         ;
+  201 0000013E         ; This is the code that gets called when the processor r
+                       eceives a fault
+  202 0000013E         ; interrupt.  This simply enters an infinite loop, prese
                        rving the system state
-  194 000000F8         ; for examination by a debugger.
-  195 000000F8         ;
-  196 000000F8         ;*******************************************************
+  203 0000013E         ; for examination by a debugger.
+  204 0000013E         ;
+  205 0000013E         ;*******************************************************
                        ***********************
-  197 000000F8         IntDefaultHandler
-  198 000000F8 E7FE            B                IntDefaultHandler
-  199 000000FA         
-  200 000000FA         ;*******************************************************
-                       ***********************
-  201 000000FA         ;
-  202 000000FA         ; Make sure the end of this section is aligned.
-  203 000000FA         ;
-  204 000000FA         ;*******************************************************
-                       ***********************
-  205 000000FA 00 00           ALIGN
-  206 000000FC         
-  207 000000FC         ;*******************************************************
-                       ***********************
-  208 000000FC         ;
-  209 000000FC         ; Some code in the normal code section for initializing 
-                       the heap and stack.
-  210 000000FC         ;
-  211 000000FC         ;*******************************************************
-                       ***********************
-  212 000000FC                 AREA             |.text|, CODE, READONLY
-  213 00000000         
-  214 00000000         
-  215 00000000         ;*******************************************************
-                       ***********************
-  216 00000000         ;
-  217 00000000         ; Useful functions.
-  218 00000000         ;
-  219 00000000         ;*******************************************************
-                       ***********************
-  220 00000000                 EXPORT           DisableInterrupts
-  221 00000000                 EXPORT           EnableInterrupts
-  222 00000000         ;       EXPORT  StartCritical
-  223 00000000         ;       EXPORT  EndCritical
-  224 00000000                 EXPORT           WaitForInterrupt
-  225 00000000         
-  226 00000000         ;*********** DisableInterrupts ***************
-  227 00000000         ; disable interrupts
-  228 00000000         ; inputs:  none
-  229 00000000         ; outputs: none
-  230 00000000         DisableInterrupts
+  206 0000013E         FaultISR
 
 
 
 ARM Macro Assembler    Page 7 
 
 
-  231 00000000 B672            CPSID            I
-  232 00000002 4770            BX               LR
-  233 00000004         
-  234 00000004         ;*********** EnableInterrupts ***************
-  235 00000004         ; disable interrupts
-  236 00000004         ; inputs:  none
-  237 00000004         ; outputs: none
-  238 00000004         EnableInterrupts
-  239 00000004 B662            CPSIE            I
-  240 00000006 4770            BX               LR
-  241 00000008         
-  242 00000008         ;*********** StartCritical ************************
-  243 00000008         ; make a copy of previous I bit, disable interrupts
-  244 00000008         ; inputs:  none
-  245 00000008         ; outputs: previous I bit
-  246 00000008         ;StartCritical
-  247 00000008         ;        MRS    R0, PRIMASK  ; save old status
-  248 00000008         ;        CPSID  I            ; mask all (except faults)
-  249 00000008         ;        BX     LR
-  250 00000008         
-  251 00000008         ;*********** EndCritical ************************
-  252 00000008         ; using the copy of previous I bit, restore I bit to pre
-                       vious value
-  253 00000008         ; inputs:  previous I bit
-  254 00000008         ; outputs: none
-  255 00000008         ;EndCritical
-  256 00000008         ;        MSR    PRIMASK, R0
-  257 00000008         ;        BX     LR
-  258 00000008         
-  259 00000008         ;*********** WaitForInterrupt ************************
-  260 00000008         ; go to low power mode while waiting for the next interr
-                       upt
-  261 00000008         ; inputs:  none
-  262 00000008         ; outputs: none
-  263 00000008         WaitForInterrupt
-  264 00000008 BF30            WFI
-  265 0000000A 4770            BX               LR
-  266 0000000C         
-  267 0000000C                 EXPORT           getHeapBase
-  268 0000000C                 EXPORT           getStackBase
-  269 0000000C                 EXPORT           getHeapSize
-  270 0000000C         
-  271 0000000C         ;*******************************************************
+  207 0000013E E7FE            B                FaultISR
+  208 00000140         
+  209 00000140         ;*******************************************************
                        ***********************
-  272 0000000C         ; Returns the address of the heap base
-  273 0000000C         ;*******************************************************
+  210 00000140         ;
+  211 00000140         ; This is the code that gets called when the processor r
+                       eceives an unexpected
+  212 00000140         ; interrupt.  This simply enters an infinite loop, prese
+                       rving the system state
+  213 00000140         ; for examination by a debugger.
+  214 00000140         ;
+  215 00000140         ;*******************************************************
                        ***********************
-  274 0000000C         getHeapBase
-  275 0000000C F240 0000 
-              F2C0 0000        MOV32            R0, __heap_base
-  276 00000014 4770            BX               LR
-  277 00000016         
-  278 00000016         ;*******************************************************
+  216 00000140         IntDefaultHandler
+  217 00000140 E7FE            B                IntDefaultHandler
+  218 00000142         
+  219 00000142         ;*******************************************************
                        ***********************
-  279 00000016         ; Returns the address of the heap base
-  280 00000016         ;*******************************************************
+  220 00000142         ;
+  221 00000142         ; Make sure the end of this section is aligned.
+  222 00000142         ;
+  223 00000142         ;*******************************************************
                        ***********************
-  281 00000016         getHeapSize
-  282 00000016 F240 0000 
+  224 00000142 00 00           ALIGN
+  225 00000144         
+  226 00000144         ;*******************************************************
+                       ***********************
+  227 00000144         ;
+  228 00000144         ; Some code in the normal code section for initializing 
+                       the heap and stack.
+  229 00000144         ;
+  230 00000144         ;*******************************************************
+                       ***********************
+  231 00000144                 AREA             |.text|, CODE, READONLY
+  232 00000000         
+  233 00000000         
+  234 00000000         ;*******************************************************
+                       ***********************
+  235 00000000         ;
+  236 00000000         ; Useful functions.
+  237 00000000         ;
+  238 00000000         ;*******************************************************
+                       ***********************
+  239 00000000                 EXPORT           DisableInterrupts
+  240 00000000                 EXPORT           EnableInterrupts
+  241 00000000         ;       EXPORT  StartCritical
+  242 00000000         ;       EXPORT  EndCritical
+  243 00000000                 EXPORT           WaitForInterrupt
+  244 00000000         
+  245 00000000         ;*********** DisableInterrupts ***************
+  246 00000000         ; disable interrupts
+  247 00000000         ; inputs:  none
+  248 00000000         ; outputs: none
+  249 00000000         DisableInterrupts
+  250 00000000 B672            CPSID            I
+  251 00000002 4770            BX               LR
+  252 00000004         
+  253 00000004         ;*********** EnableInterrupts ***************
+  254 00000004         ; disable interrupts
 
 
 
 ARM Macro Assembler    Page 8 
 
 
+  255 00000004         ; inputs:  none
+  256 00000004         ; outputs: none
+  257 00000004         EnableInterrupts
+  258 00000004 B662            CPSIE            I
+  259 00000006 4770            BX               LR
+  260 00000008         
+  261 00000008         ;*********** StartCritical ************************
+  262 00000008         ; make a copy of previous I bit, disable interrupts
+  263 00000008         ; inputs:  none
+  264 00000008         ; outputs: previous I bit
+  265 00000008         ;StartCritical
+  266 00000008         ;        MRS    R0, PRIMASK  ; save old status
+  267 00000008         ;        CPSID  I            ; mask all (except faults)
+  268 00000008         ;        BX     LR
+  269 00000008         
+  270 00000008         ;*********** EndCritical ************************
+  271 00000008         ; using the copy of previous I bit, restore I bit to pre
+                       vious value
+  272 00000008         ; inputs:  previous I bit
+  273 00000008         ; outputs: none
+  274 00000008         ;EndCritical
+  275 00000008         ;        MSR    PRIMASK, R0
+  276 00000008         ;        BX     LR
+  277 00000008         
+  278 00000008         ;*********** WaitForInterrupt ************************
+  279 00000008         ; go to low power mode while waiting for the next interr
+                       upt
+  280 00000008         ; inputs:  none
+  281 00000008         ; outputs: none
+  282 00000008         WaitForInterrupt
+  283 00000008 BF30            WFI
+  284 0000000A 4770            BX               LR
+  285 0000000C         
+  286 0000000C                 EXPORT           getHeapBase
+  287 0000000C                 EXPORT           getStackBase
+  288 0000000C                 EXPORT           getHeapSize
+  289 0000000C         
+  290 0000000C         ;*******************************************************
+                       ***********************
+  291 0000000C         ; Returns the address of the heap base
+  292 0000000C         ;*******************************************************
+                       ***********************
+  293 0000000C         getHeapBase
+  294 0000000C F240 0000 
               F2C0 0000        MOV32            R0, __heap_base
-  283 0000001E F240 0100 
+  295 00000014 4770            BX               LR
+  296 00000016         
+  297 00000016         ;*******************************************************
+                       ***********************
+  298 00000016         ; Returns the address of the heap base
+  299 00000016         ;*******************************************************
+                       ***********************
+  300 00000016         getHeapSize
+  301 00000016 F240 0000 
+              F2C0 0000        MOV32            R0, __heap_base
+  302 0000001E F240 0100 
               F2C0 0100        MOV32            R1, __heap_limit
-  284 00000026 EBA1 0000       SUB              R0, R1, R0
-  285 0000002A 4770            BX               LR
-  286 0000002C         
-  287 0000002C         ;*******************************************************
+  303 00000026 EBA1 0000       SUB              R0, R1, R0
+  304 0000002A 4770            BX               LR
+
+
+
+ARM Macro Assembler    Page 9 
+
+
+  305 0000002C         
+  306 0000002C         ;*******************************************************
                        ***********************
-  288 0000002C         ; Returns the address of the heap base
-  289 0000002C         ;*******************************************************
+  307 0000002C         ; Returns the address of the heap base
+  308 0000002C         ;*******************************************************
                        ***********************
-  290 0000002C         getStackBase
-  291 0000002C F240 0000 
+  309 0000002C         getStackBase
+  310 0000002C F240 0000 
               F2C0 0000        MOV32            R0, StackMem
-  292 00000034 4770            BX               LR
-  293 00000036         
-  294 00000036         ;*******************************************************
+  311 00000034 4770            BX               LR
+  312 00000036         
+  313 00000036         ;*******************************************************
                        ***********************
-  295 00000036         ;
-  296 00000036         ; The function expected of the C library startup code fo
+  314 00000036         ;
+  315 00000036         ; The function expected of the C library startup code fo
                        r defining the stack
-  297 00000036         ; and heap memory locations.  For the C library version 
+  316 00000036         ; and heap memory locations.  For the C library version 
                        of the startup code,
-  298 00000036         ; provide this function so that the C library initializa
+  317 00000036         ; provide this function so that the C library initializa
                        tion code can find out
-  299 00000036         ; the location of the stack and heap.
-  300 00000036         ;
-  301 00000036         ;*******************************************************
+  318 00000036         ; the location of the stack and heap.
+  319 00000036         ;
+  320 00000036         ;*******************************************************
                        ***********************
-  302 00000036                 IF               :DEF: __MICROLIB
-  303 00000036                 EXPORT           __initial_sp
-  304 00000036                 EXPORT           __heap_base
-  305 00000036                 EXPORT           __heap_limit
-  306 00000036                 ELSE
-  315                          ENDIF
-  316 00000036         
-  317 00000036         ;*******************************************************
+  321 00000036                 IF               :DEF: __MICROLIB
+  322 00000036                 EXPORT           __initial_sp
+  323 00000036                 EXPORT           __heap_base
+  324 00000036                 EXPORT           __heap_limit
+  325 00000036                 ELSE
+  334                          ENDIF
+  335 00000036         
+  336 00000036         ;*******************************************************
                        ***********************
-  318 00000036         ;
-  319 00000036         ; Make sure the end of this section is aligned.
-  320 00000036         ;
-  321 00000036         ;*******************************************************
+  337 00000036         ;
+  338 00000036         ; Make sure the end of this section is aligned.
+  339 00000036         ;
+  340 00000036         ;*******************************************************
                        ***********************
-  322 00000036 00 00           ALIGN
-  323 00000038         
-  324 00000038         ;*******************************************************
+  341 00000036 00 00           ALIGN
+  342 00000038         
+  343 00000038         ;*******************************************************
                        ***********************
-  325 00000038         ;
-  326 00000038         ; Tell the assembler that we're done.
-  327 00000038         ;
-  328 00000038         ;*******************************************************
+  344 00000038         ;
+  345 00000038         ; Tell the assembler that we're done.
+  346 00000038         ;
+  347 00000038         ;*******************************************************
                        ***********************
-  329 00000038                 END
+  348 00000038                 END
 Command Line: --debug --xref --cpu=Cortex-M4.fp --apcs=interwork --depend=.\sta
-rtup.d -o.\startup.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Ke
-il\ARM\Inc\Luminary --predefine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1"
- --list=.\startup.lst Startup.s
+rtup.d -o.\startup.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\PACK\ARM\CMSIS\3.20.3
+\CMSIS\Include -IC:\Keil\ARM\Inc\Luminary --predefine="__EVAL SETA 1" --predefi
+ne="__MICROLIB SETA 1" --list=.\startup.lst Startup.s
 
 
 
@@ -537,7 +597,7 @@ Symbol: StackMem
       At line 46 in file Startup.s
    Uses
       At line 93 in file Startup.s
-      At line 291 in file Startup.s
+      At line 310 in file Startup.s
 
 __initial_sp 00001000
 
@@ -545,7 +605,7 @@ Symbol: __initial_sp
    Definitions
       At line 48 in file Startup.s
    Uses
-      At line 303 in file Startup.s
+      At line 322 in file Startup.s
 Comment: __initial_sp used once
 3 symbols
 
@@ -576,9 +636,9 @@ Symbol: __heap_base
    Definitions
       At line 56 in file Startup.s
    Uses
-      At line 275 in file Startup.s
-      At line 282 in file Startup.s
-      At line 304 in file Startup.s
+      At line 294 in file Startup.s
+      At line 301 in file Startup.s
+      At line 323 in file Startup.s
 
 __heap_limit 00001000
 
@@ -586,8 +646,8 @@ Symbol: __heap_limit
    Definitions
       At line 59 in file Startup.s
    Uses
-      At line 283 in file Startup.s
-      At line 305 in file Startup.s
+      At line 302 in file Startup.s
+      At line 324 in file Startup.s
 
 4 symbols
 
@@ -596,20 +656,20 @@ Symbol: __heap_limit
 ARM Macro Assembler    Page 1 Alphabetic symbol ordering
 Relocatable symbols
 
-FaultISR 000000F6
+FaultISR 0000013E
 
 Symbol: FaultISR
    Definitions
-      At line 187 in file Startup.s
+      At line 206 in file Startup.s
    Uses
       At line 96 in file Startup.s
-      At line 188 in file Startup.s
+      At line 207 in file Startup.s
 
-IntDefaultHandler 000000F8
+IntDefaultHandler 00000140
 
 Symbol: IntDefaultHandler
    Definitions
-      At line 197 in file Startup.s
+      At line 216 in file Startup.s
    Uses
       At line 97 in file Startup.s
       At line 98 in file Startup.s
@@ -623,6 +683,7 @@ Symbol: IntDefaultHandler
       At line 112 in file Startup.s
       At line 113 in file Startup.s
       At line 114 in file Startup.s
+      At line 115 in file Startup.s
       At line 116 in file Startup.s
       At line 117 in file Startup.s
       At line 118 in file Startup.s
@@ -654,26 +715,43 @@ Symbol: IntDefaultHandler
       At line 146 in file Startup.s
       At line 147 in file Startup.s
       At line 148 in file Startup.s
-      At line 149 in file Startup.s
 
 
 
 ARM Macro Assembler    Page 2 Alphabetic symbol ordering
 Relocatable symbols
 
+      At line 149 in file Startup.s
       At line 150 in file Startup.s
       At line 151 in file Startup.s
       At line 152 in file Startup.s
-      At line 198 in file Startup.s
+      At line 153 in file Startup.s
+      At line 154 in file Startup.s
+      At line 155 in file Startup.s
+      At line 156 in file Startup.s
+      At line 157 in file Startup.s
+      At line 158 in file Startup.s
+      At line 159 in file Startup.s
+      At line 160 in file Startup.s
+      At line 161 in file Startup.s
+      At line 162 in file Startup.s
+      At line 163 in file Startup.s
+      At line 164 in file Startup.s
+      At line 165 in file Startup.s
+      At line 166 in file Startup.s
+      At line 167 in file Startup.s
+      At line 168 in file Startup.s
+      At line 169 in file Startup.s
+      At line 217 in file Startup.s
 
-NmiSR 000000F4
+NmiSR 0000013C
 
 Symbol: NmiSR
    Definitions
-      At line 177 in file Startup.s
+      At line 196 in file Startup.s
    Uses
       At line 95 in file Startup.s
-      At line 178 in file Startup.s
+      At line 197 in file Startup.s
 
 RESET 00000000
 
@@ -683,14 +761,14 @@ Symbol: RESET
    Uses
       None
 Comment: RESET unused
-Reset_Handler 000000F0
+Reset_Handler 00000138
 
 Symbol: Reset_Handler
    Definitions
-      At line 161 in file Startup.s
+      At line 180 in file Startup.s
    Uses
       At line 94 in file Startup.s
-      At line 160 in file Startup.s
+      At line 179 in file Startup.s
 
 __Vectors 00000000
 
@@ -711,7 +789,7 @@ Relocatable symbols
 
 Symbol: .text
    Definitions
-      At line 212 in file Startup.s
+      At line 231 in file Startup.s
    Uses
       None
 Comment: .text unused
@@ -719,49 +797,49 @@ DisableInterrupts 00000000
 
 Symbol: DisableInterrupts
    Definitions
-      At line 230 in file Startup.s
+      At line 249 in file Startup.s
    Uses
-      At line 220 in file Startup.s
+      At line 239 in file Startup.s
 Comment: DisableInterrupts used once
 EnableInterrupts 00000004
 
 Symbol: EnableInterrupts
    Definitions
-      At line 238 in file Startup.s
+      At line 257 in file Startup.s
    Uses
-      At line 221 in file Startup.s
+      At line 240 in file Startup.s
 Comment: EnableInterrupts used once
 WaitForInterrupt 00000008
 
 Symbol: WaitForInterrupt
    Definitions
-      At line 263 in file Startup.s
+      At line 282 in file Startup.s
    Uses
-      At line 224 in file Startup.s
+      At line 243 in file Startup.s
 Comment: WaitForInterrupt used once
 getHeapBase 0000000C
 
 Symbol: getHeapBase
    Definitions
-      At line 274 in file Startup.s
+      At line 293 in file Startup.s
    Uses
-      At line 267 in file Startup.s
+      At line 286 in file Startup.s
 Comment: getHeapBase used once
 getHeapSize 00000016
 
 Symbol: getHeapSize
    Definitions
-      At line 281 in file Startup.s
+      At line 300 in file Startup.s
    Uses
-      At line 269 in file Startup.s
+      At line 288 in file Startup.s
 Comment: getHeapSize used once
 getStackBase 0000002C
 
 Symbol: getStackBase
    Definitions
-      At line 290 in file Startup.s
+      At line 309 in file Startup.s
    Uses
-      At line 268 in file Startup.s
+      At line 287 in file Startup.s
 Comment: getStackBase used once
 7 symbols
 
@@ -824,15 +902,15 @@ Symbol: UART5IntHandler
    Definitions
       At line 84 in file Startup.s
    Uses
-      At line 115 in file Startup.s
+      At line 170 in file Startup.s
 Comment: UART5IntHandler used once
 __main 00000000
 
 Symbol: __main
    Definitions
-      At line 167 in file Startup.s
+      At line 186 in file Startup.s
    Uses
-      At line 168 in file Startup.s
+      At line 187 in file Startup.s
 Comment: __main used once
 5 symbols
 360 symbols in table

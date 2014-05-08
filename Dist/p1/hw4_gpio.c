@@ -135,6 +135,8 @@ void initializeGpioPins(void)
 	delay = SYSCTL_RCGCGPIO_R;
 	PortD->DigitalEnable |= PIN_2 | PIN_3 | PD6_U2_RX | PD7_U2_TX;
 	PortD->Direction &= ~(PIN_2 | PIN_3);
+	//PortD->Direction &= ~(PD6_U2_RX);
+	PortD->Direction |= PD7_U2_TX;
 	PortD->PullUpSelect |= PIN_2 | PIN_3;
 	PortD->AlternateFunctionSelect |= PD6_U2_RX | PD7_U2_TX;
 	PortD->PortControl |= GPIO_PCTL_PD6_U2RX | GPIO_PCTL_PD7_U2TX;
@@ -143,6 +145,8 @@ void initializeGpioPins(void)
 	SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
 	delay = SYSCTL_RCGCGPIO_R;
 	PortE->Direction &= ~PIN_3;
+	//PortE->Direction &= ~(PE4_U5_RX);
+	//PortE->Direction |= (PE5_U5_TX);
 	PortE->DigitalEnable &= ~PIN_3;
 	PortE->DigitalEnable |= PE4_U5_RX | PE5_U5_TX;
 	PortE->AlternateFunctionSelect |= PIN_3 | PE4_U5_RX | PE5_U5_TX;

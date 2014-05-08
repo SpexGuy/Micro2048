@@ -33,7 +33,7 @@ void SYSTICKIntHandler(void)
 	
 	// Timer Debug
 	if (debugCount++ > SYSTICKS_PER_SECOND) {
-		uartTxPoll(UART0, "C");
+		//uartTxPoll(UART0, "C");
 		debugCount = 0;
 	}
 	

@@ -4,7 +4,7 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 C:\Users\Scott\Documents\GitHub\Micro2048\Dist\p1\ece353_base_project.uvproj
-Project File Date:  05/07/2014
+Project File Date:  05/08/2014
 
 <h2>Output:</h2>
 Rebuild target 'base_project'
@@ -12,9 +12,6 @@ assembling Startup.s...
 compiling main.c...
 compiling initBoard.c...
 compiling systick.c...
-systick.c(36): warning:  #223-D: function "uartTxPoll" declared implicitly
-                uartTxPoll(UART0, "C");
-systick.c: 1 warning, 0 errors
 compiling hw4_adc.c...
 compiling hw4_gpio.c...
 compiling led_chars.c...
@@ -28,12 +25,15 @@ compiling AI2048.c...
 compiling spi.c...
 compiling eeprom.c...
 compiling timer.c...
-timer.c(35): warning:  #223-D: function "uartTxPoll" declared implicitly
-        uartTxPoll(UART0,"H");
-timer.c: 1 warning, 0 errors
 compiling lock.c...
+compiling uart.c...
+uart.c(125): warning:  #223-D: function "uartTxPoll" declared implicitly
+        uartTxPoll(UART0, "U2:");
+uart.c(187): warning:  #223-D: function "uartTxPoll" declared implicitly
+        uartTxPoll(UART0, "U5: ");
+uart.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=10172 RO-data=44 RW-data=364 ZI-data=8828  
+Program Size: Code=12280 RO-data=44 RW-data=380 ZI-data=8892  
 ".\ece353_base_project.axf" - 0 Error(s), 2 Warning(s).
 Load "C:\\Users\\Scott\\Documents\\GitHub\\Micro2048\\Dist\\p1\\ece353_base_project.axf" 
 Connecting: Mode=JTAG, Speed=1000000Hz
@@ -43,3 +43,16 @@ Verify OK.
 </pre>
 </body>
 </html>
+ecting: Mode=JTAG, Speed=1000000Hz
+Erase Done.
+Programming Done.
+Verify OK.
+\\Dist\\p1\\ece353_base_project.axf" 
+Connecting: Mode=JTAG, Speed=1000000Hz
+Erase Done.
+Programming Done.
+Verify OK.
+00000Hz
+Erase Done.
+Programming Done.
+Verify OK.
