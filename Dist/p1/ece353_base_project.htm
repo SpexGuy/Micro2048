@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\ece353_base_project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\ece353_base_project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Wed May 07 22:47:50 2014
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Wed May 07 22:49:46 2014
 <BR><P>
 <H3>Maximum Stack Usage =        272 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -13,12 +13,12 @@ main &rArr; drawAnimations &rArr; drawAnimation &rArr; drawAARect &rArr; drawAAC
 Functions with no stack information
 </H3><UL>
  <LI><a href="#[0]">Reset_Handler</a>
- <LI><a href="#[6f]">DisableInterrupts</a>
- <LI><a href="#[70]">EnableInterrupts</a>
- <LI><a href="#[80]">WaitForInterrupt</a>
- <LI><a href="#[81]">getHeapBase</a>
- <LI><a href="#[82]">getHeapSize</a>
- <LI><a href="#[83]">getStackBase</a>
+ <LI><a href="#[70]">DisableInterrupts</a>
+ <LI><a href="#[71]">EnableInterrupts</a>
+ <LI><a href="#[81]">WaitForInterrupt</a>
+ <LI><a href="#[82]">getHeapBase</a>
+ <LI><a href="#[83]">getHeapSize</a>
+ <LI><a href="#[84]">getStackBase</a>
  <LI><a href="#[1]">NmiSR</a>
  <LI><a href="#[2]">FaultISR</a>
  <LI><a href="#[3]">IntDefaultHandler</a>
@@ -42,7 +42,7 @@ Function Pointers
  <LI><a href="#[4]">SYSTICKIntHandler</a> from systick.o(.text) referenced from startup.o(RESET)
  <LI><a href="#[5]">TIMER0IntHandler</a> from timer.o(.text) referenced from startup.o(RESET)
  <LI><a href="#[7]">_sputc</a> from printf8.o(i._sputc) referenced from printf8.o(i.__0sprintf$8)
- <LI><a href="#[50]">endMergeTranslate</a> from 2048.o(.text) referenced from 2048.o(.text)
+ <LI><a href="#[51]">endMergeTranslate</a> from 2048.o(.text) referenced from 2048.o(.text)
  <LI><a href="#[4d]">fadeToColor</a> from 2048.o(.text) referenced from 2048.o(.text)
  <LI><a href="#[6]">main</a> from main.o(.text) referenced from entry9a.o(.ARM.Collect$$$$0000000B)
  <LI><a href="#[4c]">showTile</a> from 2048.o(.text) referenced 2 times from 2048.o(.text)
@@ -61,41 +61,41 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reset_Handler
 </UL>
 
-<P><STRONG><a name="[7a]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[7b]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[9]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[75]"></a>__main_after_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
+<P><STRONG><a name="[76]"></a>__main_after_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[7b]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[7c]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[7c]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[7d]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[7d]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[7e]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[7e]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[7f]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[7f]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[80]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
-<P><STRONG><a name="[6f]"></a>DisableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
+<P><STRONG><a name="[70]"></a>DisableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartCritical
 </UL>
 
-<P><STRONG><a name="[70]"></a>EnableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
+<P><STRONG><a name="[71]"></a>EnableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EndCritical
 </UL>
 
-<P><STRONG><a name="[80]"></a>WaitForInterrupt</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
+<P><STRONG><a name="[81]"></a>WaitForInterrupt</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
 
-<P><STRONG><a name="[81]"></a>getHeapBase</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
+<P><STRONG><a name="[82]"></a>getHeapBase</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
 
-<P><STRONG><a name="[82]"></a>getHeapSize</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
+<P><STRONG><a name="[83]"></a>getHeapSize</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
 
-<P><STRONG><a name="[83]"></a>getStackBase</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
+<P><STRONG><a name="[84]"></a>getStackBase</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
 
 <P><STRONG><a name="[b]"></a>startFadeAnim</STRONG> (Thumb, 72 bytes, Stack size 48 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108 + Unknown Stack Size
@@ -156,7 +156,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[18]"></a>initBoard</STRONG> (Thumb, 86 bytes, Stack size 8 bytes, initboard.o(.text))
+<P><STRONG><a name="[18]"></a>initBoard</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, initboard.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28 + Unknown Stack Size
 <LI>Call Chain = initBoard &rArr; initializeSPI
 </UL>
@@ -365,9 +365,9 @@ Global Symbols
 <LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drawAACorners
 </UL>
 
-<P><STRONG><a name="[84]"></a>setColor</STRONG> (Thumb, 22 bytes, Stack size 12 bytes, pixel.o(.text), UNUSED)
+<P><STRONG><a name="[85]"></a>setColor</STRONG> (Thumb, 22 bytes, Stack size 12 bytes, pixel.o(.text), UNUSED)
 
-<P><STRONG><a name="[85]"></a>gammaCorrect</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, renderer.o(.text), UNUSED)
+<P><STRONG><a name="[86]"></a>gammaCorrect</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, renderer.o(.text), UNUSED)
 
 <P><STRONG><a name="[30]"></a>updateRow</STRONG> (Thumb, 400 bytes, Stack size 24 bytes, renderer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = updateRow
@@ -379,15 +379,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;swapBuffers
 </UL>
 
-<P><STRONG><a name="[86]"></a>getCurrentBuffer</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, renderer.o(.text), UNUSED)
+<P><STRONG><a name="[87]"></a>getCurrentBuffer</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, renderer.o(.text), UNUSED)
 
 <P><STRONG><a name="[32]"></a>setBrightness</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, renderer.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateRefreshRate
 </UL>
 
-<P><STRONG><a name="[87]"></a>getBrightness</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, renderer.o(.text), UNUSED)
+<P><STRONG><a name="[88]"></a>getBrightness</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, renderer.o(.text), UNUSED)
 
-<P><STRONG><a name="[88]"></a>noFunc</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, animation.o(.text), UNUSED)
+<P><STRONG><a name="[89]"></a>noFunc</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, animation.o(.text), UNUSED)
 
 <P><STRONG><a name="[c]"></a>scheduleAnimation</STRONG> (Thumb, 106 bytes, Stack size 40 bytes, animation.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60 + Unknown Stack Size
@@ -397,8 +397,8 @@ Global Symbols
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EndCritical
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
+<BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addTile
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fadeToColor
 <LI><a href="#[d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTranslateAnim
@@ -446,13 +446,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[55]"></a>countEmpty</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, 2048.o(.text))
+<P><STRONG><a name="[56]"></a>countEmpty</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = countEmpty
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addRandomTile
 </UL>
 
-<P><STRONG><a name="[56]"></a>getNthEmptyTile</STRONG> (Thumb, 66 bytes, Stack size 20 bytes, 2048.o(.text))
+<P><STRONG><a name="[57]"></a>getNthEmptyTile</STRONG> (Thumb, 66 bytes, Stack size 20 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = getNthEmptyTile
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addRandomTile
@@ -467,7 +467,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduleAnimation
 </UL>
-<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;endMergeTranslate
+<BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;endMergeTranslate
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> 2048.o(.text)
 </UL>
@@ -480,15 +480,15 @@ Global Symbols
 <LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduleAnimation
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evaluatePossibilities
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restoreGame
+<BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evaluatePossibilities
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restoreGame
 <LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addRandomTile
 </UL>
 
-<P><STRONG><a name="[53]"></a>setPos</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, 2048.o(.text))
+<P><STRONG><a name="[54]"></a>setPos</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = setPos
 </UL>
-<BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
+<BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
 </UL>
 
 <P><STRONG><a name="[4f]"></a>removeTile</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, 2048.o(.text))
@@ -496,14 +496,18 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;free
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evaluatePossibilities
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
+<BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evaluatePossibilities
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
+</UL>
+
+<P><STRONG><a name="[50]"></a>clearBoard</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, 2048.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;free
 </UL>
 
 <P><STRONG><a name="[12]"></a>canTakeInput</STRONG> (Thumb, 38 bytes, Stack size 12 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = canTakeInput
 </UL>
-<BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;saveGame
+<BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;saveGame
 <LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shiftUp
 <LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shiftRight
 <LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shiftLeft
@@ -511,7 +515,7 @@ Global Symbols
 <LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkInput
 </UL>
 
-<P><STRONG><a name="[50]"></a>endMergeTranslate</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, 2048.o(.text))
+<P><STRONG><a name="[51]"></a>endMergeTranslate</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124 + Unknown Stack Size
 <LI>Call Chain = endMergeTranslate &rArr; fadeToColor &rArr; scheduleAnimation &rArr; malloc
 </UL>
@@ -519,7 +523,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> 2048.o(.text)
 </UL>
-<P><STRONG><a name="[51]"></a>spawnMergeAnim</STRONG> (Thumb, 102 bytes, Stack size 56 bytes, 2048.o(.text))
+<P><STRONG><a name="[52]"></a>spawnMergeAnim</STRONG> (Thumb, 102 bytes, Stack size 56 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116 + Unknown Stack Size
 <LI>Call Chain = spawnMergeAnim &rArr; scheduleAnimation &rArr; malloc
 </UL>
@@ -532,11 +536,11 @@ Global Symbols
 <LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shiftDown
 </UL>
 
-<P><STRONG><a name="[52]"></a>spawnTranslateAnim</STRONG> (Thumb, 130 bytes, Stack size 64 bytes, 2048.o(.text))
+<P><STRONG><a name="[53]"></a>spawnTranslateAnim</STRONG> (Thumb, 130 bytes, Stack size 64 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124 + Unknown Stack Size
 <LI>Call Chain = spawnTranslateAnim &rArr; scheduleAnimation &rArr; malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setPos
+<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setPos
 <LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduleAnimation
 </UL>
 <BR>[Called By]<UL><LI><a href="#[14]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shiftUp
@@ -550,7 +554,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restoreGame
+<BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restoreGame
 <LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -558,19 +562,19 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 172 + Unknown Stack Size
 <LI>Call Chain = shiftUp &rArr; spawnTranslateAnim &rArr; scheduleAnimation &rArr; malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
+<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
 <LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;canTakeInput
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkInput
 </UL>
 
-<P><STRONG><a name="[15]"></a>shiftDown</STRONG> (Thumb, 224 bytes, Stack size 48 bytes, 2048.o(.text))
+<P><STRONG><a name="[15]"></a>shiftDown</STRONG> (Thumb, 226 bytes, Stack size 48 bytes, 2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 172 + Unknown Stack Size
 <LI>Call Chain = shiftDown &rArr; spawnTranslateAnim &rArr; scheduleAnimation &rArr; malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
+<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
 <LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;canTakeInput
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkInput
@@ -580,8 +584,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 172 + Unknown Stack Size
 <LI>Call Chain = shiftLeft &rArr; spawnTranslateAnim &rArr; scheduleAnimation &rArr; malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
+<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
 <LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;canTakeInput
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkInput
@@ -591,8 +595,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 172 + Unknown Stack Size
 <LI>Call Chain = shiftRight &rArr; spawnTranslateAnim &rArr; scheduleAnimation &rArr; malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
+<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnTranslateAnim
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spawnMergeAnim
 <LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;canTakeInput
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkInput
@@ -602,10 +606,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 164 + Unknown Stack Size
 <LI>Call Chain = addRandomTile &rArr; addTile &rArr; scheduleAnimation &rArr; malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
+<BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addTile
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNthEmptyTile
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;countEmpty
+<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNthEmptyTile
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;countEmpty
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -618,99 +622,99 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[57]"></a>saveGame</STRONG> (Thumb, 170 bytes, Stack size 144 bytes, 2048.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_array
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_wait_write_in_progress
+<P><STRONG><a name="[58]"></a>saveGame</STRONG> (Thumb, 170 bytes, Stack size 144 bytes, 2048.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_array
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_wait_write_in_progress
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uartTxPoll
 <LI><a href="#[12]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;canTakeInput
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 
-<P><STRONG><a name="[5a]"></a>restoreGame</STRONG> (Thumb, 154 bytes, Stack size 144 bytes, 2048.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_array
+<P><STRONG><a name="[5b]"></a>restoreGame</STRONG> (Thumb, 154 bytes, Stack size 144 bytes, 2048.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_array
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addTile
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uartTxPoll
 <LI><a href="#[1a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init2048
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 
-<P><STRONG><a name="[5c]"></a>freeBoard</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, ai2048.o(.text))
+<P><STRONG><a name="[5d]"></a>freeBoard</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, ai2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = freeBoard &rArr; free
 </UL>
 <BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;free
 </UL>
-<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
+<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
 </UL>
 
-<P><STRONG><a name="[5e]"></a>findFarthestPositionNext</STRONG> (Thumb, 64 bytes, Stack size 20 bytes, ai2048.o(.text))
+<P><STRONG><a name="[5f]"></a>findFarthestPositionNext</STRONG> (Thumb, 64 bytes, Stack size 20 bytes, ai2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = findFarthestPositionNext
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSmoothness
+<BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSmoothness
 </UL>
 
-<P><STRONG><a name="[5d]"></a>getSmoothness</STRONG> (Thumb, 126 bytes, Stack size 40 bytes, ai2048.o(.text))
+<P><STRONG><a name="[5e]"></a>getSmoothness</STRONG> (Thumb, 126 bytes, Stack size 40 bytes, ai2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = getSmoothness &rArr; findFarthestPositionNext
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findFarthestPositionNext
+<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;findFarthestPositionNext
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evaluatePossibilities
+<BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evaluatePossibilities
 </UL>
 
-<P><STRONG><a name="[5f]"></a>evaluatePossibilities</STRONG> (Thumb, 146 bytes, Stack size 40 bytes, ai2048.o(.text))
+<P><STRONG><a name="[60]"></a>evaluatePossibilities</STRONG> (Thumb, 146 bytes, Stack size 40 bytes, ai2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 172 + Unknown Stack Size
 <LI>Call Chain = evaluatePossibilities &rArr; addTile &rArr; scheduleAnimation &rArr; malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSmoothness
+<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSmoothness
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeTile
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addTile
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uartTxPoll
 </UL>
-<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
+<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
 </UL>
 
-<P><STRONG><a name="[65]"></a>internalShiftLeft</STRONG> (Thumb, 86 bytes, Stack size 20 bytes, ai2048.o(.text))
+<P><STRONG><a name="[66]"></a>internalShiftLeft</STRONG> (Thumb, 86 bytes, Stack size 20 bytes, ai2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = internalShiftLeft
 </UL>
-<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
+<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
 </UL>
 
-<P><STRONG><a name="[60]"></a>copyBoard</STRONG> (Thumb, 110 bytes, Stack size 32 bytes, ai2048.o(.text))
+<P><STRONG><a name="[61]"></a>copyBoard</STRONG> (Thumb, 110 bytes, Stack size 32 bytes, ai2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = copyBoard &rArr; malloc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
+<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
 </UL>
 
-<P><STRONG><a name="[64]"></a>internalShiftRight</STRONG> (Thumb, 86 bytes, Stack size 20 bytes, ai2048.o(.text))
+<P><STRONG><a name="[65]"></a>internalShiftRight</STRONG> (Thumb, 86 bytes, Stack size 20 bytes, ai2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = internalShiftRight
 </UL>
-<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
+<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
 </UL>
 
-<P><STRONG><a name="[63]"></a>internalShiftDown</STRONG> (Thumb, 86 bytes, Stack size 20 bytes, ai2048.o(.text))
+<P><STRONG><a name="[64]"></a>internalShiftDown</STRONG> (Thumb, 86 bytes, Stack size 20 bytes, ai2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = internalShiftDown
 </UL>
-<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
+<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
 </UL>
 
-<P><STRONG><a name="[62]"></a>internalShiftUp</STRONG> (Thumb, 86 bytes, Stack size 20 bytes, ai2048.o(.text))
+<P><STRONG><a name="[63]"></a>internalShiftUp</STRONG> (Thumb, 86 bytes, Stack size 20 bytes, ai2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = internalShiftUp
 </UL>
-<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
+<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
 </UL>
 
-<P><STRONG><a name="[61]"></a>getBestMove</STRONG> (Thumb, 214 bytes, Stack size 40 bytes, ai2048.o(.text))
+<P><STRONG><a name="[62]"></a>getBestMove</STRONG> (Thumb, 214 bytes, Stack size 40 bytes, ai2048.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 212 + Unknown Stack Size
 <LI>Call Chain = getBestMove &rArr; evaluatePossibilities &rArr; addTile &rArr; scheduleAnimation &rArr; malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;internalShiftUp
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;internalShiftDown
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;internalShiftRight
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;copyBoard
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;internalShiftLeft
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evaluatePossibilities
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;freeBoard
+<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;internalShiftUp
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;internalShiftDown
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;internalShiftRight
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;copyBoard
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;internalShiftLeft
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evaluatePossibilities
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;freeBoard
 <LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uartTxPoll
 </UL>
 <BR>[Called By]<UL><LI><a href="#[13]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getNextMove
@@ -720,93 +724,93 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 220 + Unknown Stack Size
 <LI>Call Chain = getNextMove &rArr; getBestMove &rArr; evaluatePossibilities &rArr; addTile &rArr; scheduleAnimation &rArr; malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
+<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checkInput
 </UL>
 
-<P><STRONG><a name="[66]"></a>getRandomMove</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, ai2048.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
+<P><STRONG><a name="[67]"></a>getRandomMove</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, ai2048.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
 </UL>
 
-<P><STRONG><a name="[89]"></a>log2LT</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, ai2048.o(.text), UNUSED)
+<P><STRONG><a name="[8a]"></a>log2LT</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, ai2048.o(.text), UNUSED)
 
-<P><STRONG><a name="[69]"></a>spiTx</STRONG> (Thumb, 132 bytes, Stack size 16 bytes, spi.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_enable
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_disable
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_byte
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_status
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_array
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_array
+<P><STRONG><a name="[6a]"></a>spiTx</STRONG> (Thumb, 132 bytes, Stack size 16 bytes, spi.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_enable
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_disable
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_byte
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_status
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_array
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_array
 </UL>
 
-<P><STRONG><a name="[67]"></a>initializePortASpi0</STRONG> (Thumb, 82 bytes, Stack size 0 bytes, spi.o(.text))
+<P><STRONG><a name="[68]"></a>initializePortASpi0</STRONG> (Thumb, 82 bytes, Stack size 0 bytes, spi.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializeSPI
 </UL>
 
 <P><STRONG><a name="[2e]"></a>initializeSPI</STRONG> (Thumb, 130 bytes, Stack size 20 bytes, spi.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = initializeSPI
 </UL>
-<BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializePortASpi0
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initializePortASpi0
 </UL>
 <BR>[Called By]<UL><LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initBoard
 </UL>
 
-<P><STRONG><a name="[68]"></a>spi_eeprom_read_status</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, eeprom.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
+<P><STRONG><a name="[69]"></a>spi_eeprom_read_status</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, eeprom.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
 </UL>
-<BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_wait_write_in_progress
-</UL>
-
-<P><STRONG><a name="[59]"></a>spi_eeprom_wait_write_in_progress</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, eeprom.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_status
-</UL>
-<BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_byte
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_array
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;saveGame
+<BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_wait_write_in_progress
 </UL>
 
-<P><STRONG><a name="[6a]"></a>spi_eeprom_read_byte</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, eeprom.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_wait_write_in_progress
+<P><STRONG><a name="[5a]"></a>spi_eeprom_wait_write_in_progress</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, eeprom.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_status
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_byte
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_array
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;saveGame
 </UL>
 
-<P><STRONG><a name="[5b]"></a>spi_eeprom_read_array</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, eeprom.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_wait_write_in_progress
-</UL>
-<BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restoreGame
+<P><STRONG><a name="[6b]"></a>spi_eeprom_read_byte</STRONG> (Thumb, 42 bytes, Stack size 16 bytes, eeprom.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_wait_write_in_progress
 </UL>
 
-<P><STRONG><a name="[6c]"></a>spi_eeprom_write_disable</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, eeprom.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
+<P><STRONG><a name="[5c]"></a>spi_eeprom_read_array</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, eeprom.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_wait_write_in_progress
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_array
-</UL>
-
-<P><STRONG><a name="[6d]"></a>spi_eeprom_write_enable</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, eeprom.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
-</UL>
-<BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_array
+<BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restoreGame
 </UL>
 
-<P><STRONG><a name="[6e]"></a>spi_eeprom_write_byte</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, eeprom.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_enable
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_disable
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
+<P><STRONG><a name="[6d]"></a>spi_eeprom_write_disable</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, eeprom.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_array
 </UL>
 
-<P><STRONG><a name="[58]"></a>spi_eeprom_write_array</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, eeprom.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_enable
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_disable
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
+<P><STRONG><a name="[6e]"></a>spi_eeprom_write_enable</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, eeprom.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
 </UL>
-<BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;saveGame
+<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_byte
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_array
+</UL>
+
+<P><STRONG><a name="[6f]"></a>spi_eeprom_write_byte</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, eeprom.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_enable
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_disable
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
+</UL>
+
+<P><STRONG><a name="[59]"></a>spi_eeprom_write_array</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, eeprom.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_enable
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_disable
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spiTx
+</UL>
+<BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;saveGame
 </UL>
 
 <P><STRONG><a name="[29]"></a>initTimer0</STRONG> (Thumb, 110 bytes, Stack size 0 bytes, timer.o(.text))
@@ -824,7 +828,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
 <LI>Call Chain = StartCritical
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableInterrupts
+<BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableInterrupts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addTile
 <LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduleAnimation
@@ -836,7 +840,7 @@ Global Symbols
 <LI>Call Chain = EndCritical
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uartTxPoll
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addTile
 <LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduleAnimation
@@ -853,13 +857,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[18]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initBoard
 </UL>
 
-<P><STRONG><a name="[8a]"></a>uartRxPoll</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, uart.o(.text), UNUSED)
+<P><STRONG><a name="[8b]"></a>uartRxPoll</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, uart.o(.text), UNUSED)
 
 <P><STRONG><a name="[10]"></a>uartTxPoll</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, uart.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evaluatePossibilities
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restoreGame
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;saveGame
+<BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getBestMove
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;evaluatePossibilities
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restoreGame
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;saveGame
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EndCritical
 <LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAnimations
 <LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -876,40 +880,40 @@ Global Symbols
 <P><STRONG><a name="[47]"></a>__aeabi_uldivmod</STRONG> (Thumb, 98 bytes, Stack size 40 bytes, uldiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = __aeabi_uldivmod
 </UL>
-<BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
+<BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAnimation
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[54]"></a>rand</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, rand.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRandomMove
+<P><STRONG><a name="[55]"></a>rand</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, rand.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getRandomMove
 <LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addRandomTile
 </UL>
 
-<P><STRONG><a name="[8b]"></a>srand</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, rand.o(.text), UNUSED)
+<P><STRONG><a name="[8c]"></a>srand</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, rand.o(.text), UNUSED)
 
-<P><STRONG><a name="[6b]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_array
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_array
+<P><STRONG><a name="[6c]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_write_array
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;spi_eeprom_read_array
 </UL>
 
-<P><STRONG><a name="[8c]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
+<P><STRONG><a name="[8d]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
-<P><STRONG><a name="[8d]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
+<P><STRONG><a name="[8e]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
 <P><STRONG><a name="[34]"></a>__aeabi_memset</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, memseta.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset$wrapper
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
+<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset$wrapper
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 <LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initDoubleBuffers
 </UL>
 
-<P><STRONG><a name="[8e]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[8f]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
-<P><STRONG><a name="[8f]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[90]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
-<P><STRONG><a name="[73]"></a>__aeabi_memclr</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[74]"></a>__aeabi_memclr</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 
@@ -918,61 +922,62 @@ Global Symbols
 <LI><a href="#[1a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init2048
 </UL>
 
-<P><STRONG><a name="[90]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[91]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
-<P><STRONG><a name="[74]"></a>_memset$wrapper</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[75]"></a>_memset$wrapper</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
 
-<P><STRONG><a name="[72]"></a>__aeabi_llsl</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, llshl.o(.text))
+<P><STRONG><a name="[73]"></a>__aeabi_llsl</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, llshl.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[91]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[92]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 
-<P><STRONG><a name="[71]"></a>__aeabi_llsr</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, llushr.o(.text))
+<P><STRONG><a name="[72]"></a>__aeabi_llsr</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, llushr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[92]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[93]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
 
 <P><STRONG><a name="[a]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
+<BR><BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[93]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[94]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
-<P><STRONG><a name="[94]"></a>__decompress</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
+<P><STRONG><a name="[95]"></a>__decompress</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
-<P><STRONG><a name="[95]"></a>__decompress1</STRONG> (Thumb, 92 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
+<P><STRONG><a name="[96]"></a>__decompress1</STRONG> (Thumb, 92 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
-<P><STRONG><a name="[76]"></a>__0sprintf$8</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, printf8.o(i.__0sprintf$8), UNUSED)
+<P><STRONG><a name="[77]"></a>__0sprintf$8</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, printf8.o(i.__0sprintf$8), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[96]"></a>__1sprintf$8</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf8.o(i.__0sprintf$8), UNUSED)
+<P><STRONG><a name="[97]"></a>__1sprintf$8</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf8.o(i.__0sprintf$8), UNUSED)
 
 <P><STRONG><a name="[4a]"></a>__2sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf8.o(i.__0sprintf$8))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2sprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restoreGame
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;saveGame
+<BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;restoreGame
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;saveGame
 <LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAnimations
 </UL>
 
-<P><STRONG><a name="[97]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[98]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[98]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[99]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[99]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[9a]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
 <P><STRONG><a name="[49]"></a>free</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, malloc.o(i.free))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = free
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;freeBoard
+<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;freeBoard
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clearBoard
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;removeTile
 <LI><a href="#[1c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateAnimations
 </UL>
@@ -980,7 +985,7 @@ Global Symbols
 <P><STRONG><a name="[45]"></a>malloc</STRONG> (Thumb, 92 bytes, Stack size 20 bytes, malloc.o(i.malloc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = malloc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;copyBoard
+<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;copyBoard
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addTile
 <LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;scheduleAnimation
 </UL>
@@ -1009,24 +1014,24 @@ Local Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
-<P><STRONG><a name="[77]"></a>_printf_core</STRONG> (Thumb, 988 bytes, Stack size 104 bytes, printf8.o(i._printf_core), UNUSED)
+<P><STRONG><a name="[78]"></a>_printf_core</STRONG> (Thumb, 988 bytes, Stack size 104 bytes, printf8.o(i._printf_core), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
 </UL>
-<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sprintf$8
-</UL>
-
-<P><STRONG><a name="[79]"></a>_printf_post_padding</STRONG> (Thumb, 38 bytes, Stack size 24 bytes, printf8.o(i._printf_post_padding), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sprintf$8
 </UL>
 
-<P><STRONG><a name="[78]"></a>_printf_pre_padding</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, printf8.o(i._printf_pre_padding), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[7a]"></a>_printf_post_padding</STRONG> (Thumb, 38 bytes, Stack size 24 bytes, printf8.o(i._printf_post_padding), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+</UL>
+
+<P><STRONG><a name="[79]"></a>_printf_pre_padding</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, printf8.o(i._printf_pre_padding), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
 <P><STRONG><a name="[7]"></a>_sputc</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, printf8.o(i._sputc))
-<BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sprintf$8
+<BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sprintf$8
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printf8.o(i.__0sprintf$8)
 </UL><P>

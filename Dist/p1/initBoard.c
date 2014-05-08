@@ -32,7 +32,6 @@ extern void initPortC(void);
  *****************************************************************************/
 void initBoard(void)
 {
-   int i = 0;
   // Initialize the PLLs so the the main CPU frequency is 80MHz
   PLL_Init();
 	StartCritical();
@@ -45,23 +44,6 @@ void initBoard(void)
   initializeADC();
 	initializeSPI(SSI0, 1, 1);
 	EndCritical();
-  
-  // Need to wait a while before the UART is functional
-  while(i < 10000)
-  {
-    i++;
-  }
-
-//	if(!initializeSPI(SSI0, 0, 0)) {
-//		uartTxPoll(UART0,"Failed to init SPI");
-//	}
-	i = 0;
-	// Need to wait a while before the UART is functional
-  while(i < 10000)
-  {
-    i++;
-  }
-
 }
 
 
