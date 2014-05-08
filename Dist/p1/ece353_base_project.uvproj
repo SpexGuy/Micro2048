@@ -487,6 +487,11 @@
               <FileType>1</FileType>
               <FilePath>.\lock.c</FilePath>
             </File>
+            <File>
+              <FileName>uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\uart.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -511,6 +516,11 @@
               <FileName>portC_init.lib</FileName>
               <FileType>4</FileType>
               <FilePath>.\lib\portC_init.lib</FilePath>
+            </File>
+            <File>
+              <FileName>circular_buffer.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>.\lib\circular_buffer.lib</FilePath>
             </File>
           </Files>
         </Group>
