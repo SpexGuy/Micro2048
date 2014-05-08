@@ -14,6 +14,7 @@ volatile uint64_t Time = 0;
 void SYSTICKIntHandler(void)
 {
 	static int adcCount = 0;
+	static int debugCount = 0;
 	static int row = 0;
 	static byteFraction dutyPos = 0;
 	
@@ -29,6 +30,12 @@ void SYSTICKIntHandler(void)
 		dutyPos += DUTY_CYCLE_DELTA;
 	}
 	updateRow(row, dutyPos);
+	
+	// Timer Debug
+	if (debugCount++ > SYSTICKS_PER_SECOND) {
+		uartTxPoll(UART0, "C");
+		debugCount = 0;
+	}
 }
 
 

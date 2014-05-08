@@ -21,7 +21,7 @@
 #include "spi.h"
 #include "eeprom.h"
 
-//#define isAI 1
+#define IS_AI 1
 //#define IS_EEPROM_TEST 1
 
 extern void uartTxPoll(uint32_t base, char *data);
@@ -89,7 +89,7 @@ void printBLerpFracs() {
 }
 
 bool checkInput(void) {
-#	ifdef isAI
+#	ifdef IS_AI
 		if(canTakeInput(&board)) {	
 			switch(getNextMove(&board)) {
 				case 0:
@@ -176,7 +176,7 @@ int main(void)
 //		uartTxPoll(UART0,"M");
 		if (Time - lastSecond > SYSTICKS_PER_SECOND) {
 			char buffer[40];
-			sprintf(buffer, "\033[A%6d frames per second\n\r", frameCount);
+			//sprintf(buffer, "\033[A%6d frames per second\n\r", frameCount);
 			uartTxPoll(UART0, buffer);
 			frameCount = 0;
 			lastSecond = Time;
