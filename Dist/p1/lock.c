@@ -4,6 +4,7 @@
 
 extern void EnableInterrupts(void);
 extern void DisableInterrupts(void);
+extern void uartTxPoll(uint32_t base, char *data);
 
 uint8_t depth = 0;
 

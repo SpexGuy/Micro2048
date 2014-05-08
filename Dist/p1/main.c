@@ -112,21 +112,23 @@ bool checkInput(void) {
 			return false;
 		}
 #	else
-		if (getButton(BUTTON_NORTH))
+		static uint64_t save_press_time = 0;
+		if (getButtonPress(BUTTON_NORTH))
 			return shiftUp(&board);
-		else if (getButton(BUTTON_SOUTH)) {
-			restoreGame(&board);
-			//return shiftDown(&board);
-			return false;
-		}
-		else if (getButton(BUTTON_EAST))
+		else if (getButtonPress(BUTTON_SOUTH))
+			return shiftDown(&board);
+		else if (getButtonPress(BUTTON_EAST))
 			return shiftRight(&board);
-		else if (getButton(BUTTON_WEST)) {
-			uartTxPoll(UART0, "Before Save\n\r");
-			saveGame(&board);
-			uartTxPoll(UART0, "After Save\n\r");
-			
-		}//return shiftLeft(&board);
+		else if (getButtonPress(BUTTON_WEST))
+			return shiftLeft(&board);
+		else if (getButtonPress(BUTTON_AUX))
+			save_press_time = Time;
+		else if (getButtonRelease(BUTTON_AUX)) {
+			if (Time - save_press_time > SAVE_HOLD_THRESH)
+				restoreGame(&board);
+			else
+				saveGame(&board);
+		}
 		return false;
 #	endif
 }
@@ -190,6 +192,12 @@ int main(void)
 		updateButtons();
 		if (checkInput()) {
 			addRandomTile(&board);
+		}
+		if(getButtonPress(4)) {
+			uartTxPoll(UART0, "Hello Button Press!\n\r");
+		}
+		if(getButtonRelease(4)) {
+			uartTxPoll(UART0, "Hello Button Release!\n\r");
 		}
 	}
 }

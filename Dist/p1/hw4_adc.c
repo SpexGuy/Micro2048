@@ -66,8 +66,7 @@ uint32_t GetADCval(uint32_t Channel)
 //*****************************************************************************
 // The refresh rate will go from 0-99Hz.
 //*****************************************************************************
-void updateRefreshRate(void)
-{
+void updateRefreshRate(void) {
 	uint32_t adc;
 	if (!AlertADC0) return;
 	AlertADC0 = false;

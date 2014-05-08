@@ -4,6 +4,8 @@
 #include "board_ports.h"
 #include "renderer.h"
 
+#define NUM_BUTTONS 5
+
 //******************************************************
 // Global Variables provided by other files
 // Do not modify
@@ -27,11 +29,20 @@ extern volatile uint16_t RefreshRate;
 
 volatile bool AlertDebounce;
 
-bool buttonMask[4] = {false, false, false, false};
+bool buttonPress[NUM_BUTTONS] = {false, false, false, false, false};
+bool buttonRelease[NUM_BUTTONS] = {false, false, false, false, false};
 
-uint8_t getButton(uint8_t index) {
-	if (buttonMask[index]) {
-		buttonMask[index] = false;
+uint8_t getButtonPress(uint8_t index) {
+	if (buttonPress[index]) {
+		buttonPress[index] = false;
+		return true;
+	}
+	return false;
+}
+
+uint8_t getButtonRelease(uint8_t index) {
+	if (buttonRelease[index]) {
+		buttonRelease[index] = false;
 		return true;
 	}
 	return false;
@@ -56,11 +67,11 @@ void updateButtons(void)
 	//loop iterators
 	int c, d;
 	//histeresis values
-	static bool last[4][3];
+	static bool last[NUM_BUTTONS][3];
 	if (!AlertDebounce) return;
 	AlertDebounce = false;
 	//shift old values
-	for (c = 0; c < 4; c++) {
+	for (c = 0; c < NUM_BUTTONS; c++) {
 		for (d = 2; d > 0; d--) {
 			last[c][d] = last[c][d-1];
 		}
@@ -70,11 +81,15 @@ void updateButtons(void)
 	last[1][0] = !(PortA->Data & PIN_7);
 	last[2][0] = !(PortD->Data & PIN_2);
 	last[3][0] = !(PortD->Data & PIN_3);
+	last[4][0] = !(PortF->Data & PIN_1);
 	//for each button
-	for (c = 0; c < 4; c++) {
+	for (c = 0; c < NUM_BUTTONS; c++) {
 		//check for button press
 		if (last[c][0] && last[c][1] && !last[c][2]) {
-			buttonMask[c] = true;
+			buttonPress[c] = true;
+		}
+		if (!last[c][0] && !last[c][1] && last[c][2]) {
+			buttonRelease[c] = true;
 		}
 	}
 }
@@ -101,8 +116,10 @@ void initializeGpioPins(void)
 	locked = PortF->Lock;
 	if (locked)
 		PortF->Lock = 0x4C4F434B;
-	PortF->DigitalEnable |= PIN_4;
+	PortF->DigitalEnable |= PIN_4 | PIN_1;
 	PortF->Direction |= PIN_4;
+	PortF->Direction &= ~PIN_1;
+	PortF->PullUpSelect |= PIN_1;
 	//restore lock to original status
 	if (locked)
 		PortF->Lock = 0x4C4F434B;

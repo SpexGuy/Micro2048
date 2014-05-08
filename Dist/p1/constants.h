@@ -27,6 +27,7 @@ extern void EndCritical(void);
 #define SYSTICKS_PER_BUTTON				((SYSTICKS_PER_SECOND * 18)/1000)
 //adc check every 1 mS
 #define SYSTICKS_PER_ADC					((SYSTICKS_PER_SECOND * 1)/1000)
+#define SAVE_HOLD_THRESH					(SYSTICKS_PER_SECOND)
 
 typedef uint8_t byteFraction;
 #define BF_1 255
