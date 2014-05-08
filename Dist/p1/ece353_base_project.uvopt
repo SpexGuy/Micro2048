@@ -173,10 +173,10 @@
       <FileType>2</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>47</ColumnNumber>
+      <ColumnNumber>37</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>1</CurrentLine>
+      <TopLine>123</TopLine>
+      <CurrentLine>133</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Startup.s</PathWithFileName>
       <FilenameWithoutPath>Startup.s</FilenameWithoutPath>
@@ -189,10 +189,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>24</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>129</TopLine>
-      <CurrentLine>201</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>186</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -205,10 +205,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>16</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>3</TopLine>
-      <CurrentLine>7</CurrentLine>
+      <TopLine>33</TopLine>
+      <CurrentLine>56</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\initBoard.c</PathWithFileName>
       <FilenameWithoutPath>initBoard.c</FilenameWithoutPath>
@@ -221,10 +221,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>25</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>27</TopLine>
-      <CurrentLine>32</CurrentLine>
+      <TopLine>12</TopLine>
+      <CurrentLine>22</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\systick.c</PathWithFileName>
       <FilenameWithoutPath>systick.c</FilenameWithoutPath>
@@ -239,8 +239,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>18</TopLine>
-      <CurrentLine>19</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\hw4_adc.c</PathWithFileName>
       <FilenameWithoutPath>hw4_adc.c</FilenameWithoutPath>
@@ -253,10 +253,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>14</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>3</TopLine>
-      <CurrentLine>6</CurrentLine>
+      <TopLine>118</TopLine>
+      <CurrentLine>128</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\hw4_gpio.c</PathWithFileName>
       <FilenameWithoutPath>hw4_gpio.c</FilenameWithoutPath>
@@ -285,7 +285,7 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>27</ColumnNumber>
+      <ColumnNumber>29</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
       <CurrentLine>8</CurrentLine>
@@ -335,7 +335,7 @@
       <Focus>0</Focus>
       <ColumnNumber>2</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>28</TopLine>
+      <TopLine>30</TopLine>
       <CurrentLine>32</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\renderer.c</PathWithFileName>
@@ -349,10 +349,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>22</ColumnNumber>
+      <ColumnNumber>26</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>79</TopLine>
-      <CurrentLine>85</CurrentLine>
+      <TopLine>71</TopLine>
+      <CurrentLine>78</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\animation.c</PathWithFileName>
       <FilenameWithoutPath>animation.c</FilenameWithoutPath>
@@ -365,10 +365,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>29</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>7</TopLine>
-      <CurrentLine>13</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\2048.c</PathWithFileName>
       <FilenameWithoutPath>2048.c</FilenameWithoutPath>
@@ -383,8 +383,8 @@
       <Focus>0</Focus>
       <ColumnNumber>10</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>313</TopLine>
-      <CurrentLine>330</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\AI2048.c</PathWithFileName>
       <FilenameWithoutPath>AI2048.c</FilenameWithoutPath>
@@ -413,10 +413,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>33</ColumnNumber>
+      <ColumnNumber>39</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>19</TopLine>
-      <CurrentLine>21</CurrentLine>
+      <TopLine>74</TopLine>
+      <CurrentLine>84</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\spi.c</PathWithFileName>
       <FilenameWithoutPath>spi.c</FilenameWithoutPath>
@@ -429,10 +429,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>35</ColumnNumber>
+      <ColumnNumber>50</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>51</TopLine>
-      <CurrentLine>65</CurrentLine>
+      <TopLine>44</TopLine>
+      <CurrentLine>49</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\eeprom.c</PathWithFileName>
       <FilenameWithoutPath>eeprom.c</FilenameWithoutPath>
@@ -445,10 +445,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>35</ColumnNumber>
+      <ColumnNumber>58</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>4</TopLine>
-      <CurrentLine>7</CurrentLine>
+      <TopLine>7</TopLine>
+      <CurrentLine>25</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\timer.c</PathWithFileName>
       <FilenameWithoutPath>timer.c</FilenameWithoutPath>
@@ -461,10 +461,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>9</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>6</CurrentLine>
+      <CurrentLine>10</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\lock.c</PathWithFileName>
       <FilenameWithoutPath>lock.c</FilenameWithoutPath>
@@ -477,10 +477,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>20</ColumnNumber>
+      <ColumnNumber>43</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>4</TopLine>
-      <CurrentLine>28</CurrentLine>
+      <TopLine>151</TopLine>
+      <CurrentLine>163</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\uart.c</PathWithFileName>
       <FilenameWithoutPath>uart.c</FilenameWithoutPath>

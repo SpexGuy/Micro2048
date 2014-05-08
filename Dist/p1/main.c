@@ -115,10 +115,14 @@ bool checkInput(void) {
 			return shiftUp(&board);
 		else if (getButtonPress(BUTTON_SOUTH))
 			return shiftDown(&board);
-		else if (getButtonPress(BUTTON_EAST))
+		else if (getButtonPress(BUTTON_EAST)) {
+			uartTx(UART_ID_2, 0xA);
 			return shiftRight(&board);
-		else if (getButtonPress(BUTTON_WEST))
+		}
+		else if (getButtonPress(BUTTON_WEST)) {
+			uartTx(UART_ID_5, 0xB);
 			return shiftLeft(&board);
+		}
 		else if (getButtonPress(BUTTON_AUX))
 			save_press_time = Time;
 		else if (getButtonRelease(BUTTON_AUX)) {
@@ -174,22 +178,16 @@ int main(void)
 	lastSecond = Time;
 	while(1) {
 		char buff[25];
-//		uartTxPoll(UART0,"M");
 		static uint8_t rx = 0xFF;
 	
-			uartTx(UART_ID_2, 0xA);
-			uartTx(UART_ID_5, 0xB);
-			uartTx(UART_ID_5, 0xC);
 			rx = uartRx(UART_ID_2, false);
 			if (rx != 0xFF) {
 				sprintf(buff, "U2 Data: %X\r\n\n", rx);
-				//uartTxPoll(UART0, "Got data on UART2\r\n");
 				uartTxPoll(UART0, buff);
 			}
 			rx = uartRx(UART_ID_5, false);
 			if (rx != 0xFF) {
 				sprintf(buff, "U5 Data: %X\r\n\n", rx);
-				//uartTxPoll(UART0, "Got data on UART5\r\n");
 				uartTxPoll(UART0, buff);
 			}
 		if (Time - lastSecond > SYSTICKS_PER_SECOND) {

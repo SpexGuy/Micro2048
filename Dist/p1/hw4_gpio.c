@@ -88,7 +88,7 @@ void updateButtons(void)
 //*****************************************************************************
 void initializeGpioPins(void)
 {
-	bool locked;
+	bool dLocked, fLocked;
 	int delay;
 	UNUSED(delay);
 	
@@ -117,40 +117,49 @@ void initializeGpioPins(void)
 	//Port D - UART2, SW4, and SW5
   SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R3;
 	delay = SYSCTL_RCGCGPIO_R;
+	dLocked = PortD->Lock;
+	if (dLocked) {
+		PortD->Lock = 0x4C4F434B;
+		PortD->Commit = 0xFF;
+	}
 	PortD->DigitalEnable |= PD2_SW4 | PD3_SW5 | PD6_U2_RX | PD7_U2_TX;
 	PortD->Direction &= ~(PD2_SW4 | PD3_SW5);
-	//PortD->Direction &= ~(PD6_U2_RX);
-	//PortD->Direction |= PD7_U2_TX;
+	PortD->Direction &= ~(PD6_U2_RX);
+	PortD->Direction |= PD7_U2_TX;
 	PortD->PullUpSelect |= PD2_SW4 | PD3_SW5;
 	PortD->AlternateFunctionSelect |= PD6_U2_RX | PD7_U2_TX;
 	PortD->PortControl |= GPIO_PCTL_PD6_U2RX | GPIO_PCTL_PD7_U2TX;
-	
+	if (dLocked)
+		PortD->Lock = 0x4C4F434B;
+		
 	//Port E - ADC0 and UART5
 	SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
 	delay = SYSCTL_RCGCGPIO_R;
+	
 	PortE->Direction &= ~PE3_ADC_0;
-	//PortE->Direction &= ~(PE4_U5_RX);
-	//PortE->Direction |= (PE5_U5_TX);
+	PortE->Direction &= ~(PE4_U5_RX);
+	PortE->Direction |= (PE5_U5_TX);
 	PortE->DigitalEnable &= ~PE3_ADC_0;
 	PortE->DigitalEnable |= PE4_U5_RX | PE5_U5_TX;
 	PortE->AlternateFunctionSelect |= PE3_ADC_0 | PE4_U5_RX | PE5_U5_TX;
 	PortE->AnalogSelectMode |= PE3_ADC_0;
 	PortE->PortControl |= GPIO_PCTL_PE4_U5RX | GPIO_PCTL_PE5_U5TX;
 
-
 	//Port F - /OE and SW6
 	SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R5;
 	delay = SYSCTL_RCGCGPIO_R;
 	//port F may be locked
-	locked = PortF->Lock;
-	if (locked)
+	fLocked = PortF->Lock;
+	if (fLocked) {
 		PortF->Lock = 0x4C4F434B;
+		PortF->Commit = 0xFF;
+	}
 	PortF->DigitalEnable |= PF4_OUT_EN_B | PF1_SW6;
 	PortF->Direction |= PF4_OUT_EN_B;
 	PortF->Direction &= ~PF1_SW6;
 	PortF->PullUpSelect |= PF1_SW6;
 	//restore lock to original status
-	if (locked)
+	if (fLocked)
 		PortF->Lock = 0x4C4F434B;
 }
 

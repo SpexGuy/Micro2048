@@ -62,13 +62,15 @@ bool initUART(uint8_t uartIndex, uint32_t baud) {
 	
 	// Enable the uart
 	uart->UARTControl |= UART_CTL_UARTEN;
-  
+
 	// Enable the uart interrupt
 	switch(uartIndex) {
 		case UART_ID_2 :
+			NVIC_PRI8_R |= ((NVIC_PRI8_R & 0xFFFF00FF) | 0x00000400);
 			NVIC_EN1_R |= NVIC_EN1_INT33;
 			break;
 		case UART_ID_5 :
+			NVIC_PRI15_R |= ((NVIC_PRI15_R & 0xFFFF00FF) | 0x00000400);
 			NVIC_EN1_R |= NVIC_EN1_INT61;
 			break;
 		default:
@@ -108,8 +110,9 @@ void uartTx(uint8_t uartId, uint8_t data) {
 //			//give the interrupt a chance to run
 //			StartCritical();
 //		}
-		if (cBufAddChar(&txBuffer[uartId], (char)data)) {
-			cBufAddChar(&txBuffer[uartId], 'X');
+		if (cBufAddChar(&txBuffer[uartId], (char)data) != 0) {
+			uartTxPoll(UART0, "Failed to add to SW queue\n\r");
+			//cBufAddChar(&txBuffer[uartId], 'X');
 		}
 	} else {
 		//put data in hw queue
@@ -139,10 +142,8 @@ void UARTIntHandler(uint8_t uartId) {
 		uartTxPoll(UART0, "Receive:");
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_TXMIS)
 		uartTxPoll(UART0, "Transmit:");
-	if(uarts[uartId]->MaskedIntStatus & UART_MIS_RTMIS) {
+	if(uarts[uartId]->MaskedIntStatus & UART_MIS_RTMIS)
 		uartTxPoll(UART0, "Receive Time-Out:");
-		uarts[uartId]->IntClear |= UART_ICR_RTIC;
-	}
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_FEMIS)
 		uartTxPoll(UART0, "Framing Error:");
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_PEMIS)
@@ -159,10 +160,8 @@ void UARTIntHandler(uint8_t uartId) {
 		uartTxPoll(UART0, "LIN Mode Edge 1:");
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_LME5MIS)
 		uartTxPoll(UART0, "LIN Mode Edge 5:");
-	if(uarts[uartId]->RxStatus & UART_RSR_FE) {
+	if(uarts[uartId]->RxStatus & UART_RSR_FE)
 		uartTxPoll(UART0, "Framing Error:");
-		//uarts[uartId]->RxStatus = 0x1;
-	}
 	if(uarts[uartId]->RxStatus & UART_RSR_PE)
 		uartTxPoll(UART0, "Parity Error:");
 	if(uarts[uartId]->RxStatus & UART_RSR_BE)
