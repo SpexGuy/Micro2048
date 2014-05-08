@@ -17,6 +17,9 @@ extern bool uartInitPolling(uint32_t base);
 extern void uartTxPoll(uint32_t base, char *data);
 extern void initPortC(void);
 
+void initializeWatchdog(void);
+
+
 /******************************************************************************
  * Global Variables
  *****************************************************************************/
@@ -35,6 +38,7 @@ void initBoard(void)
   // Initialize the PLLs so the the main CPU frequency is 80MHz
   PLL_Init();
 	StartCritical();
+	initializeWatchdog();
   initializeSysTick(SYSTICK_COUNT, true);
 	initTimer0();
 	initPortC();
@@ -48,4 +52,13 @@ void initBoard(void)
 	EndCritical();
 }
 
+void initializeWatchdog(void) {
+	uint8_t delay;
+	UNUSED(delay);
+	SYSCTL_RCGCWD_R |= 0x1;
+	delay = SYSCTL_RCGCWD_R;
+	WATCHDOG0_LOAD_R = WDT_LOAD_M;
+	WATCHDOG0_CTL_R |= WDT_CTL_RESEN;
+	WATCHDOG0_CTL_R |= WDT_CTL_INTEN;
+}
 

@@ -62,15 +62,15 @@ bool initializeSPI( uint32_t base, uint8_t phase, uint8_t polarity) {
   delay = SYSCTL_RCGCSSI_R;
 
   // Disable the SSI interface
-  myPeriph->SSICR1 &= ~(SSI_CR1_SSE);          // ###04###
+  myPeriph->SSICR1 &= ~(SSI_CR1_SSE);
 
   // Enable Master Mode
-  myPeriph->SSICR1 = 0;                   // ###05###
+  myPeriph->SSICR1 = 0;
   
   // Assume that we hvae a 80MHz clock and want a 4MHz SPI clock
-  // SSICPSR * (1 + SSICR0) = 80M / 4M
-  myPeriph->SSICPSR = 20;                  // ###06###
-  myPeriph->SSICR0  = 0;                  // ###07###
+  // SSICPSR * (1 + SSICR0) = 80M / 2M
+  myPeriph->SSICPSR = 40;
+  myPeriph->SSICR0  = 0;
   
   // Clear the phse and polarity bits
   myPeriph->SSICR0  &=  ~(SSI_CR0_SPH | SSI_CR0_SPO);
@@ -81,11 +81,11 @@ bool initializeSPI( uint32_t base, uint8_t phase, uint8_t polarity) {
   if (polarity ==1)
       myPeriph->SSICR0  |= SSI_CR0_SPO;
 
-  // Freescale SPI Mode with 8-Bit data (See line 2226 of lm4f120h5qr.h)
-  myPeriph->SSICR0 |= SSI_CR0_DSS_8;                  // ###08###
+  // Freescale SPI Mode with 8-Bit data
+  myPeriph->SSICR0 |= SSI_CR0_DSS_8; 
   
   //Enable SSI
-  myPeriph->SSICR1 |= SSI_CR1_SSE;                   // ###09###
+  myPeriph->SSICR1 |= SSI_CR1_SSE;
 
   return true;
 }

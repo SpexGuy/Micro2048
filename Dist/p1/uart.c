@@ -73,8 +73,6 @@ bool initUART(uint8_t uartIndex, uint32_t baud) {
 }
 
 uint8_t uartRx(uint8_t uartId, bool block) {
-	UART_PERIPH *uart = uarts[uartId];
-	int c;
 	uint8_t recvd = 0xFF;
 	StartCritical();
 	while((cBufGetChar(&rxBuffer[uartId], (char *)&recvd) > 0) && block) {
