@@ -87,6 +87,46 @@ bool initUART(uint8_t uartIndex, uint32_t baud) {
   return true;
 }
 
+void initUart0(void) {
+  UART_PERIPH *myUart = (UART_PERIPH *)UART0;
+	uint32_t delay;
+  
+  // Eanble the clock gating register
+  // ( Not found in the UART_PERIPH struct)
+  SYSCTL_RCGCUART_R |= SYSCTL_RCGCUART_R0;  // 5
+  
+  delay = SYSCTL_RCGCUART_R;
+  delay = 1000;
+  while(delay --> 0);
+	
+  // Set the baud rate
+  myUart->IntegerBaudRateDiv = 520;    // 6
+  myUart->FracBaudRateDiv = 520;       // 7
+
+  // Configure the Line Control for 8-n-1
+  myUart->LineControl |= UART_LCRH_WLEN_8 | UART_LCRH_FEN;  // 8
+  
+  // Enable the UART - Need to enable both TX and RX
+  myUart->UARTControl = UART_CTL_RXE | UART_CTL_TXE | UART_CTL_UARTEN; // 9
+  
+  // Wait until the UART is avaiable
+  while( !(SYSCTL_PRUART_R & SYSCTL_PRUART_R0 )) {}
+  
+  delay = 500;
+  while(delay --> 0);
+}
+
+void uartTxPoll(uint32_t base, char *data) {
+  UART_PERIPH *myPeriph = (UART_PERIPH *)base;
+  if (data) {
+    while(*data) {
+      while(((myPeriph->Flag)&(UART_FR_TXFF)) != 0);
+      myPeriph->Data = *data;
+      data++;
+    }
+  }
+}
+
 uint8_t uartRx(uint8_t uartId, bool block) {
 	uint8_t recvd = 0xFF;
 	StartCritical();

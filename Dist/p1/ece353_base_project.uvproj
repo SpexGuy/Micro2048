@@ -512,11 +512,6 @@
               <FileType>4</FileType>
               <FilePath>.\lib\circular_buffer.lib</FilePath>
             </File>
-            <File>
-              <FileName>uart.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>.\lib\uart.lib</FilePath>
-            </File>
           </Files>
         </Group>
       </Groups>

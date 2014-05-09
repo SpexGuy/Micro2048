@@ -14,7 +14,6 @@ extern GPIO_CONFIG portF_config;
 extern UART_CONFIG UART0_config;
 
 extern void PLL_Init(void);
-extern bool uartInitPolling(uint32_t base);
 
 void initializeWatchdog(void);
 
@@ -41,7 +40,7 @@ void initBoard(void)
   initializeSysTick(SYSTICK_COUNT, true);
 	initTimer0();
 	initializeGpioPins();
-	uartInitPolling(UART0);
+	initUart0();
 	if(!initUART(UART_ID_5, 115200)) {
 		errorPrint("Failed to init UART 5");
 	}

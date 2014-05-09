@@ -29,6 +29,7 @@
 #define UART_ID_5 1
 
 bool initUART(uint8_t uartIndex, uint32_t baud);
+void initUart0(void);
 void uartTx(uint8_t uartId, uint8_t data);
 uint8_t uartRx(uint8_t uartId, bool block);
 void uartTxPoll(uint32_t base, char *data);
