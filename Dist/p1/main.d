@@ -27,3 +27,4 @@
 .\main.o: AI2048.h
 .\main.o: spi.h
 .\main.o: eeprom.h
+.\main.o: communication.h

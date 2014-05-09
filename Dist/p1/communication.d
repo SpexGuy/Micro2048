@@ -6,3 +6,8 @@
 .\communication.o: screen.h
 .\communication.o: pixel.h
 .\communication.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+.\communication.o: UART.h
+.\communication.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\communication.o: C:\Keil\ARM\ARMCC\bin\..\include\errno.h
+.\communication.o: lm4f120h5qr.h
+.\communication.o: C:\Keil\ARM\ARMCC\bin\..\include\alloca.h

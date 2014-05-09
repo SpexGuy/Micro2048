@@ -76,7 +76,7 @@ void fadeToColor(void *param) {
 									  showTile, tile);
 }
 
-void addTile(Board *b, uint8_t x, uint8_t y, uint8_t value, bool animated) {
+Tile *addTile(Board *b, uint8_t x, uint8_t y, uint8_t value, bool animated) {
 	static Pixel black = {0x000000};
 	static Pixel white = {0xFFFFFF};
 	uint64_t localTime = Time;
@@ -97,6 +97,7 @@ void addTile(Board *b, uint8_t x, uint8_t y, uint8_t value, bool animated) {
 		b->inputTime = localTime + FADE_RUN_TIME + FADE_RUN_TIME/2;
 	}
 	b->tiles[y][x] = tile;
+	return tile;
 }
 
 void setPos(Board *b, Tile *tile, uint8_t x, uint8_t y) {
@@ -304,14 +305,14 @@ bool shiftRight(Board *b) {
 	return ret;
 }
 
-void addRandomTile(Board *b) {
+Tile *addRandomTile(Board *b) {
 	uint8_t x, y;
 	uint8_t value = (rand()%10 == 0);
 	uint8_t emptyCount = countEmpty(b);
 	uint8_t selection = rand()%emptyCount;
 	getNthEmptyTile(b, selection, &x, &y);
-	if (x == (uint8_t)(-1)) return;
-	addTile(b, x, y, value, true);
+	if (x == (uint8_t)(-1)) return NULL;
+	return addTile(b, x, y, value, true);
 }
 
 void drawBoard(FrameBuffer *draw, Board *board) {
