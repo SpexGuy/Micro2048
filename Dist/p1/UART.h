@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include "lm4f120h5qr.h"
+#include "constants.h"
 
 #define	UART0 0x4000C000
 #define UART1 0x4000D000
@@ -33,6 +34,22 @@ uint8_t uartRx(uint8_t uartId, bool block);
 void uartTxPoll(uint32_t base, char *data);
 void uartTxArray(uint8_t uartId, uint8_t len, uint8_t *data);
 void uartRxArray(uint8_t uartId, uint8_t len, uint8_t *data);
+
+#define print(str) uartTxPoll(UART0, (str))
+#define println(str) print(str);print("\n\r")
+#define errorPrint(str) print("!");print(str)
+#define errorPrintln(str) print("!");println(str)
+#define infoPrint(str) print(str)
+#define infoPrintln(str) println(str)
+#define warningPrint(str) print(str)
+#define warningPrintln(str) println(str)
+#ifdef _DEBUG_
+#	define debugPrint(str) print(str)
+#	define debugPrintln(str) println(str)
+#else
+#	define debugPrint(str) do{}while(0)
+#	define debugPrintln(str) do{}while(0)
+#endif
 
 #define	_8BITS		0x3	
 #define	ENABLED		1

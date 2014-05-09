@@ -104,17 +104,8 @@ void uartTx(uint8_t uartId, uint8_t data) {
 	StartCritical();
 	//check hardware queue
 	if (uart->Flag & UART_FR_TXFF || txBuffer[uartId].count > 0) {
-		//wait for space in tx buffer
-//		while(cBufGetFreeCount(&txBuffer[uartId]) == 0) {
-//			EndCritical();
-//			//give the interrupt a chance to run
-//			StartCritical();
-//		}
 		if (cBufAddChar(&txBuffer[uartId], (char)data) != 0) {
-#			ifdef _DEBUG_
-			uartTxPoll(UART0, "Failed to add to SW queue\n\r");
-#			endif
-			//cBufAddChar(&txBuffer[uartId], 'X');
+			debugPrint("Failed to add to SW queue\n\r");
 		}
 	} else {
 		//put data in hw queue
@@ -145,48 +136,48 @@ void UARTIntHandler(uint8_t uartId) {
 #	ifdef _DEBUG_
 	switch(uartId) {
 		case UART_ID_5:
-			uartTxPoll(UART0, "U5: ");
+			debugPrint("U5: ");
 			break;
 		case UART_ID_2:
-			uartTxPoll(UART0, "U2: ");
+			debugPrint("U2: ");
 			break;
 		default:
-			uartTxPoll(UART0, "U?: ");
+			debugPrint("U?: ");
 			break;
 	}
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_CTSMIS)
-		uartTxPoll(UART0, "Clear to Send Modem:");
+		debugPrint("Clear to Send Modem:");
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_RXMIS)
-		uartTxPoll(UART0, "Receive:");
+		debugPrint("Receive:");
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_TXMIS)
-		uartTxPoll(UART0, "Transmit:");
+		debugPrint("Transmit:");
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_RTMIS)
-		uartTxPoll(UART0, "Receive Time-Out:");
+		debugPrint("Receive Time-Out:");
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_FEMIS)
-		uartTxPoll(UART0, "Framing Error:");
+		debugPrint("Framing Error:");
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_PEMIS)
-		uartTxPoll(UART0, "Parity Error:");
+		debugPrint("Parity Error:");
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_BEMIS)
-		uartTxPoll(UART0, "Break Error:");
+		debugPrint("Break Error:");
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_OEMIS)
-		uartTxPoll(UART0, "Overrun Error:");
+		debugPrint("Overrun Error:");
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_9BITMIS)
-		uartTxPoll(UART0, "9-Bit Mode:");
+		debugPrint("9-Bit Mode:");
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_LMSBMIS)
-		uartTxPoll(UART0, "LIN Mode Sync Break:");
+		debugPrint("LIN Mode Sync Break:");
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_LMSBMIS)
-		uartTxPoll(UART0, "LIN Mode Edge 1:");
+		debugPrint("LIN Mode Edge 1:");
 	if(uarts[uartId]->MaskedIntStatus & UART_MIS_LME5MIS)
-		uartTxPoll(UART0, "LIN Mode Edge 5:");
+		debugPrint("LIN Mode Edge 5:");
 	if(uarts[uartId]->RxStatus & UART_RSR_FE)
-		uartTxPoll(UART0, "Framing Error:");
+		debugPrint("Framing Error:");
 	if(uarts[uartId]->RxStatus & UART_RSR_PE)
-		uartTxPoll(UART0, "Parity Error:");
+		debugPrint("Parity Error:");
 	if(uarts[uartId]->RxStatus & UART_RSR_BE)
-		uartTxPoll(UART0, "Break Error:");
+		debugPrint("Break Error:");
 	if(uarts[uartId]->RxStatus & UART_RSR_OE)
-		uartTxPoll(UART0, "Overrun Error:");
-	uartTxPoll(UART0, "\n\r");
+		debugPrint("Overrun Error:");
+	debugPrint("\n\r");
 #	endif
 			
 	StartCritical();
@@ -195,7 +186,7 @@ void UARTIntHandler(uint8_t uartId) {
 		cBufAddChar(&rxBuffer[uartId], uarts[uartId]->Data);
 	}
 	if(uarts[uartId]->RxStatus & UART_RSR_OE)
-		uartTxPoll(UART0, "Overrun Error\n\r");
+		print("Overrun Error\n\r");
 	
 	//check if uP has characters
 	if (cBufGetChar(&txBuffer[uartId], &toSend) > 0) {

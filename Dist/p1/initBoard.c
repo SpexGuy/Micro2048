@@ -43,14 +43,10 @@ void initBoard(void)
 	initializeGpioPins();
 	uartInitPolling(UART0);
 	if(!initUART(UART_ID_5, 115200)) {
-#		ifdef _DEBUG_
-		uartTxPoll(UART0, "Failed to init UART 5");
-#		endif
+		errorPrint("Failed to init UART 5");
 	}
 	if(!initUART(UART_ID_2, 115200)) {
-#		ifdef _DEBUG_
-		uartTxPoll(UART0, "Failed to init UART 2");
-#		endif
+		errorPrint("Failed to init UART 2");
 	}
   initializeADC();
 	initializeSPI(SSI0, 1, 1);

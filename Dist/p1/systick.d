@@ -10,3 +10,5 @@
 .\systick.o: UART.h
 .\systick.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\systick.o: C:\Keil\ARM\ARMCC\bin\..\include\errno.h
+.\systick.o: communication.h
+.\systick.o: 2048.h

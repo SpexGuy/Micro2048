@@ -96,7 +96,7 @@ void updateAnimations() {
 	if (dTime > SYSTICKS_PER_SECOND/60) {
 		char buffer[40];
 		sprintf(buffer, "It took %3d ticks to update anims!", dTime);
-		uartTxPoll(UART0, buffer);
+		warningPrintln(buffer);
 	}
 #	endif
 }

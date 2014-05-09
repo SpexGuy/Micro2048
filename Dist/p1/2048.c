@@ -135,20 +135,17 @@ bool canTakeInput(Board *b) {
 
 //-------------------- Animation and Callbacks ---------------
 void showTile(void *param) {
-//	uartTxPoll(UART0, "Show Tile\n\r");
 	((Tile *)param)->hidden--;
 }
 
 void endMergeTranslate(void *param) {
 	Tile *tile = param;
-//	uartTxPoll(UART0, "Start fade anim\n\r");
 	tile->hidden++;
 	tile->value++;
 	fadeToColor(tile);
 }
 
 void spawnMergeAnim(Board *b, Tile *last, Tile *tile, uint64_t time) {
-//	uartTxPoll(UART0, "Start merge anim\n\r");
 	scheduleAnimation(time, TRANSLATE_RUN_TIME,
 									  2*tile->x, 2*last->x,
 									  2*tile->y, 2*last->y,
@@ -158,7 +155,6 @@ void spawnMergeAnim(Board *b, Tile *last, Tile *tile, uint64_t time) {
 }
 
 void spawnTranslateAnim(Board *b, Tile *tile, uint64_t time, uint8_t x, uint8_t y) {
-//	uartTxPoll(UART0, "Start trans anim\n\r");
 	tile->hidden++;
 	scheduleAnimation(time, TRANSLATE_RUN_TIME,
 									  2*tile->x, 2*x,
@@ -170,7 +166,6 @@ void spawnTranslateAnim(Board *b, Tile *tile, uint64_t time, uint8_t x, uint8_t 
 
 //------------------- Header Functions -----------------------
 void init2048(Board *b) {
-	//fill board with null
 	memset(b, 0, sizeof(*b));
 }
 
@@ -337,7 +332,7 @@ void saveGame(Board *b) {
 	createBoardArray(b, &boardSave[0][0]);
 #	ifdef _DEBUG_
 	sprintf(buffer, "%8X\r\n%8X\r\n%8X\r\n%8X\r\n\r\n", *((uint32_t *)&boardSave[0][0]), *((uint32_t *)&boardSave[1][0]), *((uint32_t *)&boardSave[2][0]), *((uint32_t *)&boardSave[3][0]));
-	uartTxPoll(UART0, buffer);
+	debugPrint(buffer);
 #	endif
 	spi_eeprom_write_array(EEPROM_GAME_ADDR, &boardSave[0][0], 4);
 	spi_eeprom_wait_write_in_progress();
@@ -361,7 +356,7 @@ void restoreGame(Board *b) {
 	spi_eeprom_read_array(EEPROM_GAME_ADDR+12, &boardRestore[3][0], 4);
 #	ifdef _DEBUG_		
 	sprintf(buffer, "%8X\r\n%8X\r\n%8X\r\n%8X\r\n\r\n", *((uint32_t *)&boardRestore[0][0]), *((uint32_t *)&boardRestore[1][0]), *((uint32_t *)&boardRestore[2][0]), *((uint32_t *)&boardRestore[3][0]));
-	uartTxPoll(UART0, buffer);
+	debugPrint(buffer);
 #	endif	
 	restoreBoard(b, &boardRestore[0][0]);
 }

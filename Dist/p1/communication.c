@@ -24,7 +24,7 @@ void update(uint8_t uart) {
 	switch(type) {
 		case TYPE_MOVE: {
 			sentMove = uartRx(uart, true);
-			uartTxPoll(UART0, "MOVE\r\n");
+			debugPrintln("MOVE");
 			break;
 		}
 		case TYPE_BOARD_REQ: {
@@ -34,7 +34,7 @@ void update(uint8_t uart) {
 		case TYPE_BOARD: {
 			uint8_t boardData[BOARD_WIDTH * BOARD_HEIGHT];
 			uartRxArray(uart, BOARD_WIDTH * BOARD_HEIGHT, boardData);
-			uartTxPoll(UART0, "BOARD\r\n");
+			debugPrintln("BOARD");
 			clearBoard(&board);
 			restoreBoard(&board, boardData);
 			break;
@@ -43,20 +43,21 @@ void update(uint8_t uart) {
 			uint8_t x = uartRx(uart, true);
 			uint8_t y = uartRx(uart, true);
 			uint8_t val = uartRx(uart, true);
-			uartTxPoll(UART0, "TILE\r\n");
+			debugPrintln("TILE");
 			addTile(&board, x, y, val, true);
 			break;
 		}
 		case TYPE_MOVE_READY: {
-			uartTxPoll(UART0, "MOVE_READY\r\n");
+			debugPrintln("MOVE_READY");
 			break;
 		}
 		case TYPE_HEARTBEAT: {
+			WATCHDOG0_LOAD_R = WDT_LOAD_M;
 			lastHeartbeatTime = Time;
 			break;
 		}
 		default: {
-			uartTxPoll(UART0, "UNKNOWN TYPE\r\n");
+			warningPrintln("UNKNOWN TYPE");
 			break;
 		}
 	}
@@ -75,7 +76,7 @@ void requestBoard() {
 //****************** Game **********************//
 void sendBoard(Board *b) {
 	uint8_t serial[BOARD_WIDTH * BOARD_HEIGHT];
-	uartTxPoll(UART0, "Send Board");
+	debugPrintln("Send Board");
 	createBoardArray(b, serial);
 	uartTx(UART_AI, TYPE_BOARD);
 	uartTxArray(UART_AI, BOARD_WIDTH * BOARD_HEIGHT, serial);
@@ -104,7 +105,7 @@ void sendHeartbeat(void) {
 
 bool isConnected(void) {
 	if (Time - lastHeartbeatTime > CONNECT_TIMEOUT) {
-		uartTxPoll(UART0, "TIMEOUT\r\n");
+		infoPrintln("TIMEOUT");
 		return false;
 	}
 	return true;
@@ -118,6 +119,11 @@ bool isGame(void) {
 	return otherBoard == UART_AI;
 }
 
+bool isSinglePlayer(void) {
+	return otherBoard == 0xFF;
+}
+
+
 //****** Receive ******//
 bool receiveComs(void) {
 	if (otherBoard == 0xFF) {
@@ -127,7 +133,7 @@ bool receiveComs(void) {
 	} else {
 		update(otherBoard);
 		if (!isConnected()) {
-			uartTxPoll(UART0, "CONNECTION LOST\r\n");
+			infoPrintln("CONNECTION LOST");
 			otherBoard = 0xFF;
 			return false;
 		}

@@ -3,6 +3,7 @@
 #include "systick.h"
 #include "renderer.h"
 #include "UART.h"
+#include "communication.h"
 
 extern volatile bool AlertADC0;
 extern volatile bool heartbeat;
@@ -15,7 +16,7 @@ volatile uint64_t Time = 0;
 void SYSTICKIntHandler(void)
 {
 	static int adcCount = 0;
-	static int debugCount = 0;
+//	static int debugCount = 0;
 	static int row = 0;
 	static byteFraction dutyPos = 0;
 	static uint32_t heartbeatCount = 0;
@@ -36,11 +37,13 @@ void SYSTICKIntHandler(void)
 	updateRow(row, dutyPos);
 	
 	// Timer Debug
-	if (debugCount++ > SYSTICKS_PER_SECOND) {
-		//uartTxPoll(UART0, "C");
-		debugCount = 0;
+	//if (debugCount++ > SYSTICKS_PER_SECOND) {
+		//debugPrint("C");
+		//debugCount = 0;
+	//}
+	if (isSinglePlayer()) {
+		WATCHDOG0_LOAD_R = WDT_LOAD_M;
 	}
-	WATCHDOG0_LOAD_R = WDT_LOAD_M;
 }
 
 

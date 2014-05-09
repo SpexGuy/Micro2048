@@ -40,7 +40,9 @@ void SinglePlayerUpdate(void);
 void AIUpdate(void);
 void HostUpdate(void);
 #ifdef _DEBUG_
-void printFrameRate(void);
+	void printFrameRate(void);
+#else
+#	define printFrameRate() do{}while(0)
 #endif
 #ifdef IS_EEPROM_TEST
 void eepromTest(void);
@@ -51,15 +53,15 @@ void eepromTest(void);
 //*****************************************************************************
 
 void	printGreeting() {
-  uartTxPoll(UART0,"\n\r");
-  uartTxPoll(UART0,"****** ECE353 ******\n\r");
-  uartTxPoll(UART0,"Micro 2018\n\r");
-  uartTxPoll(UART0,teamNumber);
-  uartTxPoll(UART0,"\n\r");
-  uartTxPoll(UART0,teamMembers);
-  uartTxPoll(UART0,"\n\r");
-  uartTxPoll(UART0,"********************\n\r");
-  uartTxPoll(UART0,"\n\r");
+  print("\n\r");
+  print("****** ECE353 ******\n\r");
+  print("Micro 2018\n\r");
+  print(teamNumber);
+  print("\n\r");
+  print(teamMembers);
+  print("\n\r");
+  print("********************\n\r");
+  print("\n\r");
 }
 
 bool checkAIInput(void) {
@@ -75,25 +77,25 @@ bool checkAIInput(void) {
 			switch(move) {
 				case 0:
 					requested = false;
-					uartTxPoll(UART0, "Up\n\r");
+					debugPrint("Up\n\r");
 					return shiftUp(&board);
 				case 1:
 					requested = false;
-					uartTxPoll(UART0, "Down\n\r");
+					debugPrint("Down\n\r");
 					return shiftDown(&board);
 				case 2:
 					requested = false;
-					uartTxPoll(UART0, "Right\n\r");
+					debugPrint("Right\n\r");
 					return shiftRight(&board);
 				case 3:
 					requested = false;
-					uartTxPoll(UART0, "Left\n\r");
+					debugPrint("Left\n\r");
 					return shiftLeft(&board);
 				case 0xFF:
 					return false;
 				default:
-					sprintf(buffer, "AI Move Select Error: %d", move);
-					uartTxPoll(UART0, buffer);
+					sprintf(buffer, "AI Move Select Error: %d\r\n", move);
+					errorPrint(buffer);
 					return false;
 			}
 		}
@@ -151,11 +153,12 @@ int main(void) {
 	init2048(&board);
 	addRandomTile(&board);
 	addRandomTile(&board);
-	uartTxPoll(UART0, "\n");
+	debugPrint("\n"); //for the framerate print
 #	ifdef IS_EEPROM_TEST
 	eepromTest();
 #	endif
 	while(1) {
+		printFrameRate();
 		if (heartbeat) {
 			sendHeartbeat();
 			heartbeat = false;
@@ -163,21 +166,21 @@ int main(void) {
 		if (receiveComs()) {
 			if (isAi()) {
 				if (lastMode != MODE_AI) {
-					uartTxPoll(UART0, "AI\r\n");
+					infoPrintln("AI Mode");
 					requestBoard();
 				}
 				AIUpdate();
 				lastMode = MODE_AI;
 			} else {
 				if (lastMode != MODE_HOST) {
-					uartTxPoll(UART0, "HOST\r\n");
+					infoPrintln("Host Mode");
 				}
 				HostUpdate();
 				lastMode = MODE_HOST;
 			}
 		} else {
 			if (lastMode != MODE_SP) {
-				uartTxPoll(UART0, "SP\r\n");
+				infoPrintln("Single Player Mode");
 				clearButtons();
 			}
 			SinglePlayerUpdate();
@@ -245,7 +248,7 @@ void	printFrameRate(void) {
 	if (Time - lastSecond > SYSTICKS_PER_SECOND) {
 		char buffer[40];
 		sprintf(buffer, "\033[A%6d frames per second\n\r", frameCount);
-		uartTxPoll(UART0, buffer);
+		debugPrint(buffer);
 		frameCount = 0;
 		lastSecond = Time;
 	}
@@ -263,14 +266,14 @@ void printBLerpFracs() {
 	char buffer[4];
 	do {
 		stringify(buffer, b);
-		uartTxPoll(UART0, buffer);
-		uartTxPoll(UART0, " -> ");
+		debugPrint(buffer);
+		debugPrint(" -> ");
 		stringify(buffer, blerp(2, 0, b, 256));
-		uartTxPoll(UART0, buffer);
-		uartTxPoll(UART0, ":");
+		debugPrint(buffer);
+		debugPrint(":");
 		stringify(buffer, blerpfrac(2, 0, b, 256));
-		uartTxPoll(UART0, buffer);
-		uartTxPoll(UART0, "\n\r");
+		debugPrint(buffer);
+		debugPrint("\n\r");
 		b++;
 	} while(b != BF_0);
 }
@@ -283,11 +286,11 @@ void eepromTest() {
 		uint32_t data = 0xDEADCAFE;
 		uint16_t address = 0x2;
 		sprintf(printbuf, "write: %X\n\r", data);
-		uartTxPoll(UART0, printbuf);
+		debugPrint(printbuf);
 		spi_eeprom_write_array(address, (uint8_t *)&data, sizeof(data));
 		spi_eeprom_read_array(address, (uint8_t *)&out, sizeof(out));
 		sprintf(printbuf, "read: %X\n\r", out);
-		uartTxPoll(UART0, printbuf);
+		debugPrint(printbuf);
 }
 #	endif
 
