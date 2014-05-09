@@ -2,6 +2,10 @@
 #include "UART.h"
 #include <alloca.h>
 
+extern volatile uint64_t Time;
+
+uint8_t otherBoard = 0xFF;
+
 uint8_t sentMove = 0xFF;
 uint8_t getSentMove() {
 	uint8_t move = sentMove;
@@ -9,9 +13,12 @@ uint8_t getSentMove() {
 	return move;
 }
 
+uint64_t lastHeartbeatTime = 0;
+
 void update(uint8_t uart) {
 	uint8_t type = uartRx(uart, false);
 	if (type == 0xFF || type == 0) return;
+	otherBoard = uart;
 	switch(type) {
 		case TYPE_MOVE: {
 			sentMove = uartRx(uart, true);
@@ -29,9 +36,14 @@ void update(uint8_t uart) {
 			uint8_t y = uartRx(uart, true);
 			uint8_t val = uartRx(uart, true);
 			uartTxPoll(UART0, "TILE\r\n");
+			break;
 		}
 		case TYPE_MOVE_READY: {
 			uartTxPoll(UART0, "MOVE_READY\r\n");
+			break;
+		}
+		case TYPE_HEARTBEAT: {
+			lastHeartbeatTime = Time;
 			break;
 		}
 		default: {
@@ -67,8 +79,39 @@ void requestMove(void) {
 	uartTx(UART_AI, TYPE_MOVE_READY);
 }
 
+void sendHeartbeat(void) {
+	if (otherBoard == 0xFF) {
+		uartTx(UART_AI, TYPE_HEARTBEAT);
+		uartTx(UART_GAME, TYPE_HEARTBEAT);
+	} else {
+		uartTx(otherBoard, TYPE_HEARTBEAT);
+	}
+}
+
+bool isConnected(void) {
+	return Time - lastHeartbeatTime > CONNECT_TIMEOUT;
+}
+
+bool isAi(void) {
+	return otherBoard == UART_GAME;
+}
+
+bool isGame(void) {
+	return otherBoard == UART_AI;
+}
+
 //****** Receive ******//
-void receiveComs(void) {
-	update(UART_AI);
-	update(UART_GAME);
+bool receiveComs(void) {
+	if (otherBoard == 0xFF) {
+		update(UART_AI);
+		update(UART_GAME);
+		return otherBoard != 0xFF;
+	} else {
+		update(otherBoard);
+		if (!isConnected()) {
+			otherBoard = 0xFF;
+			return false;
+		}
+		return true;
+	}
 }

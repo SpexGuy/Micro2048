@@ -7,9 +7,12 @@
 #define TYPE_BOARD 2
 #define TYPE_TILE 3
 #define TYPE_MOVE_READY 4
+#define TYPE_HEARTBEAT 5
 
 #define UART_GAME UART_ID_2
 #define UART_AI UART_ID_5
+
+#define CONNECT_TIMEOUT SYSTICKS_PER_SECOND
 
 //****** AI **********//
 void sendMove(uint8_t move);
@@ -19,9 +22,13 @@ void sendBoard(Board *b);
 void sendNewTile(Tile *tile);
 void requestMove(void);
 
+bool isConnected(void);
+bool isAi(void);
+bool isGame(void);
+
 uint8_t getSentMove(void);
 
 //****** Receive ******//
-void receiveComs(void);
+bool receiveComs(void);
 
 #endif
