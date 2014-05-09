@@ -22,7 +22,6 @@
 #include "eeprom.h"
 #include "communication.h"
 
-#define IS_AI 1
 // #define IS_EEPROM_TEST 1
 
 /******************************************************************************
@@ -34,6 +33,13 @@
  *****************************************************************************/
 
 Board board;
+
+void SinglePlayerLoop(FrameBuffer *drawBuffer);
+void AIMainLoop(FrameBuffer *drawBuffer);
+void GameMainLoop(FrameBuffer *drawBuffer);
+void printFrameRate(void);
+void eepromTest(void);
+
 
 //*****************************************************************************
 //*****************************************************************************
@@ -87,81 +93,7 @@ void printBLerpFracs() {
 	} while(b != BF_0);
 }
 
-bool checkInput(void) {
-#	ifdef IS_AI
-		static bool requested = false;
-		uint8_t move;
-		if(canTakeInput(&board)) {
-			if (!requested) {
-			requestMove();
-			requested = true;
-			} else {
-				move = getSentMove();
-				switch(move) {
-					case 0:
-						requested = false;
-						uartTxPoll(UART0, "Up\n\r");
-						return shiftUp(&board);
-					case 1:
-						requested = false;
-						uartTxPoll(UART0, "Down\n\r");
-						return shiftDown(&board);
-					case 2:
-						requested = false;
-						uartTxPoll(UART0, "Right\n\r");
-						return shiftRight(&board);
-					case 3:
-						requested = false;
-						uartTxPoll(UART0, "Left\n\r");
-						return shiftLeft(&board);
-					case 0xFF:
-						return false;
-					default:
-						uartTxPoll(UART0, "AI Move Select Error");
-						return false;
-				}
-			}
-		}
-		return false;
-#	else
-		static uint64_t save_press_time = 0;
-		if (getButtonPress(BUTTON_NORTH)) {
-			sendMove(0);
-			return shiftUp(&board);
-		} else if (getButtonPress(BUTTON_SOUTH)) {
-			sendMove(1);
-			return shiftDown(&board);
-		} else if (getButtonPress(BUTTON_EAST)) {
-			sendMove(2);
-			return shiftRight(&board);
-		} else if (getButtonPress(BUTTON_WEST)) {
-			sendMove(3);
-			return shiftLeft(&board);
-		} else if (getButtonPress(BUTTON_AUX)) {
-			save_press_time = Time;
-		} else if (getButtonRelease(BUTTON_AUX)) {
-			if (Time - save_press_time > SAVE_HOLD_THRESH) {
-				clearBoard(&board);
-				restoreGame(&board);
-				sendBoard(&board);
-			} else {
-				saveGame(&board);
-			}
-		}
-		return false;
-#	endif
-}
-
-int main(void)
-{
-#	ifdef _DEBUG_
-	uint64_t lastSecond;
-#	endif
-	uint32_t frameCount;
-	FrameBuffer *drawBuffer;
-	initBoard();
-	initDoubleBuffers();
-	
+void	printGreeting() {
   uartTxPoll(UART0,"\n\r");
   uartTxPoll(UART0,"****** ECE353 ******\n\r");
   uartTxPoll(UART0,"Micro 2018\n\r");
@@ -171,13 +103,165 @@ int main(void)
   uartTxPoll(UART0,"\n\r");
   uartTxPoll(UART0,"********************\n\r");
   uartTxPoll(UART0,"\n\r");
-	
+}
+
+bool checkAIInput(void) {
+	static bool requested = false;
+	uint8_t move;
+	if(canTakeInput(&board)) {
+		if (!requested) {
+			requestMove();
+			requested = true;
+		} else {
+			move = getSentMove();
+			switch(move) {
+				case 0:
+					requested = false;
+					uartTxPoll(UART0, "Up\n\r");
+					return shiftUp(&board);
+				case 1:
+					requested = false;
+					uartTxPoll(UART0, "Down\n\r");
+					return shiftDown(&board);
+				case 2:
+					requested = false;
+					uartTxPoll(UART0, "Right\n\r");
+					return shiftRight(&board);
+				case 3:
+					requested = false;
+					uartTxPoll(UART0, "Left\n\r");
+					return shiftLeft(&board);
+				case 0xFF:
+					return false;
+				default:
+					uartTxPoll(UART0, "AI Move Select Error");
+					return false;
+			}
+		}
+	}
+	return false;
+}
+
+bool checkUserInput(void) {
+	static uint64_t save_press_time = 0;
+	if (getButtonPress(BUTTON_NORTH)) {
+		//sendMove(0);
+		return shiftUp(&board);
+	} else if (getButtonPress(BUTTON_SOUTH)) {
+		//sendMove(1);
+		return shiftDown(&board);
+	} else if (getButtonPress(BUTTON_EAST)) {
+		//sendMove(2);
+		return shiftRight(&board);
+	} else if (getButtonPress(BUTTON_WEST)) {
+		//sendMove(3);
+		return shiftLeft(&board);
+	} else if (getButtonPress(BUTTON_AUX)) {
+		save_press_time = Time;
+	} else if (getButtonRelease(BUTTON_AUX)) {
+		if (Time - save_press_time > SAVE_HOLD_THRESH) {
+			clearBoard(&board);
+			restoreGame(&board);
+			//sendBoard(&board);
+		} else {
+			saveGame(&board);
+		}
+	}
+	return false;
+}
+
+int main(void) {
+	FrameBuffer *drawBuffer;
+	initBoard();
+	initDoubleBuffers();
+	printGreeting();
 	init2048(&board);
 	addRandomTile(&board);
 	addRandomTile(&board);
-	
+	uartTxPoll(UART0, "\n");
 #	ifdef IS_EEPROM_TEST
-	{
+	eepromTest();
+#	endif
+	
+	SinglePlayerLoop(drawBuffer);
+}
+
+void AIMainLoop(FrameBuffer *drawBuffer) {
+			updateAnimations();
+			clearDrawBuffer();
+			drawBuffer = getDrawBuffer();
+			drawBoard(drawBuffer, &board);
+			drawAnimations(drawBuffer);
+			swapBuffers();
+			updateRefreshRate();
+			updateButtons();
+			receiveComs();
+			if (checkAIInput()) {
+				Tile *t = addRandomTile(&board);
+				sendNewTile(t);
+		}
+}
+
+void GameMainLoop(FrameBuffer *drawBuffer) {
+		sendBoard(&board);
+		while(1) {
+#			ifdef _DEBUG_
+			printFrameRate();
+#			endif
+			updateAnimations();
+			clearDrawBuffer();
+			drawBuffer = getDrawBuffer();
+			drawBoard(drawBuffer, &board);
+			drawAnimations(drawBuffer);
+			swapBuffers();
+			updateRefreshRate();
+			updateButtons();
+			receiveComs();
+			if (checkUserInput()) {
+				Tile *t = addRandomTile(&board);
+				sendNewTile(t);
+		}
+	}
+}
+
+void SinglePlayerLoop(FrameBuffer *drawBuffer) {
+		while(1) {
+#			ifdef _DEBUG_
+			printFrameRate();
+#			endif
+			updateAnimations();
+			clearDrawBuffer();
+			drawBuffer = getDrawBuffer();
+			drawBoard(drawBuffer, &board);
+			drawAnimations(drawBuffer);
+			swapBuffers();
+			updateRefreshRate();
+			updateButtons();
+			if (checkUserInput()) {
+				Tile *t = addRandomTile(&board);
+				sendNewTile(t);
+		}
+	}
+}
+
+#ifdef _DEBUG_
+void	printFrameRate(void) {
+	static uint64_t lastSecond = 0;
+	static 	uint32_t frameCount = 0;
+	frameCount++;
+	lastSecond = Time;
+	if (Time - lastSecond > SYSTICKS_PER_SECOND) {
+		char buffer[40];
+		sprintf(buffer, "\033[A%6d frames per second\n\r", frameCount);
+		uartTxPoll(UART0, buffer);
+		frameCount = 0;
+		lastSecond = Time;
+	}
+}
+#endif
+
+#	ifdef IS_EEPROM_TEST
+void eepromTest() {
 		uint32_t out;
 		char printbuf[20];
 		uint32_t data = 0xDEADCAFE;
@@ -188,37 +272,6 @@ int main(void)
 		spi_eeprom_read_array(address, (uint8_t *)&out, sizeof(out));
 		sprintf(printbuf, "read: %X\n\r", out);
 		uartTxPoll(UART0, printbuf);
-	}
-#	endif
-	
-	uartTxPoll(UART0, "\n");
-# ifdef _DEBUG_
-		lastSecond = Time;
-#	endif
-	sendBoard(&board);
-	while(1) {
-#		ifdef _DEBUG_	
-			if (Time - lastSecond > SYSTICKS_PER_SECOND) {
-				char buffer[40];
-				sprintf(buffer, "\033[A%6d frames per second\n\r", frameCount);
-				uartTxPoll(UART0, buffer);
-				frameCount = 0;
-				lastSecond = Time;
-			}
-#		endif
-		updateAnimations();
-		clearDrawBuffer();
-		drawBuffer = getDrawBuffer();
-		drawBoard(drawBuffer, &board);
-		drawAnimations(drawBuffer);
-		swapBuffers();
-		frameCount++;
-		updateRefreshRate();
-		updateButtons();
-		receiveComs();
-		if (checkInput()) {
-			Tile *t = addRandomTile(&board);
-			sendNewTile(t);
-		}
-	}
 }
+#	endif
+

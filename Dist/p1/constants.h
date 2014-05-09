@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 
-#define _DEBUG_ 1
+//#define _DEBUG_ 1
 
 #define DUTY_CYCLE_DELTA 					(8)
 #define DUTY_CYCLE_MAX 						(256)
