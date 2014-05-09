@@ -34,64 +34,15 @@
 
 Board board;
 
-void SinglePlayerLoop(FrameBuffer *drawBuffer);
-void AIMainLoop(FrameBuffer *drawBuffer);
-void GameMainLoop(FrameBuffer *drawBuffer);
+void SinglePlayerUpdate(FrameBuffer *drawBuffer);
+void AIUpdate(FrameBuffer *drawBuffer);
+void GameUpdate(FrameBuffer *drawBuffer);
 void printFrameRate(void);
 void eepromTest(void);
 
 
 //*****************************************************************************
 //*****************************************************************************
-
-bool drawSquare;
-
-void startFadeAnim(void *param);
-
-void startTranslateAnim(void *param) {
-	const Pixel px = {0x0000ff};
-	drawSquare = true;
-	scheduleAnimation(Time, SYSTICKS_PER_SECOND/4,
-									  0, 3,				//move from 0 to 3 in x
-									  3, 3,				//stay at 3 in y
-									  px, px,			//stay at blue
-									  startFadeAnim, param);
-}
-
-void startFadeAnim(void *param) {
-	const Pixel startColor = {0xFFFFFF};
-	const Pixel endColor = {0x0000FF};
-	drawSquare = false;
-	scheduleAnimation(Time, SYSTICKS_PER_SECOND/2,
-									  7, 7,				//don't move
-									  7, 7,				//stay at 7 in x and y
-									  startColor, endColor,			//fade to blue
-									  startFadeAnim, param);
-}
-
-void stringify(char *buffer, uint8_t num) {
-	buffer[0] = '0' + (num/100);
-	buffer[1] = '0' + (num/10)%10;
-	buffer[2] = '0' + (num%10);
-	buffer[3] = '\0';
-}
-
-void printBLerpFracs() {
-	byteFraction b = BF_0;
-	char buffer[4];
-	do {
-		stringify(buffer, b);
-		uartTxPoll(UART0, buffer);
-		uartTxPoll(UART0, " -> ");
-		stringify(buffer, blerp(2, 0, b, 256));
-		uartTxPoll(UART0, buffer);
-		uartTxPoll(UART0, ":");
-		stringify(buffer, blerpfrac(2, 0, b, 256));
-		uartTxPoll(UART0, buffer);
-		uartTxPoll(UART0, "\n\r");
-		b++;
-	} while(b != BF_0);
-}
 
 void	printGreeting() {
   uartTxPoll(UART0,"\n\r");
@@ -182,65 +133,74 @@ int main(void) {
 #	ifdef IS_EEPROM_TEST
 	eepromTest();
 #	endif
-	
-	SinglePlayerLoop(drawBuffer);
-}
-
-void AIMainLoop(FrameBuffer *drawBuffer) {
-			updateAnimations();
-			clearDrawBuffer();
-			drawBuffer = getDrawBuffer();
-			drawBoard(drawBuffer, &board);
-			drawAnimations(drawBuffer);
-			swapBuffers();
-			updateRefreshRate();
-			updateButtons();
-			receiveComs();
-			if (checkAIInput()) {
-				Tile *t = addRandomTile(&board);
-				sendNewTile(t);
-		}
-}
-
-void GameMainLoop(FrameBuffer *drawBuffer) {
-		sendBoard(&board);
-		while(1) {
-#			ifdef _DEBUG_
-			printFrameRate();
-#			endif
-			updateAnimations();
-			clearDrawBuffer();
-			drawBuffer = getDrawBuffer();
-			drawBoard(drawBuffer, &board);
-			drawAnimations(drawBuffer);
-			swapBuffers();
-			updateRefreshRate();
-			updateButtons();
-			receiveComs();
-			if (checkUserInput()) {
-				Tile *t = addRandomTile(&board);
-				sendNewTile(t);
+	sendBoard(&board);
+	while(1) {
+		sendHeartbeat();
+		if (receiveComs()) {
+			if (isAi()) {
+				//AIUpdate(drawBuffer);
+				uartTxPoll(UART0, "AI\r\n");
+			} else {
+				//GameUpdate(drawBuffer);
+				uartTxPoll(UART0, "GAME\r\n");
+			}
+		} else {
+			//SinglePlayerUpdate(drawBuffer);
+			uartTxPoll(UART0, "SP\r\n");
 		}
 	}
 }
 
-void SinglePlayerLoop(FrameBuffer *drawBuffer) {
-		while(1) {
-#			ifdef _DEBUG_
-			printFrameRate();
-#			endif
-			updateAnimations();
-			clearDrawBuffer();
-			drawBuffer = getDrawBuffer();
-			drawBoard(drawBuffer, &board);
-			drawAnimations(drawBuffer);
-			swapBuffers();
-			updateRefreshRate();
-			updateButtons();
-			if (checkUserInput()) {
-				Tile *t = addRandomTile(&board);
-				sendNewTile(t);
-		}
+void AIUpdate(FrameBuffer *drawBuffer) {
+	updateAnimations();
+	clearDrawBuffer();
+	drawBuffer = getDrawBuffer();
+	drawBoard(drawBuffer, &board);
+	drawAnimations(drawBuffer);
+	swapBuffers();
+	updateRefreshRate();
+	updateButtons();
+	receiveComs();
+	if (checkAIInput()) {
+		Tile *t = addRandomTile(&board);
+		sendNewTile(t);
+	}
+}
+
+void GameUpdate(FrameBuffer *drawBuffer) {
+#	ifdef _DEBUG_
+		printFrameRate();
+#	endif
+	updateAnimations();
+	clearDrawBuffer();
+	drawBuffer = getDrawBuffer();
+	drawBoard(drawBuffer, &board);
+	drawAnimations(drawBuffer);
+	swapBuffers();
+	updateRefreshRate();
+	updateButtons();
+	receiveComs();
+	if (checkUserInput()) {
+		Tile *t = addRandomTile(&board);
+		sendNewTile(t);
+	}
+}
+
+void SinglePlayerUpdate(FrameBuffer *drawBuffer) {
+#	ifdef _DEBUG_
+		printFrameRate();
+#	endif
+	updateAnimations();
+	clearDrawBuffer();
+	drawBuffer = getDrawBuffer();
+	drawBoard(drawBuffer, &board);
+	drawAnimations(drawBuffer);
+	swapBuffers();
+	updateRefreshRate();
+	updateButtons();
+	if (checkUserInput()) {
+		Tile *t = addRandomTile(&board);
+		sendNewTile(t);
 	}
 }
 
@@ -257,6 +217,30 @@ void	printFrameRate(void) {
 		frameCount = 0;
 		lastSecond = Time;
 	}
+}
+
+void stringify(char *buffer, uint8_t num) {
+	buffer[0] = '0' + (num/100);
+	buffer[1] = '0' + (num/10)%10;
+	buffer[2] = '0' + (num%10);
+	buffer[3] = '\0';
+}
+
+void printBLerpFracs() {
+	byteFraction b = BF_0;
+	char buffer[4];
+	do {
+		stringify(buffer, b);
+		uartTxPoll(UART0, buffer);
+		uartTxPoll(UART0, " -> ");
+		stringify(buffer, blerp(2, 0, b, 256));
+		uartTxPoll(UART0, buffer);
+		uartTxPoll(UART0, ":");
+		stringify(buffer, blerpfrac(2, 0, b, 256));
+		uartTxPoll(UART0, buffer);
+		uartTxPoll(UART0, "\n\r");
+		b++;
+	} while(b != BF_0);
 }
 #endif
 

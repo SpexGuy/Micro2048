@@ -12,7 +12,7 @@
 #define UART_GAME UART_ID_2
 #define UART_AI UART_ID_5
 
-#define CONNECT_TIMEOUT SYSTICKS_PER_SECOND
+#define CONNECT_TIMEOUT SYSTICKS_PER_SECOND/8
 
 //****** AI **********//
 void sendMove(uint8_t move);
@@ -21,6 +21,7 @@ void sendMove(uint8_t move);
 void sendBoard(Board *b);
 void sendNewTile(Tile *tile);
 void requestMove(void);
+void sendHeartbeat(void);
 
 bool isConnected(void);
 bool isAi(void);

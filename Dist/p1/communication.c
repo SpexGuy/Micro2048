@@ -89,7 +89,11 @@ void sendHeartbeat(void) {
 }
 
 bool isConnected(void) {
-	return Time - lastHeartbeatTime > CONNECT_TIMEOUT;
+	if (Time - lastHeartbeatTime > CONNECT_TIMEOUT) {
+		uartTxPoll(UART0, "TIMEOUT\r\n");
+		return false;
+	}
+	return true;
 }
 
 bool isAi(void) {
@@ -109,6 +113,7 @@ bool receiveComs(void) {
 	} else {
 		update(otherBoard);
 		if (!isConnected()) {
+			uartTxPoll(UART0, "CONNECTION LOST\r\n");
 			otherBoard = 0xFF;
 			return false;
 		}
