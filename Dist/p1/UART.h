@@ -31,6 +31,8 @@ bool initUART(uint8_t uartIndex, uint32_t baud);
 void uartTx(uint8_t uartId, uint8_t data);
 uint8_t uartRx(uint8_t uartId, bool block);
 void uartTxPoll(uint32_t base, char *data);
+void uartTxArray(uint8_t uartId, uint8_t len, uint8_t *data);
+void uartRxArray(uint8_t uartId, uint8_t len, uint8_t *data);
 
 #define	_8BITS		0x3	
 #define	ENABLED		1

@@ -125,6 +125,20 @@ void uartTx(uint8_t uartId, uint8_t data) {
 	EndCritical();
 }
 
+void uartTxArray(uint8_t uartId, uint8_t len, uint8_t *data) {
+	uint8_t c;
+	for (c = 0; c < len; c++) {
+		uartTx(uartId, data[c]);
+	}
+}
+
+void uartRxArray(uint8_t uartId, uint8_t len, uint8_t *data) {
+	uint8_t c;
+	for (c = 0; c < len; c++) {
+		data[c] = uartRx(uartId, true);
+	}
+}
+
 void UARTIntHandler(uint8_t uartId) {
 	char toSend = 0;
 	
