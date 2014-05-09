@@ -111,7 +111,9 @@ void uartTx(uint8_t uartId, uint8_t data) {
 //			StartCritical();
 //		}
 		if (cBufAddChar(&txBuffer[uartId], (char)data) != 0) {
+#			ifdef _DEBUG_
 			uartTxPoll(UART0, "Failed to add to SW queue\n\r");
+#			endif
 			//cBufAddChar(&txBuffer[uartId], 'X');
 		}
 	} else {
@@ -125,6 +127,8 @@ void uartTx(uint8_t uartId, uint8_t data) {
 
 void UARTIntHandler(uint8_t uartId) {
 	char toSend = 0;
+	
+#	ifdef _DEBUG_
 	switch(uartId) {
 		case UART_ID_5:
 			uartTxPoll(UART0, "U5: ");
@@ -169,7 +173,7 @@ void UARTIntHandler(uint8_t uartId) {
 	if(uarts[uartId]->RxStatus & UART_RSR_OE)
 		uartTxPoll(UART0, "Overrun Error:");					
 	uartTxPoll(UART0, "\n\r");
-	
+#	endif
 			
 	StartCritical();
 	//add characters until receive queue is empty

@@ -139,7 +139,9 @@ bool checkInput(void) {
 
 int main(void)
 {
+#	ifdef _DEBUG_
 	uint64_t lastSecond;
+#	endif
 	uint32_t frameCount;
 	FrameBuffer *drawBuffer;
 	initBoard();
@@ -147,7 +149,7 @@ int main(void)
 	
   uartTxPoll(UART0,"\n\r");
   uartTxPoll(UART0,"****** ECE353 ******\n\r");
-  uartTxPoll(UART0,"HW4 Demo\n\r");
+  uartTxPoll(UART0,"Micro 2018\n\r");
   uartTxPoll(UART0,teamNumber);
   uartTxPoll(UART0,"\n\r");
   uartTxPoll(UART0,teamMembers);
@@ -175,7 +177,9 @@ int main(void)
 #	endif
 
 	uartTxPoll(UART0, "\n");
+# ifdef _DEBUG_
 	lastSecond = Time;
+#	endif
 	while(1) {
 		char buff[25];
 		static uint8_t rx = 0xFF;
@@ -190,14 +194,16 @@ int main(void)
 				sprintf(buff, "U5 Data: %X\r\n\n", rx);
 				uartTxPoll(UART0, buff);
 			}
+#		ifdef _DEBUG_	
 		if (Time - lastSecond > SYSTICKS_PER_SECOND) {
 			char buffer[40];
 			
-			//sprintf(buffer, "\033[A%6d frames per second\n\r", frameCount);
+			sprintf(buffer, "\033[A%6d frames per second\n\r", frameCount);
 			uartTxPoll(UART0, buffer);
 			frameCount = 0;
 			lastSecond = Time;
 		}
+#		endif
 		updateAnimations();
 		clearDrawBuffer();
 		drawBuffer = getDrawBuffer();
