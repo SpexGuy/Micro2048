@@ -19,12 +19,10 @@ void SYSTICKIntHandler(void)
 	static byteFraction dutyPos = 0;
 	
 	Time++;
-
 	if (adcCount++ > SYSTICKS_PER_ADC) {
 		AlertADC0 = true;
 		adcCount = 0;
 	}
-	
 	if (++row == 8) {
 		row = 0;
 		dutyPos += DUTY_CYCLE_DELTA;
@@ -36,7 +34,6 @@ void SYSTICKIntHandler(void)
 		//uartTxPoll(UART0, "C");
 		debugCount = 0;
 	}
-	
 	WATCHDOG0_LOAD_R = WDT_LOAD_M;
 }
 

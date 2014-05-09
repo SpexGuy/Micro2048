@@ -329,12 +329,15 @@ void drawBoard(FrameBuffer *draw, Board *board) {
 }
 
 void saveGame(Board *b) {
+#	ifdef _DEBUG_
 	char buffer[100];
+#	endif
 	uint8_t boardSave[BOARD_HEIGHT][BOARD_WIDTH];
 	createBoardArray(b, &boardSave[0][0]);
-	
+#	ifdef _DEBUG_
 	sprintf(buffer, "%8X\r\n%8X\r\n%8X\r\n%8X\r\n\r\n", *((uint32_t *)&boardSave[0][0]), *((uint32_t *)&boardSave[1][0]), *((uint32_t *)&boardSave[2][0]), *((uint32_t *)&boardSave[3][0]));
 	uartTxPoll(UART0, buffer);
+#	endif
 	spi_eeprom_write_array(EEPROM_GAME_ADDR, &boardSave[0][0], 4);
 	spi_eeprom_wait_write_in_progress();
 	spi_eeprom_write_array(EEPROM_GAME_ADDR+4, &boardSave[1][0], 4);
@@ -346,16 +349,19 @@ void saveGame(Board *b) {
 }
 
 void restoreGame(Board *b) {
-	uint8_t boardRestore[BOARD_HEIGHT][BOARD_WIDTH];
+#	ifdef _DEBUG_	
 	char buffer[100];
-	
+#	endif
+	uint8_t boardRestore[BOARD_HEIGHT][BOARD_WIDTH];
 	init2048(b);
 	spi_eeprom_read_array(EEPROM_GAME_ADDR, &boardRestore[0][0], 4);
 	spi_eeprom_read_array(EEPROM_GAME_ADDR+4, &boardRestore[1][0], 4);
 	spi_eeprom_read_array(EEPROM_GAME_ADDR+8, &boardRestore[2][0], 4);
 	spi_eeprom_read_array(EEPROM_GAME_ADDR+12, &boardRestore[3][0], 4);
+#	ifdef _DEBUG_		
 	sprintf(buffer, "%8X\r\n%8X\r\n%8X\r\n%8X\r\n\r\n", *((uint32_t *)&boardRestore[0][0]), *((uint32_t *)&boardRestore[1][0]), *((uint32_t *)&boardRestore[2][0]), *((uint32_t *)&boardRestore[3][0]));
 	uartTxPoll(UART0, buffer);
+#	endif	
 	restoreBoard(b, &boardRestore[0][0]);
 }
 

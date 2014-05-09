@@ -13,9 +13,15 @@ void StartCritical() {
 }
 
 void EndCritical() {
-	if (depth == 0)
-		while(1)
+	if (depth == 0) {
+#		ifdef _DEBUG_		
+		while(1) 
 			uartTxPoll(UART0, "TOO MANY END CRITICALS!!!!!\r\n");
+#		else
+		// Reset board
+		NVIC_APINT_R = NVIC_APINT_VECTKEY | NVIC_APINT_SYSRESETREQ;
+#		endif
+	}
 		
 	depth--;
 	if (depth == 0)

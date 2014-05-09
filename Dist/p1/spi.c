@@ -16,10 +16,8 @@ void initializePortASpi0(void);
 
 void spiTx(uint8_t *dataIn, int32_t size, uint8_t *dataOut) {
 	uint16_t c, d;
-
 	//Wait for not busy
 	while(spi->SSISR & SSI_SR_BSY);
-	
 	for(c = 0; c < size; c++) {
 		d = c;
 		spi->SSICR1 &= ~SSI_CR1_SSE;
@@ -44,7 +42,6 @@ bool initializeSPI( uint32_t base, uint8_t phase, uint8_t polarity) {
   uint32_t delay;
 	UNUSED(delay);
 	spi = myPeriph;
-
   // Turn on the Clock Gating Register
   switch (base) 
   {
@@ -60,33 +57,24 @@ bool initializeSPI( uint32_t base, uint8_t phase, uint8_t polarity) {
   }
   
   delay = SYSCTL_RCGCSSI_R;
-
   // Disable the SSI interface
   myPeriph->SSICR1 &= ~(SSI_CR1_SSE);
-
   // Enable Master Mode
   myPeriph->SSICR1 = 0;
-  
   // Assume that we hvae a 80MHz clock and want a 4MHz SPI clock
   // SSICPSR * (1 + SSICR0) = 80M / 2M
   myPeriph->SSICPSR = 40;
   myPeriph->SSICR0  = 0;
-  
   // Clear the phse and polarity bits
   myPeriph->SSICR0  &=  ~(SSI_CR0_SPH | SSI_CR0_SPO);
-  
   if (phase == 1)
       myPeriph->SSICR0  |= SSI_CR0_SPH;
-  
   if (polarity ==1)
       myPeriph->SSICR0  |= SSI_CR0_SPO;
-
   // Freescale SPI Mode with 8-Bit data
   myPeriph->SSICR0 |= SSI_CR0_DSS_8; 
-  
   //Enable SSI
   myPeriph->SSICR1 |= SSI_CR1_SSE;
-
   return true;
 }
 

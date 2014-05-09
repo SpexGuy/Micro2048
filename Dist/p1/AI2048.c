@@ -38,8 +38,10 @@ uint8_t getBestMove(Board *b) {
 	uint8_t c, minIndex = 0;
 	int32_t min, evals[4];
 	Board *op;
-	
+
+#ifdef _DEBUG_
 	uartTxPoll(UART0, "Getting Best Move");
+#endif
 	
 	op = copyBoard(b);
 	if(internalShiftUp(op)) {
@@ -80,9 +82,9 @@ uint8_t getBestMove(Board *b) {
 			minIndex = c;
 		}
 	}
-	
+#ifdef _DEBUG_
 	uartTxPoll(UART0, "returning best move");
-
+#endif
 	return minIndex;
 }
 
@@ -114,7 +116,9 @@ int32_t evaluatePossibilities(Board *b) {
 	if(open > 0) {
 		return (evaluation2 + evaluation4) / (10*open);
 	} else {
+#		ifdef _DEBUG_
 		uartTxPoll(UART0, "Loss Detected inside AI");
+#		endif
 		return 0x7FFFFFFF;
 	}
 }

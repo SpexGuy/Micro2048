@@ -32,6 +32,5 @@ void initTimer0(void) {
 void TIMER0IntHandler(void) {
 	TIMER0_ICR_R = TIMER_ICR_TATOCINT;
 	AlertDebounce = true;
-	//uartTxPoll(UART0,"H");
 }
 
