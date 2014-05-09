@@ -5,6 +5,7 @@
 #include "UART.h"
 
 extern volatile bool AlertADC0;
+extern volatile bool heartbeat;
 
 volatile uint64_t Time = 0;
 
@@ -17,11 +18,16 @@ void SYSTICKIntHandler(void)
 	static int debugCount = 0;
 	static int row = 0;
 	static byteFraction dutyPos = 0;
+	static uint32_t heartbeatCount = 0;
 	
 	Time++;
 	if (adcCount++ > SYSTICKS_PER_ADC) {
 		AlertADC0 = true;
 		adcCount = 0;
+	}
+	if (heartbeatCount++ > SYSTICKS_PER_HEARTBEAT) {
+		heartbeat = true;
+		heartbeatCount = 0;
 	}
 	if (++row == 8) {
 		row = 0;

@@ -116,6 +116,7 @@ void removeTile(Board *b, Tile *tile) {
 
 void clearBoard(Board *b) {
 	uint8_t x, y;
+	clearAnimations();
 	StartCritical();
 	for (y = 0; y < BOARD_HEIGHT; y++) {
 		for (x = 0; x < BOARD_WIDTH; x++) {

@@ -13,3 +13,4 @@
 .\hw4_gpio.o: screen.h
 .\hw4_gpio.o: pixel.h
 .\hw4_gpio.o: constants.h
+.\hw4_gpio.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h

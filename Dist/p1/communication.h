@@ -8,6 +8,11 @@
 #define TYPE_TILE 3
 #define TYPE_MOVE_READY 4
 #define TYPE_HEARTBEAT 5
+#define TYPE_BOARD_REQ 6
+
+#define MODE_AI 1
+#define MODE_SP 2
+#define MODE_HOST 3
 
 #define UART_GAME UART_ID_2
 #define UART_AI UART_ID_5
@@ -22,6 +27,7 @@ void sendBoard(Board *b);
 void sendNewTile(Tile *tile);
 void requestMove(void);
 void sendHeartbeat(void);
+void requestBoard(void);
 
 bool isConnected(void);
 bool isAi(void);

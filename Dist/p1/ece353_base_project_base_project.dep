@@ -1,6 +1,6 @@
 Dependencies for Project 'ece353_base_project', Target 'base_project': (DO NOT MODIFY !)
 F (.\Startup.s)(0x536B9786)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
-F (.\main.c)(0x536C4180)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+F (.\main.c)(0x536C43F6)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\main.o --omf_browse .\main.crf --depend .\main.d)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)
 I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C86E14)
 I (C:\Keil\ARM\ARMCC\include\stdlib.h)(0x51C86E14)
@@ -29,7 +29,7 @@ I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\2048.h)(0x536C
 I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\AI2048.h)(0x53699BFE)
 I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\spi.h)(0x53699EB7)
 I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\eeprom.h)(0x536B1C17)
-I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\communication.h)(0x536C417E)
+I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\communication.h)(0x536C4687)
 F (.\initBoard.c)(0x536C320E)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\initboard.o --omf_browse .\initboard.crf --depend .\initboard.d)
 I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\initBoard.h)(0x535C37B0)
 I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\constants.h)(0x536C4180)
@@ -217,8 +217,8 @@ I (C:\Keil\ARM\ARMCC\include\errno.h)(0x51C86E14)
 I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\lm4f120h5qr.h)(0x52711274)
 I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\lock.h)(0x536AA697)
 I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\uart.h)(0x536C1F27)
-F (.\communication.c)(0x536C417E)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\communication.o --omf_browse .\communication.crf --depend .\communication.d)
-I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\communication.h)(0x536C417E)
+F (.\communication.c)(0x536C46D9)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Luminary-o .\communication.o --omf_browse .\communication.crf --depend .\communication.d)
+I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\communication.h)(0x536C4687)
 I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\2048.h)(0x536C320C)
 I (C:\Users\Martin Wickham\KielProjects\ECE 353\Micro2048\Dist\p1\constants.h)(0x536C4180)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C86E14)

@@ -103,7 +103,7 @@ void uartTx(uint8_t uartId, uint8_t data) {
 	UART_PERIPH *uart = uarts[uartId];
 	StartCritical();
 	//check hardware queue
-	if (uart->Flag & UART_FR_TXFF) {
+	if (uart->Flag & UART_FR_TXFF || txBuffer[uartId].count > 0) {
 		//wait for space in tx buffer
 //		while(cBufGetFreeCount(&txBuffer[uartId]) == 0) {
 //			EndCritical();
@@ -185,7 +185,7 @@ void UARTIntHandler(uint8_t uartId) {
 	if(uarts[uartId]->RxStatus & UART_RSR_BE)
 		uartTxPoll(UART0, "Break Error:");
 	if(uarts[uartId]->RxStatus & UART_RSR_OE)
-		uartTxPoll(UART0, "Overrun Error:");					
+		uartTxPoll(UART0, "Overrun Error:");
 	uartTxPoll(UART0, "\n\r");
 #	endif
 			
@@ -194,6 +194,8 @@ void UARTIntHandler(uint8_t uartId) {
   while(!(uarts[uartId]->Flag & UART_FR_RXFE)) {
 		cBufAddChar(&rxBuffer[uartId], uarts[uartId]->Data);
 	}
+	if(uarts[uartId]->RxStatus & UART_RSR_OE)
+		uartTxPoll(UART0, "Overrun Error\n\r");
 	
 	//check if uP has characters
 	if (cBufGetChar(&txBuffer[uartId], &toSend) > 0) {

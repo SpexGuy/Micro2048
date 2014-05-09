@@ -112,3 +112,21 @@ void drawAnimations(FrameBuffer* frameBuffer) {
 		current = current->next;
 	}
 }
+
+void freeList(Animation *head) {
+	Animation *next;
+	while(head) {
+		next = head->next;
+		delete(head);
+		head = next;
+	}
+}
+
+void clearAnimations() {
+	StartCritical();
+	freeList(additions);
+	additions = NULL;
+	freeList(head);
+	head = NULL;
+	EndCritical();
+}

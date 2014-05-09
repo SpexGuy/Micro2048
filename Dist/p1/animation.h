@@ -38,4 +38,6 @@ void updateAnimations(void);
 
 void drawAnimations(FrameBuffer* frameBuffer);
 
+void clearAnimations(void);
+
 #endif

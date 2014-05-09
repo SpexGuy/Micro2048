@@ -3,6 +3,7 @@
 #include "UART.h"
 #include "board_ports.h"
 #include "renderer.h"
+#include <string.h>
 
 #define NUM_BUTTONS 5
 
@@ -19,6 +20,11 @@ volatile bool AlertDebounce;
 
 bool buttonPress[NUM_BUTTONS] = {false, false, false, false, false};
 bool buttonRelease[NUM_BUTTONS] = {false, false, false, false, false};
+
+void clearButtons() {
+	memset(buttonPress, 0, sizeof(buttonPress));
+	memset(buttonRelease, 0, sizeof(buttonPress));
+}
 
 uint8_t getButtonPress(uint8_t index) {
 	if (buttonPress[index]) {

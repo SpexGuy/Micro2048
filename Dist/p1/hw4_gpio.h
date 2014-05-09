@@ -15,6 +15,7 @@
 void initializeGpioPins(void);
 void updateDisplay(void);
 void updateButtons(void);
+void clearButtons(void);
 uint8_t getButtonPress(uint8_t index);
 uint8_t getButtonRelease(uint8_t index);
 

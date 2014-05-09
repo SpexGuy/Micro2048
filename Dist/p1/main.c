@@ -32,13 +32,19 @@
  * Global Variables
  *****************************************************************************/
 
+volatile bool heartbeat = false;
+
 Board board;
 
-void SinglePlayerUpdate(FrameBuffer *drawBuffer);
-void AIUpdate(FrameBuffer *drawBuffer);
-void GameUpdate(FrameBuffer *drawBuffer);
+void SinglePlayerUpdate(void);
+void AIUpdate(void);
+void HostUpdate(void);
+#ifdef _DEBUG_
 void printFrameRate(void);
+#endif
+#ifdef IS_EEPROM_TEST
 void eepromTest(void);
+#endif
 
 
 //*****************************************************************************
@@ -64,6 +70,7 @@ bool checkAIInput(void) {
 			requestMove();
 			requested = true;
 		} else {
+			char buffer[40];
 			move = getSentMove();
 			switch(move) {
 				case 0:
@@ -85,7 +92,8 @@ bool checkAIInput(void) {
 				case 0xFF:
 					return false;
 				default:
-					uartTxPoll(UART0, "AI Move Select Error");
+					sprintf(buffer, "AI Move Select Error: %d", move);
+					uartTxPoll(UART0, buffer);
 					return false;
 			}
 		}
@@ -96,16 +104,12 @@ bool checkAIInput(void) {
 bool checkUserInput(void) {
 	static uint64_t save_press_time = 0;
 	if (getButtonPress(BUTTON_NORTH)) {
-		//sendMove(0);
 		return shiftUp(&board);
 	} else if (getButtonPress(BUTTON_SOUTH)) {
-		//sendMove(1);
 		return shiftDown(&board);
 	} else if (getButtonPress(BUTTON_EAST)) {
-		//sendMove(2);
 		return shiftRight(&board);
 	} else if (getButtonPress(BUTTON_WEST)) {
-		//sendMove(3);
 		return shiftLeft(&board);
 	} else if (getButtonPress(BUTTON_AUX)) {
 		save_press_time = Time;
@@ -113,7 +117,9 @@ bool checkUserInput(void) {
 		if (Time - save_press_time > SAVE_HOLD_THRESH) {
 			clearBoard(&board);
 			restoreGame(&board);
-			//sendBoard(&board);
+			if (isGame()) {
+				sendBoard(&board);
+			}
 		} else {
 			saveGame(&board);
 		}
@@ -121,8 +127,24 @@ bool checkUserInput(void) {
 	return false;
 }
 
+void sendUserInput(void) {
+	if (getButtonPress(BUTTON_NORTH)) {
+		sendMove(0);
+		shiftUp(&board);
+	} else if (getButtonPress(BUTTON_SOUTH)) {
+		sendMove(1);
+		shiftDown(&board);
+	} else if (getButtonPress(BUTTON_EAST)) {
+		sendMove(2);
+		shiftRight(&board);
+	} else if (getButtonPress(BUTTON_WEST)) {
+		sendMove(3);
+		shiftLeft(&board);
+	}
+}
+
 int main(void) {
-	FrameBuffer *drawBuffer;
+	uint8_t lastMode = 0xFF;
 	initBoard();
 	initDoubleBuffers();
 	printGreeting();
@@ -133,25 +155,39 @@ int main(void) {
 #	ifdef IS_EEPROM_TEST
 	eepromTest();
 #	endif
-	sendBoard(&board);
 	while(1) {
-		sendHeartbeat();
+		if (heartbeat) {
+			sendHeartbeat();
+			heartbeat = false;
+		}
 		if (receiveComs()) {
 			if (isAi()) {
-				//AIUpdate(drawBuffer);
-				uartTxPoll(UART0, "AI\r\n");
+				if (lastMode != MODE_AI) {
+					uartTxPoll(UART0, "AI\r\n");
+					requestBoard();
+				}
+				AIUpdate();
+				lastMode = MODE_AI;
 			} else {
-				//GameUpdate(drawBuffer);
-				uartTxPoll(UART0, "GAME\r\n");
+				if (lastMode != MODE_HOST) {
+					uartTxPoll(UART0, "HOST\r\n");
+				}
+				HostUpdate();
+				lastMode = MODE_HOST;
 			}
 		} else {
-			//SinglePlayerUpdate(drawBuffer);
-			uartTxPoll(UART0, "SP\r\n");
+			if (lastMode != MODE_SP) {
+				uartTxPoll(UART0, "SP\r\n");
+				clearButtons();
+			}
+			SinglePlayerUpdate();
+			lastMode = MODE_SP;
 		}
 	}
 }
 
-void AIUpdate(FrameBuffer *drawBuffer) {
+void AIUpdate() {
+	FrameBuffer *drawBuffer;
 	updateAnimations();
 	clearDrawBuffer();
 	drawBuffer = getDrawBuffer();
@@ -160,33 +196,30 @@ void AIUpdate(FrameBuffer *drawBuffer) {
 	swapBuffers();
 	updateRefreshRate();
 	updateButtons();
-	receiveComs();
+	sendUserInput();
+}
+
+void HostUpdate() {
+	FrameBuffer *drawBuffer;
+#	ifdef _DEBUG_
+		printFrameRate();
+#	endif
+	updateAnimations();
+	clearDrawBuffer();
+	drawBuffer = getDrawBuffer();
+	drawBoard(drawBuffer, &board);
+	drawAnimations(drawBuffer);
+	swapBuffers();
+	updateRefreshRate();
+	updateButtons();
 	if (checkAIInput()) {
 		Tile *t = addRandomTile(&board);
 		sendNewTile(t);
 	}
 }
 
-void GameUpdate(FrameBuffer *drawBuffer) {
-#	ifdef _DEBUG_
-		printFrameRate();
-#	endif
-	updateAnimations();
-	clearDrawBuffer();
-	drawBuffer = getDrawBuffer();
-	drawBoard(drawBuffer, &board);
-	drawAnimations(drawBuffer);
-	swapBuffers();
-	updateRefreshRate();
-	updateButtons();
-	receiveComs();
-	if (checkUserInput()) {
-		Tile *t = addRandomTile(&board);
-		sendNewTile(t);
-	}
-}
-
-void SinglePlayerUpdate(FrameBuffer *drawBuffer) {
+void SinglePlayerUpdate() {
+	FrameBuffer *drawBuffer;
 #	ifdef _DEBUG_
 		printFrameRate();
 #	endif
@@ -199,8 +232,7 @@ void SinglePlayerUpdate(FrameBuffer *drawBuffer) {
 	updateRefreshRate();
 	updateButtons();
 	if (checkUserInput()) {
-		Tile *t = addRandomTile(&board);
-		sendNewTile(t);
+		addRandomTile(&board);
 	}
 }
 
