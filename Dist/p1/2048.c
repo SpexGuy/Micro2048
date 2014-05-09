@@ -329,18 +329,9 @@ void drawBoard(FrameBuffer *draw, Board *board) {
 
 void saveGame(Board *b) {
 	char buffer[100];
-	uint8_t x, y;
 	uint8_t boardSave[BOARD_HEIGHT][BOARD_WIDTH];
-	while(!canTakeInput(b));
+	createBoardArray(b, &boardSave[0][0]);
 	
-	for( x = 0; x < BOARD_WIDTH; x++) {
-		for (y = 0; y < BOARD_HEIGHT; y++) {
-			if (b->tiles[y][x])
-				boardSave[y][x] = b->tiles[y][x]->value;
-			else
-				boardSave[y][x] = 0xFF;
-		}
-	}
 	sprintf(buffer, "%8X\r\n%8X\r\n%8X\r\n%8X\r\n\r\n", *((uint32_t *)&boardSave[0][0]), *((uint32_t *)&boardSave[1][0]), *((uint32_t *)&boardSave[2][0]), *((uint32_t *)&boardSave[3][0]));
 	uartTxPoll(UART0, buffer);
 	spi_eeprom_write_array(EEPROM_GAME_ADDR, &boardSave[0][0], 4);
@@ -354,7 +345,6 @@ void saveGame(Board *b) {
 }
 
 void restoreGame(Board *b) {
-	uint8_t x, y;
 	uint8_t boardRestore[BOARD_HEIGHT][BOARD_WIDTH];
 	char buffer[100];
 	
@@ -365,11 +355,28 @@ void restoreGame(Board *b) {
 	spi_eeprom_read_array(EEPROM_GAME_ADDR+12, &boardRestore[3][0], 4);
 	sprintf(buffer, "%8X\r\n%8X\r\n%8X\r\n%8X\r\n\r\n", *((uint32_t *)&boardRestore[0][0]), *((uint32_t *)&boardRestore[1][0]), *((uint32_t *)&boardRestore[2][0]), *((uint32_t *)&boardRestore[3][0]));
 	uartTxPoll(UART0, buffer);
-	
+	restoreBoard(b, &boardRestore[0][0]);
+}
+
+void createBoardArray(Board *b, uint8_t* out) {
+	uint8_t x, y;
+	while(!canTakeInput(b));
 	for( x = 0; x < BOARD_WIDTH; x++) {
 		for (y = 0; y < BOARD_HEIGHT; y++) {
-			if (boardRestore[y][x] != 0xFF) {
-				addTile(b, x, y, boardRestore[y][x], true);
+			if (b->tiles[y][x])
+				out[(BOARD_WIDTH * y) + x] = b->tiles[y][x]->value;
+			else
+				out[(BOARD_WIDTH * y) + x] = 0xFF;
+		}
+	}
+}
+
+void restoreBoard(Board *b, uint8_t *in) {
+	uint8_t x, y;	
+	for( x = 0; x < BOARD_WIDTH; x++) {
+		for (y = 0; y < BOARD_HEIGHT; y++) {
+			if (in[(BOARD_WIDTH * y) + x] != 0xFF) {
+				addTile(b, x, y, in[(BOARD_WIDTH * y) + x], true);
 			} else {
 				b->tiles[y][x] = NULL;
 			}

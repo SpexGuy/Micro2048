@@ -18,6 +18,7 @@
 ".\timer.o"
 ".\lock.o"
 ".\uart.o"
+".\communication.o"
 ".\lib\pll.lib"
 ".\lib\circular_buffer.lib"
 ".\lib\uart.lib"
